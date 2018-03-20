@@ -25,7 +25,6 @@
 		FA06646320615226006DE3CF /* CityListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06646220615226006DE3CF /* CityListController.swift */; };
 		FA06646A206155DD006DE3CF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA066469206155DD006DE3CF /* Constants.swift */; };
 		FA06647020617337006DE3CF /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06646F20617337006DE3CF /* MapController.swift */; };
-		FA06647420617A48006DE3CF /* cities_usa.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = FA06647320617A48006DE3CF /* cities_usa.sqlite */; };
 		FA06647820617AB9006DE3CF /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FA06647720617AB9006DE3CF /* libsqlite3.tbd */; };
 /* End PBXBuildFile section */
 
@@ -71,9 +70,9 @@
 		FA06646220615226006DE3CF /* CityListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListController.swift; sourceTree = "<group>"; };
 		FA066469206155DD006DE3CF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FA06646F20617337006DE3CF /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
-		FA06647320617A48006DE3CF /* cities_usa.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = cities_usa.sqlite; path = ../../SQLite/cities_usa.sqlite; sourceTree = "<group>"; };
 		FA06647520617A99006DE3CF /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		FA06647720617AB9006DE3CF /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		FA06647B20618BC0006DE3CF /* cities_usa.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = cities_usa.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,8 +104,8 @@
 		FA06641120614490006DE3CF = {
 			isa = PBXGroup;
 			children = (
+				FA06647B20618BC0006DE3CF /* cities_usa.sqlite */,
 				FA06647520617A99006DE3CF /* Bridging-Header.h */,
-				FA06647320617A48006DE3CF /* cities_usa.sqlite */,
 				FA06641C20614490006DE3CF /* WxAlert */,
 				FA06643320614492006DE3CF /* WxAlertTests */,
 				FA06643E20614492006DE3CF /* WxAlertUITests */,
@@ -351,7 +350,6 @@
 			files = (
 				FA06642A20614492006DE3CF /* LaunchScreen.storyboard in Resources */,
 				FA06642720614491006DE3CF /* Assets.xcassets in Resources */,
-				FA06647420617A48006DE3CF /* cities_usa.sqlite in Resources */,
 				FA06642520614491006DE3CF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
