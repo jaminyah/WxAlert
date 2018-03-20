@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import MapKit
 
 class MapController: UIViewController {
-
+    
+    var selectedCity = City()
+    @IBOutlet weak var mapView: MKMapView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,6 +25,23 @@ class MapController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        setMapRegion()
+        
+        let pinTitle = selectedCity.name + ", " + selectedCity.region
+        let citylat = selectedCity.latitude
+        let citylong = selectedCity.longitude
+        let coordinates = CLLocationCoordinate2D(latitude: citylat, longitude: citylong)
+        let cityInfo = MKPinInfo(title: pinTitle, coordinate: coordinates)
+        
+        mapView.addAnnotation(cityInfo)
+    }
+
+    func setMapRegion() {
+        let location = CLLocation(latitude: selectedCity.latitude, longitude: selectedCity.longitude)
+        let cityRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 12000, 12000)
+        mapView.setRegion(cityRegion, animated: true)
+    }
 
     /*
     // MARK: - Navigation

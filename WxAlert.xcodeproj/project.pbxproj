@@ -26,6 +26,10 @@
 		FA06646A206155DD006DE3CF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA066469206155DD006DE3CF /* Constants.swift */; };
 		FA06647020617337006DE3CF /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06646F20617337006DE3CF /* MapController.swift */; };
 		FA06647820617AB9006DE3CF /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FA06647720617AB9006DE3CF /* libsqlite3.tbd */; };
+		FA06647D20618F14006DE3CF /* MKPinInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06647C20618F14006DE3CF /* MKPinInfo.swift */; };
+		FA06647F20618FAE006DE3CF /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06647E20618FAE006DE3CF /* City.swift */; };
+		FA066481206194DB006DE3CF /* cities_usa.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = FA066480206194DB006DE3CF /* cities_usa.sqlite */; };
+		FA06648320619563006DE3CF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA06648220619563006DE3CF /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +76,10 @@
 		FA06646F20617337006DE3CF /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
 		FA06647520617A99006DE3CF /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		FA06647720617AB9006DE3CF /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		FA06647B20618BC0006DE3CF /* cities_usa.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = cities_usa.sqlite; sourceTree = "<group>"; };
+		FA06647C20618F14006DE3CF /* MKPinInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MKPinInfo.swift; sourceTree = "<group>"; };
+		FA06647E20618FAE006DE3CF /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		FA066480206194DB006DE3CF /* cities_usa.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = cities_usa.sqlite; sourceTree = "<group>"; };
+		FA06648220619563006DE3CF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA06648320619563006DE3CF /* MapKit.framework in Frameworks */,
 				FA06647820617AB9006DE3CF /* libsqlite3.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,7 +112,7 @@
 		FA06641120614490006DE3CF = {
 			isa = PBXGroup;
 			children = (
-				FA06647B20618BC0006DE3CF /* cities_usa.sqlite */,
+				FA066480206194DB006DE3CF /* cities_usa.sqlite */,
 				FA06647520617A99006DE3CF /* Bridging-Header.h */,
 				FA06641C20614490006DE3CF /* WxAlert */,
 				FA06643320614492006DE3CF /* WxAlertTests */,
@@ -212,6 +220,8 @@
 		FA06646C206156B4006DE3CF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FA06647C20618F14006DE3CF /* MKPinInfo.swift */,
+				FA06647E20618FAE006DE3CF /* City.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -233,6 +243,7 @@
 		FA06647620617AB9006DE3CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA06648220619563006DE3CF /* MapKit.framework */,
 				FA06647720617AB9006DE3CF /* libsqlite3.tbd */,
 			);
 			name = Frameworks;
@@ -350,6 +361,7 @@
 			files = (
 				FA06642A20614492006DE3CF /* LaunchScreen.storyboard in Resources */,
 				FA06642720614491006DE3CF /* Assets.xcassets in Resources */,
+				FA066481206194DB006DE3CF /* cities_usa.sqlite in Resources */,
 				FA06642520614491006DE3CF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,11 +392,13 @@
 				FA06645F206151C7006DE3CF /* NotificationSettings.swift in Sources */,
 				FA06645520614FEE006DE3CF /* SearchController.swift in Sources */,
 				FA06645D2061514E006DE3CF /* WeatherDetailController.swift in Sources */,
+				FA06647D20618F14006DE3CF /* MKPinInfo.swift in Sources */,
 				FA06645320614E32006DE3CF /* SettingsController.swift in Sources */,
 				FA06646320615226006DE3CF /* CityListController.swift in Sources */,
 				FA066461206151F9006DE3CF /* CityEditController.swift in Sources */,
 				FA06641E20614490006DE3CF /* AppDelegate.swift in Sources */,
 				FA06645B2061510C006DE3CF /* NotificationController.swift in Sources */,
+				FA06647F20618FAE006DE3CF /* City.swift in Sources */,
 				FA06646A206155DD006DE3CF /* Constants.swift in Sources */,
 				FA06645720615016006DE3CF /* WeatherController.swift in Sources */,
 				FA066451206145E6006DE3CF /* RootController.swift in Sources */,
