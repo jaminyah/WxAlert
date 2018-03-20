@@ -1,0 +1,663 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA06641E20614490006DE3CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06641D20614490006DE3CF /* AppDelegate.swift */; };
+		FA06642520614491006DE3CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA06642320614491006DE3CF /* Main.storyboard */; };
+		FA06642720614491006DE3CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA06642620614491006DE3CF /* Assets.xcassets */; };
+		FA06642A20614492006DE3CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA06642820614492006DE3CF /* LaunchScreen.storyboard */; };
+		FA06643520614492006DE3CF /* WxAlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06643420614492006DE3CF /* WxAlertTests.swift */; };
+		FA06644020614492006DE3CF /* WxAlertUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06643F20614492006DE3CF /* WxAlertUITests.swift */; };
+		FA066451206145E6006DE3CF /* RootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA066450206145E6006DE3CF /* RootController.swift */; };
+		FA06645320614E32006DE3CF /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06645220614E32006DE3CF /* SettingsController.swift */; };
+		FA06645520614FEE006DE3CF /* SearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06645420614FEE006DE3CF /* SearchController.swift */; };
+		FA06645720615016006DE3CF /* WeatherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06645620615016006DE3CF /* WeatherController.swift */; };
+		FA066459206150CB006DE3CF /* AppSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA066458206150CB006DE3CF /* AppSettingController.swift */; };
+		FA06645B2061510C006DE3CF /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06645A2061510C006DE3CF /* NotificationController.swift */; };
+		FA06645D2061514E006DE3CF /* WeatherDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06645C2061514E006DE3CF /* WeatherDetailController.swift */; };
+		FA06645F206151C7006DE3CF /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06645E206151C7006DE3CF /* NotificationSettings.swift */; };
+		FA066461206151F9006DE3CF /* CityEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA066460206151F9006DE3CF /* CityEditController.swift */; };
+		FA06646320615226006DE3CF /* CityListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06646220615226006DE3CF /* CityListController.swift */; };
+		FA06646A206155DD006DE3CF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA066469206155DD006DE3CF /* Constants.swift */; };
+		FA06647020617337006DE3CF /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06646F20617337006DE3CF /* MapController.swift */; };
+		FA06647420617A48006DE3CF /* cities_usa.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = FA06647320617A48006DE3CF /* cities_usa.sqlite */; };
+		FA06647820617AB9006DE3CF /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FA06647720617AB9006DE3CF /* libsqlite3.tbd */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FA06643120614492006DE3CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA06641220614490006DE3CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA06641920614490006DE3CF;
+			remoteInfo = WxAlert;
+		};
+		FA06643C20614492006DE3CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA06641220614490006DE3CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA06641920614490006DE3CF;
+			remoteInfo = WxAlert;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		FA06641A20614490006DE3CF /* WxAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WxAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA06641D20614490006DE3CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FA06642420614491006DE3CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FA06642620614491006DE3CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA06642920614492006DE3CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FA06642B20614492006DE3CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA06643020614492006DE3CF /* WxAlertTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WxAlertTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA06643420614492006DE3CF /* WxAlertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WxAlertTests.swift; sourceTree = "<group>"; };
+		FA06643620614492006DE3CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA06643B20614492006DE3CF /* WxAlertUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WxAlertUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA06643F20614492006DE3CF /* WxAlertUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WxAlertUITests.swift; sourceTree = "<group>"; };
+		FA06644120614492006DE3CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA066450206145E6006DE3CF /* RootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootController.swift; sourceTree = "<group>"; };
+		FA06645220614E32006DE3CF /* SettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		FA06645420614FEE006DE3CF /* SearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchController.swift; sourceTree = "<group>"; };
+		FA06645620615016006DE3CF /* WeatherController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherController.swift; sourceTree = "<group>"; };
+		FA066458206150CB006DE3CF /* AppSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettingController.swift; sourceTree = "<group>"; };
+		FA06645A2061510C006DE3CF /* NotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		FA06645C2061514E006DE3CF /* WeatherDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherDetailController.swift; sourceTree = "<group>"; };
+		FA06645E206151C7006DE3CF /* NotificationSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
+		FA066460206151F9006DE3CF /* CityEditController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityEditController.swift; sourceTree = "<group>"; };
+		FA06646220615226006DE3CF /* CityListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListController.swift; sourceTree = "<group>"; };
+		FA066469206155DD006DE3CF /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FA06646F20617337006DE3CF /* MapController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		FA06647320617A48006DE3CF /* cities_usa.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = cities_usa.sqlite; path = ../../SQLite/cities_usa.sqlite; sourceTree = "<group>"; };
+		FA06647520617A99006DE3CF /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		FA06647720617AB9006DE3CF /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA06641720614490006DE3CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA06647820617AB9006DE3CF /* libsqlite3.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA06642D20614492006DE3CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA06643820614492006DE3CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FA06641120614490006DE3CF = {
+			isa = PBXGroup;
+			children = (
+				FA06647520617A99006DE3CF /* Bridging-Header.h */,
+				FA06647320617A48006DE3CF /* cities_usa.sqlite */,
+				FA06641C20614490006DE3CF /* WxAlert */,
+				FA06643320614492006DE3CF /* WxAlertTests */,
+				FA06643E20614492006DE3CF /* WxAlertUITests */,
+				FA06641B20614490006DE3CF /* Products */,
+				FA06647620617AB9006DE3CF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FA06641B20614490006DE3CF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA06641A20614490006DE3CF /* WxAlert.app */,
+				FA06643020614492006DE3CF /* WxAlertTests.xctest */,
+				FA06643B20614492006DE3CF /* WxAlertUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA06641C20614490006DE3CF /* WxAlert */ = {
+			isa = PBXGroup;
+			children = (
+				FA06646E20615710006DE3CF /* Notifications */,
+				FA06646D206156C6006DE3CF /* ViewModels */,
+				FA06646C206156B4006DE3CF /* Models */,
+				FA06646B206155F7006DE3CF /* Protocols */,
+				FA0664682061557F006DE3CF /* Constants */,
+				FA066465206152C5006DE3CF /* AppDelegate */,
+				FA0664642061529B006DE3CF /* Localization */,
+				FA06644D2061451C006DE3CF /* Controllers */,
+				FA06642320614491006DE3CF /* Main.storyboard */,
+				FA06642620614491006DE3CF /* Assets.xcassets */,
+				FA06642820614492006DE3CF /* LaunchScreen.storyboard */,
+				FA06642B20614492006DE3CF /* Info.plist */,
+			);
+			path = WxAlert;
+			sourceTree = "<group>";
+		};
+		FA06643320614492006DE3CF /* WxAlertTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA06643420614492006DE3CF /* WxAlertTests.swift */,
+				FA06643620614492006DE3CF /* Info.plist */,
+			);
+			path = WxAlertTests;
+			sourceTree = "<group>";
+		};
+		FA06643E20614492006DE3CF /* WxAlertUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FA06643F20614492006DE3CF /* WxAlertUITests.swift */,
+				FA06644120614492006DE3CF /* Info.plist */,
+			);
+			path = WxAlertUITests;
+			sourceTree = "<group>";
+		};
+		FA06644D2061451C006DE3CF /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA066450206145E6006DE3CF /* RootController.swift */,
+				FA06645220614E32006DE3CF /* SettingsController.swift */,
+				FA06645420614FEE006DE3CF /* SearchController.swift */,
+				FA06645620615016006DE3CF /* WeatherController.swift */,
+				FA066458206150CB006DE3CF /* AppSettingController.swift */,
+				FA06645A2061510C006DE3CF /* NotificationController.swift */,
+				FA06645C2061514E006DE3CF /* WeatherDetailController.swift */,
+				FA06645E206151C7006DE3CF /* NotificationSettings.swift */,
+				FA066460206151F9006DE3CF /* CityEditController.swift */,
+				FA06646220615226006DE3CF /* CityListController.swift */,
+				FA06646F20617337006DE3CF /* MapController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		FA0664642061529B006DE3CF /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Localization;
+			sourceTree = "<group>";
+		};
+		FA066465206152C5006DE3CF /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				FA06641D20614490006DE3CF /* AppDelegate.swift */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		FA0664682061557F006DE3CF /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				FA066469206155DD006DE3CF /* Constants.swift */,
+			);
+			name = Constants;
+			sourceTree = "<group>";
+		};
+		FA06646B206155F7006DE3CF /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		FA06646C206156B4006DE3CF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		FA06646D206156C6006DE3CF /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModels;
+			sourceTree = "<group>";
+		};
+		FA06646E20615710006DE3CF /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Notifications;
+			sourceTree = "<group>";
+		};
+		FA06647620617AB9006DE3CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA06647720617AB9006DE3CF /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA06641920614490006DE3CF /* WxAlert */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA06644420614492006DE3CF /* Build configuration list for PBXNativeTarget "WxAlert" */;
+			buildPhases = (
+				FA06641620614490006DE3CF /* Sources */,
+				FA06641720614490006DE3CF /* Frameworks */,
+				FA06641820614490006DE3CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WxAlert;
+			productName = WxAlert;
+			productReference = FA06641A20614490006DE3CF /* WxAlert.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FA06642F20614492006DE3CF /* WxAlertTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA06644720614492006DE3CF /* Build configuration list for PBXNativeTarget "WxAlertTests" */;
+			buildPhases = (
+				FA06642C20614492006DE3CF /* Sources */,
+				FA06642D20614492006DE3CF /* Frameworks */,
+				FA06642E20614492006DE3CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA06643220614492006DE3CF /* PBXTargetDependency */,
+			);
+			name = WxAlertTests;
+			productName = WxAlertTests;
+			productReference = FA06643020614492006DE3CF /* WxAlertTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FA06643A20614492006DE3CF /* WxAlertUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA06644A20614492006DE3CF /* Build configuration list for PBXNativeTarget "WxAlertUITests" */;
+			buildPhases = (
+				FA06643720614492006DE3CF /* Sources */,
+				FA06643820614492006DE3CF /* Frameworks */,
+				FA06643920614492006DE3CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA06643D20614492006DE3CF /* PBXTargetDependency */,
+			);
+			name = WxAlertUITests;
+			productName = WxAlertUITests;
+			productReference = FA06643B20614492006DE3CF /* WxAlertUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA06641220614490006DE3CF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = Jaminya;
+				TargetAttributes = {
+					FA06641920614490006DE3CF = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = GHNVAZGF88;
+						ProvisioningStyle = Automatic;
+					};
+					FA06642F20614492006DE3CF = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = GHNVAZGF88;
+						ProvisioningStyle = Automatic;
+						TestTargetID = FA06641920614490006DE3CF;
+					};
+					FA06643A20614492006DE3CF = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = GHNVAZGF88;
+						ProvisioningStyle = Automatic;
+						TestTargetID = FA06641920614490006DE3CF;
+					};
+				};
+			};
+			buildConfigurationList = FA06641520614490006DE3CF /* Build configuration list for PBXProject "WxAlert" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FA06641120614490006DE3CF;
+			productRefGroup = FA06641B20614490006DE3CF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA06641920614490006DE3CF /* WxAlert */,
+				FA06642F20614492006DE3CF /* WxAlertTests */,
+				FA06643A20614492006DE3CF /* WxAlertUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA06641820614490006DE3CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA06642A20614492006DE3CF /* LaunchScreen.storyboard in Resources */,
+				FA06642720614491006DE3CF /* Assets.xcassets in Resources */,
+				FA06647420617A48006DE3CF /* cities_usa.sqlite in Resources */,
+				FA06642520614491006DE3CF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA06642E20614492006DE3CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA06643920614492006DE3CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA06641620614490006DE3CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA066459206150CB006DE3CF /* AppSettingController.swift in Sources */,
+				FA06647020617337006DE3CF /* MapController.swift in Sources */,
+				FA06645F206151C7006DE3CF /* NotificationSettings.swift in Sources */,
+				FA06645520614FEE006DE3CF /* SearchController.swift in Sources */,
+				FA06645D2061514E006DE3CF /* WeatherDetailController.swift in Sources */,
+				FA06645320614E32006DE3CF /* SettingsController.swift in Sources */,
+				FA06646320615226006DE3CF /* CityListController.swift in Sources */,
+				FA066461206151F9006DE3CF /* CityEditController.swift in Sources */,
+				FA06641E20614490006DE3CF /* AppDelegate.swift in Sources */,
+				FA06645B2061510C006DE3CF /* NotificationController.swift in Sources */,
+				FA06646A206155DD006DE3CF /* Constants.swift in Sources */,
+				FA06645720615016006DE3CF /* WeatherController.swift in Sources */,
+				FA066451206145E6006DE3CF /* RootController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA06642C20614492006DE3CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA06643520614492006DE3CF /* WxAlertTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA06643720614492006DE3CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA06644020614492006DE3CF /* WxAlertUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA06643220614492006DE3CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA06641920614490006DE3CF /* WxAlert */;
+			targetProxy = FA06643120614492006DE3CF /* PBXContainerItemProxy */;
+		};
+		FA06643D20614492006DE3CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA06641920614490006DE3CF /* WxAlert */;
+			targetProxy = FA06643C20614492006DE3CF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FA06642320614491006DE3CF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA06642420614491006DE3CF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FA06642820614492006DE3CF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA06642920614492006DE3CF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FA06644220614492006DE3CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FA06644320614492006DE3CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FA06644520614492006DE3CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GHNVAZGF88;
+				INFOPLIST_FILE = WxAlert/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jaminya.WxAlert;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		FA06644620614492006DE3CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GHNVAZGF88;
+				INFOPLIST_FILE = WxAlert/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jaminya.WxAlert;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		FA06644820614492006DE3CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = GHNVAZGF88;
+				INFOPLIST_FILE = WxAlertTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jaminya.WxAlertTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WxAlert.app/WxAlert";
+			};
+			name = Debug;
+		};
+		FA06644920614492006DE3CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = GHNVAZGF88;
+				INFOPLIST_FILE = WxAlertTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jaminya.WxAlertTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WxAlert.app/WxAlert";
+			};
+			name = Release;
+		};
+		FA06644B20614492006DE3CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = GHNVAZGF88;
+				INFOPLIST_FILE = WxAlertUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jaminya.WxAlertUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = WxAlert;
+			};
+			name = Debug;
+		};
+		FA06644C20614492006DE3CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = GHNVAZGF88;
+				INFOPLIST_FILE = WxAlertUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.jaminya.WxAlertUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = WxAlert;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA06641520614490006DE3CF /* Build configuration list for PBXProject "WxAlert" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA06644220614492006DE3CF /* Debug */,
+				FA06644320614492006DE3CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA06644420614492006DE3CF /* Build configuration list for PBXNativeTarget "WxAlert" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA06644520614492006DE3CF /* Debug */,
+				FA06644620614492006DE3CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FA06644720614492006DE3CF /* Build configuration list for PBXNativeTarget "WxAlertTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA06644820614492006DE3CF /* Debug */,
+				FA06644920614492006DE3CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		FA06644A20614492006DE3CF /* Build configuration list for PBXNativeTarget "WxAlertUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA06644B20614492006DE3CF /* Debug */,
+				FA06644C20614492006DE3CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FA06641220614490006DE3CF /* Project object */;
+}
