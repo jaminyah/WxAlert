@@ -18,6 +18,7 @@ class MapController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,31 +27,48 @@ class MapController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         setMapRegion()
         
-        let pinTitle = selectedCity.name + ", " + selectedCity.region
-        let citylat = selectedCity.latitude
-        let citylong = selectedCity.longitude
+        let pinTitle = selectedCity.cityName //+ ", " + selectedCity.region.state
+        let citylat = selectedCity.coordinates.latitude
+        let citylong = selectedCity.coordinates.longitude
         let coordinates = CLLocationCoordinate2D(latitude: citylat, longitude: citylong)
         let cityInfo = MKPinInfo(title: pinTitle, coordinate: coordinates)
         
         mapView.addAnnotation(cityInfo)
+        // mapView.showAnnotations(mapView.annotations, animated: true)
     }
 
     func setMapRegion() {
-        let location = CLLocation(latitude: selectedCity.latitude, longitude: selectedCity.longitude)
+        let location = CLLocation(latitude: selectedCity.coordinates.latitude, longitude: selectedCity.coordinates.longitude)
         let cityRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 12000, 12000)
         mapView.setRegion(cityRegion, animated: true)
     }
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension MapController: MKMapViewDelegate {
+   
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if annotation is MKUserLocation { return nil }
+        
+        if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "") {
+            annotationView.annotation = annotation
+            return annotationView
+        } else {
+            let annotationView = MKPinAnnotationView(annotation:annotation, reuseIdentifier:"")
+            annotationView.isEnabled = true
+            annotationView.canShowCallout = true
+            
+            let btn = UIButton(type: .detailDisclosure)
+            annotationView.rightCalloutAccessoryView = btn
+            return annotationView
+        }
     }
-    */
-
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        <#code#>
+    }
+    
 }

@@ -94,7 +94,7 @@ extension SearchController: UITableViewDelegate {
         if segue.identifier == "mapSegue" {
             if let indexPath = resultView.indexPathForSelectedRow {
                 let selectedCity = cityList[indexPath.row]
-                print("CityList - selectedCity: \(selectedCity)")
+                //print("CityList - selectedCity: \(selectedCity)")
                 let mapViewController = segue.destination as? MapController
                 mapViewController?.selectedCity = selectedCity
             }
@@ -109,7 +109,7 @@ extension SearchController : UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         // Debug
-        print("In updateSearchResults ")
+        // print("In updateSearchResults ")
         
         let characterCount = (searchController.searchBar.text?.characters.count)!
         if characterCount >= 3 {
@@ -182,7 +182,9 @@ extension SearchController : UISearchBarDelegate {
                     let sqLatReal = Double(sqLat)      // String to Double
                     let sqLongReal = Double(sqLong)
                     
-                    cityObject = City(name: sqlName, region: sqlRegion, latitude: sqLatReal!, longitude:sqLongReal!)
+                    let newCoordinates = Coordinates(latitude: sqLatReal!, longitude: sqLongReal!)
+                    
+                    cityObject = City(name: sqlName, state: sqlRegion, coordinates: newCoordinates)
                     cityList.append(cityObject)
                 }
                 sqlite3_finalize(sqlStatement)

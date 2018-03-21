@@ -13,7 +13,9 @@ class RootController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // App initial startup - Disable weather and settings tab
+        tabBar.items?[1].isEnabled = false
+        tabBar.items?[2].isEnabled = false
     }
 
     override func didReceiveMemoryWarning() {
