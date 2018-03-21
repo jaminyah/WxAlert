@@ -30,6 +30,9 @@
 		FA06647F20618FAE006DE3CF /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06647E20618FAE006DE3CF /* City.swift */; };
 		FA066481206194DB006DE3CF /* cities_usa.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = FA066480206194DB006DE3CF /* cities_usa.sqlite */; };
 		FA06648320619563006DE3CF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA06648220619563006DE3CF /* MapKit.framework */; };
+		FAC16F4C2062623C00683EE6 /* CityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F4B2062623C00683EE6 /* CityProtocol.swift */; };
+		FAC16F4F2062644900683EE6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F4E2062644900683EE6 /* DataManager.swift */; };
+		FAC16F522062690E00683EE6 /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F512062690E00683EE6 /* Definitions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +83,9 @@
 		FA06647E20618FAE006DE3CF /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		FA066480206194DB006DE3CF /* cities_usa.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = cities_usa.sqlite; sourceTree = "<group>"; };
 		FA06648220619563006DE3CF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FAC16F4B2062623C00683EE6 /* CityProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityProtocol.swift; sourceTree = "<group>"; };
+		FAC16F4E2062644900683EE6 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		FAC16F512062690E00683EE6 /* Definitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +141,7 @@
 		FA06641C20614490006DE3CF /* WxAlert */ = {
 			isa = PBXGroup;
 			children = (
+				FAC16F4D2062643000683EE6 /* Classes */,
 				FA06646E20615710006DE3CF /* Notifications */,
 				FA06646D206156C6006DE3CF /* ViewModels */,
 				FA06646C206156B4006DE3CF /* Models */,
@@ -213,6 +220,7 @@
 		FA06646B206155F7006DE3CF /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				FAC16F4B2062623C00683EE6 /* CityProtocol.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -236,6 +244,7 @@
 		FA06646E20615710006DE3CF /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				FAC16F512062690E00683EE6 /* Definitions.swift */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -247,6 +256,14 @@
 				FA06647720617AB9006DE3CF /* libsqlite3.tbd */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FAC16F4D2062643000683EE6 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				FAC16F4E2062644900683EE6 /* DataManager.swift */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,6 +412,9 @@
 				FA06647D20618F14006DE3CF /* MKPinInfo.swift in Sources */,
 				FA06645320614E32006DE3CF /* SettingsController.swift in Sources */,
 				FA06646320615226006DE3CF /* CityListController.swift in Sources */,
+				FAC16F4C2062623C00683EE6 /* CityProtocol.swift in Sources */,
+				FAC16F4F2062644900683EE6 /* DataManager.swift in Sources */,
+				FAC16F522062690E00683EE6 /* Definitions.swift in Sources */,
 				FA066461206151F9006DE3CF /* CityEditController.swift in Sources */,
 				FA06641E20614490006DE3CF /* AppDelegate.swift in Sources */,
 				FA06645B2061510C006DE3CF /* NotificationController.swift in Sources */,

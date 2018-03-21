@@ -46,7 +46,7 @@ extension City {
     
     init(name: String, state: String, coordinates: Coordinates) {
         cityName = name
-        region.state = state
+        region = Region(state: state)
         self.coordinates = coordinates
         var notification = Notification()
         

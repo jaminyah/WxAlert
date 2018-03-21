@@ -8,7 +8,9 @@
 
 import UIKit
 
-class RootController: UITabBarController {
+class RootController: UITabBarController, CityProtocol {
+    
+    let dataManager = DataManager.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,44 @@ class RootController: UITabBarController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func addNewCity(city: City) {
+        
+        self.dataManager.appendCityObject(newCity: city)
+        NotificationCenter.default.post(name: .refreshCityNames, object: nil)
+        
+        // Show city count
+        print("New city count: \(self.dataManager.cityCount())")
+    }
+    
+    func showCities() {
+        self.dataManager.showCities()
+    }
+    
+    func getNameOfCities() -> ([String]) {
+        return self.dataManager.getCityNames()
+    }
+    
+    func getCity(name: String) -> City {
+        return self.dataManager.getCityObject(cityName: name)
+    }
+    
+    func getCityCount() -> (Int) {
+        return dataManager.cityCount()
+    }
+    
+    func deleteCity(name: String) {
+        self.dataManager.removeCity(cityName: name)
+        
+        NotificationCenter.default.post(name: CITY_LIST_MODIFIED, object: nil)
+        
+        // Debug
+        self.dataManager.showCities()
+    }
+    
+    func setNotifications(name: String, newSettings: Notification, position: Int) ->() {
+        self.dataManager.updateNotifications(cityName: name, settings: newSettings, index: position)
     }
     
 

@@ -14,11 +14,14 @@ class MapController: UIViewController {
     var selectedCity = City()
     @IBOutlet weak var mapView: MKMapView!
     
+    let rootController = RootController()
+    var delegate: CityProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
+        self.delegate = rootController
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,7 +33,7 @@ class MapController: UIViewController {
         
         setMapRegion()
         
-        let pinTitle = selectedCity.cityName //+ ", " + selectedCity.region.state
+        let pinTitle = selectedCity.cityName + ", " + selectedCity.region.state
         let citylat = selectedCity.coordinates.latitude
         let citylong = selectedCity.coordinates.longitude
         let coordinates = CLLocationCoordinate2D(latitude: citylat, longitude: citylong)
@@ -38,6 +41,12 @@ class MapController: UIViewController {
         
         mapView.addAnnotation(cityInfo)
         // mapView.showAnnotations(mapView.annotations, animated: true)
+        
+        // Delegate action
+        self.delegate?.addNewCity(city: selectedCity)
+        
+        //self.delegate?.showCities()
+
     }
 
     func setMapRegion() {
@@ -68,7 +77,19 @@ extension MapController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        <#code#>
+        
+
+        // Initial startup - Enable weather and settings tab
+        let cityCount = delegate?.getCityCount()
+        if cityCount! >= 1 {
+            self.tabBarController?.viewControllers?[1].tabBarItem.isEnabled = true
+            self.tabBarController?.viewControllers?[2].tabBarItem.isEnabled = true
+        }
+        
+        // Set Weather as default view
+        let tabBarController = self.tabBarController as? RootController
+        tabBarController?.selectedViewController = self.tabBarController?.viewControllers?[1]
+
     }
     
 }
