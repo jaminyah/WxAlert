@@ -45,8 +45,6 @@ class MapController: UIViewController {
         // Delegate action
         self.delegate?.addNewCity(city: selectedCity)
         
-        //self.delegate?.showCities()
-
     }
 
     func setMapRegion() {
