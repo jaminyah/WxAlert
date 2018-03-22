@@ -28,8 +28,13 @@ struct City {
     init() {}
 }
 
+struct CityState {
+    var cityName = "Denver"
+    var region = Region()
+}
+
 struct Region {
-    var state = "Texas"
+    var state = "TX"
 }
 
 struct Coordinates {

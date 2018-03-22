@@ -31,20 +31,21 @@ class RootController: UITabBarController, CityProtocol {
         NotificationCenter.default.post(name: .refreshCityNames, object: nil)
         
         // Show city count
-        print("New city count: \(self.dataManager.cityCount())")
+       // print("New city count: \(self.dataManager.cityCount())")
     }
     
     func showCities() {
         self.dataManager.showCities()
     }
     
-    func getNameOfCities() -> ([String]) {
+    func getNameOfCities() -> [String] {
         return self.dataManager.getCityNames()
     }
     
-    func getCity(name: String) -> City {
-        return self.dataManager.getCityObject(cityName: name)
+    func getCityArray() -> [City] {
+        return dataManager.getCityArray()
     }
+    
     
     func getCityCount() -> (Int) {
         return dataManager.cityCount()

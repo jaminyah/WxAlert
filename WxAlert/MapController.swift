@@ -19,9 +19,13 @@ class MapController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("MapController - viewDidLoad")
 
         // Do any additional setup after loading the view.
         self.delegate = rootController
+        
+        // Delegate action
+        self.delegate?.addNewCity(city: selectedCity)
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,6 +34,7 @@ class MapController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("MapController - viewWillAppear")
         
         setMapRegion()
         
@@ -40,11 +45,6 @@ class MapController: UIViewController {
         let cityInfo = MKPinInfo(title: pinTitle, coordinate: coordinates)
         
         mapView.addAnnotation(cityInfo)
-        // mapView.showAnnotations(mapView.annotations, animated: true)
-        
-        // Delegate action
-        self.delegate?.addNewCity(city: selectedCity)
-        
     }
 
     func setMapRegion() {

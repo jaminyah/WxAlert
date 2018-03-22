@@ -37,7 +37,7 @@ func cityCount() -> (Int) {
 // Debug only
 func showCities() -> () {
     for city in cityArray {
-        print("City name: \(city.cityName)")
+        print("City name: " + city.cityName + ", " + city.region.state)
     }
 }
 
@@ -49,10 +49,20 @@ func getCityNames() -> ([String]) {
     }
     return names
 }
+    
 
 func getCityObject(cityName: String) -> City {
-    let index = cityArray.index(where: { $0.cityName == cityName}) //{
-    return self.cityArray[index!]
+    let emptyCity = City()
+    
+    if let index = cityArray.index(where: { $0.cityName == cityName}) {
+        return self.cityArray[index]
+    }
+    return emptyCity
+}
+    
+func getCityArray() -> [City] {
+    
+    return cityArray
 }
 
 func updateNotifications(cityName: String, settings: Notification, index: Int) {
@@ -65,4 +75,5 @@ func updateNotifications(cityName: String, settings: Notification, index: Int) {
     // Add new array item back at same position
     self.cityArray[position!] = cityObject
 }
+    
 }
