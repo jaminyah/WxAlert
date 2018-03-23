@@ -18,8 +18,11 @@ private var cityArray = [City]()
 
 func  appendCityObject(newCity: City) -> () {
     
+    // TODO - add completion handler or Boolean to return success or failure
     self.city = newCity
-    self.cityArray.append(self.city)
+    if cityArray.index(where: {($0.cityName == newCity.cityName) && ($0.region.state == newCity.region.state)}) == nil {
+        self.cityArray.append(self.city)
+    }
 }
 
 

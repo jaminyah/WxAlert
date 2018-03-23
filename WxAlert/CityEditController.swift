@@ -12,7 +12,7 @@ class CityEditController: UITableViewController {
 
     let rootController = RootController()
     var delegate: CityProtocol?
-    var cityNameArray = [String]()
+    var cityArray = [City]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class CityEditController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(refreshTableData), name: .refreshCityNames, object: nil)
         
         self.delegate = rootController
-        getLatestCityNames()
+        getLatestCityObjects()
     }
     
     
@@ -37,13 +37,13 @@ class CityEditController: UITableViewController {
     
     func refreshTableData() {
         print("In CityEditController: refreshCityNames")
-        getLatestCityNames()
+        getLatestCityObjects()
         self.tableView.reloadData()
     }
     
-    func getLatestCityNames() {
-        if let list = self.delegate?.getNameOfCities() {
-            self.cityNameArray = list
+    func getLatestCityObjects() {
+        if let list = self.delegate?.getCityArray() {
+            self.cityArray = list
         }
     }
     
@@ -56,17 +56,18 @@ class CityEditController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.cityNameArray.count
+        return self.cityArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "editCell", for: indexPath)
         
-        cell.textLabel?.text = self.cityNameArray[indexPath.row]
+        let city = cityArray[indexPath.row]
+        let cityState = city.cityName + ", " + city.region.state
+
+        cell.textLabel?.text = cityState
         return cell
     }
-    
-    
     
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -80,8 +81,8 @@ class CityEditController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            let itemName = self.cityNameArray[indexPath.row]
-            self.delegate?.deleteCity(name: itemName)
+            let city = self.cityArray[indexPath.row]
+            self.delegate?.deleteCity(name: city.cityName)
             refreshTableData()
             
         } else if editingStyle == .insert {
