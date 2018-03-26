@@ -177,7 +177,7 @@ extension SearchController : UISearchBarDelegate {
         
                     // Ensure no duplicate entries. Item already in database; continue
                     if filteredList.index(where: { $0 == concatName}) != nil {
-                        continue
+                       continue
                     }
 
                     filteredList.append(concatName)
