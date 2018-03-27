@@ -11,7 +11,7 @@ import UIKit
 class NotificationSettings: UITableViewController {
 
     var notifications = [Notification]()
-    var city = City()
+    var settingCity = City()
     
     let rootController = RootController()
     var delegate: CityProtocol?
@@ -28,7 +28,12 @@ class NotificationSettings: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-       self.notifications = city.notificationList
+       self.notifications = settingCity.notificationList
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.settingCity.notificationList = notifications
+        self.delegate?.setNotifications(city: settingCity)
     }
     
     override func didReceiveMemoryWarning() {
@@ -78,10 +83,9 @@ class NotificationSettings: UITableViewController {
             if cell.isSelected {
                 cell.accessoryType = .checkmark
                 
-                // Change notification settings in city object
                 self.notifications[indexPath.row].enabled = true
-                let notification = self.notifications[indexPath.row]
-                self.delegate?.setNotifications(name: city.cityName, newSettings: notification, position: indexPath.row)
+               // let notification = self.notifications[indexPath.row]
+               // self.delegate?.setNotifications(name: city.cityName, newSettings: notification, position: indexPath.row)
             }
         }
     }
@@ -92,12 +96,11 @@ class NotificationSettings: UITableViewController {
             
             cell.accessoryType = .none
             
-            // Change notification settings in city object
             self.notifications[indexPath.row].enabled = false
-            let notification = self.notifications[indexPath.row]
-            self.delegate?.setNotifications(name: city.cityName, newSettings: notification, position: indexPath.row)
+            // let notification = self.notifications[indexPath.row]
+            // self.delegate?.setNotifications(name: city.cityName, newSettings: notification, position: indexPath.row)
             
         }
     }
-    
+
 }

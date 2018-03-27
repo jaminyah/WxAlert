@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class DataManager{
+final class DataManager {
 
 static let sharedInstance = DataManager()
 private init(){}
@@ -68,15 +68,18 @@ func getCityArray() -> [City] {
     return cityArray
 }
 
-func updateNotifications(cityName: String, settings: Notification, index: Int) {
-    let position = cityArray.index(where: { $0.cityName == cityName})
-    var cityObject = self.cityArray[position!]
+    func updateNotifications(cityObject: City) {
+        
+       // var cityItem: City
+        if let position = cityArray.index(where: { $0.cityName == cityObject.cityName}) {
+            self.cityArray[position] = cityObject
+        }
     
     // Modify array item at this position
-    cityObject.notificationList[index] = settings
+    //cityObject.notificationList[index] = settings
     
     // Add new array item back at same position
-    self.cityArray[position!] = cityObject
-}
+    //self.cityArray[position!] = cityObject
+    }
     
 }

@@ -16,5 +16,7 @@ protocol CityProtocol {
     func getCityArray() -> [City]
     func getCityCount() -> Int
     func deleteCity(name: String) -> ()
-    func setNotifications(name: String, newSettings: Notification, position: Int) ->()
+    //func setNotifications(name: String, newSettings: Notification, position: Int) ->()
+    func setNotifications(city: City) ->()
+
 }

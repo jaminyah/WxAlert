@@ -17,10 +17,11 @@ class CityListController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshTableData), name: .refreshCityNames, object: nil)
         self.delegate = rootController
-        getLatestCityNames()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        getUpdatedCityListData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -28,13 +29,8 @@ class CityListController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func refreshTableData() {
-        // print("In CityListController: refreshCityNames")
-        getLatestCityNames()
-        self.tableView.reloadData()
-    }
     
-    func getLatestCityNames() {
+    func getUpdatedCityListData() {
         if let list = self.delegate?.getCityArray() {
             self.cityArray = list
         }
@@ -47,7 +43,6 @@ class CityListController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return self.cityArray.count
     }
     
@@ -59,14 +54,11 @@ class CityListController: UITableViewController {
         let cityState = city.cityName + ", " + city.region.state
         
         cell.textLabel?.text = cityState
-        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // let notificationSetting = self.storyboard?.instantiateViewController(withIdentifier: "SettingsView") as! NotificationSettings
-        // self.navigationController?.pushViewController(notificationSetting, animated: true)
         performSegue(withIdentifier: "settingSegue", sender: self)
     }
     
@@ -74,16 +66,13 @@ class CityListController: UITableViewController {
     
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
         
         if segue.identifier == "settingSegue" {
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 let selectedCity = cityArray[indexPath.row]
                 let settingsController = segue.destination as? NotificationSettings
-                settingsController?.city = selectedCity
+                settingsController?.settingCity = selectedCity
             }
         }
     }

@@ -60,8 +60,8 @@ class RootController: UITabBarController, CityProtocol {
         self.dataManager.showCities()
     }
     
-    func setNotifications(name: String, newSettings: Notification, position: Int) ->() {
-        self.dataManager.updateNotifications(cityName: name, settings: newSettings, index: position)
+    func setNotifications(city: City) ->() {
+        self.dataManager.updateNotifications(cityObject: city)
     }
     
 
