@@ -156,10 +156,17 @@ extension SearchController : UISearchBarDelegate {
             } else {
                 let count = searchTerm.characters.count
 
-                let sqlQry = "SELECT city, state_code, latitude, longitude FROM us_states JOIN us_cities ON " +
-                                        "us_cities.ID_STATE = us_states.ID WHERE SUBSTR(city, 1, \(count))=? "
+                /*let sqlQry = "SELECT city, state_code, latitude, longitude FROM us_states JOIN us_cities ON " +
+                                        "us_cities.ID_STATE = us_states.ID WHERE SUBSTR(city, 1, \(count))=? "   
+                */
                 
-                if (sqlite3_prepare_v2(db, sqlQry, -1, &sqlStatement, nil) != SQLITE_OK)
+                let subQuery = "(SELECT city, state_code, latitude, longitude FROM us_states INNER JOIN us_cities ON " +
+                                         "us_cities.ID_STATE = us_states.ID WHERE SUBSTR(city, 1, \(count))=? ) sub "
+                
+                let sqlQuery = "SELECT sub.city, sub.state_code, sub.latitude, sub.longitude FROM \(subQuery) GROUP BY sub.state_code"
+
+                
+                if (sqlite3_prepare_v2(db, sqlQuery, -1, &sqlStatement, nil) != SQLITE_OK)
                 {
                     print("Problem with prepared statement" + String(sqlite3_errcode(db)));
                 }
@@ -176,9 +183,9 @@ extension SearchController : UISearchBarDelegate {
                         String(cString:sqlite3_column_text(sqlStatement, 1))
         
                     // Ensure no duplicate entries. Item already in database; continue
-                    if filteredList.index(where: { $0 == concatName}) != nil {
-                       continue
-                    }
+                    //if filteredList.index(where: { $0 == concatName}) != nil {
+                    //   continue
+                    //}
 
                     filteredList.append(concatName)
                     

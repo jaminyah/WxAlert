@@ -19,8 +19,6 @@ class NotificationSettings: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        
         tableView.allowsMultipleSelection = true
         self.delegate = rootController
         
@@ -44,12 +42,10 @@ class NotificationSettings: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return ONE_SECTION
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return self.notifications.count
     }
     
@@ -82,10 +78,7 @@ class NotificationSettings: UITableViewController {
         if let cell = tableView.cellForRow(at: indexPath) {
             if cell.isSelected {
                 cell.accessoryType = .checkmark
-                
                 self.notifications[indexPath.row].enabled = true
-               // let notification = self.notifications[indexPath.row]
-               // self.delegate?.setNotifications(name: city.cityName, newSettings: notification, position: indexPath.row)
             }
         }
     }
@@ -93,13 +86,8 @@ class NotificationSettings: UITableViewController {
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         print("didDeselectRowAt: ")
         if let cell = tableView.cellForRow(at: indexPath) {
-            
             cell.accessoryType = .none
-            
             self.notifications[indexPath.row].enabled = false
-            // let notification = self.notifications[indexPath.row]
-            // self.delegate?.setNotifications(name: city.cityName, newSettings: notification, position: indexPath.row)
-            
         }
     }
 

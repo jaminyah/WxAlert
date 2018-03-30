@@ -13,15 +13,16 @@ final class DataManager {
 static let sharedInstance = DataManager()
 private init(){}
 
-private var city = City()
+//private var city = City()
 private var cityArray = [City]()
 
 func  appendCityObject(newCity: City) -> () {
     
     // TODO - add completion handler or Boolean to return success or failure
-    self.city = newCity
+    let city = City(name: newCity.cityName, state: newCity.region.state, coordinates: newCity.coordinates)
+    
     if cityArray.index(where: {($0.cityName == newCity.cityName) && ($0.region.state == newCity.region.state)}) == nil {
-        self.cityArray.append(self.city)
+        self.cityArray.append(city)
     }
 }
 
