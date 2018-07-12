@@ -111,7 +111,7 @@ extension SearchController : UISearchResultsUpdating {
         // Debug
         // print("In updateSearchResults ")
         
-        let characterCount = (searchController.searchBar.text?.characters.count)!
+        let characterCount = (searchController.searchBar.text?.count)!
         if characterCount >= 3 {
             filterSearchController(searchController.searchBar)
             resultView.reloadData()
@@ -126,7 +126,7 @@ extension SearchController : UISearchBarDelegate {
         // Debug
         //print("In textDidChange")
         
-        if searchText.characters.count == 0 {
+        if searchText.count == 0 {
             
             // Set search results = emptyArray.count
             searchController.isActive = false
@@ -154,7 +154,7 @@ extension SearchController : UISearchBarDelegate {
             {
                 print("An error has occurred.")
             } else {
-                let count = searchTerm.characters.count
+                let count = searchTerm.count
 
                 /*let sqlQry = "SELECT city, state_code, latitude, longitude FROM us_states JOIN us_cities ON " +
                                         "us_cities.ID_STATE = us_states.ID WHERE SUBSTR(city, 1, \(count))=? "   

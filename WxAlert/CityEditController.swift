@@ -35,7 +35,7 @@ class CityEditController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func refreshTableData() {
+    @objc func refreshTableData() {
         print("In CityEditController: refreshCityNames")
         getLatestCityObjects()
         self.tableView.reloadData()
