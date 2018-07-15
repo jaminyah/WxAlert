@@ -10,18 +10,18 @@ import Foundation
 
 final class DataManager {
 
-static let sharedInstance = DataManager()
-private init(){}
+    // Thread Safe?
+    static let sharedInstance = DataManager()
+    private init(){}
 
-//private var city = City()
-private var cityArray = [City]()
+    private var cityArray = [City]()
 
-func  appendCityObject(newCity: City) -> () {
+    func  appendCityObject(newCity: City) -> () {
     
-    // TODO - add completion handler or Boolean to return success or failure
-    let city = City(name: newCity.cityName, state: newCity.region.state, coordinates: newCity.coordinates)
+        // TODO - add completion handler or Boolean to return success or failure
+        let city = City(name: newCity.cityName, state: newCity.region.state, coordinates: newCity.coordinates)
     
-    if cityArray.index(where: {($0.cityName == newCity.cityName) && ($0.region.state == newCity.region.state)}) == nil {
+        if cityArray.index(where: {($0.cityName == newCity.cityName) && ($0.region.state == newCity.region.state)}) == nil {
         self.cityArray.append(city)
     }
 }

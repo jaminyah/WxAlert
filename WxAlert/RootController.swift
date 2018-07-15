@@ -10,7 +10,17 @@ import UIKit
 
 class RootController: UITabBarController, CityProtocol {
     
-    let dataManager = DataManager.sharedInstance
+    var dataManager: DataManager?
+    
+    // Inject DataManager dependency
+    init(dataManager: DataManager = .sharedInstance) {
+        super.init(nibName: nil, bundle: nil)
+        self.dataManager = dataManager
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +37,7 @@ class RootController: UITabBarController, CityProtocol {
     
     func addNewCity(city: City) {
         
-        self.dataManager.appendCityObject(newCity: city)
+        self.dataManager?.appendCityObject(newCity: city)
         NotificationCenter.default.post(name: .refreshCityNames, object: nil)
         
         // Show city count
@@ -35,33 +45,44 @@ class RootController: UITabBarController, CityProtocol {
     }
     
     func showCities() {
-        self.dataManager.showCities()
+        self.dataManager?.showCities()
     }
     
     func getNameOfCities() -> [String] {
-        return self.dataManager.getCityNames()
+        guard let cityNames = self.dataManager?.getCityNames() else {
+            return []
+            
+        }
+        return cityNames
     }
     
     func getCityArray() -> [City] {
-        return dataManager.getCityArray()
+        guard let cityArray = dataManager?.getCityArray() else {
+            return []
+        }
+        return cityArray
     }
     
     
     func getCityCount() -> (Int) {
-        return dataManager.cityCount()
+        
+        guard let cityCount = dataManager?.cityCount() else {
+            return 0
+        }
+        return cityCount
     }
     
     func deleteCity(name: String) {
-        self.dataManager.removeCity(cityName: name)
+        self.dataManager?.removeCity(cityName: name)
         
         NotificationCenter.default.post(name: CITY_LIST_MODIFIED, object: nil)
         
         // Debug
-        self.dataManager.showCities()
+        self.dataManager?.showCities()
     }
     
     func setNotifications(city: City) ->() {
-        self.dataManager.updateNotifications(cityObject: city)
+        self.dataManager?.updateNotifications(cityObject: city)
     }
     
 

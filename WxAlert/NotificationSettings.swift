@@ -9,12 +9,25 @@
 import UIKit
 
 class NotificationSettings: UITableViewController {
-
+    
     var notifications = [Notification]()
     var settingCity = City()
-    
-    let rootController = RootController()
     var delegate: CityProtocol?
+    let rootController = RootController()
+    
+    // Inject RootController dependency
+   /*
+    var rootController: RootController?
+
+    init(rootController: RootController) {
+        super.init(nibName: nil, bundle: nil)
+        self.rootController = rootController
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+   */
     
     override func viewDidLoad() {
         super.viewDidLoad()

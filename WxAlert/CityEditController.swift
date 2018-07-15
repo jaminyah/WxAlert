@@ -23,7 +23,7 @@ class CityEditController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshTableData), name: .refreshCityNames, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(refreshTableData), name: .refreshCityNames, object: nil)
         
         self.delegate = rootController
         getLatestCityObjects()
@@ -35,11 +35,12 @@ class CityEditController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @objc func refreshTableData() {
+   func refreshTableData() {
         print("In CityEditController: refreshCityNames")
         getLatestCityObjects()
         self.tableView.reloadData()
     }
+    
     
     func getLatestCityObjects() {
         if let list = self.delegate?.getCityArray() {
