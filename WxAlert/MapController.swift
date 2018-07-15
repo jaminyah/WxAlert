@@ -14,7 +14,8 @@ class MapController: UIViewController {
     var selectedCity = City()
     @IBOutlet weak var mapView: MKMapView!
     
-    let rootController = RootController()
+    //let rootController = RootController()
+    let rootController = RootController.sharedInstance
     var delegate: CityProtocol?
     
     override func viewDidLoad() {

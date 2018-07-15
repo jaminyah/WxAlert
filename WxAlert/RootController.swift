@@ -10,10 +10,12 @@ import UIKit
 
 class RootController: UITabBarController, CityProtocol {
     
+    static let sharedInstance = RootController()
     var dataManager: DataManager?
     
-    // Inject DataManager dependency
-    init(dataManager: DataManager = .sharedInstance) {
+    // Inject DataManager dependency into root controller singleton
+    
+     private init(dataManager: DataManager = .sharedInstance) {
         super.init(nibName: nil, bundle: nil)
         self.dataManager = dataManager
     }
@@ -21,7 +23,7 @@ class RootController: UITabBarController, CityProtocol {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
+     
     override func viewDidLoad() {
         super.viewDidLoad()
 

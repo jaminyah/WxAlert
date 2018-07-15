@@ -10,7 +10,8 @@ import UIKit
 
 class CityEditController: UITableViewController {
 
-    let rootController = RootController()
+    //let rootController = RootController()
+    let rootController = RootController.sharedInstance
     var delegate: CityProtocol?
     var cityArray = [City]()
     
