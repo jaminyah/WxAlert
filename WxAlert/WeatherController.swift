@@ -8,12 +8,34 @@
 
 import UIKit
 
-class WeatherController: UIPageViewController {
+class WeatherController: UIViewController {
+    
+    @IBOutlet weak var alertCollection: UICollectionView!
+    @IBOutlet weak var cityCollection: UICollectionView!
+    @IBOutlet weak var wxCollection: UICollectionView!
+    
+    let alertCollectionController = AlertCollectionController()
+    let wxCollectionController = WxCollectionController()
+    let cityCollectionController = CityCollectionController()
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        // Set data source and delegate
+        alertCollection.dataSource = alertCollectionController
+        alertCollection.delegate = alertCollectionController
+        
+        cityCollection.dataSource = cityCollectionController
+        cityCollection.delegate = cityCollectionController
+        
+        wxCollection.dataSource = wxCollectionController
+        wxCollection.delegate = wxCollectionController
+        
+        // hide views
+        alertCollection.isHidden = false
+        
     }
 
     override func didReceiveMemoryWarning() {
