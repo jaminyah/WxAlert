@@ -34,7 +34,7 @@ func removeCity(cityName: String) -> () {
 }
 
 func cityCount() -> (Int) {
-    print("cityCount: self.cityArray.count")
+    print("cityCount: \(self.cityArray.count)")
     return self.cityArray.count
 }
 

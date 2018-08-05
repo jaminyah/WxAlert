@@ -151,51 +151,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                             </collectionView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fcl-w8-eqn">
-                                <rect key="frame" x="0.0" y="516" width="375" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="LJw-Yy-awi"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Idc-eT-XRD">
-                                    <size key="itemSize" width="58" height="40"/>
-                                    <size key="headerReferenceSize" width="20" height="20"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CityCell" id="e53-E4-3K5" customClass="CitySelectCell" customModule="WxAlert" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="2" width="58" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="58" height="40"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MIA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XdZ-fS-oFB">
-                                                    <rect key="frame" x="0.0" y="10" width="57" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="UKl-Qg-Ocg"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="26"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="XdZ-fS-oFB" firstAttribute="leading" secondItem="e53-E4-3K5" secondAttribute="leading" id="6i2-6q-cJq"/>
-                                            <constraint firstItem="XdZ-fS-oFB" firstAttribute="centerY" secondItem="e53-E4-3K5" secondAttribute="centerY" id="MfK-LN-ZR8"/>
-                                            <constraint firstItem="XdZ-fS-oFB" firstAttribute="top" secondItem="e53-E4-3K5" secondAttribute="topMargin" constant="2" id="Pmf-mo-w2a"/>
-                                            <constraint firstItem="XdZ-fS-oFB" firstAttribute="centerX" secondItem="e53-E4-3K5" secondAttribute="centerX" id="QT9-v2-Ub3"/>
-                                        </constraints>
-                                        <size key="customSize" width="58" height="40"/>
-                                    </collectionViewCell>
-                                </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="notificationCell" id="7LX-9x-7mb">
-                                    <rect key="frame" x="0.0" y="0.0" width="20" height="44"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </collectionReusableView>
-                            </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aec-qv-dEE">
                                 <rect key="frame" x="0.0" y="129" width="375" height="356"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -358,11 +313,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.87667787239999995" green="0.95659829169999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="fcl-w8-eqn" firstAttribute="top" secondItem="aec-qv-dEE" secondAttribute="bottom" constant="31" id="5ut-tX-eEA"/>
                             <constraint firstItem="RIB-dP-2Qa" firstAttribute="top" secondItem="l5u-VH-5aa" secondAttribute="top" id="9JG-IN-gAL"/>
                             <constraint firstItem="LNs-9T-gVA" firstAttribute="top" secondItem="puP-Rj-YAQ" secondAttribute="bottom" id="DOf-nb-VCk"/>
                             <constraint firstAttribute="trailing" secondItem="RIB-dP-2Qa" secondAttribute="trailing" id="Mqk-1Q-va9"/>
-                            <constraint firstItem="fcl-w8-eqn" firstAttribute="leading" secondItem="l5u-VH-5aa" secondAttribute="leading" id="RPh-us-CIP"/>
                             <constraint firstItem="LNs-9T-gVA" firstAttribute="leading" secondItem="l5u-VH-5aa" secondAttribute="leadingMargin" id="Wm9-Yq-RlH"/>
                             <constraint firstAttribute="trailing" secondItem="aec-qv-dEE" secondAttribute="trailing" id="XBH-8P-qJz"/>
                             <constraint firstItem="RIB-dP-2Qa" firstAttribute="leading" secondItem="l5u-VH-5aa" secondAttribute="leading" id="fJa-kC-hpt"/>
@@ -371,13 +324,11 @@
                             <constraint firstItem="aec-qv-dEE" firstAttribute="leading" secondItem="l5u-VH-5aa" secondAttribute="leading" id="kYw-Sg-aTC"/>
                             <constraint firstItem="pSK-fY-LvJ" firstAttribute="top" secondItem="LNs-9T-gVA" secondAttribute="bottom" constant="8" id="opc-Jb-G4T"/>
                             <constraint firstItem="aec-qv-dEE" firstAttribute="top" secondItem="pSK-fY-LvJ" secondAttribute="bottom" constant="11" id="rv7-mn-kgT"/>
-                            <constraint firstAttribute="trailing" secondItem="fcl-w8-eqn" secondAttribute="trailing" id="xzw-X7-hks"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Weather" image="umbrella" id="xKl-DQ-mdc"/>
                     <connections>
                         <outlet property="alertCollection" destination="LNs-9T-gVA" id="F2K-0p-8t3"/>
-                        <outlet property="cityCollection" destination="fcl-w8-eqn" id="jdt-di-hwS"/>
                         <outlet property="wxCollection" destination="aec-qv-dEE" id="G9O-RC-S6W"/>
                     </connections>
                 </viewController>

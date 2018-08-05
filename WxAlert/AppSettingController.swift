@@ -11,19 +11,31 @@ import UIKit
 class AppSettingController: UITableViewController {
     
     var appSettings = ["City List", "City Edit"]
+    var cityArray = [City]()
     
     var delegate: CityProtocol?
     let rootController = RootController.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.delegate = rootController
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("App Setting view will appear")
+        getUpdatedCityListData()
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func getUpdatedCityListData() {
+        if let list = self.delegate?.getCityArray() {
+            self.cityArray = list
+        }
     }
     
     // MARK: - Table view data source
@@ -34,6 +46,7 @@ class AppSettingController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return self.appSettings.count
+        print("NumberofRowsInSection")
         var count = 0
         switch (section){
         case 0:
@@ -44,6 +57,7 @@ class AppSettingController: UITableViewController {
             guard let rowCount = self.delegate?.getCityCount() else {
                 return 0
             }
+            print("appSetting rowCount: \(rowCount)")
             return rowCount
         default:
             count = 0
@@ -61,7 +75,9 @@ class AppSettingController: UITableViewController {
         case 1:
             cell.textLabel?.text = appSettings[1]
         case 2:
-            cell.textLabel?.text = "weather selection"
+            let city = cityArray[indexPath.row]
+            let cityState = city.cityName + ", " + city.region.state
+            cell.textLabel?.text = cityState
         default:
             cell.textLabel?.text = "default"
         }
@@ -74,14 +90,26 @@ class AppSettingController: UITableViewController {
         let cityListView = self.storyboard?.instantiateViewController(withIdentifier: "CityListView") as! CityListController
         let cityEditView = self.storyboard?.instantiateViewController(withIdentifier: "CityEditView") as! CityEditController
         
-        switch indexPath.row {
+        switch indexPath.section {
         case 0:
             print("Push Notifications View")
             self.navigationController?.pushViewController(cityListView, animated: true)
         case 1:
             self.navigationController?.pushViewController(cityEditView, animated: true)
+        case 2:
+            if let cell = tableView.cellForRow(at: indexPath) {
+                cell.accessoryType = .checkmark
+            }
         default:
             print("Show Add City View")
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if indexPath.section == 2 {
+            if let cell = tableView.cellForRow(at: indexPath) {
+                cell.accessoryType = .none
+            }
         }
     }
     
@@ -90,11 +118,11 @@ class AppSettingController: UITableViewController {
         
         switch section {
         case 0:
-            title = "Notifications"
+            title = "Set Notifications"
         case 1:
-            title = "Edit City List"
+            title = "Remove City"
         case 2:
-            title = "Weather Selection"
+            title = "Select City"
         default:
             title = nil
         }

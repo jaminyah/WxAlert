@@ -16,7 +16,7 @@ class WeatherController: UIViewController {
     
     let alertCollectionController = AlertCollectionController()
     let wxCollectionController = WxCollectionController()
-    let cityCollectionController = CityCollectionController()
+    //let cityCollectionController = CityCollectionController()
 
     
     override func viewDidLoad() {
@@ -27,8 +27,8 @@ class WeatherController: UIViewController {
         alertCollection.dataSource = alertCollectionController
         alertCollection.delegate = alertCollectionController
         
-        cityCollection.dataSource = cityCollectionController
-        cityCollection.delegate = cityCollectionController
+        //cityCollection.dataSource = cityCollectionController
+        //cityCollection.delegate = cityCollectionController
         
         wxCollection.dataSource = wxCollectionController
         wxCollection.delegate = wxCollectionController
