@@ -41,7 +41,7 @@ class AppSettingController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,6 +54,8 @@ class AppSettingController: UITableViewController {
         case 1:
             count = 1
         case 2:
+            count = 1
+        case 3:
             guard let rowCount = self.delegate?.getCityCount() else {
                 return 0
             }
@@ -74,12 +76,12 @@ class AppSettingController: UITableViewController {
             cell.textLabel?.text = appSettings[0]
         case 1:
             cell.textLabel?.text = appSettings[1]
-        case 2:
+        case 3:
             let city = cityArray[indexPath.row]
             let cityState = city.cityName + ", " + city.region.state
             cell.textLabel?.text = cityState
         default:
-            cell.textLabel?.text = "default"
+            cell.textLabel?.text = ""
         }
         //cell.textLabel?.text = appSettings[indexPath.row]
         return cell
@@ -96,7 +98,7 @@ class AppSettingController: UITableViewController {
             self.navigationController?.pushViewController(cityListView, animated: true)
         case 1:
             self.navigationController?.pushViewController(cityEditView, animated: true)
-        case 2:
+        case 3:
             if let cell = tableView.cellForRow(at: indexPath) {
                 cell.accessoryType = .checkmark
             }
@@ -122,11 +124,39 @@ class AppSettingController: UITableViewController {
         case 1:
             title = "Remove City"
         case 2:
+            title = "Time Frame"
+        case 3:
             title = "Select City"
         default:
             title = nil
         }
         return title
+    }
+    
+    // Mark: UITableViewDelegate
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        var view: UIView? = UIView()
+        
+        let labelView = UILabel(frame: CGRect(x: 20, y: 5, width: tableView.frame.width - 20, height: 30))
+        //labelView.backgroundColor = .gray
+        labelView.font = UIFont.boldSystemFont(ofSize: labelView.font.pointSize)
+        labelView.text = "Time Frame"
+        
+        view?.backgroundColor = .white
+        let segmentedControl = UISegmentedControl(frame: CGRect(x: 10, y: 5, width: tableView.frame.width - 20, height: 30))
+        //let segmentedControl = UISegmentedControl(frame: CGRect(x: 10, y: 35, width: tableView.frame.width - 20, height: 30))
+        segmentedControl.insertSegment(withTitle: "Day", at: 0, animated: false)
+        segmentedControl.insertSegment(withTitle: "Day + Night", at: 1, animated: false)
+        segmentedControl.insertSegment(withTitle: "Night", at: 2, animated: false)
+        
+        switch section {
+        case 2:
+            //view?.addSubview(labelView)
+            view?.addSubview(segmentedControl)
+        default:
+            view = nil
+        }
+        return view
     }
     
     /*
