@@ -12,12 +12,14 @@ class AppSettingController: UITableViewController {
     
     var appSettings = ["City List", "City Edit"]
     var cityArray = [City]()
+
     
     var delegate: CityProtocol?
     let rootController = RootController.sharedInstance
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.contentInset = UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0)
         self.delegate = rootController
     }
     
@@ -36,6 +38,28 @@ class AppSettingController: UITableViewController {
         if let list = self.delegate?.getCityArray() {
             self.cityArray = list
         }
+    }
+    
+   @objc func timeFrameSelected(_ segment: UISegmentedControl) {
+    
+        var timePeriod :TimeFrame = TimeFrame.Day
+    
+        switch segment.selectedSegmentIndex {
+        case 0:
+            timePeriod = TimeFrame.Day
+            print("Day selected")
+        case 1:
+            timePeriod = TimeFrame.DayNight
+            print("Day + Night selected")
+        case 2:
+            timePeriod = TimeFrame.Night
+            print("Night selected")
+        default:
+            timePeriod = TimeFrame.Day
+        }
+    
+        self.delegate?.setTimeFrame(timeFrame: timePeriod)
+    
     }
     
     // MARK: - Table view data source
@@ -101,14 +125,17 @@ class AppSettingController: UITableViewController {
         case 3:
             if let cell = tableView.cellForRow(at: indexPath) {
                 cell.accessoryType = .checkmark
+                let city = cityArray[indexPath.row]
+                self.delegate?.setSelectedCity(name: city.cityName, index: indexPath.row)
             }
         default:
-            print("Show Add City View")
+            print("didSelectRowAt")
+            break
         }
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if indexPath.section == 2 {
+        if indexPath.section == 3 {
             if let cell = tableView.cellForRow(at: indexPath) {
                 cell.accessoryType = .none
             }
@@ -124,7 +151,7 @@ class AppSettingController: UITableViewController {
         case 1:
             title = "Remove City"
         case 2:
-            title = "Time Frame"
+            title = nil
         case 3:
             title = "Select City"
         default:
@@ -136,22 +163,16 @@ class AppSettingController: UITableViewController {
     // Mark: UITableViewDelegate
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         var view: UIView? = UIView()
-        
-        let labelView = UILabel(frame: CGRect(x: 20, y: 5, width: tableView.frame.width - 20, height: 30))
-        //labelView.backgroundColor = .gray
-        labelView.font = UIFont.boldSystemFont(ofSize: labelView.font.pointSize)
-        labelView.text = "Time Frame"
-        
-        view?.backgroundColor = .white
+         
         let segmentedControl = UISegmentedControl(frame: CGRect(x: 10, y: 5, width: tableView.frame.width - 20, height: 30))
-        //let segmentedControl = UISegmentedControl(frame: CGRect(x: 10, y: 35, width: tableView.frame.width - 20, height: 30))
         segmentedControl.insertSegment(withTitle: "Day", at: 0, animated: false)
         segmentedControl.insertSegment(withTitle: "Day + Night", at: 1, animated: false)
         segmentedControl.insertSegment(withTitle: "Night", at: 2, animated: false)
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.addTarget(self, action: #selector(timeFrameSelected(_:)), for: .valueChanged)
         
         switch section {
         case 2:
-            //view?.addSubview(labelView)
             view?.addSubview(segmentedControl)
         default:
             view = nil

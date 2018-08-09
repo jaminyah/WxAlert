@@ -11,7 +11,7 @@ import Foundation
 
 struct City {
     
-    let elements = ["Fire danger", "Fog", "Flood", "Freeze", "Hail", "High Winds", "Ice", "Lightning", "Rain", "Rip Current", "Sleet", "Snow", "Thunderstorm", "Tornado"]
+    let elements = ["Fire danger", "Fog", "Flood", "Freeze", "Hail", "Heat", "High Winds", "Ice", "Lightning", "Rain", "Rip Current", "Sleet", "Snow", "Thunderstorm", "Tornado"]
     var cityName = "Dallas"
     var region =  Region()
     var coordinates = Coordinates()
@@ -21,7 +21,7 @@ struct City {
 }
 
 struct CityState {
-    var cityName = "Denver"
+    var cityName = "Dallas"
     var region = Region()
 }
 
@@ -37,6 +37,18 @@ struct Coordinates {
 struct Notification {
     var name = "Rain"
     var enabled = false
+}
+
+struct SelectedCity {
+    var name: String = "Dallas"
+    var arrayIndex: Int = 0
+    var timeFrame: TimeFrame = TimeFrame.Day
+}
+
+enum TimeFrame: String {
+    case Day = "Day"
+    case DayNight = "Day+Night"
+    case Night = "Night"
 }
 
 extension City {

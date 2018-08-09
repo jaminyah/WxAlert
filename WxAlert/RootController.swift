@@ -12,6 +12,7 @@ class RootController: UITabBarController, CityProtocol {
     
     static let sharedInstance = RootController()
     var dataManager: DataManager?
+    var selected = SelectedCity()
     
     // Inject DataManager dependency into root controller singleton
     
@@ -87,7 +88,24 @@ class RootController: UITabBarController, CityProtocol {
         self.dataManager?.updateNotifications(cityObject: city)
     }
     
-
+    func setSelectedCity(name: String, index: Int) ->() {
+        print("setSelectedCity")
+        selected.name = name
+        selected.arrayIndex = index
+        print("city name: \(selected.name) index: \(selected.arrayIndex) timeFrame: \(selected.timeFrame.rawValue)")
+    }
+    
+    func selectedCity() -> SelectedCity {
+        // TODO
+        return selected
+    }
+    
+    func setTimeFrame(timeFrame: TimeFrame) {
+        selected.timeFrame = timeFrame
+        
+        print("RootCtrl: \(selected.timeFrame.rawValue)")
+    }
+    
     /*
     // MARK: - Navigation
 
