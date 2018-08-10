@@ -301,8 +301,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jacksonville, FL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSK-fY-LvJ">
-                                <rect key="frame" x="92" y="82" width="192" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dallas, TX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pSK-fY-LvJ">
+                                <rect key="frame" x="128" y="82" width="120.5" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="69a-QX-vZg"/>
                                 </constraints>
@@ -329,6 +329,7 @@
                     <tabBarItem key="tabBarItem" title="Weather" image="umbrella" id="xKl-DQ-mdc"/>
                     <connections>
                         <outlet property="alertCollection" destination="LNs-9T-gVA" id="F2K-0p-8t3"/>
+                        <outlet property="cityLabel" destination="pSK-fY-LvJ" id="tf0-0a-oUm"/>
                         <outlet property="wxCollection" destination="aec-qv-dEE" id="G9O-RC-S6W"/>
                     </connections>
                 </viewController>

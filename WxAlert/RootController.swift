@@ -94,15 +94,15 @@ class RootController: UITabBarController, CityProtocol {
         self.dataManager?.updateNotifications(cityObject: city)
     }
     
-    func setSelectedCity(name: String, index: Int) ->() {
+    func setSelectedCity(city: City, index: Int) ->() {
         print("setSelectedCity")
-        selectedCity.name = name
+        selectedCity.name = city.cityName
+        selectedCity.state = city.region.state
         selectedCity.arrayIndex = index
         print("city name: \(selectedCity.name) index: \(selectedCity.arrayIndex) timeFrame: \(selectedCity.timeFrame.rawValue)")
     }
     
     func getSelectedCity() -> SelectedCity {
-        // TODO
         return selectedCity
     }
     

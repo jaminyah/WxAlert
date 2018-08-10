@@ -13,15 +13,22 @@ class WeatherController: UIViewController {
     @IBOutlet weak var alertCollection: UICollectionView!
     @IBOutlet weak var cityCollection: UICollectionView!
     @IBOutlet weak var wxCollection: UICollectionView!
+    @IBOutlet weak var cityLabel: UILabel!
+    
+    let rootController = RootController.sharedInstance
+    var delegate: CityProtocol?
     
     let alertCollectionController = AlertCollectionController()
     let wxCollectionController = WxCollectionController()
     //let cityCollectionController = CityCollectionController()
 
+    var selectedCity: SelectedCity!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.delegate = rootController
+        
         // Do any additional setup after loading the view.
         // Set data source and delegate
         alertCollection.dataSource = alertCollectionController
@@ -35,7 +42,11 @@ class WeatherController: UIViewController {
         
         // hide views
         alertCollection.isHidden = false
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        selectedCity = self.delegate?.getSelectedCity()
+        cityLabel.text = selectedCity.name + ", " + selectedCity.state
     }
 
     override func didReceiveMemoryWarning() {

@@ -33,6 +33,11 @@ class AppSettingController: UITableViewController {
         selectedCity = self.delegate?.getSelectedCity()
         timeFrame = selectedCity.timeFrame.hashValue
         print("SelectedCity name: \(selectedCity.name) index: \(selectedCity.arrayIndex) timeFrame: \(selectedCity.timeFrame.rawValue)")
+        
+       // let rowIndex = selectedCity.arrayIndex
+       // let indexPath = IndexPath(row: rowIndex, section: 3)
+       // self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+       // self.tableView.delegate?.tableView!(self.tableView, didSelectRowAt: indexPath)
     }
 
     override func didReceiveMemoryWarning() {
@@ -131,8 +136,8 @@ class AppSettingController: UITableViewController {
         case 3:
             if let cell = tableView.cellForRow(at: indexPath) {
                 cell.accessoryType = .checkmark
-                let city = cityArray[indexPath.row]
-                self.delegate?.setSelectedCity(name: city.cityName, index: indexPath.row)
+                let cityObject = cityArray[indexPath.row]
+                self.delegate?.setSelectedCity(city: cityObject, index: indexPath.row)
             }
         default:
             print("didSelectRowAt")
@@ -142,9 +147,8 @@ class AppSettingController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         if indexPath.section == 3 {
-            if let cell = tableView.cellForRow(at: indexPath) {
-                cell.accessoryType = .none
-            }
+            let cell = tableView.cellForRow(at: indexPath)
+            cell?.accessoryType = .none
         }
     }
     
