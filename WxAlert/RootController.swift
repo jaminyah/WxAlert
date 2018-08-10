@@ -12,7 +12,7 @@ class RootController: UITabBarController, CityProtocol {
     
     static let sharedInstance = RootController()
     var dataManager: DataManager?
-    var selected = SelectedCity()
+    var selectedCity = SelectedCity()
     
     // Inject DataManager dependency into root controller singleton
     
@@ -39,12 +39,18 @@ class RootController: UITabBarController, CityProtocol {
     }
     
     func addNewCity(city: City) {
-        
+        print("AddNewCity: ")
         self.dataManager?.appendCityObject(newCity: city)
         NotificationCenter.default.post(name: .refreshCityNames, object: nil)
         
-        // Show city count
-       // print("New city count: \(self.dataManager.cityCount())")
+        // Update properties of city to be displayed
+        if let cityCount = dataManager?.cityCount() {
+            selectedCity.arrayIndex = cityCount - 1
+        }
+        selectedCity.name = city.cityName
+        selectedCity.state = city.region.state
+        
+        print("SelectedCity name: \(selectedCity.name) index: \(selectedCity.arrayIndex) timeFrame: \(selectedCity.timeFrame.rawValue)")
     }
     
     func showCities() {
@@ -90,20 +96,20 @@ class RootController: UITabBarController, CityProtocol {
     
     func setSelectedCity(name: String, index: Int) ->() {
         print("setSelectedCity")
-        selected.name = name
-        selected.arrayIndex = index
-        print("city name: \(selected.name) index: \(selected.arrayIndex) timeFrame: \(selected.timeFrame.rawValue)")
+        selectedCity.name = name
+        selectedCity.arrayIndex = index
+        print("city name: \(selectedCity.name) index: \(selectedCity.arrayIndex) timeFrame: \(selectedCity.timeFrame.rawValue)")
     }
     
-    func selectedCity() -> SelectedCity {
+    func getSelectedCity() -> SelectedCity {
         // TODO
-        return selected
+        return selectedCity
     }
     
     func setTimeFrame(timeFrame: TimeFrame) {
-        selected.timeFrame = timeFrame
+        selectedCity.timeFrame = timeFrame
         
-        print("RootCtrl: \(selected.timeFrame.rawValue)")
+        print("RootCtrl: \(selectedCity.timeFrame.rawValue)")
     }
     
     /*

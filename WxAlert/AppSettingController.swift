@@ -12,6 +12,8 @@ class AppSettingController: UITableViewController {
     
     var appSettings = ["City List", "City Edit"]
     var cityArray = [City]()
+    var selectedCity: SelectedCity!
+    var timeFrame: Int!
 
     
     var delegate: CityProtocol?
@@ -27,6 +29,10 @@ class AppSettingController: UITableViewController {
         print("App Setting view will appear")
         getUpdatedCityListData()
         self.tableView.reloadData()
+        
+        selectedCity = self.delegate?.getSelectedCity()
+        timeFrame = selectedCity.timeFrame.hashValue
+        print("SelectedCity name: \(selectedCity.name) index: \(selectedCity.arrayIndex) timeFrame: \(selectedCity.timeFrame.rawValue)")
     }
 
     override func didReceiveMemoryWarning() {
@@ -168,7 +174,7 @@ class AppSettingController: UITableViewController {
         segmentedControl.insertSegment(withTitle: "Day", at: 0, animated: false)
         segmentedControl.insertSegment(withTitle: "Day + Night", at: 1, animated: false)
         segmentedControl.insertSegment(withTitle: "Night", at: 2, animated: false)
-        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.selectedSegmentIndex = timeFrame
         segmentedControl.addTarget(self, action: #selector(timeFrameSelected(_:)), for: .valueChanged)
         
         switch section {

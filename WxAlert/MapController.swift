@@ -11,7 +11,7 @@ import MapKit
 
 class MapController: UIViewController {
     
-    var selectedCity = City()
+    var cityObject = City()
     @IBOutlet weak var mapView: MKMapView!
     
     //let rootController = RootController()
@@ -26,7 +26,7 @@ class MapController: UIViewController {
         self.delegate = rootController
         
         // Delegate action
-        self.delegate?.addNewCity(city: selectedCity)
+        self.delegate?.addNewCity(city: cityObject)
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,9 +39,9 @@ class MapController: UIViewController {
         
         setMapRegion()
         
-        let pinTitle = selectedCity.cityName + ", " + selectedCity.region.state
-        let citylat = selectedCity.coordinates.latitude
-        let citylong = selectedCity.coordinates.longitude
+        let pinTitle = cityObject.cityName + ", " + cityObject.region.state
+        let citylat = cityObject.coordinates.latitude
+        let citylong = cityObject.coordinates.longitude
         let coordinates = CLLocationCoordinate2D(latitude: citylat, longitude: citylong)
         let cityInfo = MKPinInfo(title: pinTitle, coordinate: coordinates)
         
@@ -49,7 +49,7 @@ class MapController: UIViewController {
     }
 
     func setMapRegion() {
-        let location = CLLocation(latitude: selectedCity.coordinates.latitude, longitude: selectedCity.coordinates.longitude)
+        let location = CLLocation(latitude: cityObject.coordinates.latitude, longitude: cityObject.coordinates.longitude)
         let cityRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, 12000, 12000)
         mapView.setRegion(cityRegion, animated: true)
     }

@@ -29,6 +29,7 @@
 		FA06647F20618FAE006DE3CF /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06647E20618FAE006DE3CF /* City.swift */; };
 		FA066481206194DB006DE3CF /* cities_usa.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = FA066480206194DB006DE3CF /* cities_usa.sqlite */; };
 		FA06648320619563006DE3CF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA06648220619563006DE3CF /* MapKit.framework */; };
+		FA10D430211DD90C006CCB0E /* SelectedCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10D42F211DD90C006CCB0E /* SelectedCity.swift */; };
 		FAB45FC920FFC6BC00333FE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB45FC820FFC6BC00333FE9 /* Assets.xcassets */; };
 		FABBBC44210519E7005C2207 /* WxCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC43210519E7005C2207 /* WxCollectionController.swift */; };
 		FABBBC4621051A19005C2207 /* CityCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC4521051A19005C2207 /* CityCollectionController.swift */; };
@@ -87,6 +88,7 @@
 		FA06647E20618FAE006DE3CF /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		FA066480206194DB006DE3CF /* cities_usa.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = cities_usa.sqlite; sourceTree = "<group>"; };
 		FA06648220619563006DE3CF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FA10D42F211DD90C006CCB0E /* SelectedCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCity.swift; sourceTree = "<group>"; };
 		FAB45FC820FFC6BC00333FE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FABBBC43210519E7005C2207 /* WxCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WxCollectionController.swift; sourceTree = "<group>"; };
 		FABBBC4521051A19005C2207 /* CityCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCollectionController.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			children = (
 				FA06647C20618F14006DE3CF /* MKPinInfo.swift */,
 				FA06647E20618FAE006DE3CF /* City.swift */,
+				FA10D42F211DD90C006CCB0E /* SelectedCity.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				FAC16F522062690E00683EE6 /* Definitions.swift in Sources */,
 				FA066461206151F9006DE3CF /* CityEditController.swift in Sources */,
 				FA06641E20614490006DE3CF /* AppDelegate.swift in Sources */,
+				FA10D430211DD90C006CCB0E /* SelectedCity.swift in Sources */,
 				FABBBC4C210520E6005C2207 /* CitySelectCell.swift in Sources */,
 				FA06645B2061510C006DE3CF /* NotificationController.swift in Sources */,
 				FA06647F20618FAE006DE3CF /* City.swift in Sources */,

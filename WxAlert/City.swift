@@ -39,17 +39,6 @@ struct Notification {
     var enabled = false
 }
 
-struct SelectedCity {
-    var name: String = "Dallas"
-    var arrayIndex: Int = 0
-    var timeFrame: TimeFrame = TimeFrame.Day
-}
-
-enum TimeFrame: String {
-    case Day = "Day"
-    case DayNight = "Day+Night"
-    case Night = "Night"
-}
 
 extension City {
     

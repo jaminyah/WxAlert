@@ -17,6 +17,6 @@ protocol CityProtocol {
     func deleteCity(name: String) -> ()
     func setNotifications(city: City) ->()
     func setSelectedCity(name: String, index: Int) ->()
-    func selectedCity() -> SelectedCity
+    func getSelectedCity() -> SelectedCity
     func setTimeFrame(timeFrame: TimeFrame) -> ()
 }

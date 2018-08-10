@@ -96,7 +96,7 @@ extension SearchController: UITableViewDelegate {
                 let selectedCity = cityList[indexPath.row]
                 //print("CityList - selectedCity: \(selectedCity)")
                 let mapViewController = segue.destination as? MapController
-                mapViewController?.selectedCity = selectedCity
+                mapViewController?.cityObject = selectedCity
             }
         }
     }
