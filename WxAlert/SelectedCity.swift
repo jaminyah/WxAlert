@@ -11,7 +11,7 @@ import Foundation
 struct SelectedCity {
     var name: String = "Dallas"
     var state: String = "TX"
-    var arrayIndex: Int = 0            // First row in tableView section
+    var arrayIndex: Int = 0            // First row in app setting tableView section 3
     var timeFrame: TimeFrame = TimeFrame.Day
 }
 

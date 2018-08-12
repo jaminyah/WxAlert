@@ -34,13 +34,6 @@ class AppSettingController: UITableViewController {
         timeFrame = selectedCity.timeFrame.hashValue
         print("SelectedCity name: \(selectedCity.name) index: \(selectedCity.arrayIndex) timeFrame: \(selectedCity.timeFrame.rawValue)")
         
-        // Deselect section 3 tableView cells
-       /* if let indexPath = self.tableView.indexPathForSelectedRow {
-            //self.tableView.deselectRow(at: indexPath, animated: true)
-            let cell = tableView.cellForRow(at: indexPath)
-            cell?.accessoryType = .none
-        }*/
-        
         // Clear all accessory check marks
         var count = cityArray.count
         var rowIndex = 0
@@ -52,13 +45,14 @@ class AppSettingController: UITableViewController {
             rowIndex = rowIndex + 1
         }
  
-       // Set selected checkmark
+       // Programmatically set section 3 row
        rowIndex = selectedCity.arrayIndex
        let indexPath = IndexPath(row: rowIndex, section: 3)
        let cell = self.tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = .checkmark
-       // self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
-       // self.tableView.delegate?.tableView!(self.tableView, didSelectRowAt: indexPath)
+       cell?.accessoryType = .checkmark
+       self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+       self.tableView.delegate?.tableView!(self.tableView, didSelectRowAt: indexPath)
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -101,7 +95,7 @@ class AppSettingController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return self.appSettings.count
+
         print("NumberofRowsInSection")
         var count = 0
         switch (section){
@@ -139,7 +133,6 @@ class AppSettingController: UITableViewController {
         default:
             cell.textLabel?.text = ""
         }
-        //cell.textLabel?.text = appSettings[indexPath.row]
         return cell
     }
     
