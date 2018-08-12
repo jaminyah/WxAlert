@@ -34,8 +34,29 @@ class AppSettingController: UITableViewController {
         timeFrame = selectedCity.timeFrame.hashValue
         print("SelectedCity name: \(selectedCity.name) index: \(selectedCity.arrayIndex) timeFrame: \(selectedCity.timeFrame.rawValue)")
         
-       // let rowIndex = selectedCity.arrayIndex
-       // let indexPath = IndexPath(row: rowIndex, section: 3)
+        // Deselect section 3 tableView cells
+       /* if let indexPath = self.tableView.indexPathForSelectedRow {
+            //self.tableView.deselectRow(at: indexPath, animated: true)
+            let cell = tableView.cellForRow(at: indexPath)
+            cell?.accessoryType = .none
+        }*/
+        
+        // Clear all accessory check marks
+        var count = cityArray.count
+        var rowIndex = 0
+        while count > 0 {
+            let indexPath = IndexPath(row: rowIndex, section: 3)
+            let cell = self.tableView.cellForRow(at: indexPath)
+            cell?.accessoryType = .none
+            count = count - 1
+            rowIndex = rowIndex + 1
+        }
+ 
+       // Set selected checkmark
+       rowIndex = selectedCity.arrayIndex
+       let indexPath = IndexPath(row: rowIndex, section: 3)
+       let cell = self.tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = .checkmark
        // self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
        // self.tableView.delegate?.tableView!(self.tableView, didSelectRowAt: indexPath)
     }
