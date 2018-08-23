@@ -12,6 +12,7 @@ struct SelectedCity {
     var name: String = "Dallas"
     var state: String = "TX"
     var arrayIndex: Int = 0            // First row in app setting tableView section 3
+    var wxRefreshRate = 4              // Refresh Wx UI every 4 hours
     var timeFrame: TimeFrame = TimeFrame.Day
 }
 

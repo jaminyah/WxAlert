@@ -112,6 +112,12 @@ class RootController: UITabBarController, CityProtocol {
         print("RootCtrl: \(selectedCity.timeFrame.rawValue)")
     }
     
+    // MARK: - City Weather
+    func getCityWeather(name: String, state: String) {
+        // Todo
+        print("getCityWeather")
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -66,6 +66,8 @@ class AppSettingController: UITableViewController {
         }
     }
     
+    // MARK:    - Segmented Control
+    
    @objc func timeFrameSelected(_ segment: UISegmentedControl) {
     
         var timePeriod :TimeFrame = TimeFrame.Day
@@ -85,7 +87,10 @@ class AppSettingController: UITableViewController {
         }
     
         self.delegate?.setTimeFrame(timeFrame: timePeriod)
+    }
     
+    @objc func sliderChanged(_ sender: UISlider) {
+        
     }
     
     // MARK: - Table view data source
@@ -148,6 +153,8 @@ class AppSettingController: UITableViewController {
         case 1:
             self.navigationController?.pushViewController(cityEditView, animated: true)
         case 3:
+            print("Slider selected.")
+        case 4:
             if let cell = tableView.cellForRow(at: indexPath) {
                 cell.accessoryType = .checkmark
                 let cityObject = cityArray[indexPath.row]
@@ -160,7 +167,7 @@ class AppSettingController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        if indexPath.section == 3 {
+        if indexPath.section == 4 {
             let cell = tableView.cellForRow(at: indexPath)
             cell?.accessoryType = .none
         }
@@ -177,6 +184,8 @@ class AppSettingController: UITableViewController {
         case 2:
             title = nil
         case 3:
+            title = nil
+        case 4:
             title = "Select City"
         default:
             title = nil
@@ -195,9 +204,18 @@ class AppSettingController: UITableViewController {
         segmentedControl.selectedSegmentIndex = timeFrame
         segmentedControl.addTarget(self, action: #selector(timeFrameSelected(_:)), for: .valueChanged)
         
+        let sliderControl = UISlider(frame: CGRect(x: 10, y: 5, width: tableView.frame.width - 20, height: 30))
+        sliderControl.thumbTintColor = .black
+        sliderControl.maximumValue = 24
+        sliderControl.minimumValue = 1
+        sliderControl.setValue(4, animated: false)
+        sliderControl.addTarget(self, action: #selector(sliderChanged(_:)), for: .valueChanged)
+        
         switch section {
         case 2:
             view?.addSubview(segmentedControl)
+        case 3:
+            view?.addSubview(sliderControl)
         default:
             view = nil
         }
