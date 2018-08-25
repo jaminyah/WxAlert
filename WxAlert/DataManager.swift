@@ -12,7 +12,7 @@ final class DataManager {
 
     // Thread Safe?
     static let sharedInstance = DataManager()
-    fileprivate init(){}
+    private init(){}
 
     private var cityArray = [City]()
 
@@ -69,7 +69,7 @@ func getCityArray() -> [City] {
     return cityArray
 }
 
-func updateNotifications(cityObject: City) {
+    func updateNotifications(cityObject: City) {
         
        // var cityItem: City
         if let position = cityArray.index(where: { $0.cityName == cityObject.cityName}) {

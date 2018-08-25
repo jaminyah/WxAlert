@@ -12,9 +12,7 @@ private let reuseIdentifier = "WxCell"
 
 class WxCollectionController: UICollectionViewController {
     
-    let rootController = RootController.sharedInstance
-    var delegate: CityProtocol?
-    var selectedCity: SelectedCity!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +24,6 @@ class WxCollectionController: UICollectionViewController {
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         // Do any additional setup after loading the view.
-        self.delegate = rootController
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        selectedCity = self.delegate?.getSelectedCity()
-        self.delegate?.getCityWeather(name: selectedCity.name, state: selectedCity.state)
     }
     
     override func didReceiveMemoryWarning() {
