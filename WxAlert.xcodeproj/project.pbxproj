@@ -31,6 +31,8 @@
 		FA06648320619563006DE3CF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA06648220619563006DE3CF /* MapKit.framework */; };
 		FA10D430211DD90C006CCB0E /* SelectedCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10D42F211DD90C006CCB0E /* SelectedCity.swift */; };
 		FA113140211FFF7F00B50085 /* WxCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11313F211FFF7F00B50085 /* WxCellViewModel.swift */; };
+		FA4B52222131BE380017ADC9 /* DbMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4B52212131BE380017ADC9 /* DbMgr.swift */; };
+		FA9DDAA22133112B004B9E2D /* DataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9DDAA12133112B004B9E2D /* DataItem.swift */; };
 		FAB45FC920FFC6BC00333FE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB45FC820FFC6BC00333FE9 /* Assets.xcassets */; };
 		FABBBC44210519E7005C2207 /* WxCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC43210519E7005C2207 /* WxCollectionController.swift */; };
 		FABBBC4621051A19005C2207 /* CityCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC4521051A19005C2207 /* CityCollectionController.swift */; };
@@ -91,6 +93,8 @@
 		FA06648220619563006DE3CF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FA10D42F211DD90C006CCB0E /* SelectedCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCity.swift; sourceTree = "<group>"; };
 		FA11313F211FFF7F00B50085 /* WxCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WxCellViewModel.swift; sourceTree = "<group>"; };
+		FA4B52212131BE380017ADC9 /* DbMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMgr.swift; sourceTree = "<group>"; };
+		FA9DDAA12133112B004B9E2D /* DataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItem.swift; sourceTree = "<group>"; };
 		FAB45FC820FFC6BC00333FE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FABBBC43210519E7005C2207 /* WxCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WxCollectionController.swift; sourceTree = "<group>"; };
 		FABBBC4521051A19005C2207 /* CityCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCollectionController.swift; sourceTree = "<group>"; };
@@ -250,6 +254,7 @@
 				FA06647C20618F14006DE3CF /* MKPinInfo.swift */,
 				FA06647E20618FAE006DE3CF /* City.swift */,
 				FA10D42F211DD90C006CCB0E /* SelectedCity.swift */,
+				FA9DDAA12133112B004B9E2D /* DataItem.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 		FAC16F4D2062643000683EE6 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FA4B52212131BE380017ADC9 /* DbMgr.swift */,
 				FAC16F4E2062644900683EE6 /* DataManager.swift */,
 			);
 			name = Classes;
@@ -441,9 +447,11 @@
 				FABBBC4621051A19005C2207 /* CityCollectionController.swift in Sources */,
 				FABBBC4A21051FEE005C2207 /* WxViewCell.swift in Sources */,
 				FAC16F522062690E00683EE6 /* Definitions.swift in Sources */,
+				FA9DDAA22133112B004B9E2D /* DataItem.swift in Sources */,
 				FA066461206151F9006DE3CF /* CityEditController.swift in Sources */,
 				FA06641E20614490006DE3CF /* AppDelegate.swift in Sources */,
 				FA10D430211DD90C006CCB0E /* SelectedCity.swift in Sources */,
+				FA4B52222131BE380017ADC9 /* DbMgr.swift in Sources */,
 				FABBBC4C210520E6005C2207 /* CitySelectCell.swift in Sources */,
 				FA06645B2061510C006DE3CF /* NotificationController.swift in Sources */,
 				FA06647F20618FAE006DE3CF /* City.swift in Sources */,
