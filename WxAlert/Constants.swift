@@ -15,3 +15,5 @@ let CITY_LIST_MODIFIED = NSNotification.Name("CityListModified")
 
 // UITableView Data Source
 let ONE_SECTION = 1
+
+let FORECAST_URL = "http://cdn.jaminya.com/json/forecast.json"

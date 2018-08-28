@@ -15,13 +15,13 @@ class DbMgr {
 
     func getSearchList(searchTerm: String) -> DataItem {
         
-        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
         var cityObject = City()
         var dataItem = DataItem()
         
         var fileExist = false
         var db: OpaquePointer? = nil
         var sqlStatement: OpaquePointer? = nil
+        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
         
          let projectBundle = Bundle.main
          let fileMgr = FileManager.default
@@ -87,5 +87,38 @@ class DbMgr {
          }
         }
         return dataItem
+    }
+    
+    
+    func createDbTable(name: String, state: String) -> Void {
+        // TODO - Create table for each new city
+       // var fileExist = false
+        var db: OpaquePointer? = nil
+        // var sqlStatement: OpaquePointer? = nil
+        
+        let projectBundle = Bundle.main
+       // let fileMgr = FileManager.default
+        let resourcePath = projectBundle.path(forResource: "cities_usa", ofType: "sqlite")
+        
+        //fileExist = fileMgr.fileExists(atPath: resourcePath!)
+        
+       // if (fileExist) {
+        guard (sqlite3_open(resourcePath!, &db) == SQLITE_OK) else {
+                print("Error opening database.")
+                return
+        }
+        
+        let queryString = "CREATE TABLE IF NOT EXISTS " + "'" + name + "_" + state + "'" +
+        "('Id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, 'Name' TEXT, 'StartTime' TEXT, 'EndTime' TEXT, 'isDayTime' BOOL, 'Temperature' INTEGER, " +
+        "'TempUnit' TEXT, 'WindSpeed' TEXT, 'WindDirection' TEXT, 'Icon' TEXT, 'ShortForecast' TEXT, 'DetailedForecast' TEXT, 'Alert' TEXT)"
+        
+        guard sqlite3_exec(db, queryString, nil, nil, nil) == SQLITE_OK else {
+            let errmsg = String(cString: sqlite3_errmsg(db)!)
+            print("Error creating table: \(errmsg)")
+            return
+        }
+                
+        sqlite3_close(db)
+        print("Table created")
     }
 }

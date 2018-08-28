@@ -15,7 +15,7 @@ class SearchController: UIViewController {
     var cityObject = City()
     fileprivate let reuseCellIdentifier = "cityCell"
     fileprivate let searchController = UISearchController(searchResultsController: nil)
-    internal let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
+   // internal let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
     
     var filteredList = [String]()
     let emptyArray = [String]()
@@ -147,6 +147,5 @@ extension SearchController : UISearchBarDelegate {
         
         filteredList = dataItem.filteredList
         cityList = dataItem.cityList
-        
     }
 }
