@@ -10,16 +10,16 @@ import Foundation
 
 class ForecastDataMgr {
     
-    var weekForecast: WeekForecast?
+    var forecast: WeekForecast?
     
-    init(weekForecast: WeekForecast) {
-        self.weekForecast = weekForecast
+    init(forecast: WeekForecast) {
+        self.forecast = forecast
     }
     
     func writeForecast() {
         // TODO - Write to database
         print("Writing forecast to database.")
-        
+
     }
     
     func readForecast() {
