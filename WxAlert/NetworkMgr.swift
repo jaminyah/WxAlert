@@ -27,12 +27,10 @@ class NetworkMgr {
             do {
                 let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
                 if let weatherForecast = WeekForecast(JSON: jsonData) {
-                    //let forecastDataMgr = ForecastDataMgr(forecast: weatherForecast)
-                    //forecastDataMgr.writeForecast()
+                    let forecastDataMgr = ForecastDataMgr(forecast: weatherForecast)
+                    forecastDataMgr.writeForecast()
                     print("do block: \(weatherForecast.validTimes)")
-                    //print(jsonData)
                }
-                //print(jsonData)
             } catch let jsonError {
                 print(jsonError)
             }

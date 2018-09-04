@@ -17,3 +17,5 @@ let CITY_LIST_MODIFIED = NSNotification.Name("CityListModified")
 let ONE_SECTION = 1
 
 let FORECAST_URL = "http://cdn.jaminya.com/json/forecast.json"
+
+let EPOCH_TIME_REFERENCE = "1970-01-01T00:00:00Z"

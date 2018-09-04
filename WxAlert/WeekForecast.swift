@@ -23,8 +23,8 @@ extension WeekForecast: JSONDecodable {
     
     init?(JSON: Any) {
         guard let JSON = JSON as?  [String: AnyObject] else { return nil }
-        //guard let validTimes = JSON["properties"]?["validTimes"] as? String else { return nil }
-        if let validTimes = JSON["properties"]?["validTimes"] as? String { self.validTimes = validTimes} else { self.validTimes = "00-00-01T00:00:00+00:00"}
+
+        if let validTimes = JSON["properties"]?["validTimes"] as? String { self.validTimes = validTimes} else { self.validTimes = EPOCH_TIME_REFERENCE}
         guard let periods = JSON["properties"]?["periods"] as? [[String: AnyObject]] else { return nil }
         
         var buffer = [DayForecast]()
@@ -32,13 +32,10 @@ extension WeekForecast: JSONDecodable {
         for dailyForecast in periods {
             if let weatherData = DayForecast(JSON: dailyForecast) {
                 buffer.append(weatherData)
-                print("Time period: \(weatherData.name), Temp trend: \(weatherData.temperatureTrend)")
+               // print("Time period: \(weatherData.name), Temp trend: \(weatherData.temperatureTrend)")
             }
         }
         self.periods = buffer
-        print("extension: \(validTimes)")
-
         }
-
     }
 
