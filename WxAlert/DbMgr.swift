@@ -10,24 +10,41 @@ import Foundation
 
 class DbMgr {
     
+    var db: OpaquePointer? = nil
     static let sharedInstance = DbMgr()
-    private init() {}
+    
+    private init() {
+        
+        var dbConnection: OpaquePointer? = nil
+        let projectBundle = Bundle.main
+        let resourcePath = projectBundle.path(forResource: "cities_usa", ofType: "sqlite")
+        
+        guard (sqlite3_open(resourcePath!, &dbConnection) == SQLITE_OK) else {
+            print("Error opening database.")
+            return
+        }
+        db = dbConnection
+    }
+    
+    func closeDatabase() -> Void {
+        sqlite3_close(db)
+    }
 
     func getSearchList(searchTerm: String) -> DataItem {
         
         var cityObject = City()
         var dataItem = DataItem()
         
-        var fileExist = false
-        var db: OpaquePointer? = nil
+        //var fileExist = false
+        // var db: OpaquePointer? = nil
         var sqlStatement: OpaquePointer? = nil
         let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
         
-         let projectBundle = Bundle.main
-         let fileMgr = FileManager.default
-         let resourcePath = projectBundle.path(forResource: "cities_usa", ofType: "sqlite")
+         //let projectBundle = Bundle.main
+         //let fileMgr = FileManager.default
+         //let resourcePath = projectBundle.path(forResource: "cities_usa", ofType: "sqlite")
          
-         fileExist = fileMgr.fileExists(atPath: resourcePath!)
+         /*fileExist = fileMgr.fileExists(atPath: resourcePath!)
          
          if (fileExist) {
             if (!(sqlite3_open(resourcePath!, &db) == SQLITE_OK))
@@ -35,6 +52,7 @@ class DbMgr {
             print("An error has occurred.")
          }
          else {
+         */
             let count = searchTerm.count
          
          /*let sqlQry = "SELECT city, state_code, latitude, longitude FROM us_states JOIN us_cities ON " +
@@ -75,7 +93,7 @@ class DbMgr {
                 let sqLat = String(cString:sqlite3_column_text(sqlStatement, 2))
                 let sqLong = String(cString:sqlite3_column_text(sqlStatement, 3))
          
-                let sqLatReal = Double(sqLat)      // String to Double
+                let sqLatReal = Double(sqLat)                               // String to Double
                 let sqLongReal = Double(sqLong)
                 let newCoordinates = Coordinates(latitude: sqLatReal!, longitude: sqLongReal!)
          
@@ -83,34 +101,29 @@ class DbMgr {
                 dataItem.cityList.append(cityObject)
             }
             sqlite3_finalize(sqlStatement)
-            sqlite3_close(db)
-         }
-        }
+            //sqlite3_close(db)
+         //}
+        //}
         return dataItem
     }
     
     
-    func createDbTable(name: String, state: String) -> Void {
-        // TODO - Create table for each new city
-       // var fileExist = false
-        var db: OpaquePointer? = nil
-        // var sqlStatement: OpaquePointer? = nil
+    func createDbTable(city: String, state: String) -> Void {
+ 
+      /*  var db: OpaquePointer? = nil
         
         let projectBundle = Bundle.main
-       // let fileMgr = FileManager.default
         let resourcePath = projectBundle.path(forResource: "cities_usa", ofType: "sqlite")
         
-        //fileExist = fileMgr.fileExists(atPath: resourcePath!)
-        
-       // if (fileExist) {
         guard (sqlite3_open(resourcePath!, &db) == SQLITE_OK) else {
                 print("Error opening database.")
                 return
         }
+     */
         
-        let queryString = "CREATE TABLE IF NOT EXISTS " + "'" + name + "_" + state + "'" +
-        "('Id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, 'Name' TEXT, 'StartTime' TEXT, 'EndTime' TEXT, 'isDayTime' BOOL, 'Temperature' INTEGER, " +
-        "'TempUnit' TEXT, 'WindSpeed' TEXT, 'WindDirection' TEXT, 'Icon' TEXT, 'ShortForecast' TEXT, 'DetailedForecast' TEXT, 'Alert' TEXT)"
+        let queryString = "CREATE TABLE IF NOT EXISTS " + "'" + city.lowercased() + "_" + state.lowercased() + "'" +
+        " ('Id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, 'Number' INTEGER, 'Name' TEXT, 'StartTime' TEXT, 'EndTime' TEXT, 'isDayTime' INTEGER, 'Temperature' INTEGER," +
+        " 'TempUnit' TEXT, 'WindSpeed' TEXT, 'WindDirection' TEXT, 'Icon' TEXT, 'ShortForecast' TEXT, 'DetailedForecast' TEXT, 'Alert' TEXT);"
         
         guard sqlite3_exec(db, queryString, nil, nil, nil) == SQLITE_OK else {
             let errmsg = String(cString: sqlite3_errmsg(db)!)
@@ -118,7 +131,7 @@ class DbMgr {
             return
         }
                 
-        sqlite3_close(db)
+        // sqlite3_close(db)
         print("Table created")
     }
 }

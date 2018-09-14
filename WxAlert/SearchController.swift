@@ -142,10 +142,13 @@ extension SearchController : UISearchBarDelegate {
         cityList.removeAll()
         
         let item = searchTerm
+        
+        // Create an instance of the cities.sqlite database
         let dbmgr = DbMgr.sharedInstance
         let dataItem = dbmgr.getSearchList(searchTerm: item)
         
         filteredList = dataItem.filteredList
         cityList = dataItem.cityList
+        
     }
 }

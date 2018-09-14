@@ -13,9 +13,9 @@ class NetworkMgr {
     static let sharedInstance = NetworkMgr()
     private init() {}
     
-    func getForecastJSON(url: String) {
+    func getForecastJSON(city: String, state: String) -> Void {
         
-        let urlString = url
+        let urlString = FORECAST_URL
         guard let forecastUrl = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: forecastUrl) { (data, response, error) in
@@ -26,10 +26,13 @@ class NetworkMgr {
         
             do {
                 let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
+                
                 if let weatherForecast = WeekForecast(JSON: jsonData) {
-                    let forecastDataMgr = ForecastDataMgr(forecast: weatherForecast)
-                    forecastDataMgr.writeForecast()
-                    print("do block: \(weatherForecast.validTimes)")
+                    let dbTable = city.lowercased() + "_" + state.lowercased()
+                   // let forecastDataMgr = ForecastDataMgr(forecast: weatherForecast, table: dbTable)
+                   // forecastDataMgr.writeForecast()
+                   // print("do block: \(weatherForecast.validTimes)")
+                    print("DbTable name: \(dbTable)")
                }
             } catch let jsonError {
                 print(jsonError)

@@ -10,8 +10,8 @@ import Foundation
 
 struct WeekForecast {
     
-    let validTimes: String
-    let periods: [DayForecast]
+    private(set) var validTimes: String = EPOCH_TIME_REFERENCE           // readonly property
+    private(set) var periods: [DayForecast] = []                         // readonly property
     
     init(validTimes: String, periods: [DayForecast]) {
         self.validTimes = validTimes
@@ -36,6 +36,6 @@ extension WeekForecast: JSONDecodable {
             }
         }
         self.periods = buffer
-        }
     }
+}
 

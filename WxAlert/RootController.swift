@@ -53,11 +53,12 @@ class RootController: UITabBarController, CityProtocol {
         print("SelectedCity name: \(selectedCity.name) index: \(selectedCity.arrayIndex) timeFrame: \(selectedCity.timeFrame.rawValue)")
         
         // Add a new database table to cities_usa.sqlite
-        let dbmgr = DbMgr.sharedInstance
-        dbmgr.createDbTable(name: city.cityName, state: city.region.state)
+        //let dbmgr = DbMgr.sharedInstance
+        //dbmgr.createDbTable(city: city.cityName, state: city.region.state)
         
         let networkmgr = NetworkMgr.sharedInstance
-        networkmgr.getForecastJSON(url: FORECAST_URL)
+       // networkmgr.getForecastJSON(city: city.cityName, state: city.region.state)
+        
     }
     
     func showCities() {
