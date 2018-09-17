@@ -15,6 +15,11 @@ class NetworkMgr {
     
     func getForecastJSON(city: String, state: String) -> Void {
         
+        // TODO - Formulate URL for Wilmington, NC
+        // https://api.weather.gov/points/34.2257,-77.944710
+        // properties -> forecast
+        // properties -> forecastHourly
+        
         let urlString = FORECAST_URL
         guard let forecastUrl = URL(string: urlString) else { return }
         
@@ -28,11 +33,12 @@ class NetworkMgr {
                 let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
                 
                 if let weatherForecast = WeekForecast(JSON: jsonData) {
-                    let dbTable = city.lowercased() + "_" + state.lowercased()
-                   // let forecastDataMgr = ForecastDataMgr(forecast: weatherForecast, table: dbTable)
-                   // forecastDataMgr.writeForecast()
-                   // print("do block: \(weatherForecast.validTimes)")
-                    print("DbTable name: \(dbTable)")
+                    var tableName: String = city.replacingOccurrences(of: " ", with: "_") + "_" + state
+                    tableName = tableName.lowercased()
+                    
+                    let forecastDataMgr = ForecastDataMgr(forecast: weatherForecast, table: tableName)
+                    forecastDataMgr.writeForecast()
+                    print("DbTable name: \(tableName)")
                }
             } catch let jsonError {
                 print(jsonError)

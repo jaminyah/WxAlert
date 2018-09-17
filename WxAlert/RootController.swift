@@ -13,6 +13,7 @@ class RootController: UITabBarController, CityProtocol {
     static let sharedInstance = RootController()
     var dataManager: DataManager?
     var selectedCity = SelectedCity()
+    let dbmgr = DbMgr.sharedInstance
     
     // Inject DataManager dependency into root controller singleton
     
@@ -47,18 +48,21 @@ class RootController: UITabBarController, CityProtocol {
         if let cityCount = dataManager?.cityCount() {
             selectedCity.arrayIndex = cityCount - 1
         }
+        
+        // Debug info
         selectedCity.name = city.cityName
         selectedCity.state = city.region.state
-        
-        print("SelectedCity name: \(selectedCity.name) index: \(selectedCity.arrayIndex) timeFrame: \(selectedCity.timeFrame.rawValue)")
+        print("Selected City name: \(selectedCity.name) index: \(selectedCity.arrayIndex) timeFrame: \(selectedCity.timeFrame.rawValue)")
         
         // Add a new database table to cities_usa.sqlite
-        //let dbmgr = DbMgr.sharedInstance
-        //dbmgr.createDbTable(city: city.cityName, state: city.region.state)
+        var tableName: String = city.cityName.replacingOccurrences(of: " ", with: "_")
+        tableName = tableName + "_" + city.region.state
+        dbmgr.dropTable(name: tableName.lowercased())
+        dbmgr.createTable(name: tableName.lowercased())
         
         let networkmgr = NetworkMgr.sharedInstance
-       // networkmgr.getForecastJSON(city: city.cityName, state: city.region.state)
-        
+        networkmgr.getForecastJSON(city: city.cityName, state: city.region.state)
+
     }
     
     func showCities() {
