@@ -12,7 +12,7 @@ private let reuseIdentifier = "WxCell"
 
 class WxCollectionController: UICollectionViewController {
     
-    
+    var cellViewModel = WxCellVM()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +59,7 @@ class WxCollectionController: UICollectionViewController {
         
         // Configure the cell
         cell?.backgroundColor = randomColor()
+        //cell?.dayLabel = cellViewModel?.day
         return cell!
     }
     
