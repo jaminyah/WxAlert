@@ -189,11 +189,16 @@ class DbMgr {
         
         var cellModel = CellModel()
         while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
-            cellModel.day = String(cString:sqlite3_column_text(sqlite3_stmt, 2)!)
-            //let day = cellModel.day
-            //print("cellModel.day: \(day)")
+            let day = String(cString:sqlite3_column_text(sqlite3_stmt, 2)!)
+ 
+            switch day {
+            case "This Afternoon" :
+                cellModel.day = "Today"
+            default:
+                cellModel.day = String(day.prefix(3))
+            }
             
-            print("cellModel.day: \(cellModel.day)")
+            //print("cellModel.day: \(cellModel.day)")
             cellModel.hiTemp = String(cString:sqlite3_column_text(sqlite3_stmt, 6))
             cellModel.windSpeed = String(cString:sqlite3_column_text(sqlite3_stmt, 8))
             cellModel.windDirection = String(cString:sqlite3_column_text(sqlite3_stmt, 9))
@@ -202,8 +207,6 @@ class DbMgr {
             cellModel.alertIcon = #imageLiteral(resourceName: "alert")
  
             forecast.append(cellModel)
-            
-
         }
         sqlite3_finalize(sqlite3_stmt)
         return forecast
