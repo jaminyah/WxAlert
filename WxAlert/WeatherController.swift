@@ -12,21 +12,22 @@ class WeatherController: UIViewController {
     
     @IBOutlet weak var alertCollection: UICollectionView!
     @IBOutlet weak var cityCollection: UICollectionView!
-    @IBOutlet weak var wxCollection: UICollectionView!
+    @IBOutlet weak var wxCollection:  UICollectionView!
     @IBOutlet weak var cityLabel: UILabel!
     
     let rootController = RootController.sharedInstance
     var delegate: CityProtocol?
     
     let alertCollectionController = AlertCollectionController()
-    let wxCollectionController = WxCollectionController()
+    lazy var wxCollectionController = WxCollectionController()
     //let cityCollectionController = CityCollectionController()
 
     var selectedCity: SelectedCity!
     
     override func viewDidLoad() {
+        print("Weather Controller")
+        
         super.viewDidLoad()
-
         self.delegate = rootController
         
         // Do any additional setup after loading the view.
@@ -37,11 +38,15 @@ class WeatherController: UIViewController {
         //cityCollection.dataSource = cityCollectionController
         //cityCollection.delegate = cityCollectionController
         
-        wxCollection.dataSource = wxCollectionController
-        wxCollection.delegate = wxCollectionController
+      wxCollection.dataSource = wxCollectionController
+      wxCollection.delegate = wxCollectionController
         
         // hide views
         alertCollection.isHidden = false
+        
+        // sqlite
+        //let dayforecast = forecastElements()
+        //print(dayforecast[0].day)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,7 +59,12 @@ class WeatherController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    func forecastElements() -> [CellModel] {
+        let cellViewModel = WxCellVM()
+        cellViewModel.fetchForecast()
+        return cellViewModel.cellModels
+    }
+    
     /*
     // MARK: - Navigation
 

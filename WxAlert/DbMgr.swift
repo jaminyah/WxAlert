@@ -19,8 +19,10 @@ class DbMgr {
         let projectBundle = Bundle.main
         let resourcePath = projectBundle.path(forResource: "cities_usa", ofType: "sqlite")
         
-        guard (sqlite3_open(resourcePath!, &dbConnection) == SQLITE_OK) else {
-            print("Error opening database.")
+        let flags = SQLITE_OPEN_READWRITE
+        guard (sqlite3_open_v2(resourcePath!, &dbConnection, flags, nil) == SQLITE_OK) else {
+            let errmsg = String(cString: sqlite3_errmsg(sqlite3_db)!)
+            print("Error openning db : \(errmsg)")
             return
         }
         sqlite3_db = dbConnection
@@ -97,7 +99,7 @@ class DbMgr {
         
         let queryString = "CREATE TABLE IF NOT EXISTS \(name) " +
             " ('Id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, 'Number' INTEGER, 'Name' TEXT, 'StartTime' TEXT, 'EndTime' TEXT, 'isDayTime' INTEGER, 'Temperature' INTEGER," +
-        " 'TempUnit' TEXT, 'WindSpeed' TEXT, 'WindDirection' TEXT, 'Icon' TEXT, 'ShortForecast' TEXT, 'DetailedForecast' TEXT, 'Alert' TEXT);"
+        " 'TempUnit' TEXT, 'TempTrend' TEXT, 'WindSpeed' TEXT, 'WindDirection' TEXT, 'Icon' TEXT, 'ShortForecast' TEXT, 'DetailedForecast' TEXT, 'Alert' TEXT);"
         
         guard sqlite3_exec(sqlite3_db, queryString, nil, nil, nil) == SQLITE_OK else {
             let errmsg = String(cString: sqlite3_errmsg(sqlite3_db)!)
@@ -127,13 +129,19 @@ class DbMgr {
         
         for day in weather {
             let number = day.number
-            let name = day.name.cString(using: String.Encoding.utf8)
-            let startTime = day.startTime.cString(using: String.Encoding.utf8)
-            let endTime = day.endTime.cString(using: String.Encoding.utf8)
+           // let name = day.name.cString(using: String.Encoding.utf8)
+            let name = day.name
+            print("insertSevenDay: \(name)")
+            let startTime = day.startTime
+            print("insertSevenDay: \(day.startTime)")
+            let endTime = day.endTime
+            print("insertSevenDay: \(day.endTime)")
             let isdaytime = day.isDaytime
+            print("insertSevenDay: \(isdaytime)")
             let dayTime = (isdaytime == true) ? 1 : 0             // Convert Bool to Integer for SQLite
             let temperature = day.temperature
-            let temperatureUnit = day.temperatureUnit.cString(using: String.Encoding.utf8)
+            let temperatureUnit = day.temperatureUnit
+            print("insertSevenDay: \(temperatureUnit)")
             let temperatureTrend = day.temperatureTrend.cString(using: String.Encoding.utf8)
             let windSpeed = day.windSpeed.cString(using: String.Encoding.utf8)
             let windDirection = day.windDirection.cString(using: String.Encoding.utf8)
@@ -141,11 +149,12 @@ class DbMgr {
             let shortForecast = day.shortForecast.cString(using: String.Encoding.utf8)
             let detailedForecast = day.detailedForecast.cString(using: String.Encoding.utf8)
             
-            let statement = "INSERT INTO '" + table + "' (Id, Number, Name, StartTime, EndTime, isDayTime, Temperature, " +
-                " TempUnit, WindSpeed, WindDirection, Icon, ShortForecast, DetailedForecast)" +
-                " VALUES ('\(number)', '\(String(describing:name))', '\(String(describing:startTime))', '\(String(describing:endTime))', '\(dayTime)', " +
-                " '\(temperature)', '\(String(describing:temperatureUnit))', '\(String(describing:temperatureTrend))', '\(String(describing:windSpeed))', " +
-            " '\(String(describing:windDirection))', '\(String(describing:icon))', '\(String(describing:shortForecast))', '\(String(describing:detailedForecast))');"
+            let statement = "INSERT INTO '" + table + "' (Number, Name, StartTime, EndTime, isDayTime, Temperature, " +
+                " TempUnit, TempTrend, WindSpeed, WindDirection, Icon, ShortForecast, DetailedForecast)" +
+                " VALUES ('\(number)', '\(String(describing:name))', '\(String(describing:startTime))', '\(String(describing:endTime))', " +
+                " '\(dayTime)', '\(temperature)', '\(String(describing:temperatureUnit))', '\(String(describing:temperatureTrend))',  " +
+                " '\(String(describing:windSpeed))', '\(String(describing:windDirection))', '\(String(describing:icon))', " +
+                " '\(String(describing:shortForecast))', '\(String(describing:detailedForecast))');"
             
             if sqlite3_prepare_v2(sqlite3_db, statement, -1, &sqlite3_stmt, nil) != SQLITE_OK {
                 let errmsg = String(cString: sqlite3_errmsg(sqlite3_db)!)
@@ -164,6 +173,46 @@ class DbMgr {
             print("Error finalizing prepared statement: \(errmsg)")
         }
         sqlite3_stmt = nil
+    }
+    
+    func readForecast(from: String, sql: String) -> [CellModel] {
+        // TODO - Read sqlite, populate properties
+        var forecast: [CellModel] = []
+        
+        var sqlite3_stmt: OpaquePointer? = nil
+        let statement = sql
+        
+        if sqlite3_prepare_v2(sqlite3_db, statement, -1, &sqlite3_stmt, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(sqlite3_db)!)
+            print("Error reading sqlite data: \(errmsg)")
+        }
+        
+        var cellModel = CellModel()
+        while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
+            cellModel.day = String(cString:sqlite3_column_text(sqlite3_stmt, 2)!)
+            //let day = cellModel.day
+            //print("cellModel.day: \(day)")
+            
+            print("cellModel.day: \(cellModel.day)")
+            cellModel.hiTemp = String(cString:sqlite3_column_text(sqlite3_stmt, 6))
+            cellModel.windSpeed = String(cString:sqlite3_column_text(sqlite3_stmt, 8))
+            cellModel.windDirection = String(cString:sqlite3_column_text(sqlite3_stmt, 9))
+            cellModel.rain = String(cString:sqlite3_column_text(sqlite3_stmt, 11))
+            cellModel.wxIcon = #imageLiteral(resourceName: "Sun")   // String(cString:sqlite3_column_text(sqlite3_stmt, 10))
+            cellModel.alertIcon = #imageLiteral(resourceName: "alert")
+ 
+            forecast.append(cellModel)
+            
+
+        }
+        sqlite3_finalize(sqlite3_stmt)
+        return forecast
+    }
+    
+   private func readLowTemperature(from: String) -> [String] {
+        // TODO - Read sqlite night-time temperature, set low temperature property
+        let temp = [String]()
+        return temp
     }
     
 } // DbMgr

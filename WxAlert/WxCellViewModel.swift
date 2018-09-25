@@ -9,17 +9,11 @@
 import Foundation
 import UIKit
 
-struct WxCellVM {
+class WxCellVM {
     
-    let dbmgr = DbMgr.sharedInstance
-    private (set) var day: String = "Mon"
-    private (set) var wxIcon: UIImage = #imageLiteral(resourceName: "Sun")
-    private (set) var alertIcon: UIImage = #imageLiteral(resourceName: "alert")
-    private (set) var rain: String = "0 %"
-    private (set) var windSpeed: String = "0 mph"
-    private (set) var windDirection: String = "N"
-    private (set) var hiTemp: String = "0 F"
-    private (set) var lowTemp: String = "0 F"
+    var dbmgr = DbMgr.sharedInstance
+    var cellModels = [CellModel]()
+    var lowTemperature = [String]()
     
     private var timeFrame: Int!
     private var table: String
@@ -33,39 +27,37 @@ struct WxCellVM {
         let selectedCity = delegate?.getSelectedCity()
         timeFrame = selectedCity?.timeFrame.hashValue
         
-        self.table = selectedCity!.name.replacingOccurrences(of: " ", with: "_")
+        //var tableName: String = city.cityName.replacingOccurrences(of: " ", with: "_")
+        //tableName = tableName + "_" + city.region.state
+        self.table = selectedCity!.name.replacingOccurrences(of: " ", with: "_") + "_" + selectedCity!.state
     }
     
     func fetchForecast() ->Void {
+        print("fetchForecast: read from sqlite ...")
+        
         // TODO - Populate properties from sqlite db
         // read day, night, day-night settings from delegate
         var query: String
         switch (timeFrame) {
         case 0:
-            query = "SELECT Name, Temperatrue, WindSpeed, WindDirection, Icon, ShortForecast FROM \(self.table) WHERE isDayTime == 1;"
-            setData(sql: query)
+           // query = "SELECT Name, Temperature, WindSpeed, WindDirection, Icon, ShortForecast FROM \(self.table) WHERE isDayTime == 1;"
+            query = "SELECT * FROM \(self.table) WHERE isDayTime == 1;"
+            cellModels = dbmgr.readForecast(from: self.table.lowercased(), sql: query)
             
-            let query2 = "SELECT Temperature FROM \(self.table) WHERE isDayTime == 0"
-            setLowTemperature(sql: query2)
+            //let query2 = "SELECT Temperature FROM \(self.table.lowercased()) WHERE isDayTime == 0"
+           // lowTemperature = dbmgr.readLowTemperature(from: query2)
             
         case 1:
-            query = "SELECT Name, Temperatrue, WindSpeed, WindDirection, Icon, ShortForecast FROM \(self.table);"
-            setData(sql: query)
+            query = "SELECT Name, Temperature, WindSpeed, WindDirection, Icon, ShortForecast FROM \(self.table);"
+            cellModels = dbmgr.readForecast(from: self.table.lowercased(), sql: query)
         
         case 2:
-            query = "SELECT Name, Temperatrue, WindSpeed, WindDirection, Icon, ShortForecast FROM \(self.table) WHERE isDayTime == 0;"
-            setData(sql: query)
+            query = "SELECT Name, Temperature, WindSpeed, WindDirection, Icon, ShortForecast FROM \(self.table) WHERE isDayTime == 0;"
+            cellModels = dbmgr.readForecast(from: table.lowercased(), sql: query)
             
         default:
             print("Time Frame error")
         }
     }
     
-    private func setData(sql: String) {
-        // TODO - Read sqlite, populate properties
-    }
-    
-    private func setLowTemperature(sql: String) {
-        // TODO - Read sqlite night-time temperature, set low temperature property
-    }
-}
+} // WxCellVM

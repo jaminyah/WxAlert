@@ -10,26 +10,38 @@ import UIKit
 
 private let reuseIdentifier = "WxCell"
 
-class WxCollectionController: UICollectionViewController {
+class WxCollectionController: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var cellViewModel = WxCellVM()
+    var viewModel: WxCellVM
+
+   override init() {
+    print("WxCollectionController init.")
+        let cellViewModel = WxCellVM()
+        cellViewModel.fetchForecast()
+        self.viewModel = cellViewModel
+    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+   /* override func viewDidLoad() {
+        print("WxCollectionController")
+        
+       //super.viewDidLoad()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+      //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         // Do any additional setup after loading the view.
+        cellViewModel.fetchForecast()
     }
     
     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        //super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+ */
     
     /*
      // MARK: - Navigation
@@ -43,32 +55,43 @@ class WxCollectionController: UICollectionViewController {
     
     // MARK: UICollectionViewDataSource
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 10
+        //let dayForecast = forecastElements()
+        
+        //return 10
+        return viewModel.cellModels.count
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? WxViewCell
+        
+        //let dayForecast = forecastElements()
         
         // Configure the cell
         cell?.backgroundColor = randomColor()
-        //cell?.dayLabel = cellViewModel?.day
+        cell?.dayLabel.text = viewModel.cellModels[indexPath.row].day
         return cell!
     }
     
     // custom function to generate a random UIColor
-    func randomColor() -> UIColor{
+    func randomColor() -> UIColor {
         let red = CGFloat(drand48())
         let green = CGFloat(drand48())
         let blue = CGFloat(drand48())
         return UIColor(red: red / 255, green: green, blue: blue, alpha: 1.0)
+    }
+    
+    func forecastElements() -> [CellModel] {
+        let cellViewModel = WxCellVM()
+        cellViewModel.fetchForecast()
+        return cellViewModel.cellModels
     }
     
     // MARK: UICollectionViewDelegate
