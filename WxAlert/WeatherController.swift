@@ -18,7 +18,7 @@ class WeatherController: UIViewController {
     let rootController = RootController.sharedInstance
     var delegate: CityProtocol?
     
-    let alertCollectionController = AlertCollectionController()
+    lazy var alertCollectionController = AlertCollectionController()
     lazy var wxCollectionController = WxCollectionController()
     //let cityCollectionController = CityCollectionController()
 
@@ -44,9 +44,7 @@ class WeatherController: UIViewController {
         // hide views
         alertCollection.isHidden = false
         
-        // sqlite
-        //let dayforecast = forecastElements()
-        //print(dayforecast[0].day)
+ 
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,12 +57,7 @@ class WeatherController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func forecastElements() -> [CellModel] {
-        let cellViewModel = WxCellVM()
-        cellViewModel.fetchForecast()
-        return cellViewModel.cellModels
-    }
-    
+ 
     /*
     // MARK: - Navigation
 

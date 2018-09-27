@@ -142,12 +142,12 @@ class DbMgr {
             let temperature = day.temperature
             let temperatureUnit = day.temperatureUnit
             print("insertSevenDay: \(temperatureUnit)")
-            let temperatureTrend = day.temperatureTrend.cString(using: String.Encoding.utf8)
-            let windSpeed = day.windSpeed.cString(using: String.Encoding.utf8)
-            let windDirection = day.windDirection.cString(using: String.Encoding.utf8)
-            let icon = day.icon.cString(using: String.Encoding.utf8)
-            let shortForecast = day.shortForecast.cString(using: String.Encoding.utf8)
-            let detailedForecast = day.detailedForecast.cString(using: String.Encoding.utf8)
+            let temperatureTrend = day.temperatureTrend
+            let windSpeed = day.windSpeed
+            let windDirection = day.windDirection
+            let icon = day.icon
+            let shortForecast = day.shortForecast
+            let detailedForecast = day.detailedForecast
             
             let statement = "INSERT INTO '" + table + "' (Number, Name, StartTime, EndTime, isDayTime, Temperature, " +
                 " TempUnit, TempTrend, WindSpeed, WindDirection, Icon, ShortForecast, DetailedForecast)" +
@@ -175,9 +175,10 @@ class DbMgr {
         sqlite3_stmt = nil
     }
     
-    func readForecast(from: String, sql: String) -> [CellModel] {
+    func DayForecast(from: String, sql: String) -> [CellModel] {
         // TODO - Read sqlite, populate properties
         var forecast: [CellModel] = []
+        let tableName = from
         
         var sqlite3_stmt: OpaquePointer? = nil
         let statement = sql
@@ -199,23 +200,118 @@ class DbMgr {
             }
             
             //print("cellModel.day: \(cellModel.day)")
-            cellModel.hiTemp = String(cString:sqlite3_column_text(sqlite3_stmt, 6))
-            cellModel.windSpeed = String(cString:sqlite3_column_text(sqlite3_stmt, 8))
-            cellModel.windDirection = String(cString:sqlite3_column_text(sqlite3_stmt, 9))
-            cellModel.rain = String(cString:sqlite3_column_text(sqlite3_stmt, 11))
-            cellModel.wxIcon = #imageLiteral(resourceName: "Sun")   // String(cString:sqlite3_column_text(sqlite3_stmt, 10))
+            cellModel.hiTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
+            cellModel.windSpeed = String(cString:sqlite3_column_text(sqlite3_stmt, 9)!)
+            print("windSpeed: \(cellModel.windSpeed)")
+            
+            cellModel.windDirection = String(cString:sqlite3_column_text(sqlite3_stmt, 10)!)
+           // cellModel.rain = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
+            cellModel.wxIcon = #imageLiteral(resourceName: "Sun")   // String(cString:sqlite3_column_text(sqlite3_stmt, 11))
             cellModel.alertIcon = #imageLiteral(resourceName: "alert")
  
+            forecast.append(cellModel)
+        }
+        
+        let query2 = "SELECT * FROM \(tableName) WHERE isDayTime == 0;"
+        forecast = addNightlyLows(sql: query2, models: forecast)
+        
+        sqlite3_finalize(sqlite3_stmt)
+        return forecast
+    }
+    
+    private func addNightlyLows(sql: String, models: [CellModel]) -> [CellModel] {
+        
+        var forecast = models
+        var sqlite3_stmt: OpaquePointer? = nil
+        let statement = sql
+        
+        if sqlite3_prepare_v2(sqlite3_db, statement, -1, &sqlite3_stmt, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(sqlite3_db)!)
+            print("Error reading sqlite data: \(errmsg)")
+        }
+        
+        var dailyLows: [String] = []
+        var lowTemp: String = ""
+        while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
+
+            lowTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
+            print("lowTemp: \(lowTemp)")
+            dailyLows.append(lowTemp)
+        }
+        sqlite3_finalize(sqlite3_stmt)
+        
+        var index = 0
+        while index < forecast.count {
+            print("dailyLows: \(dailyLows[index])")
+            forecast[index].lowTemp = dailyLows[index]
+            index += 1
+        }
+        return forecast
+    }
+    
+    func DayNightForecast(sql: String) -> [CellModel] {
+        // TODO - Read sqlite, populate properties
+        var forecast: [CellModel] = []
+        
+        var sqlite3_stmt: OpaquePointer? = nil
+        let statement = sql
+        
+        if sqlite3_prepare_v2(sqlite3_db, statement, -1, &sqlite3_stmt, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(sqlite3_db)!)
+            print("Error reading sqlite data: \(errmsg)")
+        }
+        
+        var cellModel = CellModel()
+        while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
+            cellModel.day = String(cString:sqlite3_column_text(sqlite3_stmt, 2)!)
+            
+            let isDaytime = sqlite3_column_int(sqlite3_stmt, 5)
+            if isDaytime == 1 {
+                cellModel.hiTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
+                cellModel.lowTemp = nil
+            } else {
+                cellModel.hiTemp = nil
+                cellModel.lowTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
+            }
+
+            cellModel.windSpeed = String(cString:sqlite3_column_text(sqlite3_stmt, 9))
+            cellModel.windDirection = String(cString:sqlite3_column_text(sqlite3_stmt, 10))
+            cellModel.rain = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
+            cellModel.wxIcon = #imageLiteral(resourceName: "Sun")   // String(cString:sqlite3_column_text(sqlite3_stmt, 11))
+            cellModel.alertIcon = #imageLiteral(resourceName: "alert")
+            
             forecast.append(cellModel)
         }
         sqlite3_finalize(sqlite3_stmt)
         return forecast
     }
     
-   private func readLowTemperature(from: String) -> [String] {
-        // TODO - Read sqlite night-time temperature, set low temperature property
-        let temp = [String]()
-        return temp
+    func NightForecast(sql: String) -> [CellModel] {
+        // TODO - Read sqlite, populate properties
+        var forecast: [CellModel] = []
+        
+        var sqlite3_stmt: OpaquePointer? = nil
+        let statement = sql
+        
+        if sqlite3_prepare_v2(sqlite3_db, statement, -1, &sqlite3_stmt, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(sqlite3_db)!)
+            print("Error reading sqlite data: \(errmsg)")
+        }
+        
+        var cellModel = CellModel()
+        while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
+            cellModel.day = String(cString:sqlite3_column_text(sqlite3_stmt, 2)!)
+            cellModel.hiTemp = nil
+            cellModel.lowTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
+            cellModel.windSpeed = String(cString:sqlite3_column_text(sqlite3_stmt, 9))
+            cellModel.windDirection = String(cString:sqlite3_column_text(sqlite3_stmt, 10))
+            cellModel.rain = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
+            cellModel.wxIcon = #imageLiteral(resourceName: "Sun")   // String(cString:sqlite3_column_text(sqlite3_stmt, 11))
+            cellModel.alertIcon = #imageLiteral(resourceName: "alert")
+            
+            forecast.append(cellModel)
+        }
+        sqlite3_finalize(sqlite3_stmt)
+        return forecast
     }
-    
 } // DbMgr

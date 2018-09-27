@@ -17,4 +17,14 @@ class WxViewCell: UICollectionViewCell {
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var highTempLabel: UILabel!
     @IBOutlet weak var lowTempLabel: UILabel!
+    
+    func displayWeather(forecast: CellModel ) {
+        dayLabel.text = forecast.day
+        // weatherImage
+        // alertImage
+        // rainChanceLabel
+        windSpeedLabel.text = forecast.windSpeed
+        highTempLabel.text = forecast.hiTemp
+        lowTempLabel.text = forecast.lowTemp
+    }
 }
