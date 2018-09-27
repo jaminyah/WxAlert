@@ -50,6 +50,9 @@ class WeatherController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         selectedCity = self.delegate?.getSelectedCity()
         cityLabel.text = selectedCity.name + ", " + selectedCity.state
+        wxCollectionController.viewModel = WxCellVM()
+        wxCollection.reloadData()
+        
     }
 
     override func didReceiveMemoryWarning() {

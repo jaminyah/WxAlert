@@ -14,7 +14,8 @@ class WxCollectionController: NSObject, UICollectionViewDataSource, UICollection
     
     var viewModel: WxCellVM
 
-   override init() {
+   
+    override init() {
         print("WxCollectionController init.")
         self.viewModel = WxCellVM()
     }

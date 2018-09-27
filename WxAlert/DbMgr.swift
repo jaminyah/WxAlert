@@ -176,7 +176,8 @@ class DbMgr {
     }
     
     func DayForecast(from: String, sql: String) -> [CellModel] {
-        // TODO - Read sqlite, populate properties
+        print("DayForecast")
+        
         var forecast: [CellModel] = []
         let tableName = from
         
@@ -235,14 +236,14 @@ class DbMgr {
         while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
 
             lowTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
-            print("lowTemp: \(lowTemp)")
+         //   print("lowTemp: \(lowTemp)")
             dailyLows.append(lowTemp)
         }
         sqlite3_finalize(sqlite3_stmt)
         
         var index = 0
         while index < forecast.count {
-            print("dailyLows: \(dailyLows[index])")
+           // print("dailyLows: \(dailyLows[index])")
             forecast[index].lowTemp = dailyLows[index]
             index += 1
         }
@@ -250,7 +251,8 @@ class DbMgr {
     }
     
     func DayNightForecast(sql: String) -> [CellModel] {
-        // TODO - Read sqlite, populate properties
+        print("DayNightForecast")
+        
         var forecast: [CellModel] = []
         
         var sqlite3_stmt: OpaquePointer? = nil
@@ -287,7 +289,8 @@ class DbMgr {
     }
     
     func NightForecast(sql: String) -> [CellModel] {
-        // TODO - Read sqlite, populate properties
+        print("NightForecast")
+        
         var forecast: [CellModel] = []
         
         var sqlite3_stmt: OpaquePointer? = nil

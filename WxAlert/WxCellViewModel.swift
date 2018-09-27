@@ -15,21 +15,22 @@ class WxCellVM {
     var cellModels: [CellModel] = []
     
     init() {
+        self.cellModels = fetchForecast()
+    }
+    
+    func fetchForecast() ->[CellModel] {
+        print("fetchForecast: read from sqlite ...")
+        
         var delegate: CityProtocol?
         let rootController = RootController.sharedInstance
         delegate = rootController
         
         let selectedCity = delegate?.getSelectedCity()
         let timePeriod = selectedCity?.timeFrame.hashValue
+        print("timePeriod: \(timePeriod!)")
         
-        var tableName = selectedCity!.name.replacingOccurrences(of: " ", with: "_") + "_" + selectedCity!.state
-        tableName = tableName.lowercased()
-        
-        self.cellModels = fetchForecast(timeFrame: timePeriod!, table: tableName)
-    }
-    
-    private func fetchForecast(timeFrame: Int, table: String) ->[CellModel] {
-        print("fetchForecast: read from sqlite ...")
+        var table = selectedCity!.name.replacingOccurrences(of: " ", with: "_") + "_" + selectedCity!.state
+        table = table.lowercased()
         
         // TODO - Populate properties from sqlite db
         // read day = 0, day+night = 1, night = 2 settings from delegate
@@ -37,7 +38,7 @@ class WxCellVM {
         var weatherData: [CellModel] = []
         var query: String
         
-        switch (timeFrame) {
+        switch (timePeriod!) {
         case 0:
             query = "SELECT * FROM \(table) WHERE isDayTime == 1;"
             weatherData = dbmgr.DayForecast(from: table, sql: query)
