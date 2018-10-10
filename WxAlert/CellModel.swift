@@ -12,10 +12,14 @@ import UIKit
 struct CellModel {
     var day: String = "Mon"
     var wxIcon: UIImage = #imageLiteral(resourceName: "Sun")
+    var wxText: String = "Fair/clear"
+    var wxChance: String? = "0 %"
     var alertIcon: UIImage? = #imageLiteral(resourceName: "alert")
-    var rain: String? = nil
     var windSpeed: String = "0 mph"
     var windDirection: String? = "N"
     var hiTemp: String? = nil
     var lowTemp: String? = nil
+    var shortForecast: String = ""
+    var detailedForecast: String = ""
+
 }

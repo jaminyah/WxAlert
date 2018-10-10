@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class DbMgr {
     
@@ -278,8 +279,13 @@ class DbMgr {
 
             cellModel.windSpeed = String(cString:sqlite3_column_text(sqlite3_stmt, 9))
             cellModel.windDirection = String(cString:sqlite3_column_text(sqlite3_stmt, 10))
-            cellModel.rain = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
-            cellModel.wxIcon = #imageLiteral(resourceName: "Sun")   // String(cString:sqlite3_column_text(sqlite3_stmt, 11))
+            
+            let iconString = String(cString:sqlite3_column_text(sqlite3_stmt, 11))
+            let components = parse(icon: iconString)
+            
+            cellModel.detailedForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 12))
+            cellModel.detailedForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
+            cellModel.wxIcon = #imageLiteral(resourceName: "Sun")   //
             cellModel.alertIcon = #imageLiteral(resourceName: "alert")
             
             forecast.append(cellModel)
@@ -308,7 +314,9 @@ class DbMgr {
             cellModel.lowTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
             cellModel.windSpeed = String(cString:sqlite3_column_text(sqlite3_stmt, 9))
             cellModel.windDirection = String(cString:sqlite3_column_text(sqlite3_stmt, 10))
-            cellModel.rain = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
+            
+            cellModel.detailedForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 12))
+            cellModel.detailedForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
             cellModel.wxIcon = #imageLiteral(resourceName: "Sun")   // String(cString:sqlite3_column_text(sqlite3_stmt, 11))
             cellModel.alertIcon = #imageLiteral(resourceName: "alert")
             
@@ -317,4 +325,12 @@ class DbMgr {
         sqlite3_finalize(sqlite3_stmt)
         return forecast
     }
+    
+    private func parse(icon: String) -> IconModel {
+        
+ 
+        // TODO: Parse icon string to get icon, % and description
+        return 
+    }
+    
 } // DbMgr
