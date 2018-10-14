@@ -217,28 +217,28 @@ class DbMgr {
             switch (cellModel.windDirection!) {
                 case "N":
                     print("N")
-                    cellModel.windIcon = #imageLiteral(resourceName: "wind_south")
+                    cellModel.windIcon = #imageLiteral(resourceName: "wind_north")
                 case "NE", "NNE", "ENE":
                    // print("NE | NNE | ENE")
-                    cellModel.windIcon = #imageLiteral(resourceName: "wind_southwest")
+                    cellModel.windIcon = #imageLiteral(resourceName: "wind_northeast")
                 case "NW", "NNW", "WNW":
                    // print("NE | NNW | WNW")
-                    cellModel.windIcon = #imageLiteral(resourceName: "wind_southeast")
+                    cellModel.windIcon = #imageLiteral(resourceName: "wind_northwest")
                 case "E":
                    // print("E")
-                    cellModel.windIcon = #imageLiteral(resourceName: "wind_west")
+                    cellModel.windIcon = #imageLiteral(resourceName: "wind_east")
                 case "SE", "ESE", "SSE":
                    // print("SE | ESE | SSE")
-                    cellModel.windIcon = #imageLiteral(resourceName: "wind_northwest")
+                    cellModel.windIcon = #imageLiteral(resourceName: "wind_southeast")
                 case "S":
                    // print("S")
-                    cellModel.windIcon = #imageLiteral(resourceName: "wind_north")
+                    cellModel.windIcon = #imageLiteral(resourceName: "wind_south")
                 case "SW", "SSW", "WSW":
                    // print("SW | SSW | WSW")
-                    cellModel.windIcon = #imageLiteral(resourceName: "wind_northeast")
+                    cellModel.windIcon = #imageLiteral(resourceName: "wind_southwest")
                 case "W":
                    // print("W")
-                    cellModel.windIcon = #imageLiteral(resourceName: "wind_east")
+                    cellModel.windIcon = #imageLiteral(resourceName: "wind_west")
                 default:
                    // print("Set icon to nil")
                     cellModel.windIcon = nil
