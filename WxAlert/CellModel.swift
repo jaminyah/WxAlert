@@ -11,6 +11,7 @@ import UIKit
 
 struct CellModel {
     var day: String = "Mon"
+    var dayNightIcon: UIImage = #imageLiteral(resourceName: "sun_icon")
     var wxIcon: UIImage = #imageLiteral(resourceName: "Sun")
     var wxText: String = "Fair/clear"
     var wxChance: String? = "0 %"

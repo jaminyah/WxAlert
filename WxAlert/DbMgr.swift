@@ -201,6 +201,9 @@ class DbMgr {
                 cellModel.day = String(day.prefix(3))
             }
             
+            // Set dayNight icon
+            cellModel.dayNightIcon = #imageLiteral(resourceName: "sun_icon")
+            
             //print("cellModel.day: \(cellModel.day)")
             cellModel.hiTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
             
@@ -306,9 +309,11 @@ class DbMgr {
             if isDaytime == 1 {
                 cellModel.hiTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
                 cellModel.lowTemp = nil
+                cellModel.dayNightIcon = #imageLiteral(resourceName: "sun_icon")
             } else {
                 cellModel.hiTemp = nil
                 cellModel.lowTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
+                cellModel.dayNightIcon = #imageLiteral(resourceName: "moon_icon")
             }
 
             cellModel.windSpeed = String(cString:sqlite3_column_text(sqlite3_stmt, 9))
@@ -345,6 +350,7 @@ class DbMgr {
         while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
             cellModel.day = String(cString:sqlite3_column_text(sqlite3_stmt, 2)!)
             cellModel.hiTemp = nil
+            cellModel.dayNightIcon = #imageLiteral(resourceName: "moon_icon")
             cellModel.lowTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
             cellModel.windSpeed = String(cString:sqlite3_column_text(sqlite3_stmt, 9))
             cellModel.windDirection = String(cString:sqlite3_column_text(sqlite3_stmt, 10))

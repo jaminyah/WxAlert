@@ -27,6 +27,7 @@ class WxViewCell: UICollectionViewCell {
         // weatherImage
         // alertImage
         // rainChanceLabel
+        dayNightIcon.image = forecast.dayNightIcon
         windSpeedLabel.text = forecast.windSpeed
         windDirectionLabel.text = forecast.windDirection
         windIcon.image = forecast.windIcon
