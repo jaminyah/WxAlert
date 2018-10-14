@@ -203,10 +203,44 @@ class DbMgr {
             
             //print("cellModel.day: \(cellModel.day)")
             cellModel.hiTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
+            
+            // Wind data
             cellModel.windSpeed = String(cString:sqlite3_column_text(sqlite3_stmt, 9)!)
             print("windSpeed: \(cellModel.windSpeed)")
             
             cellModel.windDirection = String(cString:sqlite3_column_text(sqlite3_stmt, 10)!)
+            print("cellModel.windDirection: \(cellModel.windDirection!)")
+            
+            switch (cellModel.windDirection!) {
+                case "N":
+                    print("N")
+                    cellModel.windIcon = #imageLiteral(resourceName: "wind_south")
+                case "NE", "NNE", "ENE":
+                   // print("NE | NNE | ENE")
+                    cellModel.windIcon = #imageLiteral(resourceName: "wind_southwest")
+                case "NW", "NNW", "WNW":
+                   // print("NE | NNW | WNW")
+                    cellModel.windIcon = #imageLiteral(resourceName: "wind_southeast")
+                case "E":
+                   // print("E")
+                    cellModel.windIcon = #imageLiteral(resourceName: "wind_west")
+                case "SE", "ESE", "SSE":
+                   // print("SE | ESE | SSE")
+                    cellModel.windIcon = #imageLiteral(resourceName: "wind_northwest")
+                case "S":
+                   // print("S")
+                    cellModel.windIcon = #imageLiteral(resourceName: "wind_north")
+                case "SW", "SSW", "WSW":
+                   // print("SW | SSW | WSW")
+                    cellModel.windIcon = #imageLiteral(resourceName: "wind_northeast")
+                case "W":
+                   // print("W")
+                    cellModel.windIcon = #imageLiteral(resourceName: "wind_east")
+                default:
+                   // print("Set icon to nil")
+                    cellModel.windIcon = nil
+            }
+            
            // cellModel.rain = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
             cellModel.wxIcon = #imageLiteral(resourceName: "Sun")   // String(cString:sqlite3_column_text(sqlite3_stmt, 11))
             cellModel.alertIcon = #imageLiteral(resourceName: "alert")
@@ -280,8 +314,8 @@ class DbMgr {
             cellModel.windSpeed = String(cString:sqlite3_column_text(sqlite3_stmt, 9))
             cellModel.windDirection = String(cString:sqlite3_column_text(sqlite3_stmt, 10))
             
-            let iconString = String(cString:sqlite3_column_text(sqlite3_stmt, 11))
-            let components = parse(icon: iconString)
+          //  let iconString = String(cString:sqlite3_column_text(sqlite3_stmt, 11))
+            //let components = parse(icon: iconString)
             
             cellModel.detailedForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 12))
             cellModel.detailedForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
@@ -326,11 +360,13 @@ class DbMgr {
         return forecast
     }
     
+    /*
     private func parse(icon: String) -> IconModel {
         
  
         // TODO: Parse icon string to get icon, % and description
         return 
     }
+ */
     
 } // DbMgr

@@ -17,6 +17,7 @@ struct CellModel {
     var alertIcon: UIImage? = #imageLiteral(resourceName: "alert")
     var windSpeed: String = "0 mph"
     var windDirection: String? = "N"
+    var windIcon: UIImage? = #imageLiteral(resourceName: "wind_east")
     var hiTemp: String? = nil
     var lowTemp: String? = nil
     var shortForecast: String = ""
