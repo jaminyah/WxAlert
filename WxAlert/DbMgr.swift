@@ -179,6 +179,7 @@ class DbMgr {
     func DayForecast(from: String, sql: String) -> [CellModel] {
         print("DayForecast")
         
+        var dayArray: [String?] = []
         var forecast: [CellModel] = []
         let tableName = from
         
@@ -192,14 +193,16 @@ class DbMgr {
         
         var cellModel = CellModel()
         while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
-            let day = String(cString:sqlite3_column_text(sqlite3_stmt, 2)!)
- 
+            cellModel.day = String(cString:sqlite3_column_text(sqlite3_stmt, 2)!)
+
+            /*
             switch day {
             case "This Afternoon" :
                 cellModel.day = "Today"
             default:
                 cellModel.day = String(day.prefix(3))
             }
+            */
             
             // Set dayNight icon
             cellModel.dayNightIcon = #imageLiteral(resourceName: "sun_icon")
@@ -219,6 +222,19 @@ class DbMgr {
             cellModel.alertIcon = #imageLiteral(resourceName: "alert")
  
             forecast.append(cellModel)
+        }
+        
+        // Check if any day name is set to nil
+        for element in forecast {
+            let item = trim(day: element.day)
+           // print("day: \(item!)")
+            dayArray.append(item)
+        }
+        
+        // Remove nil element from array
+        let array = removeNil(days: dayArray)
+        for (index,day) in array.enumerated() {
+            forecast[index].day = day
         }
         
         let query2 = "SELECT * FROM \(tableName) WHERE isDayTime == 0;"
@@ -295,10 +311,77 @@ class DbMgr {
         return windIcon
     }
     
+    private func trim(day: String) -> String? {
+        
+        var dayName:String? = nil
+        
+            switch(day) {
+            case "This Afternoon": dayName = "Today"
+            case "Sunday", "Sunday Night" : dayName = "Sun"
+            case "Monday", "Monday Night" : dayName = "Mon"
+            case "Tuesday", "Tuesday Night" : dayName = "Tues"
+            case "Wednesday", "Wednesday Night" : dayName = "Wed"
+            case "Thursday", "Thursday Night" : dayName = "Thurs"
+            case "Friday", "Friday Night" : dayName = "Fri"
+            case "Saturday", "Saturday Night" : dayName = "Sat"
+            default:
+                dayName = nil
+            }
+        return dayName
+    }
+    
+    private func previous(day: String) -> String {
+        
+        var previousDay: String = " "
+        
+        switch (day) {
+        case "Sun": previousDay = "Sat"
+        case "Mon": previousDay = "Sun"
+        case "Tues": previousDay = "Mon"
+        case "Wed": previousDay =  "Tues"
+        case "Thurs": previousDay = "Wed"
+        case "Fri": previousDay = "Thurs"
+        case "Sat": previousDay = "Fri"
+        default:
+            print("Day error")
+        }
+        return previousDay
+    }
+    
+    private func removeNil(days: [String?]) -> [String] {
+        
+        var dayList: [String] = []
+        var next: String?
+        
+        for (index, day) in days.enumerated() {
+            //print("enumerated index: \(index)")
+            if day == nil {
+                next = days[index + 1]
+                
+                if next == nil {
+                    continue
+                } else {
+                    if let next = next {
+                        let previousDay = previous(day: next)
+                        print("previousDay: \(previousDay)")
+                        print("index: \(index)")
+                        dayList.append(previousDay)
+                    }
+                }
+            } else {
+                dayList.append(day!)
+        }
+      } // for
+        
+        return dayList
+    }
+    
+    
     func DayNightForecast(sql: String) -> [CellModel] {
         print("DayNightForecast")
         
         var forecast: [CellModel] = []
+        var dayArray: [String?] = []
         
         var sqlite3_stmt: OpaquePointer? = nil
         let statement = sql
@@ -337,6 +420,26 @@ class DbMgr {
             
             forecast.append(cellModel)
         }
+        
+        // Check if any day name is set to nil
+        for element in forecast {
+            let item = trim(day: element.day)
+            /*
+            if let dayItem = item {
+                print("day: \(dayItem)")
+            } else {
+                print("day: nil")
+            }*/
+
+            dayArray.append(item)
+        }
+        
+        // Remove nil element from array
+        let array = removeNil(days: dayArray)
+        for (index,day) in array.enumerated() {
+            forecast[index].day = day
+        }
+        
         sqlite3_finalize(sqlite3_stmt)
         return forecast
     }
@@ -344,6 +447,7 @@ class DbMgr {
     func NightForecast(sql: String) -> [CellModel] {
         print("NightForecast")
         
+        var dayArray: [String?] = []
         var forecast: [CellModel] = []
         
         var sqlite3_stmt: OpaquePointer? = nil
@@ -372,6 +476,25 @@ class DbMgr {
             
             forecast.append(cellModel)
         }
+        
+        // Check if any day name is set to nil
+        for element in forecast {
+            let item = trim(day: element.day)
+          /*  if let dayItem = item {
+                print("day: \(dayItem)")
+            } else {
+                print("day: nil")
+            }
+            */
+            dayArray.append(item)
+        }
+        
+        // Remove nil element from array
+        let array = removeNil(days: dayArray)
+        for (index,day) in array.enumerated() {
+            forecast[index].day = day
+        }
+        
         sqlite3_finalize(sqlite3_stmt)
         return forecast
     }
