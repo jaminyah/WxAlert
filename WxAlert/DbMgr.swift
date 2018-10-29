@@ -13,6 +13,7 @@ class DbMgr {
     
     var sqlite3_db: OpaquePointer? = nil
     static let sharedInstance = DbMgr()
+    let wxUtils = WeatherUtils()
     
     private init() {
         
@@ -215,7 +216,8 @@ class DbMgr {
             //print("windSpeed: \(cellModel.windSpeed)")
             cellModel.windDirection = String(cString:sqlite3_column_text(sqlite3_stmt, 10)!)
             //print("cellModel.windDirection: \(cellModel.windDirection!)")
-            cellModel.windIcon = wind(direction: cellModel.windDirection!)
+            //cellModel.windIcon = wind(direction: cellModel.windDirection!)
+            cellModel.windIcon = wxUtils.wind(direction: cellModel.windDirection!)
             
            // cellModel.rain = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
             cellModel.wxIcon = #imageLiteral(resourceName: "Sun")   // String(cString:sqlite3_column_text(sqlite3_stmt, 11))
@@ -232,7 +234,7 @@ class DbMgr {
         }
         
         // Remove nil element from array
-        let array = removeNil(days: dayArray)
+        let array = wxUtils.removeNil(days: dayArray)
         for (index,day) in array.enumerated() {
             forecast[index].day = day
         }
@@ -354,7 +356,7 @@ class DbMgr {
         var next: String?
         
         for (index, day) in days.enumerated() {
-            //print("enumerated index: \(index)")
+
             if day == nil {
                 next = days[index + 1]
                 
@@ -363,8 +365,6 @@ class DbMgr {
                 } else {
                     if let next = next {
                         let previousDay = previous(day: next)
-                        print("previousDay: \(previousDay)")
-                        print("index: \(index)")
                         dayList.append(previousDay)
                     }
                 }
@@ -413,7 +413,7 @@ class DbMgr {
           //  let iconString = String(cString:sqlite3_column_text(sqlite3_stmt, 11))
             //let components = parse(icon: iconString)
             
-            cellModel.detailedForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 12))
+            cellModel.shortForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 12))
             cellModel.detailedForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
             cellModel.wxIcon = #imageLiteral(resourceName: "Sun")   //
             cellModel.alertIcon = #imageLiteral(resourceName: "alert")
