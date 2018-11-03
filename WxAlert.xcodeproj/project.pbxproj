@@ -51,6 +51,7 @@
 		FAC16F4C2062623C00683EE6 /* CityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F4B2062623C00683EE6 /* CityProtocol.swift */; };
 		FAC16F4F2062644900683EE6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F4E2062644900683EE6 /* DataManager.swift */; };
 		FAC16F522062690E00683EE6 /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F512062690E00683EE6 /* Definitions.swift */; };
+		FACC35D1218B649A00ECC789 /* IconModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC35D0218B649A00ECC789 /* IconModel.swift */; };
 		FAF58475217C199A004A2C69 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF58474217C199A004A2C69 /* Rank.swift */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +124,7 @@
 		FAC16F4B2062623C00683EE6 /* CityProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityProtocol.swift; sourceTree = "<group>"; };
 		FAC16F4E2062644900683EE6 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		FAC16F512062690E00683EE6 /* Definitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
+		FACC35D0218B649A00ECC789 /* IconModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconModel.swift; sourceTree = "<group>"; };
 		FAF58474217C199A004A2C69 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -279,6 +281,7 @@
 				FA9DDAA12133112B004B9E2D /* DataItem.swift */,
 				FA28D7FE2152977D004D9AAD /* CellModel.swift */,
 				FA8E9FBF218793EE005EF8CE /* JSONIcons.swift */,
+				FACC35D0218B649A00ECC789 /* IconModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 				FA06645B2061510C006DE3CF /* NotificationController.swift in Sources */,
 				FA1D7E4E2135EF4100E49EC6 /* JSONDecodable.swift in Sources */,
 				FA06647F20618FAE006DE3CF /* CityModel.swift in Sources */,
+				FACC35D1218B649A00ECC789 /* IconModel.swift in Sources */,
 				FABBBC4821051A5A005C2207 /* AlertCollectionController.swift in Sources */,
 				FA06646A206155DD006DE3CF /* Constants.swift in Sources */,
 				FA06645720615016006DE3CF /* WeatherController.swift in Sources */,

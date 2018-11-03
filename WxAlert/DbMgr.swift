@@ -195,15 +195,6 @@ class DbMgr {
         var cellModel = CellModel()
         while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
             cellModel.day = String(cString:sqlite3_column_text(sqlite3_stmt, 2)!)
-
-            /*
-            switch day {
-            case "This Afternoon" :
-                cellModel.day = "Today"
-            default:
-                cellModel.day = String(day.prefix(3))
-            }
-            */
             
             // Set dayNight icon
             cellModel.dayNightIcon = #imageLiteral(resourceName: "sun_icon")
@@ -220,6 +211,9 @@ class DbMgr {
             cellModel.windIcon = wxUtils.wind(direction: cellModel.windDirection!)
             
            // cellModel.rain = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
+            
+            //  let iconString = String(cString:sqlite3_column_text(sqlite3_stmt, 11))
+            
             cellModel.wxIcon = #imageLiteral(resourceName: "Sun")   // String(cString:sqlite3_column_text(sqlite3_stmt, 11))
             cellModel.alertIcon = #imageLiteral(resourceName: "alert")
  

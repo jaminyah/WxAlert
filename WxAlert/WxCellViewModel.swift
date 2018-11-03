@@ -26,7 +26,7 @@ class WxCellVM {
         delegate = rootController
         
         let selectedCity = delegate?.getSelectedCity()
-        let timePeriod = selectedCity?.timeFrame.hashValue
+        let timePeriod = selectedCity?.timeFrame
         print("timePeriod: \(timePeriod!)")
         
         var table = selectedCity!.name.replacingOccurrences(of: " ", with: "_") + "_" + selectedCity!.state
@@ -39,20 +39,18 @@ class WxCellVM {
         var query: String
         
         switch (timePeriod!) {
-        case 0:
+        case .Day:
             query = "SELECT * FROM \(table) WHERE isDayTime == 1;"
             weatherData = dbmgr.DayForecast(from: table, sql: query)
             
-        case 1:
+        case .DayNight:
             query = "SELECT * FROM \(table);"
             weatherData = dbmgr.DayNightForecast(sql: query)
         
-        case 2:
+        case .Night:
             query = "SELECT * FROM \(table) WHERE isDayTime == 0;"
             weatherData = dbmgr.NightForecast(sql: query)
             
-        default:
-            print("Time Frame error")
         }
         return weatherData
     }
