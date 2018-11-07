@@ -14,7 +14,7 @@ struct CellModel {
     var dayNightIcon: UIImage = #imageLiteral(resourceName: "sun_icon")
     var wxIcon: UIImage = #imageLiteral(resourceName: "Sun")
     var wxText: String = "Fair/clear"
-    var wxChance: String? = "0 %"
+    var wxChance: String? = nil
     var alertIcon: UIImage? = #imageLiteral(resourceName: "alert")
     var windSpeed: String = "0 mph"
     var windDirection: String? = "N"

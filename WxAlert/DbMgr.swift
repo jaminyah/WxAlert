@@ -199,31 +199,29 @@ class DbMgr {
             // Set dayNight icon
             cellModel.dayNightIcon = #imageLiteral(resourceName: "sun_icon")
             
-            //print("cellModel.day: \(cellModel.day)")
             cellModel.hiTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
             
             // Wind data
             cellModel.windSpeed = String(cString:sqlite3_column_text(sqlite3_stmt, 9)!)
-            //print("windSpeed: \(cellModel.windSpeed)")
             cellModel.windDirection = String(cString:sqlite3_column_text(sqlite3_stmt, 10)!)
-            //print("cellModel.windDirection: \(cellModel.windDirection!)")
-            //cellModel.windIcon = wind(direction: cellModel.windDirection!)
             cellModel.windIcon = wxUtils.wind(direction: cellModel.windDirection!)
             
-           // cellModel.rain = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
+            let iconString = String(cString:sqlite3_column_text(sqlite3_stmt, 11))
+            let iconModel = wxUtils.parseIcon(urlString: iconString)
             
-            //  let iconString = String(cString:sqlite3_column_text(sqlite3_stmt, 11))
-            
-            cellModel.wxIcon = #imageLiteral(resourceName: "Sun")   // String(cString:sqlite3_column_text(sqlite3_stmt, 11))
+            cellModel.wxIcon = iconModel.image
+            cellModel.wxChance = iconModel.chance
             cellModel.alertIcon = #imageLiteral(resourceName: "alert")
+            
+            cellModel.shortForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 12))
+            cellModel.detailedForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
  
             forecast.append(cellModel)
         }
         
         // Check if any day name is set to nil
         for element in forecast {
-            let item = trim(day: element.day)
-           // print("day: \(item!)")
+            let item = wxUtils.trim(day: element.day)
             dayArray.append(item)
         }
         
@@ -270,6 +268,7 @@ class DbMgr {
         return forecast
     }
     
+    /*
     private func wind(direction: String) -> UIImage? {
         
         var windIcon: UIImage?
@@ -369,7 +368,7 @@ class DbMgr {
         
         return dayList
     }
-    
+    */
     
     func DayNightForecast(sql: String) -> [CellModel] {
         print("DayNightForecast")
@@ -402,34 +401,29 @@ class DbMgr {
 
             cellModel.windSpeed = String(cString:sqlite3_column_text(sqlite3_stmt, 9))
             cellModel.windDirection = String(cString:sqlite3_column_text(sqlite3_stmt, 10))
-            cellModel.windIcon = wind(direction: cellModel.windDirection!)
+            cellModel.windIcon = wxUtils.wind(direction: cellModel.windDirection!)
             
-          //  let iconString = String(cString:sqlite3_column_text(sqlite3_stmt, 11))
-            //let components = parse(icon: iconString)
+            let iconString = String(cString:sqlite3_column_text(sqlite3_stmt, 11))
+            let iconModel = wxUtils.parseIcon(urlString: iconString)
+            
+            cellModel.wxIcon = iconModel.image
+            cellModel.wxChance = iconModel.chance
+            cellModel.alertIcon = #imageLiteral(resourceName: "alert")
             
             cellModel.shortForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 12))
             cellModel.detailedForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
-            cellModel.wxIcon = #imageLiteral(resourceName: "Sun")   //
-            cellModel.alertIcon = #imageLiteral(resourceName: "alert")
             
             forecast.append(cellModel)
         }
         
         // Check if any day name is set to nil
         for element in forecast {
-            let item = trim(day: element.day)
-            /*
-            if let dayItem = item {
-                print("day: \(dayItem)")
-            } else {
-                print("day: nil")
-            }*/
-
+            let item = wxUtils.trim(day: element.day)
             dayArray.append(item)
         }
         
         // Remove nil element from array
-        let array = removeNil(days: dayArray)
+        let array = wxUtils.removeNil(days: dayArray)
         for (index,day) in array.enumerated() {
             forecast[index].day = day
         }
@@ -461,30 +455,29 @@ class DbMgr {
             
             cellModel.windSpeed = String(cString:sqlite3_column_text(sqlite3_stmt, 9))
             cellModel.windDirection = String(cString:sqlite3_column_text(sqlite3_stmt, 10))
-            cellModel.windIcon = wind(direction: cellModel.windDirection!)
+            cellModel.windIcon = wxUtils.wind(direction: cellModel.windDirection!)
             
-            cellModel.detailedForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 12))
-            cellModel.detailedForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
-            cellModel.wxIcon = #imageLiteral(resourceName: "Sun")   // String(cString:sqlite3_column_text(sqlite3_stmt, 11))
+            let iconString = String(cString:sqlite3_column_text(sqlite3_stmt, 11))
+            let iconModel = wxUtils.parseIcon(urlString: iconString)
+            
+            cellModel.wxIcon = iconModel.image
+            cellModel.wxChance = iconModel.chance
             cellModel.alertIcon = #imageLiteral(resourceName: "alert")
             
+            cellModel.shortForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 12))
+            cellModel.detailedForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
+ 
             forecast.append(cellModel)
         }
         
         // Check if any day name is set to nil
         for element in forecast {
-            let item = trim(day: element.day)
-          /*  if let dayItem = item {
-                print("day: \(dayItem)")
-            } else {
-                print("day: nil")
-            }
-            */
+            let item = wxUtils.trim(day: element.day)
             dayArray.append(item)
         }
         
         // Remove nil element from array
-        let array = removeNil(days: dayArray)
+        let array = wxUtils.removeNil(days: dayArray)
         for (index,day) in array.enumerated() {
             forecast[index].day = day
         }
@@ -492,14 +485,5 @@ class DbMgr {
         sqlite3_finalize(sqlite3_stmt)
         return forecast
     }
-    
-    /*
-    private func parse(icon: String) -> IconModel {
-        
- 
-        // TODO: Parse icon string to get icon, % and description
-        return 
-    }
- */
     
 } // DbMgr

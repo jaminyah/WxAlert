@@ -24,9 +24,9 @@ class WxViewCell: UICollectionViewCell {
     
     func displayWeather(forecast: CellModel) -> Void {
         dayLabel.text = forecast.day
-        // weatherImage
+        weatherImage.image = forecast.wxIcon
         // alertImage
-        // rainChanceLabel
+        rainChanceLabel.text = forecast.wxChance
         dayNightIcon.image = forecast.dayNightIcon
         windSpeedLabel.text = forecast.windSpeed
         windDirectionLabel.text = forecast.windDirection

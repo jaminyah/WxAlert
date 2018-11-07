@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 struct IconModel {
-    var name: String
-    var description: String
-    var image: UIImage
-    var priority: Int
-    var chance: Int
+    var name: String? = "skc"
+    var description: String = "Clear/fair"
+    var image: UIImage = #imageLiteral(resourceName: "skc")
+    var priority: Int = 0
+    var chance: String? = nil
 }

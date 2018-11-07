@@ -160,6 +160,7 @@ class WeatherUtils {
                 
             case 4:
                 let icon1Components = element
+                jsonIcons.iconCount = 1
                 print("icon1Components: \(icon1Components)")
                 
                 let parts = split(compoundString: icon1Components)
@@ -175,6 +176,7 @@ class WeatherUtils {
                 
             case 5:
                 let icon2Components = element
+                jsonIcons.iconCount = 2
                 print("icon2Components: \(icon2Components)")
                 
                 let parts2 = split(compoundString: icon2Components)
@@ -194,6 +196,68 @@ class WeatherUtils {
         }
         
         return jsonIcons
+    }
+    
+    func parseIcon(urlString: String) -> IconModel {
+        var iconModel = IconModel()
+        let met = Meteorology()
+        
+        let urlWrapped = URL(string: urlString)
+        let urlComponents = parse(url: urlWrapped!)
+        let jsonIcons = assembleIcons(components: urlComponents)
+        
+        // print("jsonIcons.iconCount: \(jsonIcons.iconCount)")
+        
+        iconModel.name = jsonIcons.name1
+        var metIcon = met.getIconData(icon: iconModel.name!)
+        iconModel.image = metIcon.image
+        iconModel.description = metIcon.description
+        iconModel.priority = metIcon.priority
+        if let chance = jsonIcons.chance1 {
+            iconModel.chance = chance + "%"
+        }
+        
+        switch jsonIcons.iconCount {
+        case 1:
+            return iconModel
+        case 2:
+            var iconModel2 = IconModel()
+            iconModel2.name = jsonIcons.name2
+            metIcon = met.getIconData(icon: iconModel2.name!)
+            iconModel2.image = metIcon.image
+            iconModel2.description = metIcon.description
+            iconModel2.priority = metIcon.priority
+            
+            if let chance2 = jsonIcons.chance2 {
+                iconModel2.chance = chance2 + "%"
+            }
+            
+            if iconModel.name == iconModel2.name {
+                guard let weatherChance = jsonIcons.chance1 else {
+                    return iconModel
+                }
+                guard let weatherChance2 = jsonIcons.chance2 else {
+                    return iconModel2
+                }
+                let chanceInt = Int(weatherChance)!
+                let chanceInt2 = Int(weatherChance2)!
+                
+                if chanceInt2 > chanceInt {
+                    return iconModel2
+                } else {
+                    return iconModel
+                }
+            } else {
+                if iconModel2.priority > iconModel.priority {
+                    return iconModel2
+                } else {
+                    return iconModel
+                }
+            }
+        default:
+            print("icon error!")
+        }
+       return iconModel
     }
     
 }

@@ -14,4 +14,5 @@ struct JSONIcons {
     var chance1: String? = nil
     var chance2: String? = nil
     var timePeriod: String = "day"
+    var iconCount: Int = 0
 }
