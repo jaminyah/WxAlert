@@ -226,7 +226,7 @@ class DbMgr {
         }
         
         // Remove nil element from array
-        let array = wxUtils.removeNil(days: dayArray)
+        let array = wxUtils.removeNil(dayNames: dayArray)
         for (index,day) in array.enumerated() {
             forecast[index].day = day
         }
@@ -268,107 +268,6 @@ class DbMgr {
         return forecast
     }
     
-    /*
-    private func wind(direction: String) -> UIImage? {
-        
-        var windIcon: UIImage?
-        
-        switch (direction) {
-        case "N":
-            print("N")
-            windIcon = #imageLiteral(resourceName: "wind_north")
-        case "NE", "NNE", "ENE":
-            // print("NE | NNE | ENE")
-            windIcon = #imageLiteral(resourceName: "wind_northeast")
-        case "NW", "NNW", "WNW":
-            // print("NE | NNW | WNW")
-            windIcon = #imageLiteral(resourceName: "wind_northwest")
-        case "E":
-            // print("E")
-            windIcon = #imageLiteral(resourceName: "wind_east")
-        case "SE", "ESE", "SSE":
-            // print("SE | ESE | SSE")
-            windIcon = #imageLiteral(resourceName: "wind_southeast")
-        case "S":
-            // print("S")
-            windIcon = #imageLiteral(resourceName: "wind_south")
-        case "SW", "SSW", "WSW":
-            // print("SW | SSW | WSW")
-            windIcon = #imageLiteral(resourceName: "wind_southwest")
-        case "W":
-            // print("W")
-            windIcon = #imageLiteral(resourceName: "wind_west")
-        default:
-            // print("Set icon to nil")
-            windIcon = nil
-        }
-        
-        return windIcon
-    }
-    
-    private func trim(day: String) -> String? {
-        
-        var dayName:String? = nil
-        
-            switch(day) {
-            case "This Afternoon": dayName = "Today"
-            case "Sunday", "Sunday Night" : dayName = "Sun"
-            case "Monday", "Monday Night" : dayName = "Mon"
-            case "Tuesday", "Tuesday Night" : dayName = "Tues"
-            case "Wednesday", "Wednesday Night" : dayName = "Wed"
-            case "Thursday", "Thursday Night" : dayName = "Thurs"
-            case "Friday", "Friday Night" : dayName = "Fri"
-            case "Saturday", "Saturday Night" : dayName = "Sat"
-            default:
-                dayName = nil
-            }
-        return dayName
-    }
-    
-    private func previous(day: String) -> String {
-        
-        var previousDay: String = " "
-        
-        switch (day) {
-        case "Sun": previousDay = "Sat"
-        case "Mon": previousDay = "Sun"
-        case "Tues": previousDay = "Mon"
-        case "Wed": previousDay =  "Tues"
-        case "Thurs": previousDay = "Wed"
-        case "Fri": previousDay = "Thurs"
-        case "Sat": previousDay = "Fri"
-        default:
-            print("Day error")
-        }
-        return previousDay
-    }
-    
-    private func removeNil(days: [String?]) -> [String] {
-        
-        var dayList: [String] = []
-        var next: String?
-        
-        for (index, day) in days.enumerated() {
-
-            if day == nil {
-                next = days[index + 1]
-                
-                if next == nil {
-                    continue
-                } else {
-                    if let next = next {
-                        let previousDay = previous(day: next)
-                        dayList.append(previousDay)
-                    }
-                }
-            } else {
-                dayList.append(day!)
-        }
-      } // for
-        
-        return dayList
-    }
-    */
     
     func DayNightForecast(sql: String) -> [CellModel] {
         print("DayNightForecast")
@@ -423,7 +322,7 @@ class DbMgr {
         }
         
         // Remove nil element from array
-        let array = wxUtils.removeNil(days: dayArray)
+        let array = wxUtils.removeNil(dayNames: dayArray)
         for (index,day) in array.enumerated() {
             forecast[index].day = day
         }
@@ -477,7 +376,7 @@ class DbMgr {
         }
         
         // Remove nil element from array
-        let array = wxUtils.removeNil(days: dayArray)
+        let array = wxUtils.removeNil(dayNames: dayArray)
         for (index,day) in array.enumerated() {
             forecast[index].day = day
         }

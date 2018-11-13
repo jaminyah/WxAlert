@@ -86,32 +86,83 @@ class WeatherUtils {
         return previousDay
     }
     
-    func removeNil(days: [String?]) -> [String] {
+    func next(day: String) -> String {
         
+        var nextDay: String = " "
+        
+        switch (day) {
+        case "Sun": nextDay = "Mon"
+        case "Mon": nextDay = "Tues"
+        case "Tues": nextDay = "Wed"
+        case "Wed": nextDay =  "Thurs"
+        case "Thurs": nextDay = "Fri"
+        case "Fri": nextDay = "Sat"
+        case "Sat": nextDay = "Sun"
+        default:
+            print("Day error")
+        }
+        return nextDay
+    }
+    
+    
+    func removeNil(dayNames: [String?]) -> [String] {
         var dayList: [String] = []
-        var next: String?
+        var days: [String?] = []
         
-        for (index, day) in days.enumerated() {
+        var index = 0
+        var day: String? = nil
+        
+        // Copy dayNames
+       // var i = 0
+        for day in dayNames {
+            days.append(day)
+        }
+        
+        while (index < days.count) {
+            day = days[index]
             
-            if day == nil {
-                next = days[index + 1]
-                
-                if next == nil {
+            switch day {
+            case nil:
+                if (index == 0) {
+                    while index < days.count {
+                        if days[index] == nil {
+                            index = index + 1
+                            continue
+                        }
+                        else {
+                            let today = days[index]
+                            let previousDay = previous(day: today!)
+                            days[index - 1] = previousDay
+                            break
+                        }
+                    }
+                    index = 0
                     continue
-                } else {
-                    if let next = next {
-                        let previousDay = previous(day: next)
-                        dayList.append(previousDay)
+                }
+                else if (index <= days.count - 1) {
+                    if let previousDay = days[index - 1] {
+                        let nextDay = next(day: previousDay)
+                        days[index] = nextDay
+                        index = 0
+                        continue
                     }
                 }
-            } else {
-                dayList.append(day!)
+            default:
+                index = index + 1
+                continue
             }
-        } // for
-        
+        }
+            
+        // Copy non-nil days
+        for day in days {
+            if let dayName = day {
+                dayList.append(dayName)
+            }
+        }
         return dayList
     }
     
+
     func parse(url: URL) -> [String] {
         
         let components = URLComponents(url: url, resolvingAgainstBaseURL: false)

@@ -20,7 +20,7 @@ class NetworkMgr {
         // properties -> forecast
         // properties -> forecastHourly
         
-        let urlString = FORECAST_URL
+        let urlString = FORECAST_URL2
         guard let forecastUrl = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: forecastUrl) { (data, response, error) in
