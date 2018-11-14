@@ -54,7 +54,6 @@ class WeatherUtils {
         var dayName:String? = nil
         
         switch(day) {
-        case "This Afternoon": dayName = "Today"
         case "Sunday", "Sunday Night" : dayName = "Sun"
         case "Monday", "Monday Night" : dayName = "Mon"
         case "Tuesday", "Tuesday Night" : dayName = "Tues"
@@ -104,20 +103,17 @@ class WeatherUtils {
         return nextDay
     }
     
-    
     func removeNil(dayNames: [String?]) -> [String] {
         var dayList: [String] = []
         var days: [String?] = []
         
-        var index = 0
-        var day: String? = nil
-        
-        // Copy dayNames
-       // var i = 0
+        // Create a mutable copy of dayNames array
         for day in dayNames {
             days.append(day)
         }
         
+        var index = 0
+        var day: String? = nil
         while (index < days.count) {
             day = days[index]
             
@@ -136,6 +132,7 @@ class WeatherUtils {
                             break
                         }
                     }
+                    // reset index of outer loop to re-start nil check
                     index = 0
                     continue
                 }
@@ -143,6 +140,8 @@ class WeatherUtils {
                     if let previousDay = days[index - 1] {
                         let nextDay = next(day: previousDay)
                         days[index] = nextDay
+                        
+                        // reset index of outer loop to re-start nil check
                         index = 0
                         continue
                     }
