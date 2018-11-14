@@ -73,7 +73,7 @@ class WxCollectionController: NSObject, UICollectionViewDataSource, UICollection
         //let dayForecast = forecastElements()
         
         // Configure the cell
-        cell?.backgroundColor = randomColor()
+        cell?.backgroundColor = generateRandomPastelColor(withMixedColor: .cyan)
         //cell?.dayLabel.text = viewModel.cellModels[indexPath.row].day
         
         cell?.displayWeather(forecast: viewModel.cellModels[indexPath.row])
@@ -82,11 +82,46 @@ class WxCollectionController: NSObject, UICollectionViewDataSource, UICollection
     }
     
     // custom function to generate a random UIColor
+    /*
     func randomColor() -> UIColor {
         let red = CGFloat(drand48())
         let green = CGFloat(drand48())
         let blue = CGFloat(drand48())
         return UIColor(red: red / 255, green: green, blue: blue, alpha: 1.0)
+    }
+   */
+    
+    /*
+    func randomColor() -> UIColor {
+        let hue: CGFloat = CGFloat(arc4random() % 256) / 256
+        let saturation: CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5
+        let brightness: CGFloat = CGFloat(arc4random() % 128) / 256 + 0.5
+        
+        return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1.0)
+    }
+   */
+    // https://gist.github.com/JohnCoates/725d6d3c5a07c4756dec
+    func generateRandomPastelColor(withMixedColor mixColor: UIColor?) -> UIColor {
+        // Randomly generate number in closure
+        let randomColorGenerator = { ()-> CGFloat in
+            CGFloat(arc4random() % 256 ) / 256
+        }
+        
+        var red: CGFloat = randomColorGenerator()
+        var green: CGFloat = randomColorGenerator()
+        var blue: CGFloat = randomColorGenerator()
+        
+        // Mix the color
+        if let mixColor = mixColor {
+            var mixRed: CGFloat = 0, mixGreen: CGFloat = 0, mixBlue: CGFloat = 0;
+            mixColor.getRed(&mixRed, green: &mixGreen, blue: &mixBlue, alpha: nil)
+            
+            red = (red + mixRed) / 2;
+            green = (green + mixGreen) / 2;
+            blue = (blue + mixBlue) / 2;
+        }
+        
+        return UIColor(red: red, green: green, blue: blue, alpha: 1)
     }
     
     // MARK: UICollectionViewDelegate
