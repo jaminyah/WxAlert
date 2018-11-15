@@ -74,8 +74,6 @@ class WxCollectionController: NSObject, UICollectionViewDataSource, UICollection
         
         // Configure the cell
         cell?.backgroundColor = generateRandomPastelColor(withMixedColor: .cyan)
-        //cell?.dayLabel.text = viewModel.cellModels[indexPath.row].day
-        
         cell?.displayWeather(forecast: viewModel.cellModels[indexPath.row])
         
         return cell!

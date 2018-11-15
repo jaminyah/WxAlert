@@ -14,6 +14,7 @@ class WeatherController: UIViewController {
     @IBOutlet weak var cityCollection: UICollectionView!
     @IBOutlet weak var wxCollection:  UICollectionView!
     @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var date: UILabel!
     
     let rootController = RootController.sharedInstance
     var delegate: CityProtocol?

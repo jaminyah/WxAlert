@@ -21,6 +21,8 @@ class WxViewCell: UICollectionViewCell {
     @IBOutlet weak var highTempLabel: UILabel!
     @IBOutlet weak var lowTempLabel: UILabel!
     @IBOutlet weak var alertDiamond: UIImageView!
+    @IBOutlet weak var date: UILabel!
+    
     
     func displayWeather(forecast: CellModel) -> Void {
         dayLabel.text = forecast.day

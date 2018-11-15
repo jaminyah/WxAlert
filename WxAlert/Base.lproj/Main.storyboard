@@ -164,9 +164,9 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="100%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7r-r8-MLn">
-                                                    <rect key="frame" x="55" y="41" width="67" height="36"/>
+                                                    <rect key="frame" x="72" y="65" width="50" height="34"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -207,12 +207,20 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nov 15" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VoS-ih-SQE">
+                                                    <rect key="frame" x="66" y="31" width="56" height="34"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                    <color key="textColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <size key="customSize" width="122" height="378"/>
                                         <connections>
                                             <outlet property="alertDiamond" destination="dyk-SC-2pM" id="FLA-Zf-ouJ"/>
                                             <outlet property="alertImage" destination="dyk-SC-2pM" id="pnr-lV-nWq"/>
+                                            <outlet property="date" destination="VoS-ih-SQE" id="qxC-o1-ggN"/>
                                             <outlet property="dayLabel" destination="zmO-L3-oM7" id="WwQ-dw-29V"/>
                                             <outlet property="dayNightIcon" destination="d19-zX-diY" id="eMW-Cr-N3J"/>
                                             <outlet property="highTempLabel" destination="V6t-4W-tP1" id="7mA-bK-ztj"/>

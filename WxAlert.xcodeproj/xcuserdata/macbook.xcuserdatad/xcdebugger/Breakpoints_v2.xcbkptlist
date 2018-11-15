@@ -202,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/WxCollectionController.swift"
-            timestampString = "563922109.770155"
+            timestampString = "563927986.572713"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "36"
@@ -312,11 +312,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/WxCollectionController.swift"
-            timestampString = "563926196.916234"
+            timestampString = "563927986.573277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "WxCollectionController"
             landmarkType = "3">
          </BreakpointContent>
@@ -328,11 +328,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/WxCollectionController.swift"
-            timestampString = "563926197.9795409"
+            timestampString = "563927986.573555"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "WxCollectionController"
             landmarkType = "3">
          </BreakpointContent>
