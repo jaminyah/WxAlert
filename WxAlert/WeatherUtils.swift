@@ -248,7 +248,7 @@ class WeatherUtils {
         return jsonIcons
     }
     
-    func parseIcon(urlString: String) -> IconModel {
+    func parse(urlString: String) -> IconModel {
         var iconModel = IconModel()
         let met = Meteorology()
         
@@ -310,4 +310,58 @@ class WeatherUtils {
        return iconModel
     }
     
-}
+    func parse(dateTime: String) -> String {
+        let index = dateTime.index(dateTime.startIndex, offsetBy: 10)
+        let dateString = dateTime[dateTime.startIndex..<index]
+        
+        print("dateString: \(dateString)")
+        
+        let dateComponents = dateString.split(separator: "-")
+        print("dateComponents2: \(dateComponents[1])")
+        
+        let number = String(dateComponents[1])
+        let month = monthName(monthNumber: number)
+        
+        let dayNumber = String(dateComponents[2])
+        let date = month + " " + dayNumber
+        
+        return String(date)
+    }
+    
+    func monthName(monthNumber: String) -> String {
+        var month: String = "Jan"
+        
+        switch monthNumber {
+        case "01":
+            month = "Jan"
+        case "02":
+            month = "Feb"
+        case "03":
+            month = "Mar"
+        case "04":
+            month = "Apr"
+        case "05":
+            month = "May"
+        case "06":
+            month = "Jun"
+        case "07":
+            month = "Jul"
+        case "08":
+            month = "Aug"
+        case "09":
+            month = "Sep"
+        case "10":
+            month = "Oct"
+        case "11":
+            month = "Nov"
+        case "12":
+            month = "Dec"
+        
+        default:
+            month = "Err"
+        }
+        
+        return month
+    }
+    
+} // WeatherUtils

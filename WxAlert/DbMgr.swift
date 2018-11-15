@@ -196,6 +196,10 @@ class DbMgr {
         while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
             cellModel.day = String(cString:sqlite3_column_text(sqlite3_stmt, 2)!)
             
+            // Set wxViewCell date
+            let dateTimeString = String(cString:sqlite3_column_text(sqlite3_stmt, 3)!)
+            cellModel.date = wxUtils.parse(dateTime: dateTimeString)
+            
             // Set dayNight icon
             cellModel.dayNightIcon = #imageLiteral(resourceName: "sun_icon")
             
@@ -207,7 +211,7 @@ class DbMgr {
             cellModel.windIcon = wxUtils.wind(direction: cellModel.windDirection!)
             
             let iconString = String(cString:sqlite3_column_text(sqlite3_stmt, 11))
-            let iconModel = wxUtils.parseIcon(urlString: iconString)
+            let iconModel = wxUtils.parse(urlString: iconString)
             
             cellModel.wxIcon = iconModel.image
             cellModel.wxChance = iconModel.chance
@@ -303,7 +307,7 @@ class DbMgr {
             cellModel.windIcon = wxUtils.wind(direction: cellModel.windDirection!)
             
             let iconString = String(cString:sqlite3_column_text(sqlite3_stmt, 11))
-            let iconModel = wxUtils.parseIcon(urlString: iconString)
+            let iconModel = wxUtils.parse(urlString: iconString)
             
             cellModel.wxIcon = iconModel.image
             cellModel.wxChance = iconModel.chance
@@ -357,7 +361,7 @@ class DbMgr {
             cellModel.windIcon = wxUtils.wind(direction: cellModel.windDirection!)
             
             let iconString = String(cString:sqlite3_column_text(sqlite3_stmt, 11))
-            let iconModel = wxUtils.parseIcon(urlString: iconString)
+            let iconModel = wxUtils.parse(urlString: iconString)
             
             cellModel.wxIcon = iconModel.image
             cellModel.wxChance = iconModel.chance
