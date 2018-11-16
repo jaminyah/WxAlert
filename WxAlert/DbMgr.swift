@@ -291,6 +291,10 @@ class DbMgr {
         while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
             cellModel.day = String(cString:sqlite3_column_text(sqlite3_stmt, 2)!)
             
+            // Set wxViewCell date
+            let dateTimeString = String(cString:sqlite3_column_text(sqlite3_stmt, 3)!)
+            cellModel.date = wxUtils.parse(dateTime: dateTimeString)
+            
             let isDaytime = sqlite3_column_int(sqlite3_stmt, 5)
             if isDaytime == 1 {
                 cellModel.hiTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
@@ -352,6 +356,11 @@ class DbMgr {
         var cellModel = CellModel()
         while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
             cellModel.day = String(cString:sqlite3_column_text(sqlite3_stmt, 2)!)
+            
+            // Set wxViewCell date
+            let dateTimeString = String(cString:sqlite3_column_text(sqlite3_stmt, 3)!)
+            cellModel.date = wxUtils.parse(dateTime: dateTimeString)
+            
             cellModel.hiTemp = nil
             cellModel.dayNightIcon = #imageLiteral(resourceName: "moon_icon")
             cellModel.lowTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
