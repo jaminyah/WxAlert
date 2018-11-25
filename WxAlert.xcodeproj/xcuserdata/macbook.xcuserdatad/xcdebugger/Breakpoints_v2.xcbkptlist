@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/NetworkMgr.swift"
-            timestampString = "564084640.9659441"
+            timestampString = "564778633.214411"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -122,7 +122,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/NetworkMgr.swift"
-            timestampString = "564084640.966024"
+            timestampString = "564778633.214947"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/NetworkMgr.swift"
-            timestampString = "564084640.966079"
+            timestampString = "564778633.215228"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
@@ -186,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/ForecastDataMgr.swift"
-            timestampString = "558907311.501833"
+            timestampString = "564817972.023056"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
@@ -201,28 +201,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WxAlert/WxCollectionController.swift"
-            timestampString = "563927986.572713"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
-            landmarkName = "WxCollectionController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "WxAlert/WxCellViewModel.swift"
-            timestampString = "563616360.2403409"
+            timestampString = "564817972.023188"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
             landmarkName = "fetchForecast()"
             landmarkType = "7">
          </BreakpointContent>
@@ -234,12 +218,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/DbMgr.swift"
-            timestampString = "564084640.966206"
+            timestampString = "564817972.023265"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "193"
             endingLineNumber = "193"
-            landmarkName = "DayForecast(from:sql:)"
+            landmarkName = "dayForecast(from:sql:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -250,12 +234,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/DbMgr.swift"
-            timestampString = "564084640.966593"
+            timestampString = "564817972.023327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "192"
             endingLineNumber = "192"
-            landmarkName = "DayForecast(from:sql:)"
+            landmarkName = "dayForecast(from:sql:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -296,12 +280,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/DbMgr.swift"
-            timestampString = "564084640.966904"
+            timestampString = "564817972.023423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "216"
             endingLineNumber = "216"
-            landmarkName = "DayForecast(from:sql:)"
+            landmarkName = "dayForecast(from:sql:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -312,11 +296,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/WxCollectionController.swift"
-            timestampString = "563927986.573277"
+            timestampString = "564817972.0234849"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "WxCollectionController"
             landmarkType = "3">
          </BreakpointContent>
@@ -328,11 +312,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/WxCollectionController.swift"
-            timestampString = "563927986.573555"
+            timestampString = "564817972.023899"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "WxCollectionController"
             landmarkType = "3">
          </BreakpointContent>

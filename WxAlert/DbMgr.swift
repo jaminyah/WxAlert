@@ -177,7 +177,7 @@ class DbMgr {
         sqlite3_stmt = nil
     }
     
-    func DayForecast(from: String, sql: String) -> [CellModel] {
+    func dayForecast(from: String, sql: String) -> [CellModel] {
         print("DayForecast")
         
         var dayArray: [String?] = []
@@ -273,7 +273,7 @@ class DbMgr {
     }
     
     
-    func DayNightForecast(sql: String) -> [CellModel] {
+    func dayNightForecast(sql: String) -> [CellModel] {
         print("DayNightForecast")
         
         var forecast: [CellModel] = []
@@ -339,7 +339,7 @@ class DbMgr {
         return forecast
     }
     
-    func NightForecast(sql: String) -> [CellModel] {
+    func nightForecast(sql: String) -> [CellModel] {
         print("NightForecast")
         
         var dayArray: [String?] = []
@@ -396,6 +396,12 @@ class DbMgr {
         
         sqlite3_finalize(sqlite3_stmt)
         return forecast
+    }
+    
+    func checkJSONValid(sql: String) -> Bool {
+        // Todo: function body
+        
+        return false
     }
     
 } // DbMgr

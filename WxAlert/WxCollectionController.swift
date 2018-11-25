@@ -32,8 +32,7 @@ class WxCollectionController: NSObject, UICollectionViewDataSource, UICollection
         // Register cell classes
       //self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
-        // Do any additional setup after loading the view.
-        cellViewModel.fetchForecast()
+      
     }
     
     override func didReceiveMemoryWarning() {
@@ -74,8 +73,14 @@ class WxCollectionController: NSObject, UICollectionViewDataSource, UICollection
         
         // Configure the cell
         cell?.backgroundColor = generateRandomPastelColor(withMixedColor: .cyan)
-        cell?.displayWeather(forecast: viewModel.cellModels[indexPath.row])
         
+        if viewModel.isValidJSON() == true {
+            cell?.displayWeather(forecast: viewModel.cellModels[indexPath.row])
+        } else {
+            // Fetch valid JSON
+            cell?.displayWeather(forecast: viewModel.cellModels[indexPath.row])
+        }
+
         return cell!
     }
     

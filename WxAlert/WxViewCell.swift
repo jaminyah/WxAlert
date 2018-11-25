@@ -37,4 +37,9 @@ class WxViewCell: UICollectionViewCell {
         highTempLabel.text = forecast.hiTemp
         lowTempLabel.text = forecast.lowTemp
     }
+    
+    func refreshJSONData() -> Void {
+        
+        // Todo: Get NWS JSON data
+    }
 }

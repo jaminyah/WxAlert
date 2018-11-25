@@ -27,7 +27,4 @@ class ForecastDataMgr {
  
     }
     
-    func readForecast() {
-        // TODO - 
-    }
-}
+} // ForecastDataMgr
