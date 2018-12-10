@@ -15,39 +15,33 @@ class WxCellVM {
     let dbmgr = DbMgr.sharedInstance
     var cellModels: [CellModel] = []
     var table: String = ""
-    var timeframe: TimeFrame = .Day
+   // var timeframe: TimeFrame = .Day
+    
+    let rootController = RootController.sharedInstance
+    var delegate: CityProtocol? = nil
     
     init() {
- 
-        var delegate: CityProtocol?
-        let rootController = RootController.sharedInstance
         delegate = rootController
-        
-        let selectedCity = delegate?.getSelectedCity()
-        
-        let tableName = selectedCity!.name.replacingOccurrences(of: " ", with: "_") + "_" + selectedCity!.state
-
-        guard let period = selectedCity?.timeFrame else {
-            return
-        }
-        
-        // Property initializations
-        self.table = tableName.lowercased()
-        self.timeframe = period
         self.cellModels = fetchForecast()
+        //fetchForecast()
     }
     
-    func fetchForecast() ->[CellModel] {
+    
+   func fetchForecast() ->[CellModel] {
+    //func fetchForecast() ->Void {
         print("fetchForecast: read from sqlite ...")
                 
-        // TODO - Populate properties from sqlite db
-        // read day = 0, day+night = 1, night = 2 settings from delegate
-        //let timePeriod = selectedCity?.timeFrame
-        //print("timePeriod: \(timePeriod!)")
-        
-        var weatherData: [CellModel] = []
         var query: String
+        var weatherData: [CellModel] = []
         
+        let selectedCity = delegate?.getSelectedCity()
+        let tableName = selectedCity!.name.replacingOccurrences(of: " ", with: "_") + "_" + selectedCity!.state
+        let period = selectedCity?.timeFrame
+        
+        // Set property values
+        self.table = tableName.lowercased()
+        let timeframe = period!
+    
         switch (timeframe) {
         case .Day:
             query = "SELECT * FROM \(table) WHERE isDayTime == 1;"
@@ -63,6 +57,7 @@ class WxCellVM {
             
         }
         return weatherData
+        //self.cellModels = weatherData
     }
     
     func isValidJSON() -> Bool {
@@ -71,6 +66,11 @@ class WxCellVM {
         let query = "SELECT EndTime FROM \(table) WHERE Number == 1;"
         let isValid = dbmgr.checkJSONValid(sql: query)
         return isValid
+    }
+    
+    func monitorTimestamp() {
+        // Start a thread to monitor timestamp validity
+        // Raise and event when invalid
     }
     
 } // WxCellVM

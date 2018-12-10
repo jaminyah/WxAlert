@@ -25,7 +25,8 @@ class MapController: UIViewController {
         // Do any additional setup after loading the view.
         self.delegate = rootController
         
-        // Delegate action
+        // Add city object to city list
+        // Fetch JSON data from national weather service
         self.delegate?.addNewCity(city: cityObject)
     }
 

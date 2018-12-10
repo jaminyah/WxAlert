@@ -17,7 +17,8 @@ class WeatherController: UIViewController {
     @IBOutlet weak var date: UILabel!
     
     let rootController = RootController.sharedInstance
-    var delegate: CityProtocol?
+    let dbmgr = DbMgr.sharedInstance
+    var delegate: CityProtocol? = nil
     
     lazy var alertCollectionController = AlertCollectionController()
     lazy var wxCollectionController = WxCollectionController()
@@ -45,7 +46,21 @@ class WeatherController: UIViewController {
         // hide views
         alertCollection.isHidden = false
         
- 
+        /*
+        let queue = OperationQueue()
+        queue.addOperation {
+            // Monitor JSON valid datetime.
+            self.monitorWxTimestamp()
+        }
+        queue.waitUntilAllOperationsAreFinished()
+        */
+        
+        /* Running before network data is fetched
+        DispatchQueue.global(qos: .background).async {
+            self.monitorWxTimestamp()
+        }
+        */
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,6 +74,16 @@ class WeatherController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func monitorWxTimestamp() {
+        print("monitorWxTimestamp")
+        // get db timestamp
+       // if current datetime > timestamp {
+       //    send out notification to registered listeners
+        //  } else {
+        // operate a countdown timer
+        // send out notification when timer expires
     }
     
  

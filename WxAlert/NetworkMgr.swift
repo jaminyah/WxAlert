@@ -10,20 +10,23 @@ import Foundation
 
 class NetworkMgr {
     
-    static let sharedInstance = NetworkMgr()
-    private init() {}
+    var cityObject: City = City()
+    private (set) var pointsJson: Any? = nil
     
-    func getForecastJSON(city: String, state: String) -> Void {
+    init(cityObject: City) {
+        self.cityObject = cityObject
+    }
+    
+    init() {}
+    
+    func getForecastJSON(forecastUrl: URL?) -> Void {
+            
+        let city = self.cityObject.cityName
+        let state = self.cityObject.region.state
+    
+        guard let url = forecastUrl else { return }
         
-        // TODO - Formulate URL for Wilmington, NC
-        // https://api.weather.gov/points/34.2257,-77.944710
-        // properties -> forecast
-        // properties -> forecastHourly
-        
-        let urlString = FORECAST_URL2
-        guard let forecastUrl = URL(string: urlString) else { return }
-        
-        URLSession.shared.dataTask(with: forecastUrl) { (data, response, error) in
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
                 print(error!.localizedDescription)
             }
@@ -45,4 +48,38 @@ class NetworkMgr {
             }
         }.resume() // URLSession
     }
+    
+    
+    func getNWSPointsJSON(completion: @escaping (Any) -> Void) {
+        
+        // Example: Formulate URL for linked JSON for Wilmington, NC
+        // https://api.weather.gov/points/34.2257,-77.944710
+        
+        // Change - Dec 9, 2018
+        // let url = "https://api.weather.gov/gridpoints/MFL/111,49/forecast"
+        //let url = "http://cdn.jaminya.com/json/forecast_mia.json"
+        
+        let lat = self.cityObject.coordinates.latitude
+        let long = self.cityObject.coordinates.longitude
+        let baseUrl = "https://api.weather.gov/points/"
+        let apiUrl = "\(baseUrl)\(lat),\(long)"
+        print("apiUrl: \(apiUrl)")
+    
+        guard let pointsUrl = URL(string: apiUrl) else { return }
+        
+        URLSession.shared.dataTask(with: pointsUrl) { (data, response, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            guard let data = data else { return }
+            
+            do {
+                let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
+                completion(jsonData)
+            } catch let jsonError {
+                print(jsonError)
+            }
+        }.resume() // URLSession
+    }
+    
 }

@@ -129,9 +129,10 @@ class DbMgr {
         
         var sqlite3_stmt: OpaquePointer? = nil
         
+        // Lock database for writing. Open afterwards.
+        
         for day in weather {
             let number = day.number
-           // let name = day.name.cString(using: String.Encoding.utf8)
             let name = day.name
             print("insertSevenDay: \(name)")
             let startTime = day.startTime
@@ -265,7 +266,6 @@ class DbMgr {
         
         var index = 0
         while index < forecast.count {
-           // print("dailyLows: \(dailyLows[index])")
             forecast[index].lowTemp = dailyLows[index]
             index += 1
         }
@@ -401,7 +401,7 @@ class DbMgr {
     func checkJSONValid(sql: String) -> Bool {
         // Todo: function body
         
-        return false
+        return true
     }
     
 } // DbMgr

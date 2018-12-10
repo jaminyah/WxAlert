@@ -13,11 +13,11 @@ private let reuseIdentifier = "WxCell"
 class WxCollectionController: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
     
     var viewModel: WxCellVM
-
    
     override init() {
         print("WxCollectionController init.")
         self.viewModel = WxCellVM()
+        
     }
     
     
@@ -78,6 +78,8 @@ class WxCollectionController: NSObject, UICollectionViewDataSource, UICollection
             cell?.displayWeather(forecast: viewModel.cellModels[indexPath.row])
         } else {
             // Fetch valid JSON
+            // Add activity indicator
+            // Wait for db writing to be complete
             cell?.displayWeather(forecast: viewModel.cellModels[indexPath.row])
         }
 
@@ -126,6 +128,7 @@ class WxCollectionController: NSObject, UICollectionViewDataSource, UICollection
         
         return UIColor(red: red, green: green, blue: blue, alpha: 1)
     }
+    
     
     // MARK: UICollectionViewDelegate
     

@@ -13,10 +13,11 @@ class RootController: UITabBarController, CityProtocol {
     static let sharedInstance = RootController()
     var dataManager: DataManager?
     var selectedCity = SelectedCity()
+    var networkMgr = NetworkMgr()
     let dbmgr = DbMgr.sharedInstance
     
-    // Inject DataManager dependency into root controller singleton
     
+    // Inject DataManager dependency into root controller singleton
      private init(dataManager: DataManager = .sharedInstance) {
         super.init(nibName: nil, bundle: nil)
         self.dataManager = dataManager
@@ -42,6 +43,8 @@ class RootController: UITabBarController, CityProtocol {
     func addNewCity(city: City) {
         print("AddNewCity: ")
         self.dataManager?.appendCityObject(newCity: city)
+        
+        // Check if necessary
         NotificationCenter.default.post(name: .refreshCityNames, object: nil)
         
         // Update properties of city to be displayed
@@ -60,10 +63,26 @@ class RootController: UITabBarController, CityProtocol {
         dbmgr.dropTable(name: tableName.lowercased())
         dbmgr.createTable(name: tableName.lowercased())
         
-        let networkmgr = NetworkMgr.sharedInstance
-        networkmgr.getForecastJSON(city: city.cityName, state: city.region.state)
-
+        networkMgr = NetworkMgr(cityObject: city)
+        networkMgr.getNWSPointsJSON(completion: parsePointsJson)
     }
+    
+    private func parsePointsJson(data: Any) -> Void {
+        print("Received data")
+        let url = parseWx(json: data)
+        networkMgr.getForecastJSON(forecastUrl: url)
+    }
+    
+    private func parseWx(json: Any) -> URL? {
+        var forecastUrl: URL? = nil
+        
+        if let jsonParser = PointsJsonParser(JSON: json) {
+            let urlString = jsonParser.forecastUrl
+            forecastUrl = URL(string: urlString)
+        }
+        return forecastUrl
+    }
+
     
     func showCities() {
         self.dataManager?.showCities()
