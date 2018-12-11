@@ -35,6 +35,7 @@ class NetworkMgr {
                 let statusCode = httpResponse.statusCode
                 if statusCode != 200 {
                     print("status code: \(statusCode)")
+                    NotificationCenter.default.post(name: .show503Alert, object: nil)
                 }
             }
             
@@ -83,6 +84,7 @@ class NetworkMgr {
                 let statusCode = httpResponse.statusCode
                 if statusCode != 200 {
                     print("status code: \(statusCode)")
+                    NotificationCenter.default.post(name: .show503Alert, object: nil)
                 }
             }
             

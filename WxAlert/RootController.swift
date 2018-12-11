@@ -45,7 +45,7 @@ class RootController: UITabBarController, CityProtocol {
         self.dataManager?.appendCityObject(newCity: city)
         
         // Check if necessary
-        NotificationCenter.default.post(name: .refreshCityNames, object: nil)
+        //NotificationCenter.default.post(name: .refreshCityNames, object: nil)
         
         // Update properties of city to be displayed
         if let cityCount = dataManager?.cityCount() {
@@ -115,7 +115,7 @@ class RootController: UITabBarController, CityProtocol {
     func deleteCity(name: String) {
         self.dataManager?.removeCity(cityName: name)
         
-        NotificationCenter.default.post(name: CITY_LIST_MODIFIED, object: nil)
+       // NotificationCenter.default.post(name: CITY_LIST_MODIFIED, object: nil)
         
         // Debug
         self.dataManager?.showCities()
