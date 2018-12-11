@@ -145,7 +145,7 @@ class Meteorology {
             rank = Rank.hot.hashValue
         case "cold":
             skyCondition = "Cold"
-            skyImage = #imageLiteral(resourceName: "alert")
+            skyImage = UIImage(imageLiteralResourceName: "cold")
             rank = Rank.cold.hashValue
         case "blizzard":
             skyCondition = "Blizzard"
@@ -153,7 +153,7 @@ class Meteorology {
             rank = Rank.blizzard.hashValue
         case "fog":
             skyCondition = "Fog/mist"
-            skyImage = #imageLiteral(resourceName: "alert")
+            skyImage = UIImage(imageLiteralResourceName: "fog")
             rank = Rank.fog.hashValue
         default:
             skyCondition = "Partly cloudy"

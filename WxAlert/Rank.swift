@@ -19,7 +19,6 @@ enum Rank {
     case haze
     case hot
     case cold
-    case fog
     case wind_skc
     case wind_few
     case wind_sct
@@ -31,6 +30,7 @@ enum Rank {
     case tsra
     case tsra_sct
     case tsra_hi
+    case fog
     case snow
     case rain_snow
     case rain_sleet

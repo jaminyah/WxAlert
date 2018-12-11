@@ -30,8 +30,15 @@ class NetworkMgr {
             if error != nil {
                 print(error!.localizedDescription)
             }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                let statusCode = httpResponse.statusCode
+                if statusCode != 200 {
+                    print("status code: \(statusCode)")
+                }
+            }
+            
             guard let data = data else { return }
-        
             do {
                 let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
                 
@@ -71,8 +78,15 @@ class NetworkMgr {
             if error != nil {
                 print(error!.localizedDescription)
             }
-            guard let data = data else { return }
             
+            if let httpResponse = response as? HTTPURLResponse {
+                let statusCode = httpResponse.statusCode
+                if statusCode != 200 {
+                    print("status code: \(statusCode)")
+                }
+            }
+            
+            guard let data = data else { return }
             do {
                 let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
                 completion(jsonData)
