@@ -201,8 +201,8 @@ class DbMgr {
             let dateTimeString = String(cString:sqlite3_column_text(sqlite3_stmt, 3)!)
             cellModel.date = wxUtils.parse(dateTime: dateTimeString)
             
-            // Set dayNight icon
-            cellModel.dayNightIcon = #imageLiteral(resourceName: "sun_icon")
+            // Set day icon
+            cellModel.dayNightIcon = UIImage(imageLiteralResourceName: "sun_icon")
             
             cellModel.hiTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
             
@@ -299,11 +299,11 @@ class DbMgr {
             if isDaytime == 1 {
                 cellModel.hiTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
                 cellModel.lowTemp = nil
-                cellModel.dayNightIcon = #imageLiteral(resourceName: "sun_icon")
+                cellModel.dayNightIcon = UIImage(imageLiteralResourceName: "sun_icon")
             } else {
                 cellModel.hiTemp = nil
                 cellModel.lowTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
-                cellModel.dayNightIcon = #imageLiteral(resourceName: "moon_icon")
+                cellModel.dayNightIcon = UIImage(imageLiteralResourceName: "moon_icon")
             }
 
             cellModel.windSpeed = String(cString:sqlite3_column_text(sqlite3_stmt, 9))
@@ -362,7 +362,7 @@ class DbMgr {
             cellModel.date = wxUtils.parse(dateTime: dateTimeString)
             
             cellModel.hiTemp = nil
-            cellModel.dayNightIcon = #imageLiteral(resourceName: "moon_icon")
+            cellModel.dayNightIcon = UIImage(imageLiteralResourceName: "moon_icon")
             cellModel.lowTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
             
             cellModel.windSpeed = String(cString:sqlite3_column_text(sqlite3_stmt, 9))
