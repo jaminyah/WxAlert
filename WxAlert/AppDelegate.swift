@@ -50,6 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     @objc func showServerBusy() {
         
         let alertController = UIAlertController(title: "Server Busy", message: "No data", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in }
+        alertController.addAction(okAction)
         self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
     }
 

@@ -47,17 +47,16 @@ class NetworkMgr {
                 let statusCode = httpResponse.statusCode
                 if statusCode != 200 {
                     print("status code: \(statusCode)")
-                    // TODO: HANDLE 503 Error
                     NotificationCenter.default.post(name: .show503Alert, object: nil)
+                } else {
+                    guard let data = data else { return }
+                    do {
+                        let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
+                        completion(jsonData)
+                    } catch let jsonError {
+                        print(jsonError)
+                    }
                 }
-            }
-            
-            guard let data = data else { return }
-            do {
-                let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
-                completion(jsonData)
-            } catch let jsonError {
-                print(jsonError)
             }
         }.resume() // URLSession
     }
@@ -95,11 +94,10 @@ class NetworkMgr {
                         print(jsonError)
                     }
                    
-                    /*
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
                         NotificationCenter.default.post(name: .show503Alert, object: nil)
                     }
-                     */
+
                 } else {
                     guard let data = data else { return }
                     do {
@@ -124,9 +122,5 @@ class NetworkMgr {
             print("DbTable name: \(tableName)")
         }
     }
-    
-    func runCode() -> Void {
-        NotificationCenter.default.post(name: .show503Alert, object: nil)
-    }
-    
+        
 }
