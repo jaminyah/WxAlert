@@ -53,6 +53,7 @@
 		FAC16F4F2062644900683EE6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F4E2062644900683EE6 /* DataManager.swift */; };
 		FAC16F522062690E00683EE6 /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F512062690E00683EE6 /* Definitions.swift */; };
 		FACC35D1218B649A00ECC789 /* IconModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC35D0218B649A00ECC789 /* IconModel.swift */; };
+		FAD68B3D21C4514300D7FC51 /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = FAD68B3C21C4514300D7FC51 /* dummy.json */; };
 		FAF58475217C199A004A2C69 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF58474217C199A004A2C69 /* Rank.swift */; };
 /* End PBXBuildFile section */
 
@@ -127,6 +128,7 @@
 		FAC16F4E2062644900683EE6 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		FAC16F512062690E00683EE6 /* Definitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
 		FACC35D0218B649A00ECC789 /* IconModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconModel.swift; sourceTree = "<group>"; };
+		FAD68B3C21C4514300D7FC51 /* dummy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dummy.json; sourceTree = "<group>"; };
 		FAF58474217C199A004A2C69 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,6 +185,7 @@
 		FA06641C20614490006DE3CF /* WxAlert */ = {
 			isa = PBXGroup;
 			children = (
+				FAD68B3B21C4510E00D7FC51 /* Resource */,
 				FAF58473217C193A004A2C69 /* Enums */,
 				FA1D7E4C2135EE5500E49EC6 /* WeatherData */,
 				FAB45FC820FFC6BC00333FE9 /* Assets.xcassets */,
@@ -337,6 +340,14 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		FAD68B3B21C4510E00D7FC51 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				FAD68B3C21C4514300D7FC51 /* dummy.json */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
 		FAF58473217C193A004A2C69 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA06642A20614492006DE3CF /* LaunchScreen.storyboard in Resources */,
+				FAD68B3D21C4514300D7FC51 /* dummy.json in Resources */,
 				FA066481206194DB006DE3CF /* cities_usa.sqlite in Resources */,
 				FAB45FC920FFC6BC00333FE9 /* Assets.xcassets in Resources */,
 				FA06642520614491006DE3CF /* Main.storyboard in Resources */,

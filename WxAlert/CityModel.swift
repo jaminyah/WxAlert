@@ -11,7 +11,7 @@ import Foundation
 
 struct City {
     
-    let elements = ["Fire danger", "Fog", "Flood", "Freeze", "Hail", "Heat", "High Winds", "Ice", "Lightning", "Rain", "Rip Current", "Sleet", "Snow", "Thunderstorm", "Tornado"]
+    let elements = ["Fire danger", "Fog", "Flood", "Freeze", "Hail", "Heat", "High Winds", "High Surf", "Ice", "Lightning", "Rain", "Rip Current", "Sleet", "Snow", "Thunderstorm", "Tornado"]
     var cityName = "Dallas"
     var region =  Region()
     var coordinates = Coordinates()

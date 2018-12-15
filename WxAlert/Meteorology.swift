@@ -22,7 +22,7 @@ class Meteorology {
         switch icon {
         case "skc":
             skyCondition = "Fair/clear"
-            skyImage = #imageLiteral(resourceName: "Sun")
+            skyImage = UIImage(imageLiteralResourceName: "skc")
             rank = Rank.skc.hashValue
         case "few":
             skyCondition = "A few clouds"
@@ -137,7 +137,7 @@ class Meteorology {
             rank = Rank.smoke.hashValue
         case "haze":
             skyCondition = "Haze"
-            skyImage = #imageLiteral(resourceName: "alert")
+            skyImage = UIImage(imageLiteralResourceName: "haze")
             rank = Rank.haze.hashValue
         case "hot":
             skyCondition = "Hot"
@@ -155,6 +155,9 @@ class Meteorology {
             skyCondition = "Fog/mist"
             skyImage = UIImage(imageLiteralResourceName: "fog")
             rank = Rank.fog.hashValue
+        case "alert_cloud":
+            skyCondition = "Placeholder"
+            skyImage = UIImage(imageLiteralResourceName: "alert_cloud")
         default:
             skyCondition = "Partly cloudy"
             skyImage = #imageLiteral(resourceName: "bkn")

@@ -27,12 +27,14 @@ class NetworkMgr {
         // Change - Dec 9, 2018
         // let url = "https://api.weather.gov/gridpoints/MFL/111,49/forecast"
         //let url = "http://cdn.jaminya.com/json/forecast_mia.json"
-        
+    
+    
         let lat = self.cityObject.coordinates.latitude
         let long = self.cityObject.coordinates.longitude
         let baseUrl = "https://api.weather.gov/points/"
+        
         let apiUrl = "\(baseUrl)\(lat),\(long)"
-        print("apiUrl: \(apiUrl)")
+        //print("apiUrl: \(apiUrl)")
         
         guard let pointsUrl = URL(string: apiUrl) else { return }
         
@@ -45,6 +47,7 @@ class NetworkMgr {
                 let statusCode = httpResponse.statusCode
                 if statusCode != 200 {
                     print("status code: \(statusCode)")
+                    // TODO: HANDLE 503 Error
                     NotificationCenter.default.post(name: .show503Alert, object: nil)
                 }
             }
@@ -75,16 +78,37 @@ class NetworkMgr {
                 let statusCode = httpResponse.statusCode
                 if statusCode != 200 {
                     print("status code: \(statusCode)")
-                    NotificationCenter.default.post(name: .show503Alert, object: nil)
+                    
+                    // Get local json file with dummy data
+                    
+                    let dataPath = Bundle.main.url(forResource: "dummy", withExtension: "json")
+                    guard let urlPath = dataPath else { return }
+                    do {
+                        
+                        let data = try Data(contentsOf: urlPath)
+                        print("Bundle.main: \(data)")
+                        print("urlPath: \(urlPath)")
+                        let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
+                        print(jsonData)
+                        self.dbWriteForecast(json: jsonData, cityName: city, stateID: state)
+                    } catch let jsonError {
+                        print(jsonError)
+                    }
+                   
+                    /*
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
+                        NotificationCenter.default.post(name: .show503Alert, object: nil)
+                    }
+                     */
+                } else {
+                    guard let data = data else { return }
+                    do {
+                        let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
+                        self.dbWriteForecast(json: jsonData, cityName: city, stateID: state)
+                    } catch let jsonError {
+                        print(jsonError)
+                    }
                 }
-            }
-            
-            guard let data = data else { return }
-            do {
-                let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
-                self.dbWriteForecast(json: jsonData, cityName: city, stateID: state)
-            } catch let jsonError {
-                print(jsonError)
             }
         }.resume() // URLSession
     }
@@ -99,6 +123,10 @@ class NetworkMgr {
             forecastDataMgr.writeForecast()
             print("DbTable name: \(tableName)")
         }
+    }
+    
+    func runCode() -> Void {
+        NotificationCenter.default.post(name: .show503Alert, object: nil)
     }
     
 }

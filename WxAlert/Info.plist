@@ -48,7 +48,7 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>jaminya.com</key>
+			<key>jaminix.net</key>
 			<dict>
 				<key>NSIncludesSubdomains</key>
 				<true/>

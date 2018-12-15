@@ -46,7 +46,7 @@ class WeatherController: UIViewController {
         // hide views
         alertCollection.isHidden = false
         
-        NotificationCenter.default.addObserver(self, selector: #selector(showServerBusy), name: .show503Alert, object: nil)
+
         
         /*
         let queue = OperationQueue()
@@ -88,11 +88,7 @@ class WeatherController: UIViewController {
         // send out notification when timer expires
     }
     
-    @objc func showServerBusy() {
-        
-        let alertController = UIAlertController(title: "Server Busy", message: "No data", preferredStyle: .alert)
-        self.present(alertController, animated: true, completion: nil)
-    }
+
     
  
     /*

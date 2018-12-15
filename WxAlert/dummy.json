@@ -1,0 +1,275 @@
+{
+    "@context": [
+        "https://raw.githubusercontent.com/geojson/geojson-ld/master/contexts/geojson-base.jsonld",
+        {
+            "wx": "https://api.weather.gov/ontology#",
+            "geo": "http://www.opengis.net/ont/geosparql#",
+            "unit": "http://codes.wmo.int/common/unit/",
+            "@vocab": "https://api.weather.gov/ontology#"
+        }
+    ],
+    "type": "Feature",
+    "geometry": {
+        "type": "GeometryCollection",
+        "geometries": [
+            {
+                "type": "Point",
+                "coordinates": [
+                    -80.187567900000005,
+                    25.759522199999999
+                ]
+            },
+            {
+                "type": "Polygon",
+                "coordinates": [
+                    [
+                        [
+                            -80.198788800000003,
+                            25.7721172
+                        ],
+                        [
+                            -80.2015514,
+                            25.749416199999999
+                        ],
+                        [
+                            -80.176349400000007,
+                            25.746926199999997
+                        ],
+                        [
+                            -80.173582100000004,
+                            25.769626899999999
+                        ],
+                        [
+                            -80.198788800000003,
+                            25.7721172
+                        ]
+                    ]
+                ]
+            }
+        ]
+    },
+    "properties": {
+        "updated": "2018-10-02T19:01:19+00:00",
+        "units": "us",
+        "forecastGenerator": "BaselineForecastGenerator",
+        "generatedAt": "2018-10-02T19:29:03+00:00",
+        "updateTime": "2018-10-02T19:01:19+00:00",
+        "validTimes": "2018-10-02T13:00:00+00:00/P8D",
+        "elevation": {
+            "value": 0.9144000000000001,
+            "unitCode": "unit:m"
+        },
+        "periods": [
+            {
+                "number": 1,
+                "name": "Tuesday Night",
+                "startTime": "1970-01-01T00:00:00+00:00",
+                "endTime": "1970-01-01T00:00:00+00:00",
+                "isDaytime": false,
+                "temperature": 0,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "-- mph",
+                "windDirection": "---",
+                "icon": "https://api.weather.gov/icons/land/night/alert_cloud?size=medium",
+                "shortForecast": "No server data",
+                "detailedForecast": "No server data."
+            },
+            {
+                "number": 2,
+                "name": "Wednesday",
+                "startTime": "1970-01-01T00:00:00+00:00",
+                "endTime": "1970-01-01T00:00:00+00:00",
+                "isDaytime": true,
+                "temperature": 0,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "-- mph",
+                "windDirection": "---",
+                "icon": "https://api.weather.gov/icons/land/day/alert_cloud?size=medium",
+                "shortForecast": "No server data",
+                "detailedForecast": "No server data."
+            },
+            {
+                "number": 3,
+                "name": "Wednesday Night",
+                "startTime": "1970-01-01T00:00:00+00:00",
+                "endTime": "1970-01-01T00:00:00+00:00",
+                "isDaytime": false,
+                "temperature": 0,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "-- mph",
+                "windDirection": "---",
+                "icon": "https://api.weather.gov/icons/land/night/alert_cloud?size=medium",
+                "shortForecast": "No server data",
+                "detailedForecast": "No server data."
+            },
+            {
+                "number": 4,
+                "name": "Thursday",
+                "startTime": "1970-01-01T00:00:00+00:00",
+                "endTime": "1970-01-01T00:00:00+00:00",
+                "isDaytime": true,
+                "temperature": 0,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "-- mph",
+                "windDirection": "---",
+                "icon": "https://api.weather.gov/icons/land/day/alert_cloud?size=medium",
+                "shortForecast": "No server data",
+                "detailedForecast": "No server data."
+            },
+            {
+                "number": 5,
+                "name": "Thursday Night",
+                "startTime": "1970-01-01T00:00:00+00:00",
+                "endTime": "1970-01-01T00:00:00+00:00",
+                "isDaytime": false,
+                "temperature": 0,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "-- mph",
+                "windDirection": "---",
+                "icon": "https://api.weather.gov/icons/land/night/alert_cloud?size=medium",
+                "shortForecast": "No server data",
+                "detailedForecast": "No server data."
+            },
+            {
+                "number": 6,
+                "name": "Friday",
+                "startTime": "1970-01-01T00:00:00+00:00",
+                "endTime": "1970-01-01T00:00:00+00:00",
+                "isDaytime": true,
+                "temperature": 0,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "-- mph",
+                "windDirection": "---",
+                "icon": "https://api.weather.gov/icons/land/day/alert_cloud?size=medium",
+                "shortForecast": "No server data",
+                "detailedForecast": "No server data."
+            },
+            {
+                "number": 7,
+                "name": "Friday Night",
+                "startTime": "1970-01-01T00:00:00+00:00",
+                "endTime": "1970-01-01T00:00:00+00:00",
+                "isDaytime": false,
+                "temperature": 0,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "-- mph",
+                "windDirection": "---",
+                "icon": "https://api.weather.gov/icons/land/night/alert_cloud?size=medium",
+                "shortForecast": "No server data",
+                "detailedForecast": "No server data."
+            },
+            {
+                "number": 8,
+                "name": "Saturday",
+                "startTime": "1970-01-01T00:00:00+00:00",
+                "endTime": "1970-01-01T00:00:00+00:00",
+                "isDaytime": true,
+                "temperature": 0,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "-- mph",
+                "windDirection": "---",
+                "icon": "https://api.weather.gov/icons/land/day/alert_cloud?size=medium",
+                "shortForecast": "No server data",
+                "detailedForecast": "No server data."
+            },
+            {
+                "number": 9,
+                "name": "Saturday Night",
+                "startTime": "1970-01-01T00:00:00+00:00",
+                "endTime": "1970-01-01T00:00:00+00:00",
+                "isDaytime": false,
+                "temperature": 0,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "-- mph",
+                "windDirection": "---",
+                "icon": "https://api.weather.gov/icons/land/night/alert_cloud?size=medium",
+                "shortForecast": "No server data",
+                "detailedForecast": "No server data."
+            },
+            {
+                "number": 10,
+                "name": "Sunday",
+                "startTime": "1970-01-01T00:00:00+00:00",
+                "endTime": "1970-01-01T00:00:00+00:00",
+                "isDaytime": true,
+                "temperature": 0,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "-- mph",
+                "windDirection": "---",
+                "icon": "https://api.weather.gov/icons/land/day/alert_cloud?size=medium",
+                "shortForecast": "No server data",
+                "detailedForecast": "No server data."
+            },
+            {
+                "number": 11,
+                "name": "Sunday Night",
+                "startTime": "1970-01-01T00:00:00+00:00",
+                "endTime": "1970-01-01T00:00:00+00:00",
+                "isDaytime": false,
+                "temperature": 0,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "-- mph",
+                "windDirection": "---",
+                "icon": "https://api.weather.gov/icons/land/night/alert_cloud?size=medium",
+                "shortForecast": "No server data",
+                "detailedForecast": "No server data."
+            },
+            {
+                "number": 12,
+                "name": "Monday",
+                "startTime": "1970-01-01T00:00:00+00:00",
+                "endTime": "1970-01-01T00:00:00+00:00",
+                "isDaytime": true,
+                "temperature": 0,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "-- mph",
+                "windDirection": "---",
+                "icon": "https://api.weather.gov/icons/land/day/alert_cloud?size=medium",
+                "shortForecast": "No server data",
+                "detailedForecast": "No server data."
+            },
+            {
+                "number": 13,
+                "name": "Monday Night",
+                "startTime": "1970-01-01T00:00:00+00:00",
+                "endTime": "1970-01-01T00:00:00+00:00",
+                "isDaytime": false,
+                "temperature": 0,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "-- mph",
+                "windDirection": "---",
+                "icon": "https://api.weather.gov/icons/land/night/alert_cloud?size=medium",
+                "shortForecast": "No server data",
+                "detailedForecast": "No server data."
+            },
+            {
+                "number": 14,
+                "name": "Tuesday",
+                "startTime": "1970-01-01T00:00:00+00:00",
+                "endTime": "1970-01-01T00:00:00+00:00",
+                "isDaytime": true,
+                "temperature": 0,
+                "temperatureUnit": "F",
+                "temperatureTrend": null,
+                "windSpeed": "-- mph",
+                "windDirection": "---",
+                "icon": "https://api.weather.gov/icons/land/day/alert_cloud?size=medium",
+                "shortForecast": "No server data",
+                "detailedForecast": "No server data."
+            }
+        ]
+    }
+}

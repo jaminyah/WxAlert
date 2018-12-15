@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(showServerBusy), name: .show503Alert, object: nil)
         return true
     }
 
@@ -44,7 +46,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         dbMgr.closeDatabase()
     }
-
+    
+    @objc func showServerBusy() {
+        
+        let alertController = UIAlertController(title: "Server Busy", message: "No data", preferredStyle: .alert)
+        self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+    }
 
 }
 

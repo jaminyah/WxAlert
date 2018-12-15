@@ -18,31 +18,24 @@ class WeatherUtils {
         
         switch (direction) {
         case "N":
-            print("N")
             windIcon = #imageLiteral(resourceName: "wind_north")
         case "NE", "NNE", "ENE":
-            // print("NE | NNE | ENE")
             windIcon = #imageLiteral(resourceName: "wind_northeast")
         case "NW", "NNW", "WNW":
-            // print("NE | NNW | WNW")
             windIcon = #imageLiteral(resourceName: "wind_northwest")
         case "E":
-            // print("E")
             windIcon = #imageLiteral(resourceName: "wind_east")
         case "SE", "ESE", "SSE":
-            // print("SE | ESE | SSE")
             windIcon = #imageLiteral(resourceName: "wind_southeast")
         case "S":
-            // print("S")
             windIcon = #imageLiteral(resourceName: "wind_south")
         case "SW", "SSW", "WSW":
-            // print("SW | SSW | WSW")
             windIcon = #imageLiteral(resourceName: "wind_southwest")
         case "W":
-            // print("W")
             windIcon = #imageLiteral(resourceName: "wind_west")
+        case "---":
+            windIcon = UIImage(imageLiteralResourceName: "alert_wind")
         default:
-            // print("Set icon to nil")
             windIcon = nil
         }
         

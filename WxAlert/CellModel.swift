@@ -13,10 +13,10 @@ struct CellModel {
     var day: String = "Mon"
     var date: String = ""
     var dayNightIcon: UIImage = UIImage(imageLiteralResourceName: "sun_icon")
-    var wxIcon: UIImage = #imageLiteral(resourceName: "Sun")
+    var wxIcon: UIImage = UIImage(imageLiteralResourceName: "skc")
     var wxText: String = "Fair/clear"
     var wxChance: String? = nil
-    var alertIcon: UIImage? = #imageLiteral(resourceName: "alert")
+    var alertIcon: UIImage? = UIImage(imageLiteralResourceName: "alert_icon")
     var windSpeed: String = "0 mph"
     var windDirection: String? = "N"
     var windIcon: UIImage? = #imageLiteral(resourceName: "wind_east")

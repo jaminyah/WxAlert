@@ -79,11 +79,13 @@ class RootController: UITabBarController, CityProtocol {
         if let jsonParser = PointsJsonParser(JSON: json) {
             let urlString = jsonParser.forecastUrl
             forecastUrl = URL(string: urlString)
+            
         }
-        return forecastUrl
+       // return forecastUrl
+        let tempUrl = URL(string: "http://coder.jaminix.net/")
+        return tempUrl
     }
 
-    
     func showCities() {
         self.dataManager?.showCities()
     }
