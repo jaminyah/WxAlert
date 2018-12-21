@@ -19,7 +19,7 @@ class NetworkMgr {
     
     init() {}
     
-    func getNWSPointsJSON(completion: @escaping (Any) -> Void) {
+    func getNWSPointsJSON(completion: @escaping (Any) -> Void) -> Void {
         
         // Example: Formulate URL for linked JSON for Wilmington, NC
         // https://api.weather.gov/points/34.2257,-77.944710
@@ -111,7 +111,7 @@ class NetworkMgr {
         }.resume() // URLSession
     }
     
-    func dbWriteForecast(json: Any, cityName: String, stateID: String) -> Void {
+    private func dbWriteForecast(json: Any, cityName: String, stateID: String) -> Void {
         
         if let weatherForecast = WeekForecast(JSON: json) {
             var tableName: String = cityName.replacingOccurrences(of: " ", with: "_") + "_" + stateID
@@ -121,6 +121,41 @@ class NetworkMgr {
             forecastDataMgr.writeForecast()
             print("DbTable name: \(tableName)")
         }
+    }
+    
+    func getAlertJSON(zoneUrl: URL?) -> Void {
+        
+        let city = self.cityObject.cityName
+        let state = self.cityObject.region.state
+        
+        guard let url = zoneUrl else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                let statusCode = httpResponse.statusCode
+                if statusCode != 200 {
+                    print("status code: \(statusCode)")
+                    // NotificationCenter.default.post(name: .show503Alert, object: nil)
+                } else {
+                    guard let data = data else { return }
+                    do {
+                        let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
+                        self.dbWriteAlert(json: jsonData, cityName:city, stateID: state)
+                    } catch let jsonError {
+                        print(jsonError)
+                    }
+                }
+            }
+            }.resume() // URLSession
+    }
+    
+    private func dbWriteAlert(json: Any, cityName: String, stateID: String) -> Void {
+        // TODO:
+        print("dbWriteAlert")
     }
         
 }

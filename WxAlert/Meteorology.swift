@@ -133,7 +133,7 @@ class Meteorology {
             rank = Rank.dust.hashValue
         case "smoke":
             skyCondition = "Smoke"
-            skyImage = #imageLiteral(resourceName: "alert")
+            skyImage = UIImage(imageLiteralResourceName: "smoke")
             rank = Rank.smoke.hashValue
         case "haze":
             skyCondition = "Haze"

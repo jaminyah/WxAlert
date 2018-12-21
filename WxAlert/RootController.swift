@@ -11,12 +11,12 @@ import UIKit
 class RootController: UITabBarController, CityProtocol {
     
     static let sharedInstance = RootController()
+    let dbmgr = DbMgr.sharedInstance
     var dataManager: DataManager?
     var selectedCity = SelectedCity()
     var networkMgr = NetworkMgr()
-    let dbmgr = DbMgr.sharedInstance
-    
-    
+    var pointsAPIJson: Any? = nil
+
     // Inject DataManager dependency into root controller singleton
      private init(dataManager: DataManager = .sharedInstance) {
         super.init(nibName: nil, bundle: nil)
@@ -64,16 +64,28 @@ class RootController: UITabBarController, CityProtocol {
         dbmgr.createTable(name: tableName.lowercased())
         
         networkMgr = NetworkMgr(cityObject: city)
-        networkMgr.getNWSPointsJSON(completion: parsePointsJson)
+        self.networkMgr.getNWSPointsJSON(completion: self.sqliteWrite)
     }
     
-    private func parsePointsJson(data: Any) -> Void {
+    private func sqliteWrite(data: Any) -> Void {
         print("Received data")
-        let url = parseWx(json: data)
-        networkMgr.getForecastJSON(forecastUrl: url)
+
+        let url = parsePointsForecast(json: data)
+        let zoneUrl = parsePointsZone(json: data)
+        
+        let queue = OperationQueue()
+        queue.maxConcurrentOperationCount = 2
+        queue.addOperation {
+            self.networkMgr.getForecastJSON(forecastUrl: url)
+        }
+        queue.addOperation {
+            self.networkMgr.getAlertJSON(zoneUrl: zoneUrl)
+        }
+        queue.waitUntilAllOperationsAreFinished()
+
     }
     
-    private func parseWx(json: Any) -> URL? {
+    private func parsePointsForecast(json: Any) -> URL? {
         var forecastUrl: URL? = nil
         
         if let jsonParser = PointsJsonParser(JSON: json) {
@@ -81,11 +93,31 @@ class RootController: UITabBarController, CityProtocol {
             forecastUrl = URL(string: urlString)
             
         }
-       // return forecastUrl
-        let tempUrl = URL(string: "http://coder.jaminix.net/")
-        return tempUrl
+        return forecastUrl
+        // Generate 503 error for testing
+        // let tempUrl = URL(string: "http://coder.jaminix.net/")
+        // return tempUrl
     }
-
+    
+    private func sqliteWriteAlerts() -> Void {
+        print("sqliteWriteAlerts")
+        guard let data = self.pointsAPIJson else { return }
+        let forecastZoneUrl = parsePointsZone(json: data)
+        print("zoneUrl: \(forecastZoneUrl!)")
+        networkMgr.getAlertJSON(zoneUrl: forecastZoneUrl)
+    }
+    
+    private func parsePointsZone(json: Any) -> URL? {
+        var zoneUrl: URL? = nil
+        
+        if let jsonParser = PointsJsonParser(JSON: json) {
+            let urlString = jsonParser.forecastZoneUrl
+            zoneUrl = URL(string: urlString)
+        }
+        return zoneUrl
+    }
+    
+    
     func showCities() {
         self.dataManager?.showCities()
     }
