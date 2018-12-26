@@ -18,6 +18,6 @@ struct PointsJsonParser: JSONDecodable {
         
         if let forecast = JSON["properties"]?["forecast"] as? String { self.forecastUrl = forecast}
        //if let forecastHourly = JSON["properties"]?["forecastHourly"] as? String {self.forecastHourlyUrl = forecastHourly}
-        if let forecastZone = JSON["properties"]?["forecast"] as? String {self.forecastZoneUrl = forecastZone}
+        if let forecastZone = JSON["properties"]?["forecastZone"] as? String {self.forecastZoneUrl = forecastZone}
     }
 }

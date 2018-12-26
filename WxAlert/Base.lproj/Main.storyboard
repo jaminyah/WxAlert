@@ -383,7 +383,7 @@
         <scene sceneID="4AY-bk-iAB">
             <objects>
                 <navigationController title="Settings" id="lWt-uT-1Yo" customClass="SettingsController" customModule="WxAlert" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="gear-1" id="uKy-Sk-kuw"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="uKy-Sk-kuw"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xoq-be-tIl">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -488,7 +488,7 @@
         <scene sceneID="tqI-2h-rRc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="7xX-Wc-BYp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="City" image="magnify" id="5jl-hC-483"/>
+                    <tabBarItem key="tabBarItem" title="City" image="search" id="5jl-hC-483"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ll0-to-wvv">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -509,10 +509,10 @@
         <image name="alert_icon" width="100" height="100"/>
         <image name="bkn" width="64" height="64"/>
         <image name="blizzard_alert" width="43" height="64"/>
-        <image name="gear-1" width="26" height="26"/>
-        <image name="magnify" width="24" height="24"/>
+        <image name="search" width="23" height="23"/>
+        <image name="settings" width="23" height="23"/>
         <image name="sun_icon" width="32" height="32"/>
-        <image name="umbrella" width="24" height="26"/>
+        <image name="umbrella" width="23" height="23"/>
         <image name="wind_northeast" width="32" height="32"/>
     </resources>
 </document>

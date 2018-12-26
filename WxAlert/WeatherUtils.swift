@@ -156,6 +156,7 @@ class WeatherUtils {
     
 
     func parse(url: URL) -> [String] {
+        // https://api.weather.gov/icons/land/night/rain,100?size=medium
         
         let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         let path = components?.path
@@ -169,6 +170,8 @@ class WeatherUtils {
     }
     
     func split(compoundString: String) -> (icon: String, percentage: String?) {
+        // rain_showers,60
+        
         var icon: String = "skc"
         var percentage: String? = nil
         
@@ -292,8 +295,14 @@ class WeatherUtils {
                 }
             } else {
                 if iconModel2.priority > iconModel.priority {
+                    if let icon2 = iconModel2.name {
+                        print("return iconModel2: \(icon2)")
+                    }
                     return iconModel2
                 } else {
+                    if let icon = iconModel.name {
+                        print("return iconModel: \(icon)")
+                    }
                     return iconModel
                 }
             }
@@ -355,6 +364,22 @@ class WeatherUtils {
         }
         
         return month
+    }
+    
+    func parse(zoneUrl: String) -> URL? {
+        // "https://api.weather.gov/alerts/active/zone/{zoneId}"
+        
+        var alertUrl: URL?
+        var zoneId: String = "TXZ119"          // Default value
+        
+        let url = URL(string: zoneUrl)
+        guard let unwrappedUrl = url else { return nil }
+        let components = parse(url: unwrappedUrl)
+        zoneId = components[3]
+        let alertUrlString = "https://api.weather.gov/alerts/active/zone/" + "\(zoneId)"
+        alertUrl = URL(string: alertUrlString)
+        
+        return alertUrl
     }
     
 } // WeatherUtils

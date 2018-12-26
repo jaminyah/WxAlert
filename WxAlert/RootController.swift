@@ -79,7 +79,7 @@ class RootController: UITabBarController, CityProtocol {
             self.networkMgr.getForecastJSON(forecastUrl: url)
         }
         queue.addOperation {
-            self.networkMgr.getAlertJSON(zoneUrl: zoneUrl)
+            self.networkMgr.getAlertJSON(url: zoneUrl)
         }
         queue.waitUntilAllOperationsAreFinished()
 
@@ -99,20 +99,20 @@ class RootController: UITabBarController, CityProtocol {
         // return tempUrl
     }
     
+    /*
     private func sqliteWriteAlerts() -> Void {
         print("sqliteWriteAlerts")
         guard let data = self.pointsAPIJson else { return }
         let forecastZoneUrl = parsePointsZone(json: data)
-        print("zoneUrl: \(forecastZoneUrl!)")
-        networkMgr.getAlertJSON(zoneUrl: forecastZoneUrl)
-    }
+        print("zoneUrl: \(forecastZoneUrl)")
+        networkMgr.getAlertJSON(url: forecastZoneUrl)
+    } */
     
-    private func parsePointsZone(json: Any) -> URL? {
-        var zoneUrl: URL? = nil
+    private func parsePointsZone(json: Any) -> String {
+        var zoneUrl: String = ""
         
         if let jsonParser = PointsJsonParser(JSON: json) {
-            let urlString = jsonParser.forecastZoneUrl
-            zoneUrl = URL(string: urlString)
+            zoneUrl = jsonParser.forecastZoneUrl
         }
         return zoneUrl
     }

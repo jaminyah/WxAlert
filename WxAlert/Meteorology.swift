@@ -61,7 +61,7 @@ class Meteorology {
             rank = Rank.wind_ovc.hashValue
         case "snow":
             skyCondition = "Snow"
-            skyImage = #imageLiteral(resourceName: "snow")
+            skyImage = UIImage(imageLiteralResourceName: "snow")
             rank = Rank.snow.hashValue
         case "rain_snow":
             skyCondition = "Rain/snow"

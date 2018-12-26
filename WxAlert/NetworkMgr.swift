@@ -123,14 +123,18 @@ class NetworkMgr {
         }
     }
     
-    func getAlertJSON(zoneUrl: URL?) -> Void {
+    func getAlertJSON(url: String) -> Void {
         
         let city = self.cityObject.cityName
         let state = self.cityObject.region.state
+        let wxUtils = WeatherUtils()
         
-        guard let url = zoneUrl else { return }
+        let forecastAlertUrl = wxUtils.parse(zoneUrl: url)
+        guard let alertUrl = forecastAlertUrl else { return }
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        // TODO: Parse url to get zone id. Get alerts using api with zone id
+        
+        URLSession.shared.dataTask(with: alertUrl) { (data, response, error) in
             if error != nil {
                 print(error!.localizedDescription)
             }
@@ -144,6 +148,7 @@ class NetworkMgr {
                     guard let data = data else { return }
                     do {
                         let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
+                        print("Alert Json: \(jsonData)")
                         self.dbWriteAlert(json: jsonData, cityName:city, stateID: state)
                     } catch let jsonError {
                         print(jsonError)
@@ -154,7 +159,7 @@ class NetworkMgr {
     }
     
     private func dbWriteAlert(json: Any, cityName: String, stateID: String) -> Void {
-        // TODO:
+        // TODO: Parse json data
         print("dbWriteAlert")
     }
         
