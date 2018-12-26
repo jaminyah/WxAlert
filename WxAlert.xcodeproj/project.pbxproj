@@ -39,6 +39,9 @@
 		FA4B52222131BE380017ADC9 /* DbMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4B52212131BE380017ADC9 /* DbMgr.swift */; };
 		FA503EBD21B7041B0073F479 /* PointsJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA503EBC21B7041B0073F479 /* PointsJsonParser.swift */; };
 		FA57346E217FA773004CB2E0 /* WeatherUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57346D217FA773004CB2E0 /* WeatherUtils.swift */; };
+		FA81970821D3E2CF00C22092 /* AlertDataMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81970721D3E2CF00C22092 /* AlertDataMgr.swift */; };
+		FA81970A21D3E70900C22092 /* AlertList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81970921D3E70900C22092 /* AlertList.swift */; };
+		FA81970C21D3E7F300C22092 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81970B21D3E7F300C22092 /* Alert.swift */; };
 		FA8E9FC0218793EE005EF8CE /* JSONIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8E9FBF218793EE005EF8CE /* JSONIcons.swift */; };
 		FA9DDAA22133112B004B9E2D /* DataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9DDAA12133112B004B9E2D /* DataItem.swift */; };
 		FA9DDAA421359C29004B9E2D /* NetworkMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9DDAA321359C29004B9E2D /* NetworkMgr.swift */; };
@@ -114,6 +117,9 @@
 		FA4B52212131BE380017ADC9 /* DbMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMgr.swift; sourceTree = "<group>"; };
 		FA503EBC21B7041B0073F479 /* PointsJsonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsJsonParser.swift; sourceTree = "<group>"; };
 		FA57346D217FA773004CB2E0 /* WeatherUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUtils.swift; sourceTree = "<group>"; };
+		FA81970721D3E2CF00C22092 /* AlertDataMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDataMgr.swift; sourceTree = "<group>"; };
+		FA81970921D3E70900C22092 /* AlertList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertList.swift; sourceTree = "<group>"; };
+		FA81970B21D3E7F300C22092 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		FA8E9FBF218793EE005EF8CE /* JSONIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONIcons.swift; sourceTree = "<group>"; };
 		FA9DDAA12133112B004B9E2D /* DataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataItem.swift; sourceTree = "<group>"; };
 		FA9DDAA321359C29004B9E2D /* NetworkMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMgr.swift; sourceTree = "<group>"; };
@@ -185,6 +191,7 @@
 		FA06641C20614490006DE3CF /* WxAlert */ = {
 			isa = PBXGroup;
 			children = (
+				FA81970621D3E27C00C22092 /* AlertData */,
 				FAD68B3B21C4510E00D7FC51 /* Resource */,
 				FAF58473217C193A004A2C69 /* Enums */,
 				FA1D7E4C2135EE5500E49EC6 /* WeatherData */,
@@ -326,6 +333,16 @@
 				FA503EBC21B7041B0073F479 /* PointsJsonParser.swift */,
 			);
 			name = WeatherData;
+			sourceTree = "<group>";
+		};
+		FA81970621D3E27C00C22092 /* AlertData */ = {
+			isa = PBXGroup;
+			children = (
+				FA81970721D3E2CF00C22092 /* AlertDataMgr.swift */,
+				FA81970921D3E70900C22092 /* AlertList.swift */,
+				FA81970B21D3E7F300C22092 /* Alert.swift */,
+			);
+			name = AlertData;
 			sourceTree = "<group>";
 		};
 		FAC16F4D2062643000683EE6 /* Classes */ = {
@@ -504,6 +521,7 @@
 				FA06645F206151C7006DE3CF /* NotificationSettings.swift in Sources */,
 				FA06645520614FEE006DE3CF /* SearchController.swift in Sources */,
 				FA06645D2061514E006DE3CF /* WeatherDetailController.swift in Sources */,
+				FA81970C21D3E7F300C22092 /* Alert.swift in Sources */,
 				FA06647D20618F14006DE3CF /* MKPinInfo.swift in Sources */,
 				FA06645320614E32006DE3CF /* SettingsController.swift in Sources */,
 				FA1D7E522136016300E49EC6 /* ForecastDataMgr.swift in Sources */,
@@ -535,6 +553,8 @@
 				FA06645720615016006DE3CF /* WeatherController.swift in Sources */,
 				FA113140211FFF7F00B50085 /* WxCellViewModel.swift in Sources */,
 				FA066451206145E6006DE3CF /* RootController.swift in Sources */,
+				FA81970A21D3E70900C22092 /* AlertList.swift in Sources */,
+				FA81970821D3E2CF00C22092 /* AlertDataMgr.swift in Sources */,
 				FABBBC44210519E7005C2207 /* WxCollectionController.swift in Sources */,
 				FA9DDAA421359C29004B9E2D /* NetworkMgr.swift in Sources */,
 			);
