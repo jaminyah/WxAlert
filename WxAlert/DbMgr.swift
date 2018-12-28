@@ -404,4 +404,9 @@ class DbMgr {
         return true
     }
     
+    // Mark: Alert functions
+    func insertAlerts(alert: [Alert], table: String) -> Void {
+        // TODO: insert alerts into db table
+    }
+    
 } // DbMgr
