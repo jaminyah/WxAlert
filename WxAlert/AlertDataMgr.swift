@@ -22,7 +22,7 @@ class AlertDataMgr {
     func writeAlert() -> Void {
         guard let data = alert?.features else { return }
         guard let tableName = self.table else { return }
-        dbMgr.insertAlerts(alert: data, table:tableName)
+        dbMgr.insert(alerts: data, table:tableName)
     }
     
 } // AlertDataMgr

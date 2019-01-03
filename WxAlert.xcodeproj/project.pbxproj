@@ -36,6 +36,7 @@
 		FA1D7E522136016300E49EC6 /* ForecastDataMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D7E512136016300E49EC6 /* ForecastDataMgr.swift */; };
 		FA1E55D3215F54F60092CE2C /* Meteorology.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E55D2215F54F60092CE2C /* Meteorology.swift */; };
 		FA28D7FF2152977D004D9AAD /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28D7FE2152977D004D9AAD /* CellModel.swift */; };
+		FA352DA621D6991900F9F0F6 /* DbMgr+AlertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA352DA521D6991900F9F0F6 /* DbMgr+AlertData.swift */; };
 		FA4B52222131BE380017ADC9 /* DbMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4B52212131BE380017ADC9 /* DbMgr.swift */; };
 		FA503EBD21B7041B0073F479 /* PointsJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA503EBC21B7041B0073F479 /* PointsJsonParser.swift */; };
 		FA57346E217FA773004CB2E0 /* WeatherUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57346D217FA773004CB2E0 /* WeatherUtils.swift */; };
@@ -114,6 +115,7 @@
 		FA1D7E512136016300E49EC6 /* ForecastDataMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastDataMgr.swift; sourceTree = "<group>"; };
 		FA1E55D2215F54F60092CE2C /* Meteorology.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meteorology.swift; sourceTree = "<group>"; };
 		FA28D7FE2152977D004D9AAD /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
+		FA352DA521D6991900F9F0F6 /* DbMgr+AlertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DbMgr+AlertData.swift"; sourceTree = "<group>"; };
 		FA4B52212131BE380017ADC9 /* DbMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMgr.swift; sourceTree = "<group>"; };
 		FA503EBC21B7041B0073F479 /* PointsJsonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsJsonParser.swift; sourceTree = "<group>"; };
 		FA57346D217FA773004CB2E0 /* WeatherUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUtils.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 		FA06641C20614490006DE3CF /* WxAlert */ = {
 			isa = PBXGroup;
 			children = (
+				FA352DA421D698E800F9F0F6 /* Extensions */,
 				FA81970621D3E27C00C22092 /* AlertData */,
 				FAD68B3B21C4510E00D7FC51 /* Resource */,
 				FAF58473217C193A004A2C69 /* Enums */,
@@ -333,6 +336,14 @@
 				FA503EBC21B7041B0073F479 /* PointsJsonParser.swift */,
 			);
 			name = WeatherData;
+			sourceTree = "<group>";
+		};
+		FA352DA421D698E800F9F0F6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FA352DA521D6991900F9F0F6 /* DbMgr+AlertData.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		FA81970621D3E27C00C22092 /* AlertData */ = {
@@ -532,6 +543,7 @@
 				FAC16F4F2062644900683EE6 /* DataManager.swift in Sources */,
 				FA28D7FF2152977D004D9AAD /* CellModel.swift in Sources */,
 				FABBBC4621051A19005C2207 /* CityCollectionController.swift in Sources */,
+				FA352DA621D6991900F9F0F6 /* DbMgr+AlertData.swift in Sources */,
 				FA57346E217FA773004CB2E0 /* WeatherUtils.swift in Sources */,
 				FA9DDAA62135AA8F004B9E2D /* DayForecast.swift in Sources */,
 				FABBBC4A21051FEE005C2207 /* WxViewCell.swift in Sources */,

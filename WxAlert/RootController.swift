@@ -58,10 +58,14 @@ class RootController: UITabBarController, CityProtocol {
         print("Selected City name: \(selectedCity.name) index: \(selectedCity.arrayIndex) timeFrame: \(selectedCity.timeFrame.rawValue)")
         
         // Add a new database table to cities_usa.sqlite
-        var tableName: String = city.cityName.replacingOccurrences(of: " ", with: "_")
-        tableName = tableName + "_" + city.region.state
-        dbmgr.dropTable(name: tableName.lowercased())
-        dbmgr.createTable(name: tableName.lowercased())
+        var wxTable: String = city.cityName.replacingOccurrences(of: " ", with: "_")
+        wxTable = wxTable + "_" + city.region.state
+        dbmgr.dropTable(name: wxTable.lowercased())
+        dbmgr.createWx(table: wxTable.lowercased())
+        
+        let alertTable = "alert_" + wxTable
+        dbmgr.dropTable(name: alertTable.lowercased())
+        dbmgr.createAlert(table: alertTable.lowercased())
         
         networkMgr = NetworkMgr(cityObject: city)
         self.networkMgr.getNWSPointsJSON(completion: self.sqliteWrite)

@@ -13,6 +13,7 @@ struct AlertList: JSONDecodable {
     private (set) var features: [Alert] = []
     
     init?(JSON: Any) {
+        
         guard let JSON = JSON as? [String: AnyObject] else { return nil}
         guard let features = JSON["features"] as? [[String: AnyObject]] else { return nil }
         

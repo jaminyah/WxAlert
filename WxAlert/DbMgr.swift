@@ -97,9 +97,9 @@ class DbMgr {
     }
     
     
-    func createTable(name: String) -> Void {
+    func createWx(table: String) -> Void {
         
-        let queryString = "CREATE TABLE IF NOT EXISTS \(name) " +
+        let queryString = "CREATE TABLE IF NOT EXISTS \(table) " +
             " ('Id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, 'Number' INTEGER, 'Name' TEXT, 'StartTime' TEXT, 'EndTime' TEXT, 'isDayTime' INTEGER, 'Temperature' INTEGER," +
         " 'TempUnit' TEXT, 'TempTrend' TEXT, 'WindSpeed' TEXT, 'WindDirection' TEXT, 'Icon' TEXT, 'ShortForecast' TEXT, 'DetailedForecast' TEXT, 'Alert' TEXT);"
         
@@ -108,7 +108,7 @@ class DbMgr {
             print("Error creating table: \(errmsg)")
             return
         }
-        print("Table \(name) created.")
+        print("Table \(table) created.")
     }
     
     
@@ -125,13 +125,11 @@ class DbMgr {
     }
     
     
-    func insertSevenDay(weather:[DayForecast], table:String) -> Void {
+    func insert(sevenDay:[DayForecast], table:String) -> Void {
         
         var sqlite3_stmt: OpaquePointer? = nil
         
-        // Lock database for writing. Open afterwards.
-        
-        for day in weather {
+        for day in sevenDay {
             let number = day.number
             let name = day.name
             print("insertSevenDay: \(name)")
@@ -404,9 +402,10 @@ class DbMgr {
         return true
     }
     
-    // Mark: Alert functions
+    /* Mark: Alert functions
     func insertAlerts(alert: [Alert], table: String) -> Void {
         // TODO: insert alerts into db table
     }
+ */
     
 } // DbMgr

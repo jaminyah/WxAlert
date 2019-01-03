@@ -161,6 +161,15 @@ class NetworkMgr {
     private func dbWriteAlert(json: Any, cityName: String, stateID: String) -> Void {
         // TODO: Parse json data
         print("dbWriteAlert")
+        
+        if let wxAlerts = AlertList(JSON: json) {
+            var tableName = "alert_" + cityName.replacingOccurrences(of: " ", with: "_") + "_" + stateID
+            tableName = tableName.lowercased()
+            
+            let alertDataMgr = AlertDataMgr(alert: wxAlerts, table: tableName)
+            alertDataMgr.writeAlert()
+            print("AlertTable: \(tableName)")
+        }
     }
         
-}
+} // NetworkMgr

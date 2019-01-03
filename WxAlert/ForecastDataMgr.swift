@@ -23,7 +23,7 @@ class ForecastDataMgr {
 
         guard let data = forecast?.periods else { return }
         guard let tableName = self.table else { return }
-        dbMgr.insertSevenDay(weather: data, table:tableName)
+        dbMgr.insert(sevenDay: data, table:tableName)
  
     }
     
