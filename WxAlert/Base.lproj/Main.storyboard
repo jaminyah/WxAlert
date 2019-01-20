@@ -218,8 +218,8 @@
                                         </view>
                                         <size key="customSize" width="122" height="378"/>
                                         <connections>
+                                            <outlet property="alert" destination="dyk-SC-2pM" id="Gvc-Lt-GUJ"/>
                                             <outlet property="alertDiamond" destination="dyk-SC-2pM" id="FLA-Zf-ouJ"/>
-                                            <outlet property="alertImage" destination="dyk-SC-2pM" id="pnr-lV-nWq"/>
                                             <outlet property="date" destination="VoS-ih-SQE" id="qxC-o1-ggN"/>
                                             <outlet property="dayLabel" destination="zmO-L3-oM7" id="WwQ-dw-29V"/>
                                             <outlet property="dayNightIcon" destination="d19-zX-diY" id="eMW-Cr-N3J"/>

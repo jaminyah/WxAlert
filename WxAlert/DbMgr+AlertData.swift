@@ -66,7 +66,7 @@ extension DbMgr {
             return
         }
         // DEBUG
-        print("Table \(table) created.")
+        print("Alert table \(table) created.")
     }
 }
 

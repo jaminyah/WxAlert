@@ -13,7 +13,7 @@ class WxViewCell: UICollectionViewCell {
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var dayNightIcon: UIImageView!
     @IBOutlet weak var weatherImage: UIImageView!
-    @IBOutlet weak var alertImage: UIImageView!
+    @IBOutlet weak var alert: UIImageView!
     @IBOutlet weak var rainChanceLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var windDirectionLabel: UILabel!
@@ -28,7 +28,7 @@ class WxViewCell: UICollectionViewCell {
         dayLabel.text = forecast.day
         weatherImage.image = forecast.wxIcon
         date.text = forecast.date
-        // alertImage
+        alert.image = forecast.alertIcon
         rainChanceLabel.text = forecast.wxChance
         dayNightIcon.image = forecast.dayNightIcon
         windSpeedLabel.text = forecast.windSpeed

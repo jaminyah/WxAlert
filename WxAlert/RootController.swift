@@ -78,7 +78,7 @@ class RootController: UITabBarController, CityProtocol {
         let zoneUrl = parsePointsZone(json: data)
         
         let queue = OperationQueue()
-        queue.maxConcurrentOperationCount = 2
+        queue.maxConcurrentOperationCount = 1                  // Create serial queue
         queue.addOperation {
             self.networkMgr.getForecastJSON(forecastUrl: url)
         }
