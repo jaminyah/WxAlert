@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FetchZoneIdOperation: Operation {
+final class FetchZoneIdOperation: Operation {
     override func main() {
         if isCancelled {
             return

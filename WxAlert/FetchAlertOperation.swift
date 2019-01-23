@@ -7,3 +7,12 @@
 //
 
 import Foundation
+
+final class FetchAlertOperation: Operation {
+    override func main() {
+        if isCancelled {
+            return
+        }
+        print("FetchAlertOperation")
+    }
+}

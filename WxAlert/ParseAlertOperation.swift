@@ -8,3 +8,11 @@
 
 import Foundation
 
+final class ParseAlertOperation: Operation {
+    override func main() {
+        if isCancelled {
+            return
+        }
+        print("ParseAlertOperation")
+    }
+}

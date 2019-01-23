@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ParseZoneIdOperation: Operation {
+final class ParseZoneIdOperation: Operation {
     override func main() {
         if isCancelled {
             return
