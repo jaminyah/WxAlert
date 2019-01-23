@@ -10,11 +10,15 @@ import Foundation
 
 final class ParseWxOperation: Operation {
     
-    private let data: Data
+    var data: Data?
     private(set) var jsonData: Any? = nil
     
+    /*
     init(withData data: Data) {
         self.data = data
+    }*/
+    override init() {
+        super.init()
     }
     
     override func main() {
@@ -26,7 +30,7 @@ final class ParseWxOperation: Operation {
     }
     
     private func parseJson() -> Void {
-        
+        guard let data = data else { return }
         do {
             jsonData = try JSONSerialization.jsonObject(with: data, options: [])
             print(jsonData!)

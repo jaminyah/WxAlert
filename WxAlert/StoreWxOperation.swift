@@ -10,11 +10,11 @@ import Foundation
 
 final class StoreWxOperation: Operation {
     
-    private let json: Any
+    var jsonData: Any? = nil
     private let city: City
     
-    init(withJson json: Any, city: City) {
-        self.json = json
+    init(withCity city: City) {
+        //self.json = json
         self.city = city
     }
     
@@ -23,7 +23,8 @@ final class StoreWxOperation: Operation {
             return
         }
         print("StoreWxOperation")
-        dbWriteForecast(json: self.json)
+        guard let jsonData = jsonData else { return }
+        dbWriteForecast(json: jsonData)
     }
     
     private func dbWriteForecast(json: Any) -> Void {

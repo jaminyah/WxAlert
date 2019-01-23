@@ -11,7 +11,7 @@ import Foundation
 final class FetchWxOperation: BaseOperation {
     
     private let forecastUrl: URL
-    var responseData: Data? = nil
+    private(set) var responseData: Data? = nil
     
     init(withURL forecastUrl: URL) {
         self.forecastUrl = forecastUrl

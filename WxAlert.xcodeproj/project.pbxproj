@@ -68,6 +68,7 @@
 		FAC16F522062690E00683EE6 /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F512062690E00683EE6 /* Definitions.swift */; };
 		FACC35D1218B649A00ECC789 /* IconModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC35D0218B649A00ECC789 /* IconModel.swift */; };
 		FAD68B3D21C4514300D7FC51 /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = FAD68B3C21C4514300D7FC51 /* dummy.json */; };
+		FADCB4F721F8D7810049A030 /* WeatherOpQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADCB4F621F8D7810049A030 /* WeatherOpQueue.swift */; };
 		FAF58475217C199A004A2C69 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF58474217C199A004A2C69 /* Rank.swift */; };
 /* End PBXBuildFile section */
 
@@ -157,6 +158,7 @@
 		FAC16F512062690E00683EE6 /* Definitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
 		FACC35D0218B649A00ECC789 /* IconModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconModel.swift; sourceTree = "<group>"; };
 		FAD68B3C21C4514300D7FC51 /* dummy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dummy.json; sourceTree = "<group>"; };
+		FADCB4F621F8D7810049A030 /* WeatherOpQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOpQueue.swift; sourceTree = "<group>"; };
 		FAF58474217C199A004A2C69 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -390,6 +392,7 @@
 				FA1CEE9E21F38BF000A382C9 /* FetchZoneIdOperation.swift */,
 				FA1CEEA021F38C5100A382C9 /* ParseZoneIdOperation.swift */,
 				FABCA50021F50220004F9414 /* BaseOperation.swift */,
+				FADCB4F621F8D7810049A030 /* WeatherOpQueue.swift */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 				FA1D7E4E2135EF4100E49EC6 /* JSONDecodable.swift in Sources */,
 				FA06647F20618FAE006DE3CF /* CityModel.swift in Sources */,
 				FACC35D1218B649A00ECC789 /* IconModel.swift in Sources */,
+				FADCB4F721F8D7810049A030 /* WeatherOpQueue.swift in Sources */,
 				FABBBC4821051A5A005C2207 /* AlertCollectionController.swift in Sources */,
 				FA06646A206155DD006DE3CF /* Constants.swift in Sources */,
 				FA06645720615016006DE3CF /* WeatherController.swift in Sources */,

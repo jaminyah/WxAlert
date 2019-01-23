@@ -67,8 +67,12 @@ class RootController: UITabBarController, CityProtocol {
         dbmgr.dropTable(name: alertTable.lowercased())
         dbmgr.createAlert(table: alertTable.lowercased())
         
+        /*
         networkMgr = NetworkMgr(cityObject: city)
         self.networkMgr.getNWSPointsJSON(completion: self.sqliteWrite)
+         */
+        let weatherOpQueue = WeatherOpQueue(withCity: city)
+        weatherOpQueue.execute()
     }
     
     private func sqliteWrite(data: Any) -> Void {
