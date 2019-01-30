@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum Rank {
-    case skc
+enum Rank: Int {
+    case skc = 1
     case few
     case sct
     case bkn

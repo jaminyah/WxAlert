@@ -47,6 +47,7 @@ class WeatherUtils {
         var dayName:String? = nil
         
         switch(day) {
+        case "Overnight" : dayName = "Nite"
         case "Sunday", "Sunday Night" : dayName = "Sun"
         case "Monday", "Monday Night" : dayName = "Mon"
         case "Tuesday", "Tuesday Night" : dayName = "Tues"
@@ -370,7 +371,7 @@ class WeatherUtils {
         // "https://api.weather.gov/alerts/active/zone/{zoneId}"
         
         var alertUrl: URL?
-        var zoneId: String = "TXZ119"          // Default value
+        var zoneId: String = "TXC113"          // Default value
         
         let url = URL(string: zoneUrl)
         guard let unwrappedUrl = url else { return nil }

@@ -67,19 +67,20 @@ class RootController: UITabBarController, CityProtocol {
         dbmgr.dropTable(name: alertTable.lowercased())
         dbmgr.createAlert(table: alertTable.lowercased())
         
-        /*
         networkMgr = NetworkMgr(cityObject: city)
         self.networkMgr.getNWSPointsJSON(completion: self.sqliteWrite)
-         */
+
+        /*
         let weatherOpQueue = WeatherOpQueue(withCity: city)
         weatherOpQueue.execute()
+        */
     }
     
     private func sqliteWrite(data: Any) -> Void {
         print("Received data")
 
         let url = parsePointsForecast(json: data)
-        let zoneUrl = parsePointsZone(json: data)
+        let zoneUrl = parsePointsCounty(json: data)
         
         let queue = OperationQueue()
         queue.maxConcurrentOperationCount = 1                  // Create serial queue
@@ -107,22 +108,14 @@ class RootController: UITabBarController, CityProtocol {
         // return tempUrl
     }
     
-    /*
-    private func sqliteWriteAlerts() -> Void {
-        print("sqliteWriteAlerts")
-        guard let data = self.pointsAPIJson else { return }
-        let forecastZoneUrl = parsePointsZone(json: data)
-        print("zoneUrl: \(forecastZoneUrl)")
-        networkMgr.getAlertJSON(url: forecastZoneUrl)
-    } */
-    
-    private func parsePointsZone(json: Any) -> String {
-        var zoneUrl: String = ""
+    private func parsePointsCounty(json: Any) -> String {
+        var countyUrl: String = ""
         
         if let jsonParser = PointsJsonParser(JSON: json) {
-            zoneUrl = jsonParser.forecastZoneUrl
+            countyUrl = jsonParser.countyUrl
         }
-        return zoneUrl
+        print("countyUrl: \(countyUrl)")
+        return countyUrl
     }
     
     

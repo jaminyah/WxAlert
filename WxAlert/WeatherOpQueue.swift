@@ -28,24 +28,40 @@ class WeatherOpQueue {
         
         guard let pointsUrl = URL(string: apiUrl) else { return }
         
-        let fetchWxOp = FetchWxOperation(withURL: pointsUrl)
+        let fetchLinkedOp = FetchLinkedOperation(withLink: pointsUrl)
+        
+        /*
+        let parseLinkedOp = ParseLinkedOperation()
+        let fetchWxOp = FetchWxOperation()
         let parseWxOp = ParseWxOperation()
         let storeWxOp = StoreWxOperation(withCity: city)
         
-        let adapter = BlockOperation() { [unowned fetchWxOp, unowned parseWxOp] in
-            parseWxOp.data = fetchWxOp.responseData
+        let adapter = BlockOperation() { [unowned fetchLinkedOp, unowned parseLinkedOp] in
+            parseLinkedOp.linkedData = fetchLinkedOp.linkedData
         }
         
-        let adapter2 = BlockOperation() { [unowned parseWxOp, unowned storeWxOp] in
+        let adapter2 = BlockOperation() { [unowned parseLinkedOp, unowned fetchWxOp] in
+            fetchWxOp.forecastUrl = parseLinkedOp.forecastUrl
+        }
+        
+        let adapter3 = BlockOperation() { [unowned fetchWxOp, unowned parseWxOp] in
+            parseWxOp.rawData = fetchWxOp.rawData
+        }
+        
+        let adapter4 = BlockOperation() { [unowned parseWxOp, unowned storeWxOp] in
             storeWxOp.jsonData = parseWxOp.jsonData
         }
         
-        adapter.addDependency(fetchWxOp)
-        parseWxOp.addDependency(adapter)
-        adapter2.addDependency(parseWxOp)
-        storeWxOp.addDependency(adapter2)
+        adapter.addDependency(fetchLinkedOp)
+        parseLinkedOp.addDependency(adapter)
+        adapter2.addDependency(fetchWxOp)
+        parseWxOp.addDependency(adapter2)
+        adapter3.addDependency(parseWxOp)
+        storeWxOp.addDependency(adapter3)
         
-        operations = [fetchWxOp, adapter, parseWxOp, adapter2, storeWxOp]
+        operations = [fetchLinkedOp, adapter, parseLinkedOp, adapter2, fetchWxOp, adapter3, parseWxOp, adapter4, storeWxOp]
+        */
+        operations = [fetchLinkedOp]
         queue.addOperations(operations, waitUntilFinished: true)
     }
     

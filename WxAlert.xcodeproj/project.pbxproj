@@ -70,6 +70,8 @@
 		FAD68B3D21C4514300D7FC51 /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = FAD68B3C21C4514300D7FC51 /* dummy.json */; };
 		FADCB4F721F8D7810049A030 /* WeatherOpQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADCB4F621F8D7810049A030 /* WeatherOpQueue.swift */; };
 		FAF58475217C199A004A2C69 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF58474217C199A004A2C69 /* Rank.swift */; };
+		FAF7C67D21FBAB2700324EAD /* FetchLinkedOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF7C67C21FBAB2700324EAD /* FetchLinkedOperation.swift */; };
+		FAF7C67F21FBAB5F00324EAD /* ParseLinkedOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF7C67E21FBAB5F00324EAD /* ParseLinkedOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +162,8 @@
 		FAD68B3C21C4514300D7FC51 /* dummy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dummy.json; sourceTree = "<group>"; };
 		FADCB4F621F8D7810049A030 /* WeatherOpQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOpQueue.swift; sourceTree = "<group>"; };
 		FAF58474217C199A004A2C69 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
+		FAF7C67C21FBAB2700324EAD /* FetchLinkedOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchLinkedOperation.swift; sourceTree = "<group>"; };
+		FAF7C67E21FBAB5F00324EAD /* ParseLinkedOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseLinkedOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -393,6 +397,8 @@
 				FA1CEEA021F38C5100A382C9 /* ParseZoneIdOperation.swift */,
 				FABCA50021F50220004F9414 /* BaseOperation.swift */,
 				FADCB4F621F8D7810049A030 /* WeatherOpQueue.swift */,
+				FAF7C67C21FBAB2700324EAD /* FetchLinkedOperation.swift */,
+				FAF7C67E21FBAB5F00324EAD /* ParseLinkedOperation.swift */,
 			);
 			name = Operations;
 			sourceTree = "<group>";
@@ -572,6 +578,7 @@
 				FA8E9FC0218793EE005EF8CE /* JSONIcons.swift in Sources */,
 				FA06647020617337006DE3CF /* MapController.swift in Sources */,
 				FA06645F206151C7006DE3CF /* NotificationSettings.swift in Sources */,
+				FAF7C67F21FBAB5F00324EAD /* ParseLinkedOperation.swift in Sources */,
 				FA06645520614FEE006DE3CF /* SearchController.swift in Sources */,
 				FA06645D2061514E006DE3CF /* WeatherDetailController.swift in Sources */,
 				FA888D6821ED07FB002C45E2 /* StoreWxOperation.swift in Sources */,
@@ -606,6 +613,7 @@
 				FA4B52222131BE380017ADC9 /* DbMgr.swift in Sources */,
 				FABBBC4C210520E6005C2207 /* CitySelectCell.swift in Sources */,
 				FA888D6621ED07D9002C45E2 /* ParseWxOperation.swift in Sources */,
+				FAF7C67D21FBAB2700324EAD /* FetchLinkedOperation.swift in Sources */,
 				FA06645B2061510C006DE3CF /* NotificationController.swift in Sources */,
 				FA1D7E4E2135EF4100E49EC6 /* JSONDecodable.swift in Sources */,
 				FA06647F20618FAE006DE3CF /* CityModel.swift in Sources */,

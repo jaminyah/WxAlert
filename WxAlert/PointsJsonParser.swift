@@ -11,13 +11,13 @@ import Foundation
 struct PointsJsonParser: JSONDecodable {
     private (set) var forecastUrl: String = ""
     //private (set) var forecastHourlyUrl: String = ""
-    private (set) var forecastZoneUrl: String = ""
+    private (set) var countyUrl: String = ""
     
     init?(JSON: Any) {
         guard let JSON = JSON as?  [String: AnyObject] else { return nil }
         
         if let forecast = JSON["properties"]?["forecast"] as? String { self.forecastUrl = forecast}
        //if let forecastHourly = JSON["properties"]?["forecastHourly"] as? String {self.forecastHourlyUrl = forecastHourly}
-        if let forecastZone = JSON["properties"]?["forecastZone"] as? String {self.forecastZoneUrl = forecastZone}
+        if let county = JSON["properties"]?["county"] as? String {self.countyUrl = county}
     }
 }

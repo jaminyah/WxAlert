@@ -27,6 +27,8 @@ class AlertIcon {
             icon = UIImage(imageLiteralResourceName: "alert_icon")
         case "Beach Hazards Statement":
             icon = UIImage(imageLiteralResourceName: "alert_icon")
+        case "Blizzard Warning":
+            icon = UIImage(imageLiteralResourceName: "alert_icon")
         case "Coastal Flood Advisory":
             icon = UIImage(imageLiteralResourceName: "alert_icon")
         case "Dense Fog Advisory":
@@ -36,6 +38,10 @@ class AlertIcon {
         case "Flood Watch":
             icon = UIImage(imageLiteralResourceName: "alert_icon")
         case "Flood Warning":
+            icon = UIImage(imageLiteralResourceName: "alert_icon")
+        case "Freeze Warning":
+            icon = UIImage(imageLiteralResourceName: "alert_icon")
+        case "Freeze Watch":
             icon = UIImage(imageLiteralResourceName: "alert_icon")
         case "High Surf Advisory":
             icon = UIImage(imageLiteralResourceName: "alert_icon")
@@ -56,6 +62,8 @@ class AlertIcon {
         case "Wind Advisory":
             icon = UIImage(imageLiteralResourceName: "alert_icon")
         case "Wind Chill Advisory":
+            icon = UIImage(imageLiteralResourceName: "alert_icon")
+        case "Wind Chill Watch":
             icon = UIImage(imageLiteralResourceName: "alert_icon")
         case "Winter Weather Advisory":
             icon = UIImage(imageLiteralResourceName: "alert_icon")

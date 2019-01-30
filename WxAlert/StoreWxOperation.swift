@@ -14,7 +14,6 @@ final class StoreWxOperation: Operation {
     private let city: City
     
     init(withCity city: City) {
-        //self.json = json
         self.city = city
     }
     
