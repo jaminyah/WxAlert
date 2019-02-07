@@ -8,27 +8,25 @@
 //
 
 import Foundation
-import UIKit
+// import UIKit
 
-class WxCellVM {
+class WxCellVM: CellViewModel {
     
-    let dbmgr = DbMgr.sharedInstance
-    var cellModels: [CellModel] = []
+    //let dbmgr = DbMgr.sharedInstance
+    private (set) var cellModels: [CellModel] = []
     var table: String = ""
-   // var timeframe: TimeFrame = .Day
     
-    let rootController = RootController.sharedInstance
-    var delegate: CityProtocol? = nil
+    //let rootController = RootController.sharedInstance
+    //var delegate: CityProtocol? = nil
     
-    init() {
-        delegate = rootController
+    override init() {
+        //delegate = rootController
+        super.init()
         self.cellModels = fetchForecast()
-        //fetchForecast()
     }
     
     
    func fetchForecast() ->[CellModel] {
-    //func fetchForecast() ->Void {
         print("fetchForecast: read from sqlite ...")
                 
         var query: String

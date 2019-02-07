@@ -214,7 +214,8 @@ class DbMgr {
             
             cellModel.wxIcon = iconModel.image
             cellModel.wxChance = iconModel.chance
-            cellModel.alertIcon = #imageLiteral(resourceName: "alert")
+            cellModel.alertIcon = UIImage(imageLiteralResourceName: "warn_winter_wx")
+            cellModel.alertLbl = "Winter weather warning"
             
             cellModel.shortForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 12))
             cellModel.detailedForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
@@ -230,7 +231,7 @@ class DbMgr {
         
         // Remove nil element from array
         let array = wxUtils.removeNil(dayNames: dayArray)
-        for (index,day) in array.enumerated() {
+        for (index, day) in array.enumerated() {
             forecast[index].day = day
         }
         

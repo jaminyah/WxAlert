@@ -155,7 +155,7 @@ class NetworkMgr {
                     }
                 }
             }
-            }.resume() // URLSession
+        }.resume() // URLSession
     }
     
     private func dbWriteAlert(json: Any, cityName: String, stateID: String) -> Void {

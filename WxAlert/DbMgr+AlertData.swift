@@ -21,7 +21,7 @@ extension DbMgr {
             let effective = alert.effective
             let expires = alert.expires
             let severity = alert.severity
-            let event = alert.event
+            let event = alert.event              // Alert name
             let headline = alert.headline
             let desc = alert.desc
             

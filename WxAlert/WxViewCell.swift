@@ -20,15 +20,15 @@ class WxViewCell: UICollectionViewCell {
     @IBOutlet weak var windIcon: UIImageView!
     @IBOutlet weak var highTempLabel: UILabel!
     @IBOutlet weak var lowTempLabel: UILabel!
-    @IBOutlet weak var alertDiamond: UIImageView!
     @IBOutlet weak var date: UILabel!
-    
+    @IBOutlet weak var alertLabel: UILabel!
     
     func displayWeather(forecast: CellModel) -> Void {
         dayLabel.text = forecast.day
         weatherImage.image = forecast.wxIcon
         date.text = forecast.date
         alert.image = forecast.alertIcon
+        alertLabel.text = forecast.alertLbl
         rainChanceLabel.text = forecast.wxChance
         dayNightIcon.image = forecast.dayNightIcon
         windSpeedLabel.text = forecast.windSpeed

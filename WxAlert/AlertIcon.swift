@@ -43,6 +43,10 @@ class AlertIcon {
             icon = UIImage(imageLiteralResourceName: "alert_icon")
         case "Freeze Watch":
             icon = UIImage(imageLiteralResourceName: "alert_icon")
+        case "Hard Freeze Watch":
+            icon = UIImage(imageLiteralResourceName: "alert_icon")
+        case "Hard Freeze Warning":
+            icon = UIImage(imageLiteralResourceName: "alert_icon")
         case "High Surf Advisory":
             icon = UIImage(imageLiteralResourceName: "alert_icon")
         case "High Surf Warning":

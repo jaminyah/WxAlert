@@ -17,6 +17,7 @@ struct CellModel {
     var wxText: String = "Fair/clear"
     var wxChance: String? = nil
     var alertIcon: UIImage? = UIImage(imageLiteralResourceName: "alert_icon")
+    var alertLbl: String? = nil
     var windSpeed: String = "0 mph"
     var windDirection: String? = "N"
     var windIcon: UIImage? = #imageLiteral(resourceName: "wind_east")
