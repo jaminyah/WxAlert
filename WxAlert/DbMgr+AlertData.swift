@@ -11,7 +11,6 @@ import Foundation
 extension DbMgr {
     
     func insert(alerts: [Alert], table: String) -> Void {
-        // TODO: insert alerts into db table
         var sqlite3_stmt: OpaquePointer? = nil
         
         for alert in alerts {
@@ -51,6 +50,12 @@ extension DbMgr {
         }
         sqlite3_stmt = nil
         
+    }
+    
+    func wxAlerts(from: String, sql: String) -> [AlertModel] {
+        
+        let alertModel = [AlertModel()]
+        return alertModel
     }
 
     

@@ -11,12 +11,17 @@ import Foundation
 class CellViewModel {
     
     let dbmgr = DbMgr.sharedInstance
-    //var table: String = ""
     
     let rootController = RootController.sharedInstance
     var delegate: CityProtocol? = nil
+    var tableName: String
+    var selectedCity = SelectedCity()
     
     init() {
         delegate = rootController
+        if let selected = delegate?.getSelectedCity() {
+                self.selectedCity = selected
+        }
+        self.tableName = selectedCity.name.replacingOccurrences(of: " ", with: "_") + "_" + selectedCity.state
     }
 }

@@ -20,9 +20,11 @@ class AlertCellViewModel: CellViewModel {
     func fetchAlerts() -> [AlertModel] {
         print("fetchAlerts for sqlite.")
         
-       // var query: String
-        let alertData: [AlertModel] = []
+        var alertData: [AlertModel] = []
+        table = table + tableName.lowercased()
         
+        let query = "SELECT * FROM \(table);"
+        alertData = dbmgr.wxAlerts(from: table, sql: query)
         
         return alertData
     }

@@ -12,33 +12,22 @@ import Foundation
 
 class WxCellVM: CellViewModel {
     
-    //let dbmgr = DbMgr.sharedInstance
     private (set) var cellModels: [CellModel] = []
-    var table: String = ""
-    
-    //let rootController = RootController.sharedInstance
-    //var delegate: CityProtocol? = nil
+    var table: String = String()
     
     override init() {
-        //delegate = rootController
         super.init()
         self.cellModels = fetchForecast()
     }
     
-    
-   func fetchForecast() ->[CellModel] {
+   func fetchForecast() -> [CellModel] {
         print("fetchForecast: read from sqlite ...")
                 
         var query: String
         var weatherData: [CellModel] = []
-        
-        let selectedCity = delegate?.getSelectedCity()
-        let tableName = selectedCity!.name.replacingOccurrences(of: " ", with: "_") + "_" + selectedCity!.state
-        let period = selectedCity?.timeFrame
-        
-        // Set property values
+    
+        let timeframe = selectedCity.timeFrame
         self.table = tableName.lowercased()
-        let timeframe = period!
     
         switch (timeframe) {
         case .Day:
@@ -55,7 +44,6 @@ class WxCellVM: CellViewModel {
             
         }
         return weatherData
-        //self.cellModels = weatherData
     }
     
     func isValidJSON() -> Bool {
