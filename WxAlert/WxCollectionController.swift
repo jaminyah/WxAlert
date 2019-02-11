@@ -12,11 +12,11 @@ private let reuseIdentifier = "WxCell"
 
 class WxCollectionController: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var viewModel: WxCellVM
+    var viewModel: WxCellVM = WxCellVM()
    
     override init() {
         print("WxCollectionController init.")
-        self.viewModel = WxCellVM()
+       // self.viewModel = WxCellVM()
         
     }
     
@@ -39,7 +39,7 @@ class WxCollectionController: NSObject, UICollectionViewDataSource, UICollection
         //super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
- */
+   */
     
     /*
      // MARK: - Navigation

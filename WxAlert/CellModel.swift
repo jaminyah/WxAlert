@@ -25,5 +25,4 @@ struct CellModel {
     var lowTemp: String? = nil
     var shortForecast: String = ""
     var detailedForecast: String = ""
-
 }

@@ -24,7 +24,7 @@ class DbMgr {
         let flags = SQLITE_OPEN_READWRITE
         guard (sqlite3_open_v2(resourcePath!, &dbConnection, flags, nil) == SQLITE_OK) else {
             let errmsg = String(cString: sqlite3_errmsg(sqlite3_db)!)
-            print("Error openning db : \(errmsg)")
+            print("Error opening db : \(errmsg)")
             return
         }
         sqlite3_db = dbConnection

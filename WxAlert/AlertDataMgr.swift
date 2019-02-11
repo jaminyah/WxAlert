@@ -11,7 +11,7 @@ import Foundation
 class AlertDataMgr {
     
     var alert: AlertList?
-    var table: String?
+    var table: String
     let dbMgr = DbMgr.sharedInstance
     
     init(alert: AlertList, table: String) {
@@ -21,8 +21,7 @@ class AlertDataMgr {
     
     func writeAlert() -> Void {
         guard let data = alert?.features else { return }
-        guard let tableName = self.table else { return }
-        dbMgr.insert(alerts: data, table:tableName)
+        dbMgr.insert(alerts: data, table:self.table)
     }
     
 } // AlertDataMgr

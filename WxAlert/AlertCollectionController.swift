@@ -11,6 +11,7 @@ import UIKit
 class AlertCollectionController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     let reuseIdentifier = "AlertCell"
+    var viewModel = AlertCellViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,15 +45,18 @@ class AlertCollectionController: UIViewController, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 10
+        return viewModel.alertModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? AlertViewCell
         
         // Configure the cell
-        cell.backgroundColor = self.randomColor()
-        return cell
+        //cell?.backgroundColor = self.randomColor()
+        //cell?.displayWeath(forecast: viewModel.cellModels[indexPath.row])
+        //cell?.displayAlert(model: alertCellVM.alertModels[indexPath.row])
+        cell?.alertView.image = UIImage(imageLiteralResourceName: "fire_alert")
+        return cell!
     }
     
     // custom function to generate a random UIColor
