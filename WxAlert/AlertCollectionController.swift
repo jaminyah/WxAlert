@@ -54,8 +54,8 @@ class AlertCollectionController: UIViewController, UICollectionViewDataSource, U
         // Configure the cell
         //cell?.backgroundColor = self.randomColor()
         //cell?.displayWeath(forecast: viewModel.cellModels[indexPath.row])
-        //cell?.displayAlert(model: alertCellVM.alertModels[indexPath.row])
-        cell?.alertView.image = UIImage(imageLiteralResourceName: "fire_alert")
+        cell?.displayAlert(model: viewModel.alertModels[indexPath.row])
+        //cell?.alertView.image = UIImage(imageLiteralResourceName: "fire_alert")
         return cell!
     }
     

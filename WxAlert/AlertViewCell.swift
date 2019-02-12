@@ -13,8 +13,8 @@ class AlertViewCell: UICollectionViewCell {
     @IBOutlet weak var alertView: UIImageView!
     
     func displayAlert(model: AlertModel) -> Void {
-       // let event = model.event
-        //alertView.image = AlertIcon().fetch(imageFor: event)
-        alertView.image = UIImage(imageLiteralResourceName: "fire_alert")
+        let event = model.event
+        alertView.image = AlertIcon().fetch(imageFor: event)
+        //alertView.image = UIImage(imageLiteralResourceName: "fire_alert")
     }
 }

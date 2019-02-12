@@ -80,7 +80,7 @@ class AlertIcon {
         case "Winter Storm Warning":
             icon = UIImage(imageLiteralResourceName: "flood_alert")
         case "Winter Storm Watch":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            icon = UIImage(imageLiteralResourceName: "blizzard_alert")
         default:
             icon = UIImage(imageLiteralResourceName: "flood_alert")
         }
