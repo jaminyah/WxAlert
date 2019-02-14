@@ -1,12 +1,12 @@
 # WxAlert
 
-WxAlert, iOS application (app), aims to provide notifications for weather events based on app settings selected by the user. Current user interface, which is currently under development, shows a recent daytime weather forecast for Dallas, TX. It includes the sky condition, windspeed and direction, high and low temperatures, date, and a placeholder winter storm warning symbol.
+WxAlert, iOS application (app), aims to provide notifications for weather events based on app settings selected by the user. Current user interface, which is currently under development, shows daytime weather forecast for Reno, Nevada on Feb 14, 2019. It includes the sky condition, windspeed and direction, high and low temperatures, date, and a placeholder winter storm warning symbol.
 
 <p align="center">
   <img src="/images/reno_Feb14.png" alt="Reno, NV weather." /> 
 </p>
 
-Weather alert icons are shown for:
+The upper row shows weather alerts as posted by the National Weather Service. Icons are shown for:
 * Winter Weather Advisory
 * Winter Storm Warning
 * Special Weather Statement
