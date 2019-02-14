@@ -11,7 +11,7 @@ import UIKit
 
 class DbMgr {
     
-    var sqlite3_db: OpaquePointer? = nil
+    var sqlite3_db: OpaquePointer?
     static let sharedInstance = DbMgr()
     let wxUtils = WeatherUtils()
     
@@ -101,7 +101,7 @@ class DbMgr {
         
         let queryString = "CREATE TABLE IF NOT EXISTS \(table) " +
             " ('Id' INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, 'Number' INTEGER, 'Name' TEXT, 'StartTime' TEXT, 'EndTime' TEXT, 'isDayTime' INTEGER, 'Temperature' INTEGER," +
-        " 'TempUnit' TEXT, 'TempTrend' TEXT, 'WindSpeed' TEXT, 'WindDirection' TEXT, 'Icon' TEXT, 'ShortForecast' TEXT, 'DetailedForecast' TEXT, 'Alert' TEXT);"
+        " 'TempUnit' TEXT, 'TempTrend' TEXT, 'WindSpeed' TEXT, 'WindDirection' TEXT, 'Icon' TEXT, 'ShortForecast' TEXT, 'DetailedForecast' TEXT);"
         
         guard sqlite3_exec(sqlite3_db, queryString, nil, nil, nil) == SQLITE_OK else {
             let errmsg = String(cString: sqlite3_errmsg(sqlite3_db)!)
@@ -128,38 +128,58 @@ class DbMgr {
     func insert(sevenDay:[DayForecast], table:String) -> Void {
         
         var sqlite3_stmt: OpaquePointer? = nil
+        var zSql = String()
+        
+        var number: Int = 0
+        var name = String()
+        var startTime = String()
+        var endTime = String()
+        var isdaytime: Bool = false
+        var dayTime: Int = 0
+        var temperature: Int = 0
+        var temperatureUnit = String()
+        var temperatureTrend = String()
+        var windSpeed = String()
+        var windDirection = String()
+        var icon = String()
+        var shortForecast = String()
+        var detailedForecast = String()
         
         for day in sevenDay {
-            let number = day.number
-            let name = day.name
+            number = day.number
+            name = day.name
             print("insertSevenDay: \(name)")
-            let startTime = day.startTime
+            startTime = day.startTime
             print("insertSevenDay: \(day.startTime)")
-            let endTime = day.endTime
+            endTime = day.endTime
             print("insertSevenDay: \(day.endTime)")
-            let isdaytime = day.isDaytime
+            isdaytime = day.isDaytime
             print("insertSevenDay: \(isdaytime)")
-            let dayTime = (isdaytime == true) ? 1 : 0             // Convert Bool to Integer for SQLite
-            let temperature = day.temperature
-            let temperatureUnit = day.temperatureUnit
+            dayTime = (isdaytime == true) ? 1 : 0             // Convert Bool to Integer for SQLite
+            temperature = day.temperature
+            temperatureUnit = day.temperatureUnit
             print("insertSevenDay: \(temperatureUnit)")
-            let temperatureTrend = day.temperatureTrend
-            let windSpeed = day.windSpeed
-            let windDirection = day.windDirection
-            let icon = day.icon
-            let shortForecast = day.shortForecast
-            let detailedForecast = day.detailedForecast
+            temperatureTrend = day.temperatureTrend
+            windSpeed = day.windSpeed
+            windDirection = day.windDirection
+            icon = day.icon
+            shortForecast = day.shortForecast
+            detailedForecast = day.detailedForecast
             
+            /*
             let statement = "INSERT INTO '" + table + "' (Number, Name, StartTime, EndTime, isDayTime, Temperature, " +
                 " TempUnit, TempTrend, WindSpeed, WindDirection, Icon, ShortForecast, DetailedForecast)" +
                 " VALUES ('\(number)', '\(String(describing:name))', '\(String(describing:startTime))', '\(String(describing:endTime))', " +
                 " '\(dayTime)', '\(temperature)', '\(String(describing:temperatureUnit))', '\(String(describing:temperatureTrend))',  " +
                 " '\(String(describing:windSpeed))', '\(String(describing:windDirection))', '\(String(describing:icon))', " +
                 " '\(String(describing:shortForecast))', '\(String(describing:detailedForecast))');"
+             */
             
-            if sqlite3_prepare_v2(sqlite3_db, statement, -1, &sqlite3_stmt, nil) != SQLITE_OK {
+            zSql = "INSERT INTO \(table) (Number, Name, StartTime, EndTime, isDayTime, Temperature," + " TempUnit, TempTrend, WindSpeed, WindDirection, Icon, ShortForecast, DetailedForecast) " + "VALUES (\(number), '\(name)', '\(startTime)', '\(endTime)', " + "\(dayTime), \(temperature), '\(temperatureUnit)', '\(temperatureTrend)', " + "'\(windSpeed)', '\(windDirection)', '\(icon)', " + "'\(shortForecast)', '\(detailedForecast)');"
+            
+            if sqlite3_prepare_v2(sqlite3_db, zSql, -1, &sqlite3_stmt, nil) != SQLITE_OK {
                 let errmsg = String(cString: sqlite3_errmsg(sqlite3_db)!)
-                print("Error preparing insert: \(errmsg)")
+                print("Insert sevenDay, error preparing insert: \(errmsg)")
                 return
             }
             

@@ -119,7 +119,7 @@ class NetworkMgr {
             
             let forecastDataMgr = ForecastDataMgr(forecast: weatherForecast, table: tableName)
             forecastDataMgr.writeForecast()
-            print("DbTable name: \(tableName)")
+            print("dbWriteForecast table name: \(tableName)")
         }
     }
     

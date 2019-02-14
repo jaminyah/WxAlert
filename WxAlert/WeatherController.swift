@@ -70,6 +70,7 @@ class WeatherController: UIViewController {
         cityLabel.text = selectedCity.name + ", " + selectedCity.state
         wxCollectionController.viewModel = WxCellVM()
         wxCollection.reloadData()
+        alertCollectionController.viewModel = AlertCellViewModel()
         alertCollection.reloadData()
     }
 

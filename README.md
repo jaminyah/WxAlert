@@ -1,10 +1,18 @@
 # WxAlert
 
-WxAlert, iOS application (app), aims to provide notifications for weather events based on app settings selected by the user. Current user interface, which is currently under development, shows a recent daytime weather forecast for Dallas, TX. It includes the sky condition, windspeed and direction, high and low temperatures, date, and a placeholder tornado alert symbol.
+WxAlert, iOS application (app), aims to provide notifications for weather events based on app settings selected by the user. Current user interface, which is currently under development, shows a recent daytime weather forecast for Dallas, TX. It includes the sky condition, windspeed and direction, high and low temperatures, date, and a placeholder winter storm warning symbol.
 
 <p align="center">
-  <img src="/images/wx_dallas.png" alt="Dallas, TX weather." /> 
+  <img src="/images/reno_Feb14.png" alt="Reno, NV weather." /> 
 </p>
+
+Weather alert icons are shown for:
+* Winter Weather Advisory
+* Winter Storm Warning
+* Special Weather Statement
+* Flood Advisory
+* Avalanche Warning
+* High Wind Warning
 
 The user interface is driven by a tab bar controller. Three tabs are available to the user. Search tab, Weather tab, and a Notifications setting tab. The UI scheme is presented below.
 

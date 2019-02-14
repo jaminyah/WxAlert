@@ -24,7 +24,7 @@ class AlertIcon {
         case "Avalanche Watch":
             icon = UIImage(imageLiteralResourceName: "flood_alert")
         case "Avalanche Warning":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            icon = UIImage(imageLiteralResourceName: "warn_avalanche")
         case "Beach Hazards Statement":
             icon = UIImage(imageLiteralResourceName: "flood_alert")
         case "Blizzard Warning":
@@ -33,8 +33,10 @@ class AlertIcon {
             icon = UIImage(imageLiteralResourceName: "flood_alert")
         case "Dense Fog Advisory":
             icon = UIImage(imageLiteralResourceName: "flood_alert")
+        case "Fire Weather Watch":
+            icon = UIImage(imageLiteralResourceName: "watch_fire")
         case "Flood Advisory":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            icon = UIImage(imageLiteralResourceName: "advisory_flood")
         case "Flood Watch":
             icon = UIImage(imageLiteralResourceName: "flood_alert")
         case "Flood Warning":
@@ -54,17 +56,19 @@ class AlertIcon {
         case "High Wind Watch":
             icon = UIImage(imageLiteralResourceName: "flood_alert")
         case "High Wind Warning":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            icon = UIImage(imageLiteralResourceName: "warning_wind")
         case "Hydrologic Outlook":
+            icon = UIImage(imageLiteralResourceName: "flood_alert")
+        case "Ice Storm Warning":
             icon = UIImage(imageLiteralResourceName: "flood_alert")
         case "Lake Wind Advisory":
             icon = UIImage(imageLiteralResourceName: "flood_alert")
         case "Red Flag Warning":
-            icon = UIImage(imageLiteralResourceName: "fire_alert")
+            icon = UIImage(imageLiteralResourceName: "warning_fire")
         case "Rip Current Statement":
             icon = UIImage(imageLiteralResourceName: "flood_alert")
         case "Special Weather Statement":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            icon = UIImage(imageLiteralResourceName: "special_stmt")
         case "Thunderstorm Watch":
             icon = UIImage(imageLiteralResourceName: "flood_alert")
         case "Thunderstorm Warning":
@@ -76,11 +80,11 @@ class AlertIcon {
         case "Wind Chill Watch":
             icon = UIImage(imageLiteralResourceName: "flood_alert")
         case "Winter Weather Advisory":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            icon = UIImage(imageLiteralResourceName: "advisory_winter")
         case "Winter Storm Warning":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            icon = UIImage(imageLiteralResourceName: "warning_winter")
         case "Winter Storm Watch":
-            icon = UIImage(imageLiteralResourceName: "blizzard_alert")
+            icon = UIImage(imageLiteralResourceName: "watch_winter")
         default:
             icon = UIImage(imageLiteralResourceName: "flood_alert")
         }
