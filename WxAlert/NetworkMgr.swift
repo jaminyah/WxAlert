@@ -117,7 +117,7 @@ class NetworkMgr {
             var tableName: String = cityName.replacingOccurrences(of: " ", with: "_") + "_" + stateID
             tableName = tableName.lowercased()
             
-            let forecastDataMgr = ForecastDataMgr(forecast: weatherForecast, table: tableName)
+            let forecastDataMgr = ForecastDataMgr(forecast: weatherForecast, dbTable: tableName)
             forecastDataMgr.writeForecast()
             print("dbWriteForecast table name: \(tableName)")
         }

@@ -125,9 +125,10 @@ class DbMgr {
     }
     
     
-    func insert(sevenDay:[DayForecast], table:String) -> Void {
+    func insert(sevenDay:[DayForecast], wxtable: String) -> Void {
         
         var sqlite3_stmt: OpaquePointer? = nil
+        var query = String()
         var zSql = String()
         
         var number: Int = 0
@@ -175,8 +176,13 @@ class DbMgr {
                 " '\(String(describing:shortForecast))', '\(String(describing:detailedForecast))');"
              */
             
-            zSql = "INSERT INTO \(table) (Number, Name, StartTime, EndTime, isDayTime, Temperature," + " TempUnit, TempTrend, WindSpeed, WindDirection, Icon, ShortForecast, DetailedForecast) " + "VALUES (\(number), '\(name)', '\(startTime)', '\(endTime)', " + "\(dayTime), \(temperature), '\(temperatureUnit)', '\(temperatureTrend)', " + "'\(windSpeed)', '\(windDirection)', '\(icon)', " + "'\(shortForecast)', '\(detailedForecast)');"
+           //  zSql = "INSERT INTO \(table) (Number, Name, StartTime, EndTime, isDayTime, Temperature," + " TempUnit, TempTrend, WindSpeed, WindDirection, Icon, ShortForecast, DetailedForecast) " + "VALUES (\(number), '\(name)', '\(startTime)', '\(endTime)', " + "\(dayTime), \(temperature), '\(temperatureUnit)', '\(temperatureTrend)', " + "'\(windSpeed)', '\(windDirection)', '\(icon)', " + "'\(shortForecast)', '\(detailedForecast)');"
             
+            query = "INSERT INTO \(wxtable) (Number, Name, StartTime, EndTime, isDayTime, Temperature, TempUnit, TempTrend, WindSpeed, WindDirection, Icon, ShortForecast, DetailedForecast) VALUES (\(number), '\(name)', '\(startTime)', '\(endTime)', \(dayTime), \(temperature), '\(temperatureUnit)', '\(temperatureTrend)' ,'\(windSpeed)', '\(windDirection)', '\(icon)', '\(shortForecast)', '\(detailedForecast)');"
+            
+            // Apostrophes such as Washington's create an sqlite error
+            zSql = query.replacingOccurrences(of: "'s", with: "''s")
+        
             if sqlite3_prepare_v2(sqlite3_db, zSql, -1, &sqlite3_stmt, nil) != SQLITE_OK {
                 let errmsg = String(cString: sqlite3_errmsg(sqlite3_db)!)
                 print("Insert sevenDay, error preparing insert: \(errmsg)")
