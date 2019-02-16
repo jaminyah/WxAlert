@@ -23,11 +23,13 @@ class WxViewCell: UICollectionViewCell {
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var alertLabel: UILabel!
     
+    var icons:[UIImage]? = []
+    var timer = Timer()
+    
     func displayWeather(forecast: CellModel) -> Void {
         dayLabel.text = forecast.day
         weatherImage.image = forecast.wxIcon
         date.text = forecast.date
-        alert.image = forecast.alertIcon
         alertLabel.text = forecast.alertLbl
         rainChanceLabel.text = forecast.wxChance
         dayNightIcon.image = forecast.dayNightIcon
@@ -36,5 +38,23 @@ class WxViewCell: UICollectionViewCell {
         windIcon.image = forecast.windIcon
         highTempLabel.text = forecast.hiTemp
         lowTempLabel.text = forecast.lowTemp
+        
+        alert.image = forecast.alertIcons?.first
+        icons = forecast.alertIcons
+        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(onSlider), userInfo: nil, repeats: true)
+
     }
+    
+    @objc func onSlider() -> Void {
+        var imageCount = 0
+        let alertCount = icons?.count ?? 0
+        if (imageCount < alertCount) {
+            imageCount = imageCount + 1
+        } else {
+            imageCount = 0
+        }
+        
+        UIView.transition(with: self.alert, duration: 2.0, options: .transitionCrossDissolve, animations: {self.alert.image = self.icons?[imageCount]}, completion: nil)
+    }
+
 }

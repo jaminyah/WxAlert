@@ -13,8 +13,8 @@ extension DbMgr {
     func insert(alerts: [Alert], table: String) -> Void {
         
         var sqlite3_stmt: OpaquePointer? = nil
-        var statement = String()
-        var zSql: [CChar]?
+        //var statement = String()
+        var zSql = String()
         
         var alertId = String()
         var event = String()
@@ -63,8 +63,8 @@ extension DbMgr {
             " '\(String(describing: response))');"
             */
             // let statement = "INSERT INTO \(table) (AlertId, Event) VALUES ('" + alertId + "','" + event + "');"
-            statement = "INSERT INTO \(table) (AlertId, Event) VALUES ('\(alertId)','\(event)');"
-            zSql = statement.cString(using: String.Encoding.utf8)
+            zSql = "INSERT INTO \(table) (AlertId, Event) VALUES ('\(alertId)','\(event)');"
+           // zSql = statement.cString(using: String.Encoding.utf8)
             
             if sqlite3_prepare_v2(sqlite3_db, zSql, -1, &sqlite3_stmt, nil) != SQLITE_OK {
                 let errmsg = String(cString: sqlite3_errmsg(sqlite3_db)!)

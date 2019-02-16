@@ -166,18 +166,7 @@ class DbMgr {
             icon = day.icon
             shortForecast = day.shortForecast
             detailedForecast = day.detailedForecast
-            
-            /*
-            let statement = "INSERT INTO '" + table + "' (Number, Name, StartTime, EndTime, isDayTime, Temperature, " +
-                " TempUnit, TempTrend, WindSpeed, WindDirection, Icon, ShortForecast, DetailedForecast)" +
-                " VALUES ('\(number)', '\(String(describing:name))', '\(String(describing:startTime))', '\(String(describing:endTime))', " +
-                " '\(dayTime)', '\(temperature)', '\(String(describing:temperatureUnit))', '\(String(describing:temperatureTrend))',  " +
-                " '\(String(describing:windSpeed))', '\(String(describing:windDirection))', '\(String(describing:icon))', " +
-                " '\(String(describing:shortForecast))', '\(String(describing:detailedForecast))');"
-             */
-            
-           //  zSql = "INSERT INTO \(table) (Number, Name, StartTime, EndTime, isDayTime, Temperature," + " TempUnit, TempTrend, WindSpeed, WindDirection, Icon, ShortForecast, DetailedForecast) " + "VALUES (\(number), '\(name)', '\(startTime)', '\(endTime)', " + "\(dayTime), \(temperature), '\(temperatureUnit)', '\(temperatureTrend)', " + "'\(windSpeed)', '\(windDirection)', '\(icon)', " + "'\(shortForecast)', '\(detailedForecast)');"
-            
+                        
             query = "INSERT INTO \(wxtable) (Number, Name, StartTime, EndTime, isDayTime, Temperature, TempUnit, TempTrend, WindSpeed, WindDirection, Icon, ShortForecast, DetailedForecast) VALUES (\(number), '\(name)', '\(startTime)', '\(endTime)', \(dayTime), \(temperature), '\(temperatureUnit)', '\(temperatureTrend)' ,'\(windSpeed)', '\(windDirection)', '\(icon)', '\(shortForecast)', '\(detailedForecast)');"
             
             // Apostrophes such as Washington's create an sqlite error
@@ -240,7 +229,8 @@ class DbMgr {
             
             cellModel.wxIcon = iconModel.image
             cellModel.wxChance = iconModel.chance
-            cellModel.alertIcon = UIImage(imageLiteralResourceName: "warn_winter_wx")
+           // cellModel.alertIcon = UIImage(imageLiteralResourceName: "warn_winter_wx")
+            cellModel.alertIcons = []         // arrat if alert icons
             cellModel.alertLbl = "Winter weather warning"
             
             cellModel.shortForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 12))
@@ -340,7 +330,8 @@ class DbMgr {
             
             cellModel.wxIcon = iconModel.image
             cellModel.wxChance = iconModel.chance
-            cellModel.alertIcon = UIImage(imageLiteralResourceName: "warn_winter_wx")
+            cellModel.alertIcons = []
+            //cellModel.alertIcon = UIImage(imageLiteralResourceName: "warn_winter_wx")
             cellModel.alertLbl = "Winter weather warning"
             
             cellModel.shortForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 12))
@@ -400,7 +391,8 @@ class DbMgr {
             
             cellModel.wxIcon = iconModel.image
             cellModel.wxChance = iconModel.chance
-            cellModel.alertIcon = UIImage(imageLiteralResourceName: "warn_winter_wx")
+            cellModel.alertIcons = []
+           // cellModel.alertIcon = UIImage(imageLiteralResourceName: "warn_winter_wx")
             cellModel.alertLbl = "Winter weather warning"
             
             cellModel.shortForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 12))

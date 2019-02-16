@@ -15,6 +15,5 @@ class AlertViewCell: UICollectionViewCell {
     func displayAlert(model: AlertModel) -> Void {
         let event = model.event
         alertView.image = AlertIcon().fetch(imageFor: event)
-        //alertView.image = UIImage(imageLiteralResourceName: "fire_alert")
     }
 }
