@@ -38,11 +38,12 @@ class WxViewCell: UICollectionViewCell {
         windIcon.image = forecast.windIcon
         highTempLabel.text = forecast.hiTemp
         lowTempLabel.text = forecast.lowTemp
-        
+        alert.image = forecast.alertIcon
+        /*
         alert.image = forecast.alertIcons?.first
         icons = forecast.alertIcons
         timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(onSlider), userInfo: nil, repeats: true)
-
+        */
     }
     
     @objc func onSlider() -> Void {

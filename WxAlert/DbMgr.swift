@@ -229,8 +229,8 @@ class DbMgr {
             
             cellModel.wxIcon = iconModel.image
             cellModel.wxChance = iconModel.chance
-           // cellModel.alertIcon = UIImage(imageLiteralResourceName: "warn_winter_wx")
-            cellModel.alertIcons = []         // arrat if alert icons
+            cellModel.alertIcon = UIImage(imageLiteralResourceName: "warn_winter_wx")
+            //cellModel.alertIcons = []         // arrat if alert icons
             cellModel.alertLbl = "Winter weather warning"
             
             cellModel.shortForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 12))
@@ -330,8 +330,8 @@ class DbMgr {
             
             cellModel.wxIcon = iconModel.image
             cellModel.wxChance = iconModel.chance
-            cellModel.alertIcons = []
-            //cellModel.alertIcon = UIImage(imageLiteralResourceName: "warn_winter_wx")
+            // cellModel.alertIcons = []
+            cellModel.alertIcon = UIImage(imageLiteralResourceName: "warn_winter_wx")
             cellModel.alertLbl = "Winter weather warning"
             
             cellModel.shortForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 12))
@@ -391,8 +391,8 @@ class DbMgr {
             
             cellModel.wxIcon = iconModel.image
             cellModel.wxChance = iconModel.chance
-            cellModel.alertIcons = []
-           // cellModel.alertIcon = UIImage(imageLiteralResourceName: "warn_winter_wx")
+            //cellModel.alertIcons = []
+            cellModel.alertIcon = UIImage(imageLiteralResourceName: "warn_winter_wx")
             cellModel.alertLbl = "Winter weather warning"
             
             cellModel.shortForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 12))
