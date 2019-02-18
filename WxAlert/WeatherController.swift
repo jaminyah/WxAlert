@@ -45,7 +45,7 @@ class WeatherController: UIViewController {
         
         // hide views
         alertCollection.isHidden = false
-        
+        navigationController?.navigationBar.isHidden = true
 
         
         /*

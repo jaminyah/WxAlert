@@ -53,7 +53,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mtq-sd-zOj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2151.1999999999998" y="-323.38830584707648"/>
+            <point key="canvasLocation" x="2030" y="-322"/>
         </scene>
         <!--Map Controller-->
         <scene sceneID="DZK-w2-ab1">
@@ -88,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Ox-jk-raZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3013.5999999999999" y="-322.48875562218893"/>
+            <point key="canvasLocation" x="3129" y="-322"/>
         </scene>
         <!--Weather Controller-->
         <scene sceneID="gFk-Lb-Oxf">
@@ -306,11 +306,20 @@
                         <outlet property="alertCollection" destination="LNs-9T-gVA" id="F2K-0p-8t3"/>
                         <outlet property="cityLabel" destination="pSK-fY-LvJ" id="tf0-0a-oUm"/>
                         <outlet property="wxCollection" destination="aec-qv-dEE" id="S06-J7-4ET"/>
+                        <segue destination="nfE-Rc-8yk" kind="show" identifier="PageViewSegue" id="M66-Kc-Vlm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ixN-Wy-4rQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1964" y="383.65817091454278"/>
+            <point key="canvasLocation" x="2030" y="384"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="a82-TX-wIf">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="nfE-Rc-8yk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mi9-5t-iOB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3129" y="384"/>
         </scene>
         <!--App Settings-->
         <scene sceneID="QLd-Gf-hun">
@@ -504,7 +513,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M4J-RI-aVV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1212" y="-323.38830584707648"/>
+            <point key="canvasLocation" x="1025" y="-323"/>
         </scene>
         <!--Weather-->
         <scene sceneID="vYd-F8-8E8">
