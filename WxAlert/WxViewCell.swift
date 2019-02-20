@@ -14,17 +14,20 @@ class WxViewCell: UICollectionViewCell {
     @IBOutlet weak var dayNightIcon: UIImageView!
     @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var alert: UIImageView!
+    
     @IBOutlet weak var rainChanceLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var windDirectionLabel: UILabel!
     @IBOutlet weak var windIcon: UIImageView!
+    @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var highTempLabel: UILabel!
     @IBOutlet weak var lowTempLabel: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var alertLabel: UILabel!
     
-    var icons:[UIImage]? = []
-    var timer = Timer()
+    //var icons:[UIImage]? = []
+    //var timer = Timer()
+    var tapGesture = UITapGestureRecognizer()
     
     func displayWeather(forecast: CellModel) -> Void {
         dayLabel.text = forecast.day
@@ -38,7 +41,14 @@ class WxViewCell: UICollectionViewCell {
         windIcon.image = forecast.windIcon
         highTempLabel.text = forecast.hiTemp
         lowTempLabel.text = forecast.lowTemp
-        alert.image = forecast.alertIcon
+        
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(onTap(_:)))
+        tapGesture.numberOfTapsRequired = 1
+        tapGesture.numberOfTouchesRequired = 1
+        alertView.addGestureRecognizer(tapGesture)
+        alertView.isUserInteractionEnabled = true
+        
+       // alert.image = forecast.alertIcon
         /*
         alert.image = forecast.alertIcons?.first
         icons = forecast.alertIcons
@@ -46,6 +56,7 @@ class WxViewCell: UICollectionViewCell {
         */
     }
     
+    /*
     @objc func onSlider() -> Void {
         var imageCount = 0
         let alertCount = icons?.count ?? 0
@@ -57,5 +68,10 @@ class WxViewCell: UICollectionViewCell {
         
         UIView.transition(with: self.alert, duration: 2.0, options: .transitionCrossDissolve, animations: {self.alert.image = self.icons?[imageCount]}, completion: nil)
     }
-
+    */
+    
+    @objc func onTap(_ sender: UITapGestureRecognizer) -> Void {
+        
+        self.alertView.backgroundColor = (self.alertView.backgroundColor == UIColor.yellow) ? .green : .yellow
+    }
 }

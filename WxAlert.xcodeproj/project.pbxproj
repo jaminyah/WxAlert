@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA032FF8221D1B2800EC21F3 /* AlertDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA032FF7221D1B2800EC21F3 /* AlertDetailViewController.swift */; };
 		FA06641E20614490006DE3CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA06641D20614490006DE3CF /* AppDelegate.swift */; };
 		FA06642520614491006DE3CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA06642320614491006DE3CF /* Main.storyboard */; };
 		FA06642A20614492006DE3CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA06642820614492006DE3CF /* LaunchScreen.storyboard */; };
@@ -46,6 +47,7 @@
 		FA4B52222131BE380017ADC9 /* DbMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4B52212131BE380017ADC9 /* DbMgr.swift */; };
 		FA503EBD21B7041B0073F479 /* PointsJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA503EBC21B7041B0073F479 /* PointsJsonParser.swift */; };
 		FA57346E217FA773004CB2E0 /* WeatherUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57346D217FA773004CB2E0 /* WeatherUtils.swift */; };
+		FA7BDCC0221D215700738158 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7BDCBF221D215700738158 /* PageViewController.swift */; };
 		FA81970821D3E2CF00C22092 /* AlertDataMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81970721D3E2CF00C22092 /* AlertDataMgr.swift */; };
 		FA81970A21D3E70900C22092 /* AlertList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81970921D3E70900C22092 /* AlertList.swift */; };
 		FA81970C21D3E7F300C22092 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81970B21D3E7F300C22092 /* Alert.swift */; };
@@ -96,6 +98,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA032FF7221D1B2800EC21F3 /* AlertDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailViewController.swift; sourceTree = "<group>"; };
 		FA06641A20614490006DE3CF /* WxAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WxAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA06641D20614490006DE3CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA06642420614491006DE3CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -142,6 +145,7 @@
 		FA4B52212131BE380017ADC9 /* DbMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMgr.swift; sourceTree = "<group>"; };
 		FA503EBC21B7041B0073F479 /* PointsJsonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsJsonParser.swift; sourceTree = "<group>"; };
 		FA57346D217FA773004CB2E0 /* WeatherUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUtils.swift; sourceTree = "<group>"; };
+		FA7BDCBF221D215700738158 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		FA81970721D3E2CF00C22092 /* AlertDataMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDataMgr.swift; sourceTree = "<group>"; };
 		FA81970921D3E70900C22092 /* AlertList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertList.swift; sourceTree = "<group>"; };
 		FA81970B21D3E7F300C22092 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
@@ -288,6 +292,8 @@
 				FABBBC4921051FEE005C2207 /* WxViewCell.swift */,
 				FABBBC4B210520E6005C2207 /* CitySelectCell.swift */,
 				FAA79E4022109278009573FF /* AlertViewCell.swift */,
+				FA032FF7221D1B2800EC21F3 /* AlertDetailViewController.swift */,
+				FA7BDCBF221D215700738158 /* PageViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -630,6 +636,8 @@
 				FABBBC4C210520E6005C2207 /* CitySelectCell.swift in Sources */,
 				FA888D6621ED07D9002C45E2 /* ParseWxOperation.swift in Sources */,
 				FAF7C67D21FBAB2700324EAD /* FetchLinkedOperation.swift in Sources */,
+				FA7BDCC0221D215700738158 /* PageViewController.swift in Sources */,
+				FA032FF8221D1B2800EC21F3 /* AlertDetailViewController.swift in Sources */,
 				FA06645B2061510C006DE3CF /* NotificationController.swift in Sources */,
 				FA1D7E4E2135EF4100E49EC6 /* JSONDecodable.swift in Sources */,
 				FA06647F20618FAE006DE3CF /* CityModel.swift in Sources */,
