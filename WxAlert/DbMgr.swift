@@ -217,7 +217,7 @@ class DbMgr {
             // Set day icon
             cellModel.dayNightIcon = UIImage(imageLiteralResourceName: "sun_icon")
             
-            cellModel.hiTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
+            cellModel.hiTemp = "Hi: " + String(sqlite3_column_int(sqlite3_stmt, 6))
             
             // Wind data
             cellModel.windSpeed = String(cString:sqlite3_column_text(sqlite3_stmt, 9)!)
@@ -273,7 +273,7 @@ class DbMgr {
         var lowTemp: String = ""
         while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
 
-            lowTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
+            lowTemp = "Low: " + String(sqlite3_column_int(sqlite3_stmt, 6))
          //   print("lowTemp: \(lowTemp)")
             dailyLows.append(lowTemp)
         }
@@ -312,7 +312,7 @@ class DbMgr {
             
             let isDaytime = sqlite3_column_int(sqlite3_stmt, 5)
             if isDaytime == 1 {
-                cellModel.hiTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
+                cellModel.hiTemp = "Hi: " + String(sqlite3_column_int(sqlite3_stmt, 6))
                 cellModel.lowTemp = nil
                 cellModel.dayNightIcon = UIImage(imageLiteralResourceName: "sun_icon")
             } else {
@@ -380,7 +380,7 @@ class DbMgr {
             
             cellModel.hiTemp = nil
             cellModel.dayNightIcon = UIImage(imageLiteralResourceName: "moon_icon")
-            cellModel.lowTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
+            cellModel.lowTemp = "Low: " + String(sqlite3_column_int(sqlite3_stmt, 6))
             
             cellModel.windSpeed = String(cString:sqlite3_column_text(sqlite3_stmt, 9))
             cellModel.windDirection = String(cString:sqlite3_column_text(sqlite3_stmt, 10))

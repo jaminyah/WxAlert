@@ -48,7 +48,7 @@ class AlertIcon {
         case "Flood Warning":
             icon = UIImage(imageLiteralResourceName: "warn_flood")
         case "Freeze Warning":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            icon = UIImage(imageLiteralResourceName: "warn_freeze")
         case "Freeze Watch":
             icon = UIImage(imageLiteralResourceName: "flood_alert")
         case "Frost Advisory":

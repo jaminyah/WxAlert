@@ -10,6 +10,20 @@ import UIKit
 
 class AlertDetailViewController: UIViewController {
 
+    @IBOutlet weak var alertIcon: UIImageView!
+    @IBOutlet weak var eventLabel: UILabel!
+    @IBOutlet weak var senderLabel: UILabel!
+    @IBOutlet weak var beginLabel: UILabel!
+    @IBOutlet weak var endLabel: UILabel!
+    @IBOutlet weak var urgencyLabel: UILabel!
+    @IBOutlet weak var severityLabel: UILabel!
+    @IBOutlet weak var areaLabel: UILabel!
+    @IBOutlet weak var headlineLabel: UILabel!
+    @IBOutlet weak var instructionLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var idLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
