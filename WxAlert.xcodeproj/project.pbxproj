@@ -46,6 +46,8 @@
 		FA46614B21E1552B001C680E /* AlertIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46614A21E1552B001C680E /* AlertIcon.swift */; };
 		FA4B52222131BE380017ADC9 /* DbMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4B52212131BE380017ADC9 /* DbMgr.swift */; };
 		FA503EBD21B7041B0073F479 /* PointsJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA503EBC21B7041B0073F479 /* PointsJsonParser.swift */; };
+		FA53FCBA22317B4800571E76 /* Pages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA53FCB922317B4800571E76 /* Pages.swift */; };
+		FA53FCBC2231842500571E76 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA53FCBB2231842500571E76 /* AlertViewController.swift */; };
 		FA57346E217FA773004CB2E0 /* WeatherUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57346D217FA773004CB2E0 /* WeatherUtils.swift */; };
 		FA7BDCC0221D215700738158 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7BDCBF221D215700738158 /* PageViewController.swift */; };
 		FA81970821D3E2CF00C22092 /* AlertDataMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81970721D3E2CF00C22092 /* AlertDataMgr.swift */; };
@@ -144,6 +146,8 @@
 		FA46614A21E1552B001C680E /* AlertIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertIcon.swift; sourceTree = "<group>"; };
 		FA4B52212131BE380017ADC9 /* DbMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMgr.swift; sourceTree = "<group>"; };
 		FA503EBC21B7041B0073F479 /* PointsJsonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsJsonParser.swift; sourceTree = "<group>"; };
+		FA53FCB922317B4800571E76 /* Pages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pages.swift; sourceTree = "<group>"; };
+		FA53FCBB2231842500571E76 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		FA57346D217FA773004CB2E0 /* WeatherUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUtils.swift; sourceTree = "<group>"; };
 		FA7BDCBF221D215700738158 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		FA81970721D3E2CF00C22092 /* AlertDataMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDataMgr.swift; sourceTree = "<group>"; };
@@ -294,6 +298,8 @@
 				FAA79E4022109278009573FF /* AlertViewCell.swift */,
 				FA032FF7221D1B2800EC21F3 /* AlertDetailViewController.swift */,
 				FA7BDCBF221D215700738158 /* PageViewController.swift */,
+				FA53FCB922317B4800571E76 /* Pages.swift */,
+				FA53FCBB2231842500571E76 /* AlertViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -634,6 +640,7 @@
 				FA1D7E502135EFC200E49EC6 /* WeekForecast.swift in Sources */,
 				FA4B52222131BE380017ADC9 /* DbMgr.swift in Sources */,
 				FABBBC4C210520E6005C2207 /* CitySelectCell.swift in Sources */,
+				FA53FCBC2231842500571E76 /* AlertViewController.swift in Sources */,
 				FA888D6621ED07D9002C45E2 /* ParseWxOperation.swift in Sources */,
 				FAF7C67D21FBAB2700324EAD /* FetchLinkedOperation.swift in Sources */,
 				FA7BDCC0221D215700738158 /* PageViewController.swift in Sources */,
@@ -651,6 +658,7 @@
 				FA066451206145E6006DE3CF /* RootController.swift in Sources */,
 				FA81970A21D3E70900C22092 /* AlertList.swift in Sources */,
 				FA81970821D3E2CF00C22092 /* AlertDataMgr.swift in Sources */,
+				FA53FCBA22317B4800571E76 /* Pages.swift in Sources */,
 				FABBBC44210519E7005C2207 /* WxCollectionController.swift in Sources */,
 				FA9DDAA421359C29004B9E2D /* NetworkMgr.swift in Sources */,
 			);

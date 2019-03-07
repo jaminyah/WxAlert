@@ -25,9 +25,9 @@ class WxViewCell: UICollectionViewCell {
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var alertLabel: UILabel!
     
-    //var icons:[UIImage]? = []
-    //var timer = Timer()
+
     var tapGesture = UITapGestureRecognizer()
+    var pages = Pages()
     
     func displayWeather(forecast: CellModel) -> Void {
         dayLabel.text = forecast.day
@@ -47,31 +47,18 @@ class WxViewCell: UICollectionViewCell {
         tapGesture.numberOfTouchesRequired = 1
         alertView.addGestureRecognizer(tapGesture)
         alertView.isUserInteractionEnabled = true
-        
-       // alert.image = forecast.alertIcon
-        /*
-        alert.image = forecast.alertIcons?.first
-        icons = forecast.alertIcons
-        timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(onSlider), userInfo: nil, repeats: true)
-        */
     }
-    
-    /*
-    @objc func onSlider() -> Void {
-        var imageCount = 0
-        let alertCount = icons?.count ?? 0
-        if (imageCount < alertCount) {
-            imageCount = imageCount + 1
-        } else {
-            imageCount = 0
-        }
         
-        UIView.transition(with: self.alert, duration: 2.0, options: .transitionCrossDissolve, animations: {self.alert.image = self.icons?[imageCount]}, completion: nil)
-    }
-    */
-    
     @objc func onTap(_ sender: UITapGestureRecognizer) -> Void {
         
+        // Add activity view?
+        let alertViewController = AlertViewController() // Get alert pages array data from Sqlite DB
+        // Remove activity view?
+        
         self.alertView.backgroundColor = (self.alertView.backgroundColor == UIColor.yellow) ? .green : .yellow
+        
+        // Push pageviewcontroller via segue
+        alertViewController.performSegue(withIdentifier: "pageViewSegue", sender: self)
     }
+    
 }

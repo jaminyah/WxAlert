@@ -356,7 +356,7 @@
                         <outlet property="alertCollection" destination="LNs-9T-gVA" id="F2K-0p-8t3"/>
                         <outlet property="cityLabel" destination="pSK-fY-LvJ" id="tf0-0a-oUm"/>
                         <outlet property="wxCollection" destination="aec-qv-dEE" id="S06-J7-4ET"/>
-                        <segue destination="nfE-Rc-8yk" kind="show" identifier="PageViewSegue" id="M66-Kc-Vlm"/>
+                        <segue destination="nfE-Rc-8yk" kind="show" identifier="pageViewSegue" id="M66-Kc-Vlm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ixN-Wy-4rQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
