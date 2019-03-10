@@ -1,5 +1,5 @@
 //
-//  AlertCellViewModel.swift
+//  AlertViewModel.swift
 //  WxAlert
 //
 //  Created by macbook on 2/3/19.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AlertCellViewModel: CellViewModel {
+class AlertViewModel: CellViewModel {
  
     var alertModels: [AlertModel] = []
     var table: String = "alert_"

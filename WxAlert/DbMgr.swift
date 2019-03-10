@@ -170,7 +170,8 @@ class DbMgr {
             query = "INSERT INTO \(wxtable) (Number, Name, StartTime, EndTime, isDayTime, Temperature, TempUnit, TempTrend, WindSpeed, WindDirection, Icon, ShortForecast, DetailedForecast) VALUES (\(number), '\(name)', '\(startTime)', '\(endTime)', \(dayTime), \(temperature), '\(temperatureUnit)', '\(temperatureTrend)' ,'\(windSpeed)', '\(windDirection)', '\(icon)', '\(shortForecast)', '\(detailedForecast)');"
             
             // Apostrophes such as Washington's create an sqlite error
-            zSql = query.replacingOccurrences(of: "'s", with: "''s")
+            query = query.replacingOccurrences(of: "'s", with: "''s")
+            zSql = query.replacingOccurrences(of: "'t", with: "''t")
         
             if sqlite3_prepare_v2(sqlite3_db, zSql, -1, &sqlite3_stmt, nil) != SQLITE_OK {
                 let errmsg = String(cString: sqlite3_errmsg(sqlite3_db)!)
@@ -317,7 +318,7 @@ class DbMgr {
                 cellModel.dayNightIcon = UIImage(imageLiteralResourceName: "sun_icon")
             } else {
                 cellModel.hiTemp = nil
-                cellModel.lowTemp = String(sqlite3_column_int(sqlite3_stmt, 6))
+                cellModel.lowTemp = "Low: " + String(sqlite3_column_int(sqlite3_stmt, 6)) + "\u{00B0}F"
                 cellModel.dayNightIcon = UIImage(imageLiteralResourceName: "moon_icon")
             }
 
@@ -416,17 +417,5 @@ class DbMgr {
         sqlite3_finalize(sqlite3_stmt)
         return forecast
     }
-    
-    func checkJSONValid(sql: String) -> Bool {
-        // Todo: function body
-        
-        return true
-    }
-    
-    /* Mark: Alert functions
-    func insertAlerts(alert: [Alert], table: String) -> Void {
-        // TODO: insert alerts into db table
-    }
- */
     
 } // DbMgr

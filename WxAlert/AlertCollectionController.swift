@@ -11,7 +11,7 @@ import UIKit
 class AlertCollectionController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     let reuseIdentifier = "AlertCell"
-    var viewModel = AlertCellViewModel()
+    var viewModel = AlertViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()

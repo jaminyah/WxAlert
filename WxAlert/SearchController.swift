@@ -23,7 +23,7 @@ class SearchController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Hide empty cell in search result
         self.resultView.tableFooterView = UIView()
         
@@ -56,7 +56,6 @@ class SearchController: UIViewController {
     }
 
 }
-
 
 extension SearchController : UITableViewDataSource {
     

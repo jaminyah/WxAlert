@@ -13,96 +13,143 @@ class AlertIcon {
     
     init() {}
     
-    func fetch(imageFor name: String) -> UIImage {
-        var icon: UIImage
+    func fetch(imageFor name: String) -> (icon: UIImage, detailIcon: UIImage) {
+        
+        let image = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+        let imageDetail = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+        var alert = (icon: image, detailIcon: imageDetail)
         
         switch (name) {
         case "Air Quality Alert":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Air Stagnation Advisory":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Avalanche Watch":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Avalanche Warning":
-            icon = UIImage(imageLiteralResourceName: "warn_avalanche")
+            alert.icon = UIImage(imageLiteralResourceName: "warn_avalanche")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Beach Hazards Statement":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Blizzard Advisory":
-            icon = UIImage(imageLiteralResourceName: "advisory_blizzard")
+            alert.icon = UIImage(imageLiteralResourceName: "advisory_blizzard")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Blizzard Warning":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Coastal Flood Advisory":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Coastal Flood Warning":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Dense Fog Advisory":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Fire Weather Watch":
-            icon = UIImage(imageLiteralResourceName: "watch_fire")
+            alert.icon = UIImage(imageLiteralResourceName: "watch_fire")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Flash Flood Warning":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Flood Advisory":
-            icon = UIImage(imageLiteralResourceName: "advisory_flood")
+            alert.icon = UIImage(imageLiteralResourceName: "advisory_flood")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Flood Watch":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "watch_flood")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Flood Warning":
-            icon = UIImage(imageLiteralResourceName: "warn_flood")
+            alert.icon = UIImage(imageLiteralResourceName: "warn_flood")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+        case "Freezing Fog":
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Freeze Warning":
-            icon = UIImage(imageLiteralResourceName: "warn_freeze")
+            alert.icon = UIImage(imageLiteralResourceName: "warn_freeze")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Freeze Watch":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Frost Advisory":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Hard Freeze Watch":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Hard Freeze Warning":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "High Surf Advisory":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "High Surf Warning":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "High Wind Watch":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "High Wind Warning":
-            icon = UIImage(imageLiteralResourceName: "warning_wind")
+            alert.icon = UIImage(imageLiteralResourceName: "warning_wind")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Hydrologic Outlook":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Ice Storm Warning":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Lake Wind Advisory":
-            icon = UIImage(imageLiteralResourceName: "advisory_lakewind")
+            alert.icon = UIImage(imageLiteralResourceName: "advisory_lakewind")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Lakeshore Flood Watch":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Red Flag Warning":
-            icon = UIImage(imageLiteralResourceName: "warning_fire")
+            alert.icon = UIImage(imageLiteralResourceName: "warning_fire")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Rip Current Statement":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Rip Current Warning":
-            icon = UIImage(imageLiteralResourceName: "warn_ripcurrent")
+            alert.icon = UIImage(imageLiteralResourceName: "warn_ripcurrent")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Special Weather Statement":
-            icon = UIImage(imageLiteralResourceName: "special_stmt")
+            alert.icon = UIImage(imageLiteralResourceName: "special_stmt")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Tornado Warning":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Thunderstorm Watch":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Thunderstorm Warning":
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Wind Advisory":
-            icon = UIImage(imageLiteralResourceName: "advisory_wind")
+            alert.icon = UIImage(imageLiteralResourceName: "advisory_wind")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Wind Chill Advisory":
-            icon = UIImage(imageLiteralResourceName: "advisory_windchill")
+            alert.icon = UIImage(imageLiteralResourceName: "advisory_windchill")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Wind Chill Warning":
-            icon = UIImage(imageLiteralResourceName: "warn_windchill")
+            alert.icon = UIImage(imageLiteralResourceName: "warn_windchill")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Winter Weather Advisory":
-            icon = UIImage(imageLiteralResourceName: "advisory_winter")
+            alert.icon = UIImage(imageLiteralResourceName: "advisory_winter")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Winter Storm Warning":
-            icon = UIImage(imageLiteralResourceName: "warning_winter")
+            alert.icon = UIImage(imageLiteralResourceName: "warning_winter")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Winter Storm Watch":
-            icon = UIImage(imageLiteralResourceName: "watch_winter")
+            alert.icon = UIImage(imageLiteralResourceName: "watch_winter")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         default:
-            icon = UIImage(imageLiteralResourceName: "flood_alert")
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         }
-        
-        return icon
+        return alert
     }
 }

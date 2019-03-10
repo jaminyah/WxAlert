@@ -5,6 +5,7 @@
 //  Created by macbook on 3/7/19.
 //  Copyright © 2019 Jaminya. All rights reserved.
 //
+/* Purpose: Transitions to the page view controller. */
 
 import UIKit
 
@@ -28,5 +29,4 @@ class AlertViewController: UIViewController {
             destinationVC.pages.array = pages.array
         }
     }
-
 }

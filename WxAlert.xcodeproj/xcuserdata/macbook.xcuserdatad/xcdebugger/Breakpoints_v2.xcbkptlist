@@ -138,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/WxCellViewModel.swift"
-            timestampString = "573550414.000473"
+            timestampString = "573938561.65132"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/DbMgr.swift"
-            timestampString = "573551639.8537149"
+            timestampString = "573938561.651437"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "dayForecast(from:sql:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/DbMgr.swift"
-            timestampString = "573551639.8541189"
+            timestampString = "573938561.651509"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "dayForecast(from:sql:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -216,11 +216,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/DbMgr.swift"
-            timestampString = "573551639.8544559"
+            timestampString = "573938561.65161"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "dayForecast(from:sql:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -232,7 +232,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/WxCollectionController.swift"
-            timestampString = "571612999.647791"
+            timestampString = "573938561.651674"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
@@ -248,7 +248,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/WxCollectionController.swift"
-            timestampString = "571612999.648106"
+            timestampString = "573938561.651734"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
@@ -280,7 +280,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/NetworkMgr.swift"
-            timestampString = "571959425.743504"
+            timestampString = "573895143.9157701"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
@@ -391,102 +391,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WxAlert/DbMgr+AlertData.swift"
-            timestampString = "571785759.009658"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "wxAlerts(from:sql:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WxAlert/Alert.swift"
-            timestampString = "571646776.82599"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "init(JSON:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WxAlert.Alert.init(JSON: Any) -&gt; Swift.Optional&lt;WxAlert.Alert&gt;"
-                  moduleName = "WxAlert"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/macbook/Documents/Swift/WxAlert/WxAlert/Alert.swift"
-                  timestampString = "571595390.221213"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "13102">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WxAlert.Alert.init(JSON: Any) -&gt; Swift.Optional&lt;WxAlert.Alert&gt;"
-                  moduleName = "WxAlert"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/macbook/Documents/Swift/WxAlert/WxAlert/Alert.swift"
-                  timestampString = "571595390.22399"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "14526">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WxAlert/DbMgr+AlertData.swift"
-            timestampString = "571785759.0097311"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "insert(alerts:table:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WxAlert/DbMgr+AlertData.swift"
-            timestampString = "571785759.009784"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "insert(alerts:table:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "WxAlert/AlertDataMgr.swift"
             timestampString = "571641688.664601"
             startingColumnNumber = "9223372036854775807"
@@ -504,7 +408,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/AlertCollectionController.swift"
-            timestampString = "571863079.9348561"
+            timestampString = "573895143.91676"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "57"
@@ -519,28 +423,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WxAlert/DbMgr+AlertData.swift"
-            timestampString = "571785759.0098701"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "insert(alerts:table:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "WxAlert/Alert.swift"
-            timestampString = "571646776.826319"
+            timestampString = "573938561.6519361"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "init(JSON:)"
             landmarkType = "7">
             <Locations>
@@ -583,13 +471,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WxAlert/DbMgr+AlertData.swift"
-            timestampString = "571785759.00994"
+            filePath = "WxAlert/DbMgr.swift"
+            timestampString = "573938561.651999"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "insert(alerts:table:)"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "insert(sevenDay:wxtable:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -599,13 +487,29 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WxAlert/DbMgr.swift"
-            timestampString = "573551639.855032"
+            filePath = "WxAlert/AlertIcon.swift"
+            timestampString = "573895143.917195"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
-            landmarkName = "insert(sevenDay:wxtable:)"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "fetch(imageFor:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WxAlert/DbMgr+AlertData.swift"
+            timestampString = "573938561.652081"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "insert(alerts:table:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

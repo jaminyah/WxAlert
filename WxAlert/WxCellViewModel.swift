@@ -46,14 +46,6 @@ class WxCellVM: CellViewModel {
         return weatherData
     }
     
-    func isValidJSON() -> Bool {
-        // TODO -
-        
-        let query = "SELECT EndTime FROM \(table) WHERE Number == 1;"
-        let isValid = dbmgr.checkJSONValid(sql: query)
-        return isValid
-    }
-    
     func monitorTimestamp() {
         // Start a thread to monitor timestamp validity
         // Raise and event when invalid
