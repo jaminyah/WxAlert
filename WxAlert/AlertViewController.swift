@@ -10,13 +10,19 @@
 import UIKit
 
 class AlertViewController: UIViewController {
-
+/*
     var pages = Pages()
+    var alertModels: [AlertModel] = []
+    var alertViewModel = AlertViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        alertModels = alertViewModel.fetchAlerts()
+        for model in alertModels {
+            guard let viewController = AlertDetailViewModel(alertModel: model).createViewController() else { return }
+            pages.array.append(viewController)
+        }
     }
     
 
@@ -29,4 +35,5 @@ class AlertViewController: UIViewController {
             destinationVC.pages.array = pages.array
         }
     }
+ */
 }

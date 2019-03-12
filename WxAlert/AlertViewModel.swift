@@ -15,7 +15,6 @@ class AlertViewModel: CellViewModel {
     
     override init() {
         super.init()
-        self.alertModels = fetchAlerts()
     }
     
     func fetchAlerts() -> [AlertModel] {

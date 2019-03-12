@@ -25,9 +25,9 @@ class WxViewCell: UICollectionViewCell {
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var alertLabel: UILabel!
     
-
+    let weatherController = WeatherController()
     var tapGesture = UITapGestureRecognizer()
-    var pages = Pages()
+    //var pages = Pages()
     
     func displayWeather(forecast: CellModel) -> Void {
         dayLabel.text = forecast.day
@@ -50,15 +50,11 @@ class WxViewCell: UICollectionViewCell {
     }
         
     @objc func onTap(_ sender: UITapGestureRecognizer) -> Void {
-        
-        // Add activity view?
-        let alertViewController = AlertViewController() // Get alert pages array data from Sqlite DB
-        // Remove activity view?
-        
+                
         self.alertView.backgroundColor = (self.alertView.backgroundColor == UIColor.yellow) ? .green : .yellow
         
         // Push pageviewcontroller via segue
-        alertViewController.performSegue(withIdentifier: "pageViewSegue", sender: self)
+        weatherController.performSegue(withIdentifier: "pageViewSegue", sender: WxViewCell.self)
     }
     
 }

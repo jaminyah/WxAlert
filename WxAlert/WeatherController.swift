@@ -26,42 +26,26 @@ class WeatherController: UIViewController {
 
     var selectedCity: SelectedCity!
     
+    var pages = Pages()
+    var alertModels: [AlertModel] = []
+    
     override func viewDidLoad() {
         print("Weather Controller")
         
         super.viewDidLoad()
         self.delegate = rootController
         
-        // Do any additional setup after loading the view.
         // Set data source and delegate
         alertCollection.dataSource = alertCollectionController
         alertCollection.delegate = alertCollectionController
         
-        //cityCollection.dataSource = cityCollectionController
-        //cityCollection.delegate = cityCollectionController
-        
+ 
         wxCollection.dataSource = wxCollectionController
         wxCollection.delegate = wxCollectionController
         
         // hide views
         alertCollection.isHidden = false
         navigationController?.navigationBar.isHidden = true
-
-        
-        /*
-        let queue = OperationQueue()
-        queue.addOperation {
-            // Monitor JSON valid datetime.
-            self.monitorWxTimestamp()
-        }
-        queue.waitUntilAllOperationsAreFinished()
-        */
-        
-        /* Running before network data is fetched
-        DispatchQueue.global(qos: .background).async {
-            self.monitorWxTimestamp()
-        }
-        */
         
     }
     
@@ -70,8 +54,19 @@ class WeatherController: UIViewController {
         cityLabel.text = selectedCity.name + ", " + selectedCity.state
         wxCollectionController.viewModel = WxCellVM()
         wxCollection.reloadData()
-        alertCollectionController.viewModel = AlertViewModel()
+        let alertViewModel = AlertViewModel()
+        alertCollectionController.alertModels = alertViewModel.fetchAlerts()
         alertCollection.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        /*
+        alertModels = alertViewModel.fetchAlerts()
+        for model in alertModels {
+            guard let viewController = AlertDetailViewModel(alertModel: model).createViewController() else { return }
+            pages.array.append(viewController)
+        }
+        */
     }
 
     override func didReceiveMemoryWarning() {
@@ -92,14 +87,14 @@ class WeatherController: UIViewController {
 
     
  
-    /*
-    // MARK: - Navigation
 
+    // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if let destinationVC = segue.destination as? PageViewController {
+            destinationVC.pages.array = pages.array
+        }
     }
-    */
 
 }

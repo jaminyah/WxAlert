@@ -376,7 +376,7 @@
         <!--Alert Detail View Controller-->
         <scene sceneID="JM0-N8-4sk">
             <objects>
-                <viewController storyboardIdentifier="AlertDetailView" id="5BC-mn-E6C" customClass="AlertDetailViewController" customModule="WxAlert" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="alertDetailView" id="5BC-mn-E6C" customClass="AlertDetailViewController" customModule="WxAlert" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wwq-9f-GwT"/>
                         <viewControllerLayoutGuide type="bottom" id="ash-wd-6AY"/>

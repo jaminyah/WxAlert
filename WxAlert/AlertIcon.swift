@@ -9,11 +9,9 @@
 import Foundation
 import UIKit
 
-class AlertIcon {
+final class AlertIcon {
     
-    init() {}
-    
-    func fetch(imageFor name: String) -> (icon: UIImage, detailIcon: UIImage) {
+    class func fetch(imageFor name: String) -> (icon: UIImage, detailIcon: UIImage) {
         
         let image = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
         let imageDetail = UIImage(imageLiteralResourceName: "placeholder_alert_detail")

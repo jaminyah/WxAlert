@@ -26,14 +26,25 @@ class AlertDetailViewController: UIViewController {
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var idLabel: UILabel!
     
+    var alertModel = AlertModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        eventLabel.text = alertModel.event
+        senderLabel.text = alertModel.senderName
+        urgencyLabel.text = alertModel.urgency
+        severityLabel.text = alertModel.severity
+        beginLabel.text = alertModel.effective
+        endLabel.text = alertModel.ends
+        areaLabel.text = alertModel.areaDesc
+        headlineLabel.text = alertModel.headline
+        instructionLabel.text = alertModel.instruction
+        descLabel.text = alertModel.description
+        idLabel.text = alertModel.alertId
+        
+        let tuple = AlertIcon.fetch(imageFor: alertModel.event)
+        alertIcon.image = tuple.detailIcon
     }
     
-    func displayAlertDetailView(model: AlertModel) -> Void {
-        
-    }
 }

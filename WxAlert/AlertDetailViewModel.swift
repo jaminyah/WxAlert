@@ -11,16 +11,17 @@ import UIKit
 
 struct AlertDetailViewModel {
     
-    var alertIcon: UIImage = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
-    var event: String = "Lorem ipsum ..."
-    var sender: String = "Lorem ipsum ..."
-    var begin: String = UNIX_EPOCH_DATE
-    var end: String = UNIX_EPOCH_DATE
-    var urgency: String = "Lorem ipsum ..."
-    var severity: String = "Lorem ipsum ..."
-    var area: String = "Lorem ipsum ..."
-    var headline: String = "Lorem ipsum ..."
-    var instruction: String = "Lorem ipsum ..."
-    var desc: String = "Lorem ipsum ..."
-    var id: String = "NWS-IDP-PROD-XXXXXX-XXXXXXX"
+    var alertModel: AlertModel
+        
+    init(alertModel: AlertModel) {        
+        self.alertModel = alertModel
+    }
+    
+    func createViewController() -> UIViewController? {
+        
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "alertDetailView") as? AlertDetailViewController
+        viewController?.alertModel = alertModel
+        
+        return viewController
+    }
 }
