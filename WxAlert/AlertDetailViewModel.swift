@@ -19,7 +19,7 @@ struct AlertDetailViewModel {
     
     func createViewController() -> UIViewController? {
         
-        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "alertDetailView") as? AlertDetailViewController
+        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "alertDetailVC") as? AlertDetailViewController
         viewController?.alertModel = alertModel
         
         return viewController

@@ -25,9 +25,12 @@ class WxViewCell: UICollectionViewCell {
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var alertLabel: UILabel!
     
-    let weatherController = WeatherController()
+     //let weatherController = WeatherController()
+    let wxController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WeatherControllerID") as? WeatherController
+    //let pageViewController = PageViewController()
+    //let navigationController = UINavigationController()
     var tapGesture = UITapGestureRecognizer()
-    //var pages = Pages()
+    weak var delegate: GestureProtocol?
     
     func displayWeather(forecast: CellModel) -> Void {
         dayLabel.text = forecast.day
@@ -42,19 +45,21 @@ class WxViewCell: UICollectionViewCell {
         highTempLabel.text = forecast.hiTemp
         lowTempLabel.text = forecast.lowTemp
         
+      //  delegate = wxController
         tapGesture = UITapGestureRecognizer(target: self, action: #selector(onTap(_:)))
         tapGesture.numberOfTapsRequired = 1
         tapGesture.numberOfTouchesRequired = 1
         alertView.addGestureRecognizer(tapGesture)
         alertView.isUserInteractionEnabled = true
-    }
         
-    @objc func onTap(_ sender: UITapGestureRecognizer) -> Void {
-                
-        self.alertView.backgroundColor = (self.alertView.backgroundColor == UIColor.yellow) ? .green : .yellow
-        
-        // Push pageviewcontroller via segue
-        weatherController.performSegue(withIdentifier: "pageViewSegue", sender: WxViewCell.self)
+
     }
     
-}
+    
+    @objc func onTap(_ sender: UITapGestureRecognizer) -> Void {
+        
+        alertView.backgroundColor = (alertView.backgroundColor == UIColor.yellow) ? .green : .yellow
+        delegate?.performAlertViewSegue()
+    }
+    
+} // WxViewCell

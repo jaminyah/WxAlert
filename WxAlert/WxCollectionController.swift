@@ -10,8 +10,10 @@ import UIKit
 
 private let reuseIdentifier = "WxCell"
 
-class WxCollectionController: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
-    
+class WxCollectionController: NSObject, /*UICollectionViewDataSource */ UICollectionViewDelegate  {
+ 
+
+    /*
     var viewModel: WxCellVM = WxCellVM()
    
     override init() {
@@ -34,12 +36,12 @@ class WxCollectionController: NSObject, UICollectionViewDataSource, UICollection
         //return 10
         return viewModel.cellModels.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? WxViewCell
         
         //let dayForecast = forecastElements()
-        
+        //cell?.delegate = self.superview as? GestureProtocol
         // Configure the cell
         cell?.backgroundColor = generateRandomPastelColor(withMixedColor: .cyan)
         
@@ -54,6 +56,7 @@ class WxCollectionController: NSObject, UICollectionViewDataSource, UICollection
 
         return cell!
     }
+ */
     
     // custom function to generate a random UIColor
     /*
@@ -74,6 +77,8 @@ class WxCollectionController: NSObject, UICollectionViewDataSource, UICollection
         return UIColor(hue: hue, saturation: saturation, brightness: brightness, alpha: 1.0)
     }
    */
+    
+    /*
     // https://gist.github.com/JohnCoates/725d6d3c5a07c4756dec
     func generateRandomPastelColor(withMixedColor mixColor: UIColor?) -> UIColor {
         // Randomly generate number in closure
@@ -97,6 +102,7 @@ class WxCollectionController: NSObject, UICollectionViewDataSource, UICollection
         
         return UIColor(red: red, green: green, blue: blue, alpha: 1)
     }
+ */
     
     
     // MARK: UICollectionViewDelegate
@@ -108,12 +114,13 @@ class WxCollectionController: NSObject, UICollectionViewDataSource, UICollection
      }
      */
     
-    /*
+     /*
      // Uncomment this method to specify if the specified item should be selected
-     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
      return true
      }
-     */
+    */
+    
     
     /*
      // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item

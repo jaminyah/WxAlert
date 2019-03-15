@@ -47,8 +47,10 @@ extension DbMgr {
              query = "INSERT INTO \(table) (AlertId, AreaDesc, Effective, Expires, Ends, Severity, Urgency, Event, SenderName, Headline, Description, Instruction) VALUES ('\(alertId)', '\(areaDesc)', '\(effective)', '\(expires)', '\(ends)', '\(severity)', '\(urgency)', '\(event)', '\(senderName)', '\(headline)','\(description)', '\(instruction)');"
             
             // Apostrophes such as Washington's create an sqlite error
+            /** REQUIRES A REGULAR EXPRESSION **/
             query = query.replacingOccurrences(of: "'s", with: "''s")
             zSql = query.replacingOccurrences(of: "'t", with: "''t")
+            zSql = zSql.replacingOccurrences(of: "'a", with: "''a")
             
             if sqlite3_prepare_v2(sqlite3_db, zSql, -1, &sqlite3_stmt, nil) != SQLITE_OK {
                 let errmsg = String(cString: sqlite3_errmsg(sqlite3_db)!)
