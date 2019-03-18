@@ -11,19 +11,16 @@ import UIKit
 class WeatherController: UIViewController, UICollectionViewDataSource, GestureProtocol {
     
     @IBOutlet weak var alertCollection: UICollectionView!
-    @IBOutlet weak var cityCollection: UICollectionView!
     @IBOutlet weak var wxCollection:  UICollectionView!
     @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var date: UILabel!
-    
-    
+
     let rootController = RootController.sharedInstance
     let dbmgr = DbMgr.sharedInstance
     var delegate: CityProtocol? = nil
     
     lazy var alertCollectionController = AlertCollectionController()
-    lazy var wxCollectionController = WxCollectionController()
-    //let cityCollectionController = CityCollectionController()
+    var viewModel: WxCellVM? = nil
+    //lazy var wxCollectionController = WxCollectionController()
 
     var selectedCity: SelectedCity!
     
@@ -40,28 +37,23 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         alertCollection.dataSource = alertCollectionController
         alertCollection.delegate = alertCollectionController
         
- 
         wxCollection.dataSource = self
         //wxCollection.delegate = wxCollectionController
-        wxCollection.delegate = wxCollectionController
         
         // hide views
         alertCollection.isHidden = false
-        //navigationController?.navigationBar.isHidden = true
     }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         selectedCity = self.delegate?.getSelectedCity()
         cityLabel.text = selectedCity.name + ", " + selectedCity.state
-       // wxCollectionController.viewModel = WxCellVM()
+        viewModel = WxCellVM()
         wxCollection.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
-        let alertViewModel = AlertViewModel()   /** VARIABLE DECLARATION ISSUE **/
+        let alertViewModel = AlertViewModel() 
         alertModels = alertViewModel.fetchAlerts()
         alertCollectionController.alertModels = alertModels
         alertCollection.reloadData()
@@ -72,41 +64,22 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         // Dispose of any resources that can be recreated.
     }
     
-    
-    lazy var viewModel: WxCellVM = WxCellVM()
-    
-    // MARK: UICollectionViewDataSource
+    // MARK: wxCollection UICollectionViewDataSource
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        
-        //return 10
-        return viewModel.cellModels.count
+        return viewModel?.cellModels.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WxCell", for: indexPath) as? WxViewCell
         
-        //let dayForecast = forecastElements()
-        cell?.delegate = self
-        // Configure the cell
+        cell?.delegate = self                                        // delegate must conform to GestureProtocol
         cell?.backgroundColor = generateRandomPastelColor(withMixedColor: .cyan)
-        
-        // if viewModel.isValidJSON() == true {
-        cell?.displayWeather(forecast: viewModel.cellModels[indexPath.row])
-        // } else {
-        // Fetch valid JSON
-        // Add activity indicator
-        // Wait for db writing to be complete
-        //  cell?.displayWeather(forecast: viewModel.cellModels[indexPath.row])
-        //}
-        
+        cell?.displayWeather(forecast: viewModel!.cellModels[indexPath.row])
         return cell!
     }
     
@@ -130,7 +103,6 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
             green = (green + mixGreen) / 2;
             blue = (blue + mixBlue) / 2;
         }
-        
         return UIColor(red: red, green: green, blue: blue, alpha: 1)
     }
     
@@ -144,29 +116,14 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         // operate a countdown timer
         // send out notification when timer expires
     }
-    /*
-    @objc func onTap(_ sender: UITapGestureRecognizer) -> Void {
-        
-        alertDetailView?.backgroundColor = (alertDetailView?.backgroundColor == UIColor.yellow) ? .green : .yellow
-        // self.navigationController.performSegue(withIdentifier: "alertDetailViewSegue", sender: self)
-    } */
-    
-    /*
-    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("Weather Controller touchesBegan")
-    }*/
     
     func performAlertViewSegue() {
         print("performAlertViewSegue")
         
-       // let pageViewController = storyboard?.instantiateViewController(withIdentifier: "pageViewController") as! PageViewController
-       // let pageViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pageViewController") as! PageViewController
         for model in alertModels {
             guard let viewController = AlertDetailViewModel(alertModel: model).createViewController() else { return }
             pages.array.append(viewController)
         }
-        //pageViewController.pages = pages
-       // self.navigationController?.pushViewController(pageViewController, animated: true)
         performSegue(withIdentifier: "AlertDetailSegue", sender: self)
     }
     
@@ -180,5 +137,4 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
             destinationVC.pages.array = pages.array
         }
     }
-
-}
+} // class

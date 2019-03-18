@@ -44,12 +44,10 @@
 		FA352DA621D6991900F9F0F6 /* DbMgr+AlertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA352DA521D6991900F9F0F6 /* DbMgr+AlertData.swift */; };
 		FA3DC130220CAE4B00A669B7 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3DC12F220CAE4B00A669B7 /* CellViewModel.swift */; };
 		FA4515D62238743E00771D72 /* GestureProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4515D52238743E00771D72 /* GestureProtocol.swift */; };
-		FA4515D82238766900771D72 /* AlertIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4515D72238766900771D72 /* AlertIconView.swift */; };
 		FA46614B21E1552B001C680E /* AlertIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46614A21E1552B001C680E /* AlertIcon.swift */; };
 		FA4B52222131BE380017ADC9 /* DbMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4B52212131BE380017ADC9 /* DbMgr.swift */; };
 		FA503EBD21B7041B0073F479 /* PointsJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA503EBC21B7041B0073F479 /* PointsJsonParser.swift */; };
 		FA53FCBA22317B4800571E76 /* Pages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA53FCB922317B4800571E76 /* Pages.swift */; };
-		FA53FCBC2231842500571E76 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA53FCBB2231842500571E76 /* AlertViewController.swift */; };
 		FA57346E217FA773004CB2E0 /* WeatherUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57346D217FA773004CB2E0 /* WeatherUtils.swift */; };
 		FA67D652223443B4002E24F3 /* AlertDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA67D651223443B4002E24F3 /* AlertDetailViewModel.swift */; };
 		FA7BDCC0221D215700738158 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7BDCBF221D215700738158 /* PageViewController.swift */; };
@@ -69,10 +67,8 @@
 		FAA79E4122109278009573FF /* AlertViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA79E4022109278009573FF /* AlertViewCell.swift */; };
 		FAB45FC920FFC6BC00333FE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB45FC820FFC6BC00333FE9 /* Assets.xcassets */; };
 		FABBBC44210519E7005C2207 /* WxCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC43210519E7005C2207 /* WxCollectionController.swift */; };
-		FABBBC4621051A19005C2207 /* CityCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC4521051A19005C2207 /* CityCollectionController.swift */; };
 		FABBBC4821051A5A005C2207 /* AlertCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC4721051A5A005C2207 /* AlertCollectionController.swift */; };
 		FABBBC4A21051FEE005C2207 /* WxViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC4921051FEE005C2207 /* WxViewCell.swift */; };
-		FABBBC4C210520E6005C2207 /* CitySelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC4B210520E6005C2207 /* CitySelectCell.swift */; };
 		FABCA50121F50220004F9414 /* BaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCA50021F50220004F9414 /* BaseOperation.swift */; };
 		FAC16F4C2062623C00683EE6 /* CityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F4B2062623C00683EE6 /* CityProtocol.swift */; };
 		FAC16F4F2062644900683EE6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F4E2062644900683EE6 /* DataManager.swift */; };
@@ -147,12 +143,10 @@
 		FA352DA521D6991900F9F0F6 /* DbMgr+AlertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DbMgr+AlertData.swift"; sourceTree = "<group>"; };
 		FA3DC12F220CAE4B00A669B7 /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		FA4515D52238743E00771D72 /* GestureProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureProtocol.swift; sourceTree = "<group>"; };
-		FA4515D72238766900771D72 /* AlertIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertIconView.swift; sourceTree = "<group>"; };
 		FA46614A21E1552B001C680E /* AlertIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertIcon.swift; sourceTree = "<group>"; };
 		FA4B52212131BE380017ADC9 /* DbMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMgr.swift; sourceTree = "<group>"; };
 		FA503EBC21B7041B0073F479 /* PointsJsonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsJsonParser.swift; sourceTree = "<group>"; };
 		FA53FCB922317B4800571E76 /* Pages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pages.swift; sourceTree = "<group>"; };
-		FA53FCBB2231842500571E76 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		FA57346D217FA773004CB2E0 /* WeatherUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUtils.swift; sourceTree = "<group>"; };
 		FA67D651223443B4002E24F3 /* AlertDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailViewModel.swift; sourceTree = "<group>"; };
 		FA7BDCBF221D215700738158 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -172,10 +166,8 @@
 		FAA79E4022109278009573FF /* AlertViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewCell.swift; sourceTree = "<group>"; };
 		FAB45FC820FFC6BC00333FE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FABBBC43210519E7005C2207 /* WxCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WxCollectionController.swift; sourceTree = "<group>"; };
-		FABBBC4521051A19005C2207 /* CityCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCollectionController.swift; sourceTree = "<group>"; };
 		FABBBC4721051A5A005C2207 /* AlertCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCollectionController.swift; sourceTree = "<group>"; };
 		FABBBC4921051FEE005C2207 /* WxViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WxViewCell.swift; sourceTree = "<group>"; };
-		FABBBC4B210520E6005C2207 /* CitySelectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySelectCell.swift; sourceTree = "<group>"; };
 		FABCA50021F50220004F9414 /* BaseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseOperation.swift; sourceTree = "<group>"; };
 		FAC16F4B2062623C00683EE6 /* CityProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityProtocol.swift; sourceTree = "<group>"; };
 		FAC16F4E2062644900683EE6 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
@@ -297,16 +289,12 @@
 				FA06646220615226006DE3CF /* CityListController.swift */,
 				FA06646F20617337006DE3CF /* MapController.swift */,
 				FABBBC43210519E7005C2207 /* WxCollectionController.swift */,
-				FABBBC4521051A19005C2207 /* CityCollectionController.swift */,
 				FABBBC4721051A5A005C2207 /* AlertCollectionController.swift */,
 				FABBBC4921051FEE005C2207 /* WxViewCell.swift */,
-				FABBBC4B210520E6005C2207 /* CitySelectCell.swift */,
 				FAA79E4022109278009573FF /* AlertViewCell.swift */,
 				FA032FF7221D1B2800EC21F3 /* AlertDetailViewController.swift */,
 				FA7BDCBF221D215700738158 /* PageViewController.swift */,
 				FA53FCB922317B4800571E76 /* Pages.swift */,
-				FA53FCBB2231842500571E76 /* AlertViewController.swift */,
-				FA4515D72238766900771D72 /* AlertIconView.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -630,9 +618,7 @@
 				FAC16F4F2062644900683EE6 /* DataManager.swift in Sources */,
 				FA888D6E21ED0878002C45E2 /* StoreAlertOperation.swift in Sources */,
 				FA28D7FF2152977D004D9AAD /* CellModel.swift in Sources */,
-				FABBBC4621051A19005C2207 /* CityCollectionController.swift in Sources */,
 				FA352DA621D6991900F9F0F6 /* DbMgr+AlertData.swift in Sources */,
-				FA4515D82238766900771D72 /* AlertIconView.swift in Sources */,
 				FA57346E217FA773004CB2E0 /* WeatherUtils.swift in Sources */,
 				FA0CD8C22206B25B00203613 /* AlertModel.swift in Sources */,
 				FA46614B21E1552B001C680E /* AlertIcon.swift in Sources */,
@@ -650,8 +636,6 @@
 				FA10D430211DD90C006CCB0E /* SelectedCity.swift in Sources */,
 				FA1D7E502135EFC200E49EC6 /* WeekForecast.swift in Sources */,
 				FA4B52222131BE380017ADC9 /* DbMgr.swift in Sources */,
-				FABBBC4C210520E6005C2207 /* CitySelectCell.swift in Sources */,
-				FA53FCBC2231842500571E76 /* AlertViewController.swift in Sources */,
 				FA888D6621ED07D9002C45E2 /* ParseWxOperation.swift in Sources */,
 				FAF7C67D21FBAB2700324EAD /* FetchLinkedOperation.swift in Sources */,
 				FA7BDCC0221D215700738158 /* PageViewController.swift in Sources */,
