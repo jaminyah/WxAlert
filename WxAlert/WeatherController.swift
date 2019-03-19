@@ -45,6 +45,8 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        navigationController?.navigationBar.isHidden = true
         selectedCity = self.delegate?.getSelectedCity()
         cityLabel.text = selectedCity.name + ", " + selectedCity.state
         viewModel = WxCellVM()
@@ -52,7 +54,8 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
+
+        tabBarController?.tabBar.isHidden = false
         let alertViewModel = AlertViewModel()
         alertModels.removeAll()
         alertModels = alertViewModel.fetchAlerts()
@@ -126,6 +129,7 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
             guard let viewController = AlertDetailViewModel(alertModel: model).createViewController() else { return }
             pages.array.append(viewController)
         }
+        tabBarController?.tabBar.isHidden = true
         performSegue(withIdentifier: "AlertDetailSegue", sender: self)
     }
     
