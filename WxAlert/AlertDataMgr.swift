@@ -23,5 +23,4 @@ class AlertDataMgr {
         guard let data = alert?.features else { return }
         dbMgr.insert(alerts: data, table:self.table)
     }
-    
 } // AlertDataMgr

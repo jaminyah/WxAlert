@@ -53,7 +53,8 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
     
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
-        let alertViewModel = AlertViewModel() 
+        let alertViewModel = AlertViewModel()
+        alertModels.removeAll()
         alertModels = alertViewModel.fetchAlerts()
         alertCollectionController.alertModels = alertModels
         alertCollection.reloadData()
@@ -120,6 +121,7 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
     func performAlertViewSegue() {
         print("performAlertViewSegue")
         
+        pages.array.removeAll()
         for model in alertModels {
             guard let viewController = AlertDetailViewModel(alertModel: model).createViewController() else { return }
             pages.array.append(viewController)

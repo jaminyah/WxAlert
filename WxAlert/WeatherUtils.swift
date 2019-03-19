@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class WeatherUtils {
+final class WeatherUtils {
     init() {}
     
     func wind(direction: String) -> UIImage? {
@@ -74,7 +74,7 @@ class WeatherUtils {
         case "Fri": previousDay = "Thurs"
         case "Sat": previousDay = "Fri"
         default:
-            print("Day error")
+            return "Err"
         }
         return previousDay
     }
@@ -92,7 +92,7 @@ class WeatherUtils {
         case "Fri": nextDay = "Sat"
         case "Sat": nextDay = "Sun"
         default:
-            print("Day error")
+            return "Err"
         }
         return nextDay
     }
@@ -164,8 +164,6 @@ class WeatherUtils {
         print(path!)
         
         let elements = path?.components(separatedBy: "/")
-        print("parse: \(elements!)")
-        
         return elements!
         
     }
@@ -208,33 +206,23 @@ class WeatherUtils {
             case 4:
                 let icon1Components = element
                 jsonIcons.iconCount = 1
-                print("icon1Components: \(icon1Components)")
                 
                 let parts = split(compoundString: icon1Components)
                 jsonIcons.name1 = parts.icon
                 
-                print("icon1: \(jsonIcons.name1)")
-                
                 if let percentage = parts.percentage {
                     jsonIcons.chance1 = percentage
-                    
-                    print("chance_1: \(jsonIcons.chance1!)")
                 }
                 
             case 5:
                 let icon2Components = element
                 jsonIcons.iconCount = 2
-                print("icon2Components: \(icon2Components)")
-                
+ 
                 let parts2 = split(compoundString: icon2Components)
                 jsonIcons.name2 = parts2.icon
                 
-                print("icon2: \(jsonIcons.name2!)")
-                
                 if let percentage = parts2.percentage {
                     jsonIcons.chance2 = percentage
-                    
-                    print("chance_2: \(jsonIcons.chance2!)")
                 }
                 
             default:
@@ -252,8 +240,6 @@ class WeatherUtils {
         let urlWrapped = URL(string: urlString)
         let urlComponents = parse(url: urlWrapped!)
         let jsonIcons = assembleIcons(components: urlComponents)
-        
-        // print("jsonIcons.iconCount: \(jsonIcons.iconCount)")
         
         iconModel.name = jsonIcons.name1
         var metIcon = met.getIconData(icon: iconModel.name!)
@@ -296,76 +282,18 @@ class WeatherUtils {
                 }
             } else {
                 if iconModel2.priority > iconModel.priority {
-                    if let icon2 = iconModel2.name {
-                        print("return iconModel2: \(icon2)")
-                    }
                     return iconModel2
                 } else {
-                    if let icon = iconModel.name {
-                        print("return iconModel: \(icon)")
-                    }
                     return iconModel
                 }
             }
         default:
             print("icon error!")
+            iconModel = IconModel()
         }
        return iconModel
     }
     
-    func parse(dateTime: String) -> String {
-        let index = dateTime.index(dateTime.startIndex, offsetBy: 10)
-        let dateString = dateTime[dateTime.startIndex..<index]
-        
-        print("dateString: \(dateString)")
-        
-        let dateComponents = dateString.split(separator: "-")
-        print("dateComponents2: \(dateComponents[1])")
-        
-        let number = String(dateComponents[1])
-        let month = monthName(monthNumber: number)
-        
-        let dayNumber = String(dateComponents[2])
-        let date = month + " " + dayNumber
-        
-        return String(date)
-    }
-    
-    func monthName(monthNumber: String) -> String {
-        var month: String = "Jan"
-        
-        switch monthNumber {
-        case "01":
-            month = "Jan"
-        case "02":
-            month = "Feb"
-        case "03":
-            month = "Mar"
-        case "04":
-            month = "Apr"
-        case "05":
-            month = "May"
-        case "06":
-            month = "Jun"
-        case "07":
-            month = "Jul"
-        case "08":
-            month = "Aug"
-        case "09":
-            month = "Sep"
-        case "10":
-            month = "Oct"
-        case "11":
-            month = "Nov"
-        case "12":
-            month = "Dec"
-        
-        default:
-            month = "Err"
-        }
-        
-        return month
-    }
     
     func parse(zoneUrl: String) -> URL? {
         // "https://api.weather.gov/alerts/active/zone/{zoneId}"

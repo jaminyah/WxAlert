@@ -31,12 +31,20 @@ class AlertDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
         eventLabel.text = alertModel.event
         senderLabel.text = alertModel.senderName
-        urgencyLabel.text = alertModel.urgency
-        severityLabel.text = alertModel.severity
-        beginLabel.text = alertModel.effective
-        endLabel.text = alertModel.ends
+        urgencyLabel.text = "Urgency: " + alertModel.urgency
+        severityLabel.text = "Severity: " + alertModel.severity
+
+        let begin = DateUtils.format(dateTime: alertModel.effective)
+        beginLabel.text = "Begin: " + begin.mm_dd_yy
+        let expires = DateUtils.format(dateTime: alertModel.expires)
+        endLabel.text = "Expires:  " + expires.mm_dd_yy
+        
         areaLabel.text = alertModel.areaDesc
         headlineLabel.text = alertModel.headline
         instructionLabel.text = alertModel.instruction
@@ -47,4 +55,4 @@ class AlertDetailViewController: UIViewController {
         alertIcon.image = tuple.detailIcon
     }
     
-}
+} // class

@@ -149,17 +149,17 @@ class DbMgr {
         for day in sevenDay {
             number = day.number
             name = day.name
-            print("insertSevenDay: \(name)")
+            //print("insertSevenDay: \(name)")
             startTime = day.startTime
-            print("insertSevenDay: \(day.startTime)")
+            //print("insertSevenDay: \(day.startTime)")
             endTime = day.endTime
-            print("insertSevenDay: \(day.endTime)")
+            //print("insertSevenDay: \(day.endTime)")
             isdaytime = day.isDaytime
-            print("insertSevenDay: \(isdaytime)")
+            //print("insertSevenDay: \(isdaytime)")
             dayTime = (isdaytime == true) ? 1 : 0             // Convert Bool to Integer for SQLite
             temperature = day.temperature
             temperatureUnit = day.temperatureUnit
-            print("insertSevenDay: \(temperatureUnit)")
+            //print("insertSevenDay: \(temperatureUnit)")
             temperatureTrend = day.temperatureTrend
             windSpeed = day.windSpeed
             windDirection = day.windDirection
@@ -193,7 +193,7 @@ class DbMgr {
     }
     
     func dayForecast(from: String, sql: String) -> [CellModel] {
-        print("DayForecast")
+       // print("DayForecast")
         
         var dayArray: [String?] = []
         var forecast: [CellModel] = []
@@ -213,9 +213,10 @@ class DbMgr {
             
             // Set wxViewCell date
             let dateTimeString = String(cString:sqlite3_column_text(sqlite3_stmt, 3)!)
-            cellModel.date = wxUtils.parse(dateTime: dateTimeString)
+            let date = DateUtils.format(dateTime: dateTimeString)
+            cellModel.date = date.mm_dd
             
-            // Set day icon
+            // Set day icons
             cellModel.dayNightIcon = UIImage(imageLiteralResourceName: "sun_icon")
             
             cellModel.hiTemp = "Hi: " + String(sqlite3_column_int(sqlite3_stmt, 6)) + "\u{00B0}F"
@@ -290,7 +291,7 @@ class DbMgr {
     
     
     func dayNightForecast(sql: String) -> [CellModel] {
-        print("DayNightForecast")
+       // print("DayNightForecast")
         
         var forecast: [CellModel] = []
         var dayArray: [String?] = []
@@ -309,7 +310,8 @@ class DbMgr {
             
             // Set wxViewCell date
             let dateTimeString = String(cString:sqlite3_column_text(sqlite3_stmt, 3)!)
-            cellModel.date = wxUtils.parse(dateTime: dateTimeString)
+            let date = DateUtils.format(dateTime: dateTimeString)
+            cellModel.date = date.mm_dd
             
             let isDaytime = sqlite3_column_int(sqlite3_stmt, 5)
             if isDaytime == 1 {
@@ -358,7 +360,7 @@ class DbMgr {
     }
     
     func nightForecast(sql: String) -> [CellModel] {
-        print("NightForecast")
+        //print("NightForecast")
         
         var dayArray: [String?] = []
         var forecast: [CellModel] = []
@@ -377,7 +379,8 @@ class DbMgr {
             
             // Set wxViewCell date
             let dateTimeString = String(cString:sqlite3_column_text(sqlite3_stmt, 3)!)
-            cellModel.date = wxUtils.parse(dateTime: dateTimeString)
+            let date = DateUtils.format(dateTime: dateTimeString)
+            cellModel.date = date.mm_dd
             
             cellModel.hiTemp = nil
             cellModel.dayNightIcon = UIImage(imageLiteralResourceName: "moon_icon")

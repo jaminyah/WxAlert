@@ -32,6 +32,7 @@
 		FA06648320619563006DE3CF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA06648220619563006DE3CF /* MapKit.framework */; };
 		FA0CD8C02206B12C00203613 /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0CD8BF2206B12C00203613 /* AlertViewModel.swift */; };
 		FA0CD8C22206B25B00203613 /* AlertModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0CD8C12206B25B00203613 /* AlertModel.swift */; };
+		FA0CF697223FF90E0075090D /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0CF696223FF90E0075090D /* DateUtils.swift */; };
 		FA10D430211DD90C006CCB0E /* SelectedCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA10D42F211DD90C006CCB0E /* SelectedCity.swift */; };
 		FA113140211FFF7F00B50085 /* WxCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA11313F211FFF7F00B50085 /* WxCellViewModel.swift */; };
 		FA1CEE9F21F38BF000A382C9 /* FetchZoneIdOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1CEE9E21F38BF000A382C9 /* FetchZoneIdOperation.swift */; };
@@ -131,6 +132,7 @@
 		FA06648220619563006DE3CF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		FA0CD8BF2206B12C00203613 /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
 		FA0CD8C12206B25B00203613 /* AlertModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertModel.swift; sourceTree = "<group>"; };
+		FA0CF696223FF90E0075090D /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		FA10D42F211DD90C006CCB0E /* SelectedCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedCity.swift; sourceTree = "<group>"; };
 		FA11313F211FFF7F00B50085 /* WxCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WxCellViewModel.swift; sourceTree = "<group>"; };
 		FA1CEE9E21F38BF000A382C9 /* FetchZoneIdOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchZoneIdOperation.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 				FA9DDAA321359C29004B9E2D /* NetworkMgr.swift */,
 				FA1E55D2215F54F60092CE2C /* Meteorology.swift */,
 				FA57346D217FA773004CB2E0 /* WeatherUtils.swift */,
+				FA0CF696223FF90E0075090D /* DateUtils.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				FA06645720615016006DE3CF /* WeatherController.swift in Sources */,
 				FA888D6C21ED083A002C45E2 /* ParseAlertOperation.swift in Sources */,
 				FA113140211FFF7F00B50085 /* WxCellViewModel.swift in Sources */,
+				FA0CF697223FF90E0075090D /* DateUtils.swift in Sources */,
 				FA066451206145E6006DE3CF /* RootController.swift in Sources */,
 				FA81970A21D3E70900C22092 /* AlertList.swift in Sources */,
 				FA81970821D3E2CF00C22092 /* AlertDataMgr.swift in Sources */,
