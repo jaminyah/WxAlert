@@ -63,7 +63,7 @@ final class AlertIcon {
         case "Flood Warning":
             alert.icon = UIImage(imageLiteralResourceName: "warn_flood")
            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
-        case "Freezing Fog":
+        case "Freezing Fog Advisory":
             alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Freeze Warning":
@@ -137,7 +137,7 @@ final class AlertIcon {
            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Winter Weather Advisory":
             alert.icon = UIImage(imageLiteralResourceName: "advisory_winter")
-           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "advis_winter_wx")
         case "Winter Storm Warning":
             alert.icon = UIImage(imageLiteralResourceName: "warning_winter")
            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")

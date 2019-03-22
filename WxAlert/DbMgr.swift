@@ -193,7 +193,6 @@ class DbMgr {
     }
     
     func dayForecast(from: String, sql: String) -> [CellModel] {
-       // print("DayForecast")
         
         var dayArray: [String?] = []
         var forecast: [CellModel] = []
@@ -212,9 +211,7 @@ class DbMgr {
             cellModel.day = String(cString:sqlite3_column_text(sqlite3_stmt, 2)!)
             
             // Set wxViewCell date
-            let dateTimeString = String(cString:sqlite3_column_text(sqlite3_stmt, 3)!)
-            let date = DateUtils.format(dateTime: dateTimeString)
-            cellModel.date = date.mm_dd
+            cellModel.date = String(cString:sqlite3_column_text(sqlite3_stmt, 3)!)
             
             // Set day icons
             cellModel.dayNightIcon = UIImage(imageLiteralResourceName: "sun_icon")
@@ -231,9 +228,6 @@ class DbMgr {
             
             cellModel.wxIcon = iconModel.image
             cellModel.wxChance = iconModel.chance
-            cellModel.alertIcon = UIImage(imageLiteralResourceName: "warn_winter_wx")
-            //cellModel.alertIcons = []         // arrat if alert icons
-            cellModel.alertLbl = "Winter weather warning"
             
             cellModel.shortForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 12))
             cellModel.detailedForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
@@ -291,7 +285,6 @@ class DbMgr {
     
     
     func dayNightForecast(sql: String) -> [CellModel] {
-       // print("DayNightForecast")
         
         var forecast: [CellModel] = []
         var dayArray: [String?] = []
@@ -309,9 +302,7 @@ class DbMgr {
             cellModel.day = String(cString:sqlite3_column_text(sqlite3_stmt, 2)!)
             
             // Set wxViewCell date
-            let dateTimeString = String(cString:sqlite3_column_text(sqlite3_stmt, 3)!)
-            let date = DateUtils.format(dateTime: dateTimeString)
-            cellModel.date = date.mm_dd
+            cellModel.date = String(cString:sqlite3_column_text(sqlite3_stmt, 3)!)
             
             let isDaytime = sqlite3_column_int(sqlite3_stmt, 5)
             if isDaytime == 1 {
@@ -333,9 +324,6 @@ class DbMgr {
             
             cellModel.wxIcon = iconModel.image
             cellModel.wxChance = iconModel.chance
-            // cellModel.alertIcons = []
-            cellModel.alertIcon = UIImage(imageLiteralResourceName: "warn_winter_wx")
-            cellModel.alertLbl = "Winter weather warning"
             
             cellModel.shortForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 12))
             cellModel.detailedForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 13))
@@ -360,7 +348,6 @@ class DbMgr {
     }
     
     func nightForecast(sql: String) -> [CellModel] {
-        //print("NightForecast")
         
         var dayArray: [String?] = []
         var forecast: [CellModel] = []
@@ -378,9 +365,7 @@ class DbMgr {
             cellModel.day = String(cString:sqlite3_column_text(sqlite3_stmt, 2)!)
             
             // Set wxViewCell date
-            let dateTimeString = String(cString:sqlite3_column_text(sqlite3_stmt, 3)!)
-            let date = DateUtils.format(dateTime: dateTimeString)
-            cellModel.date = date.mm_dd
+            cellModel.date = String(cString:sqlite3_column_text(sqlite3_stmt, 3)!)
             
             cellModel.hiTemp = nil
             cellModel.dayNightIcon = UIImage(imageLiteralResourceName: "moon_icon")
@@ -395,9 +380,6 @@ class DbMgr {
             
             cellModel.wxIcon = iconModel.image
             cellModel.wxChance = iconModel.chance
-            //cellModel.alertIcons = []
-            cellModel.alertIcon = UIImage(imageLiteralResourceName: "warn_winter_wx")
-            cellModel.alertLbl = "Winter weather warning"
             
             cellModel.shortForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 12))
             cellModel.detailedForecast = String(cString:sqlite3_column_text(sqlite3_stmt, 13))

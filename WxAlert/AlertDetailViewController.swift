@@ -37,13 +37,13 @@ class AlertDetailViewController: UIViewController {
         
         eventLabel.text = alertModel.event
         senderLabel.text = alertModel.senderName
-        urgencyLabel.text = "Urgency: " + alertModel.urgency
+        urgencyLabel.text = "Urgency:  " + alertModel.urgency
         severityLabel.text = "Severity: " + alertModel.severity
 
         let begin = DateUtils.format(dateTime: alertModel.effective)
         beginLabel.text = "Begin: " + begin.mm_dd_yy
-        let expires = DateUtils.format(dateTime: alertModel.expires)
-        endLabel.text = "Expires:  " + expires.mm_dd_yy
+        let ends = DateUtils.format(dateTime: alertModel.ends)
+        endLabel.text = "Ends:  " + ends.mm_dd_yy
         
         areaLabel.text = alertModel.areaDesc
         headlineLabel.text = alertModel.headline
