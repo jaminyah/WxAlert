@@ -23,6 +23,7 @@ class WxViewCell: UICollectionViewCell {
     @IBOutlet weak var lowTempLabel: UILabel!
     @IBOutlet weak var date: UILabel!
     @IBOutlet weak var alertLabel: UILabel!
+    @IBOutlet weak var badgeLabel: UILabel!
     
     var tapGesture = UITapGestureRecognizer()
     weak var delegate: GestureProtocol?
@@ -45,6 +46,15 @@ class WxViewCell: UICollectionViewCell {
         lowTempLabel.text = forecast.lowTemp
         alertDetail.image = showIconEvent(inDate: forecast.date, alertModels: models).image
         
+        // Badge label
+        badgeLabel.clipsToBounds = true
+        badgeLabel.layer.cornerRadius = badgeLabel.font.pointSize * 1.2 / 2
+        badgeLabel.backgroundColor = .red
+        badgeLabel.textColor = .white
+        badgeLabel.textAlignment = .center
+        badgeLabel.text = String(models.count) + " "
+        badgeLabel.isHidden = showBadge(inDate: forecast.date, alertModels: models)
+        
         addTapGesture()
     }
     
@@ -65,40 +75,71 @@ class WxViewCell: UICollectionViewCell {
     
     func showIconEvent(inDate: String, alertModels: [AlertModel]) -> (image: UIImage?, event: String?) {
         
-        var detailTuple: (image: UIImage?, event: String?) = (image: nil, event: nil)
-        let event: String? = alertModels[0].event
+        var detailTuple: (image: UIImage?, event: String?)
+        let alertEvent = alertModels[0].event
+        let iconTuple = AlertIcon.fetch(imageFor: alertEvent)
+        let alertImage = iconTuple.detailIcon
         
-        if event == nil { return detailTuple }
-        
-        // Example inDate: 2019-03-22T23:43:09-06:00
-        let rfc3339Formater = DateFormatter()
-        rfc3339Formater.locale = Locale(identifier: "en_US_POSIX")
-        rfc3339Formater.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        rfc3339Formater.timeZone = TimeZone(secondsFromGMT: 0)
-
-        let date = inDate
-        let rfcCellDate = rfc3339Formater.date(from: date)
-        
-        let effectiveDate = alertModels[0].effective
-        let rfcAlertEffectiveDate = rfc3339Formater.date(from: effectiveDate)
-        
-        let endsDate = alertModels[0].ends
-        let rfcAlertEndsDate = rfc3339Formater.date(from: endsDate)
-        
-        guard let cellDate = rfcCellDate else { return (image: nil, event: nil) }
-        guard let alertEffectiveDate = rfcAlertEffectiveDate else { return (image: nil, event: nil) }
-        guard let alertEndsDate = rfcAlertEndsDate else { return (image: nil, event: nil) }
-        
-        if cellDate >= alertEffectiveDate && cellDate <= alertEndsDate {
-            let iconTuple = AlertIcon.fetch(imageFor: alertModels[0].event)
-            let alertImage = iconTuple.detailIcon
-            let alertEvent = alertModels[0].event
-            detailTuple = (image: alertImage, event: alertEvent)
+        if alertModels.count == 0 {
+            detailTuple = (image: nil, event: nil)
         }
+        else if (alertModels[0].ends == "") {                     // ends JSON value is null
+            detailTuple = (image: alertImage, event: alertEvent)
+        } else {
+            // Example inDate: 2019-03-22T23:43:09-06:00
+            let rfc3339Formater = DateFormatter()
+            rfc3339Formater.locale = Locale(identifier: "en_US_POSIX")
+            rfc3339Formater.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+            rfc3339Formater.timeZone = TimeZone(secondsFromGMT: 0)
+            
+            let rfcCellDate = rfc3339Formater.date(from: inDate)
+            let rfcAlertEffectiveDate = rfc3339Formater.date(from: alertModels[0].effective)
+            let rfcAlertEndsDate = rfc3339Formater.date(from: alertModels[0].ends)
+            
+            guard let cellDate = rfcCellDate else { return (image: nil, event: nil) }
+            guard let alertEffectiveDate = rfcAlertEffectiveDate else { return (image: nil, event: nil) }
+            guard let alertEndsDate = rfcAlertEndsDate else { return (image: nil, event: nil) }
+            
+            if cellDate >= alertEffectiveDate && cellDate <= alertEndsDate {
+                detailTuple = (image: alertImage, event: alertEvent)
+            } else {
+                detailTuple = (image: nil, event: nil)
+            }
+        }
+ 
         return detailTuple
     }
-
     
+    func showBadge(inDate: String, alertModels: [AlertModel]) -> Bool {
+        
+        var isHidden: Bool = true
+        
+        if alertModels.count == 0 {
+            isHidden = true
+        } else if alertModels[0].ends == "" {                    // ends JSON value is null
+            isHidden = false
+        } else {
+            // Example inDate: 2019-03-22T23:43:09-06:00
+            let rfc3339Formater = DateFormatter()
+            rfc3339Formater.locale = Locale(identifier: "en_US_POSIX")
+            rfc3339Formater.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+            rfc3339Formater.timeZone = TimeZone(secondsFromGMT: 0)
+            
+            let rfcCellDate = rfc3339Formater.date(from: inDate)
+            let rfcAlertEffectiveDate = rfc3339Formater.date(from: alertModels[0].effective)
+            let rfcAlertEndsDate = rfc3339Formater.date(from: alertModels[0].ends)
+            
+            guard let cellDate = rfcCellDate else { return true }
+            guard let alertEffectiveDate = rfcAlertEffectiveDate else { return true }
+            guard let alertEndsDate = rfcAlertEndsDate else { return true }
+            
+            if cellDate >= alertEffectiveDate && cellDate <= alertEndsDate {
+                isHidden = false
+            }
+        }
+        return isHidden
+    }
+
     func formatDate(inDate: String) -> String {
         
         let formatter = DateUtils.format(dateTime: inDate)

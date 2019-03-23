@@ -14,8 +14,11 @@ class DateUtils {
 
         // Declare and initialize date tuple
         var date: (mm_dd: String, mm_dd_yy: String)
-        date.mm_dd = "Jan 01"
-        date.mm_dd_yy = "Jan 01, 1970"
+        date.mm_dd = ""
+        date.mm_dd_yy = ""
+        
+        // Input JSON date of null
+        if dateTime == "" { return date }
         
         guard let dateTime = dateTime else { return date }
  

@@ -225,14 +225,24 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="99" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9k-P2-UkS">
+                                                            <rect key="frame" x="68" y="5" width="27" height="21"/>
+                                                            <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="100" id="JgK-ap-ffS"/>
                                                         <constraint firstAttribute="width" constant="100" id="MZd-mB-gYh"/>
+                                                        <constraint firstItem="J9k-P2-UkS" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Wmo-WT-t5u" secondAttribute="leading" constant="68" id="Reg-44-Yzq"/>
+                                                        <constraint firstAttribute="trailing" secondItem="J9k-P2-UkS" secondAttribute="trailing" constant="5" id="mIN-PM-DNj"/>
+                                                        <constraint firstItem="J9k-P2-UkS" firstAttribute="top" secondItem="Wmo-WT-t5u" secondAttribute="top" constant="5" id="mmL-aF-6bh"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="alert" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCc-cA-EIC">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="alert" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCc-cA-EIC">
                                                     <rect key="frame" x="2" y="338" width="120" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                     <nil key="textColor"/>
@@ -279,6 +289,7 @@
                                             <outlet property="alertDetail" destination="3wn-S6-elp" id="HeE-bs-I1a"/>
                                             <outlet property="alertLabel" destination="NCc-cA-EIC" id="ZU5-ar-Cyn"/>
                                             <outlet property="alertView" destination="Wmo-WT-t5u" id="min-f9-V8t"/>
+                                            <outlet property="badgeLabel" destination="J9k-P2-UkS" id="QSi-K6-f0J"/>
                                             <outlet property="date" destination="VoS-ih-SQE" id="qxC-o1-ggN"/>
                                             <outlet property="dayLabel" destination="zmO-L3-oM7" id="WwQ-dw-29V"/>
                                             <outlet property="dayNightIcon" destination="d19-zX-diY" id="eMW-Cr-N3J"/>

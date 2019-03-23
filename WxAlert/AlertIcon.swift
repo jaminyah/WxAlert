@@ -11,11 +11,14 @@ import UIKit
 
 final class AlertIcon {
     
-    class func fetch(imageFor name: String) -> (icon: UIImage, detailIcon: UIImage) {
+    class func fetch(imageFor name: String?) -> (icon: UIImage?, detailIcon: UIImage?) {
         
-        let image = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
-        let imageDetail = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+        //let image = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+        //let imageDetail = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+        let image: UIImage? = nil, imageDetail: UIImage? = nil
         var alert = (icon: image, detailIcon: imageDetail)
+        
+        if name == nil { return alert }
         
         switch (name) {
         case "Air Quality Alert":

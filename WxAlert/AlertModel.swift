@@ -17,7 +17,7 @@ struct AlertModel {
     var ends = String()             // "2018-12-20T21:00:0000-05:00"
     var severity = String()         // "Severe"
     var urgency = String()          // "Immediate"
-    var event = String()            // "Severe Thunderstorm Watch"
+    var event: String = String()    // "Severe Thunderstorm Watch"
     var senderName = String()       // "NWS Mobile AL"
     var headline = String()         // "Severe Thunderstorm Watch ..."
     var description = String()      // "SEVERE THUNDERSTORM WATCH 440 ..."

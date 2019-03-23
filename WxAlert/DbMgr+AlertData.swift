@@ -98,6 +98,7 @@ extension DbMgr {
             model.headline = String(cString:sqlite3_column_text(sqlite3_stmt, 10)!)
             model.description = String(cString:sqlite3_column_text(sqlite3_stmt, 11)!)
             model.instruction = String(cString:sqlite3_column_text(sqlite3_stmt, 12)!)
+            
             alertModels.append(model)
         }
         
