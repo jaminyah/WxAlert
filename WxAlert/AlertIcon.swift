@@ -13,8 +13,6 @@ final class AlertIcon {
     
     class func fetch(imageFor name: String?) -> (icon: UIImage?, detailIcon: UIImage?) {
         
-        //let image = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
-        //let imageDetail = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         let image: UIImage? = nil, imageDetail: UIImage? = nil
         var alert = (icon: image, detailIcon: imageDetail)
         
@@ -65,7 +63,7 @@ final class AlertIcon {
            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Flood Warning":
             alert.icon = UIImage(imageLiteralResourceName: "warn_flood")
-           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "dia_warn_flood")
         case "Freezing Fog Advisory":
             alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")

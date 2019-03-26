@@ -25,7 +25,6 @@ class WxViewCell: UICollectionViewCell {
     @IBOutlet weak var alertLabel: UILabel!
     @IBOutlet weak var badgeLabel: UILabel!
     
-    var tapGesture = UITapGestureRecognizer()
     weak var delegate: GestureProtocol?
     
     func displayWeather(forecast: CellModel) -> Void {
@@ -61,7 +60,7 @@ class WxViewCell: UICollectionViewCell {
     func addTapGesture() -> Void {
         
         // Tap alert icon to show alert detail
-        tapGesture = UITapGestureRecognizer(target: self, action: #selector(onTap(_:)))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onTap(_:)))
         tapGesture.numberOfTapsRequired = 1
         tapGesture.numberOfTouchesRequired = 1
         alertView.addGestureRecognizer(tapGesture)
@@ -76,14 +75,14 @@ class WxViewCell: UICollectionViewCell {
     func showIconEvent(inDate: String, alertModels: [AlertModel]) -> (image: UIImage?, event: String?) {
         
         var detailTuple: (image: UIImage?, event: String?)
+        var rfcAlertEndsDate: Date? = nil
         let alertEvent = alertModels[0].event
         let iconTuple = AlertIcon.fetch(imageFor: alertEvent)
         let alertImage = iconTuple.detailIcon
         
         if alertModels.count == 0 {
             detailTuple = (image: nil, event: nil)
-        }
-        else if (alertModels[0].ends == "") {                     // ends JSON value is null
+        } else if alertModels[0].ends == "" && alertModels[0].event == "Flood Warning" {
             detailTuple = (image: alertImage, event: alertEvent)
         } else {
             // Example inDate: 2019-03-22T23:43:09-06:00
@@ -94,7 +93,13 @@ class WxViewCell: UICollectionViewCell {
             
             let rfcCellDate = rfc3339Formater.date(from: inDate)
             let rfcAlertEffectiveDate = rfc3339Formater.date(from: alertModels[0].effective)
-            let rfcAlertEndsDate = rfc3339Formater.date(from: alertModels[0].ends)
+            
+            // Severe TStorm alerts can include ends = null
+            if alertModels[0].ends == "" {
+                rfcAlertEndsDate = rfc3339Formater.date(from: alertModels[0].expires)
+            } else {
+                rfcAlertEndsDate = rfc3339Formater.date(from: alertModels[0].ends)
+            }
             
             guard let cellDate = rfcCellDate else { return (image: nil, event: nil) }
             guard let alertEffectiveDate = rfcAlertEffectiveDate else { return (image: nil, event: nil) }
@@ -113,10 +118,11 @@ class WxViewCell: UICollectionViewCell {
     func showBadge(inDate: String, alertModels: [AlertModel]) -> Bool {
         
         var isHidden: Bool = true
+        var rfcAlertEndsDate: Date? = nil
         
         if alertModels.count == 0 {
             isHidden = true
-        } else if alertModels[0].ends == "" {                    // ends JSON value is null
+        } else if alertModels[0].ends == "" && alertModels[0].event == "Flood Warning" {
             isHidden = false
         } else {
             // Example inDate: 2019-03-22T23:43:09-06:00
@@ -127,7 +133,12 @@ class WxViewCell: UICollectionViewCell {
             
             let rfcCellDate = rfc3339Formater.date(from: inDate)
             let rfcAlertEffectiveDate = rfc3339Formater.date(from: alertModels[0].effective)
-            let rfcAlertEndsDate = rfc3339Formater.date(from: alertModels[0].ends)
+            
+            if alertModels[0].ends == "" {
+                rfcAlertEndsDate = rfc3339Formater.date(from: alertModels[0].expires)
+            } else {
+                rfcAlertEndsDate = rfc3339Formater.date(from: alertModels[0].ends)
+            }
             
             guard let cellDate = rfcCellDate else { return true }
             guard let alertEffectiveDate = rfcAlertEffectiveDate else { return true }
