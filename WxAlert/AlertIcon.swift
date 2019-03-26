@@ -52,9 +52,12 @@ final class AlertIcon {
         case "Fire Weather Watch":
             alert.icon = UIImage(imageLiteralResourceName: "watch_fire")
            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+        case "Flash Flood Advisory":
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "dia_advis_fflood")
         case "Flash Flood Warning":
             alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
-           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "dia_warn_fflood")
         case "Flood Advisory":
             alert.icon = UIImage(imageLiteralResourceName: "advisory_flood")
            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
