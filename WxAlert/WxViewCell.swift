@@ -35,7 +35,7 @@ class WxViewCell: UICollectionViewCell {
         dayLabel.text = forecast.day
         weatherImage.image = forecast.wxIcon
         date.text = formatDate(inDate: forecast.date)
-        alertLabel.text = showIconEvent(inDate: forecast.date, alertModels: models).event
+        alertLabel.text = showProperty(inDate: forecast.date, alertModels: models).event
         rainChanceLabel.text = forecast.wxChance
         dayNightIcon.image = forecast.dayNightIcon
         windSpeedLabel.text = forecast.windSpeed
@@ -43,7 +43,7 @@ class WxViewCell: UICollectionViewCell {
         windIcon.image = forecast.windIcon
         highTempLabel.text = forecast.hiTemp
         lowTempLabel.text = forecast.lowTemp
-        alertDetail.image = showIconEvent(inDate: forecast.date, alertModels: models).image
+        alertDetail.image = showProperty(inDate: forecast.date, alertModels: models).image
         
         // Badge label
         badgeLabel.clipsToBounds = true
@@ -52,7 +52,7 @@ class WxViewCell: UICollectionViewCell {
         badgeLabel.textColor = .white
         badgeLabel.textAlignment = .center
         badgeLabel.text = String(models.count) + " "
-        badgeLabel.isHidden = showBadge(inDate: forecast.date, alertModels: models)
+        badgeLabel.isHidden = showProperty(inDate: forecast.date, alertModels: models).isHidden
         
         addTapGesture()
     }
@@ -72,18 +72,18 @@ class WxViewCell: UICollectionViewCell {
         delegate?.performAlertViewSegue()
     }
     
-    func showIconEvent(inDate: String, alertModels: [AlertModel]) -> (image: UIImage?, event: String?) {
+    func showProperty(inDate: String, alertModels: [AlertModel]) -> (image: UIImage?, event: String?, isHidden: Bool) {
         
-        var detailTuple: (image: UIImage?, event: String?)
+        var detailTuple: (image: UIImage?, event: String?, isHidden: Bool)
         var rfcAlertEndsDate: Date? = nil
         let alertEvent = alertModels[0].event
         let iconTuple = AlertIcon.fetch(imageFor: alertEvent)
         let alertImage = iconTuple.detailIcon
         
         if alertModels.count == 0 {
-            detailTuple = (image: nil, event: nil)
+            detailTuple = (image: nil, event: nil, isHidden: true)
         } else if alertModels[0].ends == "" && alertModels[0].event == "Flood Warning" {
-            detailTuple = (image: alertImage, event: alertEvent)
+            detailTuple = (image: alertImage, event: alertEvent, isHidden: false)
         } else {
             // Example inDate: 2019-03-22T23:43:09-06:00
             let rfc3339Formater = DateFormatter()
@@ -101,56 +101,20 @@ class WxViewCell: UICollectionViewCell {
                 rfcAlertEndsDate = rfc3339Formater.date(from: alertModels[0].ends)
             }
             
-            guard let cellDate = rfcCellDate else { return (image: nil, event: nil) }
-            guard let alertEffectiveDate = rfcAlertEffectiveDate else { return (image: nil, event: nil) }
-            guard let alertEndsDate = rfcAlertEndsDate else { return (image: nil, event: nil) }
+            guard let cellDate = rfcCellDate else { return (image: nil, event: nil, isHidden: true) }
+            guard let alertEffectiveDate = rfcAlertEffectiveDate else { return (image: nil, event: nil, isHidden: true) }
+            guard let alertEndsDate = rfcAlertEndsDate else { return (image: nil, event: nil, isHidden: true) }
             
             if cellDate >= alertEffectiveDate && cellDate <= alertEndsDate {
-                detailTuple = (image: alertImage, event: alertEvent)
+                detailTuple = (image: alertImage, event: alertEvent, isHidden: false)
             } else {
-                detailTuple = (image: nil, event: nil)
+                detailTuple = (image: nil, event: nil, isHidden: true)
             }
         }
  
         return detailTuple
     }
     
-    func showBadge(inDate: String, alertModels: [AlertModel]) -> Bool {
-        
-        var isHidden: Bool = true
-        var rfcAlertEndsDate: Date? = nil
-        
-        if alertModels.count == 0 {
-            isHidden = true
-        } else if alertModels[0].ends == "" && alertModels[0].event == "Flood Warning" {
-            isHidden = false
-        } else {
-            // Example inDate: 2019-03-22T23:43:09-06:00
-            let rfc3339Formater = DateFormatter()
-            rfc3339Formater.locale = Locale(identifier: "en_US_POSIX")
-            rfc3339Formater.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-            rfc3339Formater.timeZone = TimeZone(secondsFromGMT: 0)
-            
-            let rfcCellDate = rfc3339Formater.date(from: inDate)
-            let rfcAlertEffectiveDate = rfc3339Formater.date(from: alertModels[0].effective)
-            
-            if alertModels[0].ends == "" {
-                rfcAlertEndsDate = rfc3339Formater.date(from: alertModels[0].expires)
-            } else {
-                rfcAlertEndsDate = rfc3339Formater.date(from: alertModels[0].ends)
-            }
-            
-            guard let cellDate = rfcCellDate else { return true }
-            guard let alertEffectiveDate = rfcAlertEffectiveDate else { return true }
-            guard let alertEndsDate = rfcAlertEndsDate else { return true }
-            
-            if cellDate >= alertEffectiveDate && cellDate <= alertEndsDate {
-                isHidden = false
-            }
-        }
-        return isHidden
-    }
-
     func formatDate(inDate: String) -> String {
         
         let formatter = DateUtils.format(dateTime: inDate)
