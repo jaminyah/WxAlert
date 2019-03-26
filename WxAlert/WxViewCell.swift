@@ -76,14 +76,13 @@ class WxViewCell: UICollectionViewCell {
         
         var detailTuple: (image: UIImage?, event: String?, isHidden: Bool)
         var rfcAlertEndsDate: Date? = nil
-        let alertEvent = alertModels[0].event
-        let iconTuple = AlertIcon.fetch(imageFor: alertEvent)
-        let alertImage = iconTuple.detailIcon
-        
+         
         if alertModels.count == 0 {
             detailTuple = (image: nil, event: nil, isHidden: true)
         } else if alertModels[0].ends == "" && alertModels[0].event == "Flood Warning" {
-            detailTuple = (image: alertImage, event: alertEvent, isHidden: false)
+            let iconTuple = AlertIcon.fetch(imageFor: alertModels[0].event)
+            let alertImage = iconTuple.detailIcon
+            detailTuple = (image: alertImage, event: alertModels[0].event, isHidden: false)
         } else {
             // Example inDate: 2019-03-22T23:43:09-06:00
             let rfc3339Formater = DateFormatter()
@@ -106,7 +105,9 @@ class WxViewCell: UICollectionViewCell {
             guard let alertEndsDate = rfcAlertEndsDate else { return (image: nil, event: nil, isHidden: true) }
             
             if cellDate >= alertEffectiveDate && cellDate <= alertEndsDate {
-                detailTuple = (image: alertImage, event: alertEvent, isHidden: false)
+                let iconTuple = AlertIcon.fetch(imageFor: alertModels[0].event)
+                let alertImage = iconTuple.detailIcon
+                detailTuple = (image: alertImage, event: alertModels[0].event, isHidden: false)
             } else {
                 detailTuple = (image: nil, event: nil, isHidden: true)
             }
