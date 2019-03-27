@@ -50,7 +50,6 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         selectedCity = self.delegate?.getSelectedCity()
         cityLabel.text = selectedCity.name + ", " + selectedCity.state
         viewModel = WxCellVM()
-        wxCollection.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -61,12 +60,14 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         alertModels = alertViewModel.fetchAlerts()
         alertCollectionController.alertModels = alertModels
         alertCollection.reloadData()
+        wxCollection.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
     // MARK: wxCollection UICollectionViewDataSource
     
@@ -83,7 +84,7 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         
         cell?.delegate = self                                        // delegate must conform to GestureProtocol
         cell?.backgroundColor = generateRandomPastelColor(withMixedColor: .cyan)
-        cell?.displayWeather(forecast: viewModel!.cellModels[indexPath.row])
+        cell?.displayWeather(forecast: viewModel!.cellModels[indexPath.row], models: alertModels)
         return cell!
     }
     

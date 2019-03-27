@@ -27,10 +27,10 @@ class WxViewCell: UICollectionViewCell {
     
     weak var delegate: GestureProtocol?
     
-    func displayWeather(forecast: CellModel) -> Void {
+    func displayWeather(forecast: CellModel, models: [AlertModel]) -> Void {
         
-        let alertViewModel = AlertViewModel()
-        let models = alertViewModel.fetchAlerts()
+        //let alertViewModel = AlertViewModel()
+        //let models = alertViewModel.fetchAlerts()
         
         dayLabel.text = forecast.day
         weatherImage.image = forecast.wxIcon
