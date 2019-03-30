@@ -88,7 +88,7 @@ class WxViewCell: UICollectionViewCell {
             let rfc3339Formater = DateFormatter()
             rfc3339Formater.locale = Locale(identifier: "en_US_POSIX")
             rfc3339Formater.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-            rfc3339Formater.timeZone = TimeZone(secondsFromGMT: 0)
+            rfc3339Formater.timeZone = TimeZone.init(secondsFromGMT: 0)
             
             let rfcCellDate = rfc3339Formater.date(from: inDate)
             let rfcAlertEffectiveDate = rfc3339Formater.date(from: alertModels[0].effective)
@@ -103,7 +103,7 @@ class WxViewCell: UICollectionViewCell {
             guard let cellDate = rfcCellDate else { return (image: nil, event: nil, isHidden: true) }
             guard let alertEffectiveDate = rfcAlertEffectiveDate else { return (image: nil, event: nil, isHidden: true) }
             guard let alertEndsDate = rfcAlertEndsDate else { return (image: nil, event: nil, isHidden: true) }
-            
+                        
             if cellDate >= alertEffectiveDate && cellDate <= alertEndsDate {
                 let iconTuple = AlertIcon.fetch(imageFor: alertModels[0].event)
                 let alertImage = iconTuple.detailIcon

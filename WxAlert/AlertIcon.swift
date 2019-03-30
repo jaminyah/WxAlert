@@ -113,14 +113,17 @@ final class AlertIcon {
             alert.icon = UIImage(imageLiteralResourceName: "warning_fire")
            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Rip Current Statement":
-            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
-           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+            alert.icon = UIImage(imageLiteralResourceName: "stmt_ripcurrent")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "dia_state_ripcurrent")
         case "Rip Current Warning":
             alert.icon = UIImage(imageLiteralResourceName: "warn_ripcurrent")
            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+        case "Severe Weather Statement":
+            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "dia_severe_wx")
         case "Special Weather Statement":
             alert.icon = UIImage(imageLiteralResourceName: "special_stmt")
-           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "dia_special_wx")
         case "Tornado Warning":
             alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")

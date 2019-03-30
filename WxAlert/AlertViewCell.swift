@@ -10,11 +10,11 @@ import UIKit
 
 class AlertViewCell: UICollectionViewCell {
   
-    @IBOutlet weak var alertView: UIImageView!
+    @IBOutlet weak var alertImageView: UIImageView!
     
     func displayAlert(model: AlertModel) -> Void {
         
         let tuple = AlertIcon.fetch(imageFor: model.event)
-        alertView.image = tuple.icon
+        alertImageView.image = tuple.icon
     }
 }
