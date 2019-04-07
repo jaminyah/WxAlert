@@ -13,12 +13,9 @@ final class FetchWxOperation: BaseOperation {
     var forecastUrl: URL? = nil
     private(set) var rawData: Data? = nil
    
-    override init() {
-        super.init()
-    }
-    
     override func main() {
         if isCancelled {
+            completeOperation()
             return
         }
         print("FetchWxOperation")
@@ -29,8 +26,14 @@ final class FetchWxOperation: BaseOperation {
     
         guard let url = inputUrl else { return }
         URLSession.shared.dataTask(with: url) { (networkData, response, error) in
-            if error != nil {
+            
+            if self.isCancelled {
+                self.completeOperation()
+                return
+            } else if error != nil {
                 print(error!.localizedDescription)
+                self.completeOperation()
+                return
             }
             
             if let httpResponse = response as? HTTPURLResponse {
@@ -59,6 +62,7 @@ final class FetchWxOperation: BaseOperation {
                     guard let data = networkData else { return }
                         self.rawData = data
                 }
+                self.completeOperation()
             }
         }.resume() // URLSession
     }

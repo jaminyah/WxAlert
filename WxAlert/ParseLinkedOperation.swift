@@ -18,15 +18,24 @@ final class ParseLinkedOperation: BaseOperation {
     }
     
     override func main() {
+        
         var jsonData: Any? = nil
         
         if isCancelled {
+            completeOperation()
             return
         }
+        
         print("ParseLinkedOperation")
         jsonData = decodeLinkedJson(data: linkedData)
         guard let data = jsonData else { return }
         forecastUrl = parseLinkedJson(json: data)
+        if let url = forecastUrl {
+            print("forecastUrl: \(url)")
+        } else {
+            print("forecastUrl Error!")
+        }
+        completeOperation()
     }
     
     private func decodeLinkedJson(data: Data?) -> Any? {
@@ -43,13 +52,12 @@ final class ParseLinkedOperation: BaseOperation {
     }
     
     private func parseLinkedJson(json: Any) -> URL? {
-        var forecastUrl: URL? = nil
+        var forecastLink: URL? = nil
         
         if let jsonParser = PointsJsonParser(JSON: json) {
             let urlString = jsonParser.forecastUrl
-            forecastUrl = URL(string: urlString)
-            
+            forecastLink = URL(string: urlString)
         }
-        return forecastUrl
+        return forecastLink
     }
 }

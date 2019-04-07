@@ -61,6 +61,40 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         alertCollectionController.alertModels = alertModels
         alertCollection.reloadData()
         wxCollection.reloadData()
+        
+        // Example inDate: 2019-03-22T23:43:09-06:00
+        let rfc3339Formater = DateFormatter()
+        rfc3339Formater.locale = Locale(identifier: "en_US_POSIX")
+        rfc3339Formater.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        rfc3339Formater.timeZone = TimeZone.init(secondsFromGMT: 0)
+        
+        let systemClock = Date()
+        let systemClockString = rfc3339Formater.string(from: systemClock)
+        let rfc3339systemClock = rfc3339Formater.date(from: systemClockString)
+        print("systemClockString: \(rfc3339systemClock!)")
+        
+        /*
+         - Get system time
+         - Get expiration time of first weather day element
+         - if system time < weather expiration time
+            - wxCollection.reloadData()
+         - else if system time > weather expiration time
+            - start activity indicator
+            - fetch updated wx data using wxOperations class
+            - clear db and write current data
+            - wxCollection.reloadData()
+            - end activity indicator
+         - else
+            - On a background thread
+            - Start a countdown timer to expiration time + 30 minutes
+            - On expiration
+                - start activity indicator
+                - fetch updated wx data using wxOperations class
+                - clear db and write current data
+                - wxCollection.reloadData()
+                - end activity indicator
+        */
+        
     }
 
     override func didReceiveMemoryWarning() {

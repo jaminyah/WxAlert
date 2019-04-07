@@ -403,4 +403,24 @@ class DbMgr {
         return forecast
     }
     
+    func fetchFirstEndTime(from table: String) -> String {
+        
+        var firstEndTime = String()
+        
+        var sqlite3_stmt: OpaquePointer? = nil
+        let statement = "SELECT * FROM \(table) WHERE isDayTime == 1;"
+        
+        if sqlite3_prepare_v2(sqlite3_db, statement, -1, &sqlite3_stmt, nil) != SQLITE_OK {
+            let errmsg = String(cString: sqlite3_errmsg(sqlite3_db)!)
+            print("Error reading sqlite data: \(errmsg)")
+        }
+        
+        while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
+            
+            firstEndTime = String(cString:sqlite3_column_text(sqlite3_stmt, 4)!)
+            break
+        }
+        return firstEndTime
+    }
+    
 } // DbMgr

@@ -19,6 +19,7 @@ final class FetchLinkedOperation: BaseOperation {
     
     override func main() {
         if isCancelled {
+            completeOperation()
             return
         }
         print("FetchLinkOperation")
@@ -29,8 +30,14 @@ final class FetchLinkedOperation: BaseOperation {
         print("getLinkJSON")
         
         URLSession.shared.dataTask(with: url) { (networkData, response, error) in
-            if error != nil {
+            
+            if self.isCancelled {
+                self.completeOperation()
+                return
+            } else if error != nil {
                 print(error!.localizedDescription)
+                self.completeOperation()
+                return
             }
             
             if let httpResponse = response as? HTTPURLResponse {
@@ -42,6 +49,7 @@ final class FetchLinkedOperation: BaseOperation {
                     guard let data = networkData else { return }
                     self.linkedData = data
                 }
+                self.completeOperation()
             }
         }.resume() // URLSession
     }

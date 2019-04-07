@@ -8,30 +8,32 @@
 
 import Foundation
 
-final class ParseWxOperation: Operation {
+final class ParseWxOperation: BaseOperation {
     
-    var rawData: Data? = nil
+    var rawWxData: Data? = nil
     private(set) var jsonData: Any? = nil
     
-    override init() {
-        super.init()
-    }
     
     override func main() {
         if isCancelled {
+            completeOperation()
             return
         }
         print("ParseWxOperation")
-        parseJson(input: rawData)
+        jsonData = decodeJson(inData: rawWxData)
+        completeOperation()
     }
     
-    private func parseJson(input: Data?) -> Void {
-        guard let data = input else { return }
+    private func decodeJson(inData: Data?) -> Any? {
+        var json: Any? = nil
+        guard let data = inData else { return nil }
+        
         do {
-            jsonData = try JSONSerialization.jsonObject(with: data, options: [])
+            json = try JSONSerialization.jsonObject(with: data, options: [])
             print(jsonData!)
         } catch let jsonError {
             print(jsonError)
         }
+        return json
     }
 }
