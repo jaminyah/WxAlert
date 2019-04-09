@@ -38,8 +38,8 @@ final class AlertIcon {
             alert.icon = UIImage(imageLiteralResourceName: "advisory_blizzard")
             alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Blizzard Warning":
-            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
-            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+            alert.icon = UIImage(imageLiteralResourceName: "warn_blizz")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "dia_warn_blizz")
         case "Coastal Flood Advisory":
             alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
             alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
@@ -118,6 +118,9 @@ final class AlertIcon {
         case "Rip Current Warning":
             alert.icon = UIImage(imageLiteralResourceName: "warn_ripcurrent")
            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+        case "Severe Thunderstorm Warning":
+            alert.icon = UIImage(imageLiteralResourceName: "warn_ststrm")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "dia_ststrm")
         case "Severe Weather Statement":
             alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
             alert.detailIcon = UIImage(imageLiteralResourceName: "dia_severe_wx")
@@ -146,8 +149,8 @@ final class AlertIcon {
             alert.icon = UIImage(imageLiteralResourceName: "advisory_winter")
            alert.detailIcon = UIImage(imageLiteralResourceName: "advis_winter_wx")
         case "Winter Storm Warning":
-            alert.icon = UIImage(imageLiteralResourceName: "warning_winter")
-           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+            alert.icon = UIImage(imageLiteralResourceName: "warn_winter")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "dia_warn_winter")
         case "Winter Storm Watch":
             alert.icon = UIImage(imageLiteralResourceName: "watch_winter")
            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")

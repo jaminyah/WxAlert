@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "dia_warn_winter.png",
+      "filename" : "warn_blizz.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "dia_warn_winter@2x.png",
+      "filename" : "warn_blizz@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "dia_warn_winter@3x.png",
+      "filename" : "warn_blizz@3x.png",
       "scale" : "3x"
     }
   ],
