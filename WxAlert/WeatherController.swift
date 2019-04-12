@@ -56,7 +56,7 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
 
         tabBarController?.tabBar.isHidden = false
         let alertViewModel = AlertViewModel()
-        alertModels.removeAll()
+        //alertModels.removeAll()
         alertModels = alertViewModel.fetchAlerts()
         alertCollectionController.alertModels = alertModels
         alertCollection.reloadData()

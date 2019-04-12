@@ -75,6 +75,8 @@ class WxViewCell: UICollectionViewCell {
         var rfcAlertEndsDate: Date? = nil
          
         if alertModels.count == 0 {
+            // Debug
+            print("alertModels.count: \(alertModels.count)")
             detailTuple = (image: nil, event: nil, isHidden: true)
         } else if alertModels[0].ends == "" && alertModels[0].event == "Flood Warning" {
             let iconTuple = AlertIcon.fetch(imageFor: alertModels[0].event)
@@ -109,7 +111,7 @@ class WxViewCell: UICollectionViewCell {
                 detailTuple = (image: nil, event: nil, isHidden: true)
             }
         }
- 
+
         return detailTuple
     }
     

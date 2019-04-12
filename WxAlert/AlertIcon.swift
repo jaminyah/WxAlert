@@ -77,8 +77,8 @@ final class AlertIcon {
             alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Frost Advisory":
-            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
-            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+            alert.icon = UIImage(imageLiteralResourceName: "advis_frost")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "dia_frost")
         case "Hard Freeze Watch":
             alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
