@@ -440,7 +440,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/AlertIcon.swift"
-            timestampString = "576776042.608629"
+            timestampString = "576900488.379452"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "14"
@@ -472,7 +472,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/WeatherController.swift"
-            timestampString = "576597322.39973"
+            timestampString = "576900488.379549"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "WeatherController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WxAlert/WeatherController.swift"
+            timestampString = "576900488.379612"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "172"
@@ -488,27 +504,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/WeatherController.swift"
-            timestampString = "576597322.400023"
+            timestampString = "576900488.379671"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "170"
-            endingLineNumber = "170"
-            landmarkName = "WeatherController"
-            landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WxAlert/WeatherController.swift"
-            timestampString = "576597322.400097"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
             landmarkName = "WeatherController"
             landmarkType = "3">
          </BreakpointContent>
@@ -584,11 +584,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/WeatherController.swift"
-            timestampString = "576597322.4002399"
+            timestampString = "576900488.379796"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "performAlertViewSegue()"
             landmarkType = "7">
          </BreakpointContent>
@@ -632,7 +632,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/WxViewCell.swift"
-            timestampString = "576597322.400339"
+            timestampString = "576898063.179926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
@@ -648,7 +648,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/WxViewCell.swift"
-            timestampString = "576597322.400524"
+            timestampString = "576898063.179985"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "90"
@@ -664,7 +664,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/AlertIcon.swift"
-            timestampString = "576776042.608947"
+            timestampString = "576900488.379921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
@@ -680,11 +680,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WxAlert/WxViewCell.swift"
-            timestampString = "576597322.400605"
+            timestampString = "576898063.180097"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"
             endingLineNumber = "77"
+            landmarkName = "showProperty(inDate:alertModels:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WxAlert/WxViewCell.swift"
+            timestampString = "576898063.1801521"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "showProperty(inDate:alertModels:)"
             landmarkType = "7">
          </BreakpointContent>

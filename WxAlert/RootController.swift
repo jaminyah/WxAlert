@@ -70,17 +70,25 @@ class RootController: UITabBarController, CityProtocol {
         networkMgr = NetworkMgr(cityObject: city)
         self.networkMgr.getNWSPointsJSON(completion: self.sqliteWrite)
 
-        /*
-        let weatherOpQueue = WeatherOpQueue(withCity: city)
-        weatherOpQueue.execute()
-        */
     }
     
     private func sqliteWrite(data: Any) -> Void {
         print("Received data")
 
+        let baseKey = selectedCity.name + selectedCity.state
+        var wxKey = baseKey + "wx"
+        wxKey = wxKey.lowercased()
+        var alKey = baseKey + "al"
+        alKey = alKey.lowercased()
+        
         let url = parsePointsForecast(json: data)
         let zoneUrl = parsePointsCounty(json: data)
+        
+        if let pathUrl = url {
+            let path = pathUrl.absoluteString
+            PlistMgr.addToPlist(key: wxKey, value: path)
+        }
+        PlistMgr.addToPlist(key: alKey, value: zoneUrl)
         
         let queue = OperationQueue()
         queue.maxConcurrentOperationCount = 1                  // Create serial queue

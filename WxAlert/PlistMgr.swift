@@ -10,32 +10,70 @@ import Foundation
 
 class PlistMgr {
     
-    class func read(fileName: String) -> RemoteUrls {
+    private class func loadPlist() -> [String:String] {
+        var plistData: [String:String] = [:]
         
-        var remoteUrls = RemoteUrls()
-        
-        if let path = Bundle.main.path(forResource: fileName, ofType: "plist"),
-            let xml = FileManager.default.contents(atPath: path),
-            let plistUrls = try? PropertyListDecoder().decode(RemoteUrls.self, from: xml) {
-            remoteUrls = plistUrls
+        let pathFull = Bundle.main.path(forResource: "Links", ofType: "plist")
+        if let path = pathFull {
+            let pathUrl = URL(fileURLWithPath: path)
+            do {
+                let dataToDecode = try Data(contentsOf: pathUrl)
+                let decoder = PropertyListDecoder()
+                plistData = try decoder.decode([String:String].self, from: dataToDecode)
+            } catch {
+                print(error)
+            }
         }
-        return remoteUrls
+        return plistData
     }
     
-    class func write(plist: String, remoteUrls: RemoteUrls) -> Void {
-        let encoder = PropertyListEncoder()
-        encoder.outputFormat = .xml
+    class func addToPlist(key: String, value:String) -> Void {
         
-        let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent(plist)
-        do {
-            let data = try encoder.encode(remoteUrls)
-            try data.write(to: path)
-        } catch {
-            print("Encoder error")
+        var plistData = loadPlist()
+        let pathFull = Bundle.main.path(forResource: "Links", ofType: "plist")
+        if let path = pathFull {
+            
+            // Append to key:value
+            plistData.updateValue(value, forKey: key)
+        
+            let pathUrl = URL(fileURLWithPath: path)
+            // Debug
+            // print(pathUrl.absoluteString)
+            let encoder = PropertyListEncoder()
+            encoder.outputFormat = .xml
+            do {
+                let dataEncoder = try encoder.encode(plistData)
+                try dataEncoder.write(to: pathUrl)
+            } catch {
+                print(error)
+            }
+            
+            // Debug
+            // print(plistData)
         }
     }
     
-    class func delete(element: [String: String]) -> Void {
+    
+    class func removeFromPlist(key: String) -> Void {
         
+        var plistData = loadPlist()
+        let pathFull = Bundle.main.path(forResource: "Links", ofType: "plist")
+        if let path = pathFull {
+            
+            // Delete key:value
+            plistData[key] = nil
+            
+            let pathUrl = URL(fileURLWithPath: path)
+            // print(pathUrl.absoluteString)
+            let encoder = PropertyListEncoder()
+            encoder.outputFormat = .xml
+            do {
+                let dataEncoder = try encoder.encode(plistData)
+                try dataEncoder.write(to: pathUrl)
+            } catch {
+                print(error)
+            }
+        }
     }
-}
+    
+} // PlistMgr

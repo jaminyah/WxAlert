@@ -50,6 +50,7 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         selectedCity = self.delegate?.getSelectedCity()
         cityLabel.text = selectedCity.name + ", " + selectedCity.state
         viewModel = WxCellVM()
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,10 +58,11 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         tabBarController?.tabBar.isHidden = false
         let alertViewModel = AlertViewModel()
         //alertModels.removeAll()
-        alertModels = alertViewModel.fetchAlerts()
-        alertCollectionController.alertModels = alertModels
-        alertCollection.reloadData()
-        wxCollection.reloadData()
+       alertModels = alertViewModel.fetchAlerts()
+       // print("viewDidAppear: \(alertModels.count)")
+       alertCollectionController.alertModels = alertModels
+       alertCollection.reloadData()
+       wxCollection.reloadData()
         
         // Example inDate: 2019-03-22T23:43:09-06:00
         let rfc3339Formater = DateFormatter()

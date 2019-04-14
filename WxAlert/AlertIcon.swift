@@ -60,7 +60,7 @@ final class AlertIcon {
            alert.detailIcon = UIImage(imageLiteralResourceName: "dia_warn_fflood")
         case "Flood Advisory":
             alert.icon = UIImage(imageLiteralResourceName: "advisory_flood")
-           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "dia_advis_flood")
         case "Flood Watch":
             alert.icon = UIImage(imageLiteralResourceName: "watch_flood")
            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
@@ -121,15 +121,21 @@ final class AlertIcon {
         case "Severe Thunderstorm Warning":
             alert.icon = UIImage(imageLiteralResourceName: "warn_ststrm")
             alert.detailIcon = UIImage(imageLiteralResourceName: "dia_ststrm")
+        case "Severe Thunderstorm Watch":
+            alert.icon = UIImage(imageLiteralResourceName: "watch_stsra")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "dia_watch_stsra")
         case "Severe Weather Statement":
             alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
             alert.detailIcon = UIImage(imageLiteralResourceName: "dia_severe_wx")
         case "Special Weather Statement":
             alert.icon = UIImage(imageLiteralResourceName: "special_stmt")
            alert.detailIcon = UIImage(imageLiteralResourceName: "dia_special_wx")
+        case "Tornado Watch":
+            alert.icon = UIImage(imageLiteralResourceName: "watch_tornado")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "dia_watch_tornado")
         case "Tornado Warning":
-            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
-           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+            alert.icon = UIImage(imageLiteralResourceName: "warn_tornado")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "dia_warn_tornado")
         case "Thunderstorm Watch":
             alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")

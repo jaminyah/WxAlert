@@ -77,7 +77,7 @@
 		FAC16F4F2062644900683EE6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F4E2062644900683EE6 /* DataManager.swift */; };
 		FAC16F522062690E00683EE6 /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F512062690E00683EE6 /* Definitions.swift */; };
 		FACC35D1218B649A00ECC789 /* IconModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC35D0218B649A00ECC789 /* IconModel.swift */; };
-		FAD66A49225BB20700417FFF /* remoteUrls.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAD66A48225BB20700417FFF /* remoteUrls.plist */; };
+		FAD66A49225BB20700417FFF /* Links.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAD66A48225BB20700417FFF /* Links.plist */; };
 		FAD68B3D21C4514300D7FC51 /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = FAD68B3C21C4514300D7FC51 /* dummy.json */; };
 		FADCB4F721F8D7810049A030 /* WeatherOpQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADCB4F621F8D7810049A030 /* WeatherOpQueue.swift */; };
 		FAF58475217C199A004A2C69 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF58474217C199A004A2C69 /* Rank.swift */; };
@@ -180,7 +180,7 @@
 		FAC16F4E2062644900683EE6 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		FAC16F512062690E00683EE6 /* Definitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
 		FACC35D0218B649A00ECC789 /* IconModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconModel.swift; sourceTree = "<group>"; };
-		FAD66A48225BB20700417FFF /* remoteUrls.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = remoteUrls.plist; sourceTree = "<group>"; };
+		FAD66A48225BB20700417FFF /* Links.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Links.plist; sourceTree = "<group>"; };
 		FAD68B3C21C4514300D7FC51 /* dummy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dummy.json; sourceTree = "<group>"; };
 		FADCB4F621F8D7810049A030 /* WeatherOpQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherOpQueue.swift; sourceTree = "<group>"; };
 		FAF58474217C199A004A2C69 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
@@ -451,7 +451,7 @@
 			isa = PBXGroup;
 			children = (
 				FAD68B3C21C4514300D7FC51 /* dummy.json */,
-				FAD66A48225BB20700417FFF /* remoteUrls.plist */,
+				FAD66A48225BB20700417FFF /* Links.plist */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -582,7 +582,7 @@
 				FA066481206194DB006DE3CF /* cities_usa.sqlite in Resources */,
 				FAB45FC920FFC6BC00333FE9 /* Assets.xcassets in Resources */,
 				FA06642520614491006DE3CF /* Main.storyboard in Resources */,
-				FAD66A49225BB20700417FFF /* remoteUrls.plist in Resources */,
+				FAD66A49225BB20700417FFF /* Links.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
