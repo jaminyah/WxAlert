@@ -51,7 +51,8 @@ class WxViewCell: UICollectionViewCell {
         badgeLabel.text = String(models.count) + " "
         badgeLabel.isHidden = showProperty(inDate: forecast.date, alertModels: models).isHidden
         
-        addTapGesture()
+        print(" ")
+       // addTapGesture()
     }
     
     func addTapGesture() -> Void {
@@ -78,38 +79,49 @@ class WxViewCell: UICollectionViewCell {
             // Debug
             print("alertModels.count: \(alertModels.count)")
             detailTuple = (image: nil, event: nil, isHidden: true)
+            alertView.isUserInteractionEnabled = false
         } else if alertModels[0].ends == "" && alertModels[0].event == "Flood Warning" {
             let iconTuple = AlertIcon.fetch(imageFor: alertModels[0].event)
             let alertImage = iconTuple.detailIcon
             detailTuple = (image: alertImage, event: alertModels[0].event, isHidden: false)
+            addTapGesture()
+            print("alertModels[0].end == null")
         } else {
-            // Example inDate: 2019-03-22T23:43:09-06:00
-            let rfc3339Formater = DateFormatter()
-            rfc3339Formater.locale = Locale(identifier: "en_US_POSIX")
-            rfc3339Formater.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-            rfc3339Formater.timeZone = TimeZone.init(secondsFromGMT: 0)
-            
-            let rfcCellDate = rfc3339Formater.date(from: inDate)
-            let rfcAlertEffectiveDate = rfc3339Formater.date(from: alertModels[0].effective)
+            let rfcCellDate = DateUtils.rfc3339Formatter(date: inDate)
+            let rfcAlertEffectiveDate = DateUtils.rfc3339Formatter(date: alertModels[0].effective)
             
             // Severe TStorm alerts can include ends = null
             if alertModels[0].ends == "" {
-                rfcAlertEndsDate = rfc3339Formater.date(from: alertModels[0].expires)
+                rfcAlertEndsDate = DateUtils.rfc3339Formatter(date: alertModels[0].expires)
             } else {
-                rfcAlertEndsDate = rfc3339Formater.date(from: alertModels[0].ends)
+                rfcAlertEndsDate = DateUtils.rfc3339Formatter(date: alertModels[0].ends)
             }
             
             guard let cellDate = rfcCellDate else { return (image: nil, event: nil, isHidden: true) }
             guard let alertEffectiveDate = rfcAlertEffectiveDate else { return (image: nil, event: nil, isHidden: true) }
             guard let alertEndsDate = rfcAlertEndsDate else { return (image: nil, event: nil, isHidden: true) }
-                        
+            
+            
+            // cellDay == systemDay
+            let calendar = Calendar(identifier: .iso8601)
+            let components = calendar.dateComponents([.year,.month, .day], from: alertEffectiveDate)
+            print("day: \(components.day!)")
+            
+            
             if cellDate >= alertEffectiveDate && cellDate <= alertEndsDate {
                 let iconTuple = AlertIcon.fetch(imageFor: alertModels[0].event)
                 let alertImage = iconTuple.detailIcon
                 detailTuple = (image: alertImage, event: alertModels[0].event, isHidden: false)
+                addTapGesture()
             } else {
                 detailTuple = (image: nil, event: nil, isHidden: true)
+                alertView.isUserInteractionEnabled = false
             }
+            
+            // Debug
+            print("cellDate: \(cellDate)")
+            print("alertEffectiveDate: \(alertEffectiveDate)")
+            print("alertEndsDate: \(alertEndsDate)")
         }
 
         return detailTuple

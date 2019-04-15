@@ -19,7 +19,8 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
     var delegate: CityProtocol? = nil
     
     lazy var alertCollectionController = AlertCollectionController()
-    var viewModel: WxCellVM? = nil
+    //var viewModel: WxCellVM? = nil
+    lazy var viewModel = WxCellVM()
     //lazy var wxCollectionController = WxCollectionController()
 
     var selectedCity: SelectedCity!
@@ -49,7 +50,7 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         navigationController?.navigationBar.isHidden = true
         selectedCity = self.delegate?.getSelectedCity()
         cityLabel.text = selectedCity.name + ", " + selectedCity.state
-        viewModel = WxCellVM()
+        //viewModel = WxCellVM()
 
     }
     
@@ -57,45 +58,14 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
 
         tabBarController?.tabBar.isHidden = false
         let alertViewModel = AlertViewModel()
-        //alertModels.removeAll()
-       alertModels = alertViewModel.fetchAlerts()
-       // print("viewDidAppear: \(alertModels.count)")
-       alertCollectionController.alertModels = alertModels
-       alertCollection.reloadData()
-       wxCollection.reloadData()
+        alertModels = alertViewModel.fetchAlerts()
+        alertCollectionController.alertModels = alertModels
+        wxCollection.reloadData()
+        alertCollection.reloadData()
+
         
-        // Example inDate: 2019-03-22T23:43:09-06:00
-        let rfc3339Formater = DateFormatter()
-        rfc3339Formater.locale = Locale(identifier: "en_US_POSIX")
-        rfc3339Formater.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        rfc3339Formater.timeZone = TimeZone.init(secondsFromGMT: 0)
-        
-        let systemClock = Date()
-        let systemClockString = rfc3339Formater.string(from: systemClock)
-        let rfc3339systemClock = rfc3339Formater.date(from: systemClockString)
-        print("systemClockString: \(rfc3339systemClock!)")
-        
-        /*
-         - Get system time
-         - Get expiration time of first weather day element
-         - if system time < weather expiration time
-            - wxCollection.reloadData()
-         - else if system time > weather expiration time
-            - start activity indicator
-            - fetch updated wx data using wxOperations class
-            - clear db and write current data
-            - wxCollection.reloadData()
-            - end activity indicator
-         - else
-            - On a background thread
-            - Start a countdown timer to expiration time + 30 minutes
-            - On expiration
-                - start activity indicator
-                - fetch updated wx data using wxOperations class
-                - clear db and write current data
-                - wxCollection.reloadData()
-                - end activity indicator
-        */
+       displayWeather()
+       // displayAlerts()
         
     }
 
@@ -112,7 +82,8 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.cellModels.count ?? 0
+        //return viewModel?.cellModels.count ?? 0
+        return viewModel.cellModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -120,42 +91,8 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         
         cell?.delegate = self                                        // delegate must conform to GestureProtocol
         cell?.backgroundColor = generateRandomPastelColor(withMixedColor: .cyan)
-        cell?.displayWeather(forecast: viewModel!.cellModels[indexPath.row], models: alertModels)
+        cell?.displayWeather(forecast: viewModel.cellModels[indexPath.row], models: alertModels)
         return cell!
-    }
-    
-    // https://gist.github.com/JohnCoates/725d6d3c5a07c4756dec
-    func generateRandomPastelColor(withMixedColor mixColor: UIColor?) -> UIColor {
-        // Randomly generate number in closure
-        let randomColorGenerator = { ()-> CGFloat in
-            CGFloat(arc4random() % 256 ) / 256
-        }
-        
-        var red: CGFloat = randomColorGenerator()
-        var green: CGFloat = randomColorGenerator()
-        var blue: CGFloat = randomColorGenerator()
-        
-        // Mix the color
-        if let mixColor = mixColor {
-            var mixRed: CGFloat = 0, mixGreen: CGFloat = 0, mixBlue: CGFloat = 0;
-            mixColor.getRed(&mixRed, green: &mixGreen, blue: &mixBlue, alpha: nil)
-            
-            red = (red + mixRed) / 2;
-            green = (green + mixGreen) / 2;
-            blue = (blue + mixBlue) / 2;
-        }
-        return UIColor(red: red, green: green, blue: blue, alpha: 1)
-    }
-    
-    
-    func monitorWxTimestamp() {
-        print("monitorWxTimestamp")
-        // get db timestamp
-       // if current datetime > timestamp {
-       //    send out notification to registered listeners
-        //  } else {
-        // operate a countdown timer
-        // send out notification when timer expires
     }
     
     func performAlertViewSegue() {
@@ -180,4 +117,91 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
             destinationVC.pages.array = pages.array
         }
     }
+    
+    // MARK: - Background utility
+    // https://gist.github.com/JohnCoates/725d6d3c5a07c4756dec
+    func generateRandomPastelColor(withMixedColor mixColor: UIColor?) -> UIColor {
+        // Randomly generate number in closure
+        let randomColorGenerator = { ()-> CGFloat in
+            CGFloat(arc4random() % 256 ) / 256
+        }
+        
+        var red: CGFloat = randomColorGenerator()
+        var green: CGFloat = randomColorGenerator()
+        var blue: CGFloat = randomColorGenerator()
+        
+        // Mix the color
+        if let mixColor = mixColor {
+            var mixRed: CGFloat = 0, mixGreen: CGFloat = 0, mixBlue: CGFloat = 0;
+            mixColor.getRed(&mixRed, green: &mixGreen, blue: &mixBlue, alpha: nil)
+            
+            red = (red + mixRed) / 2;
+            green = (green + mixGreen) / 2;
+            blue = (blue + mixBlue) / 2;
+        }
+        return UIColor(red: red, green: green, blue: blue, alpha: 1)
+    }
+    
+    // MARK: - Monitor timestamp
+    func getSystemClock() -> Date? {
+        
+        // Example inDate: 2019-03-22T23:43:09-06:00
+        let rfc3339Formater = DateFormatter()
+        rfc3339Formater.locale = Locale(identifier: "en_US_POSIX")
+        rfc3339Formater.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        rfc3339Formater.timeZone = TimeZone.init(secondsFromGMT: 0)
+        
+        let systemClock = Date()
+        let systemClockString = rfc3339Formater.string(from: systemClock)
+        let rfc3339systemClock = rfc3339Formater.date(from: systemClockString)
+        print("systemClockString: \(rfc3339systemClock!)")    // Debug
+        return rfc3339systemClock
+    }
+    
+    func displayWeather() -> Void {
+        /*
+         - Get system time
+         - Get expiration time of first weather day element
+         - if system time < weather expiration time
+         - wxCollection.reloadData()
+         - else if system time > weather expiration time
+         - start activity indicator
+         - fetch updated wx data using wxOperations class
+         - clear db table and write current data
+         - wxCollection.reloadData()
+         - end activity indicator
+         - else
+         - On a background thread
+         - Start a countdown timer to expiration time + 30 minutes
+         - On expiration + 30 mins
+         - start activity indicator
+         - fetch updated wx data using wxOperations class
+         - clear db table and write current data
+         - wxCollection.reloadData()
+         - end activity indicator
+         */
+ 
+        var dbTable: String = selectedCity.name.replacingOccurrences(of: " ", with: "_")
+        dbTable = dbTable + "_" + selectedCity.state
+        dbTable = dbTable.lowercased()
+        
+        let deviceTime = getSystemClock()
+        let endTime:String = dbmgr.fetchEndTime(from: dbTable)
+     
+        print("deviceTime: \(deviceTime!)")
+        print("endTime: \(endTime)")
+        
+        // convert deviceTime + endTime to Date type for comparison
+    }
+    
+    func displayAlerts() -> Void {
+        
+        
+    }
+    
+    func fetchLatestWeather() -> Void {
+       // - fetch updated wx data using wxOperations class
+       // - clear db table and write current data
+    }
+    
 } // class

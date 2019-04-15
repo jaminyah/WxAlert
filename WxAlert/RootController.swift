@@ -84,6 +84,9 @@ class RootController: UITabBarController, CityProtocol {
         let url = parsePointsForecast(json: data)
         let zoneUrl = parsePointsCounty(json: data)
         
+        print("wx url: \(url!)")
+        print("al url: \(zoneUrl)")
+        
         if let pathUrl = url {
             let path = pathUrl.absoluteString
             PlistMgr.addToPlist(key: wxKey, value: path)
