@@ -73,15 +73,28 @@ class DateUtils {
         return month
     }
     
-   class func rfc3339Formatter(date: String) -> Date? {
+   class func rfc3339Formatter(date: String) -> Date {
  
+        var rfcDate = Date()
+    
         // Example inDate: 2019-03-22T23:43:09-06:00
         let rfc3339Formater = DateFormatter()
         rfc3339Formater.locale = Locale(identifier: "en_US_POSIX")
         rfc3339Formater.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         rfc3339Formater.timeZone = TimeZone.init(secondsFromGMT: 0)
         
-        let rfcDate = rfc3339Formater.date(from: date)
+        rfcDate = rfc3339Formater.date(from: date) ?? rfcDate
         return rfcDate
+    }
+    
+    class func nowDateString() -> String {
+        
+        let rfc3339Formater = DateFormatter()
+        rfc3339Formater.locale = Locale(identifier: "en_US_POSIX")
+        rfc3339Formater.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        rfc3339Formater.timeZone = TimeZone.init(secondsFromGMT: 0)
+        
+        let now = rfc3339Formater.string(from: Date())
+        return now
     }
 }

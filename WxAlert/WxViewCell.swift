@@ -28,11 +28,13 @@ class WxViewCell: UICollectionViewCell {
     weak var delegate: GestureProtocol?
     
     func displayWeather(forecast: CellModel, models: [AlertModel]) -> Void {
-                
+        
+        let tuple = showProperty(inDate: forecast.date, alertModels: models)
+        
         dayLabel.text = forecast.day
         weatherImage.image = forecast.wxIcon
         date.text = formatDate(inDate: forecast.date)
-        alertLabel.text = showProperty(inDate: forecast.date, alertModels: models).event
+        alertLabel.text = tuple.event
         rainChanceLabel.text = forecast.wxChance
         dayNightIcon.image = forecast.dayNightIcon
         windSpeedLabel.text = forecast.windSpeed
@@ -40,7 +42,7 @@ class WxViewCell: UICollectionViewCell {
         windIcon.image = forecast.windIcon
         highTempLabel.text = forecast.hiTemp
         lowTempLabel.text = forecast.lowTemp
-        alertDetail.image = showProperty(inDate: forecast.date, alertModels: models).image
+        alertDetail.image = tuple.image
         
         // Badge label
         badgeLabel.clipsToBounds = true
@@ -49,10 +51,9 @@ class WxViewCell: UICollectionViewCell {
         badgeLabel.textColor = .white
         badgeLabel.textAlignment = .center
         badgeLabel.text = String(models.count) + " "
-        badgeLabel.isHidden = showProperty(inDate: forecast.date, alertModels: models).isHidden
+        badgeLabel.isHidden = tuple.isHidden
         
         print(" ")
-       // addTapGesture()
     }
     
     func addTapGesture() -> Void {
@@ -72,43 +73,57 @@ class WxViewCell: UICollectionViewCell {
     
     func showProperty(inDate: String, alertModels: [AlertModel]) -> (image: UIImage?, event: String?, isHidden: Bool) {
         
-        var detailTuple: (image: UIImage?, event: String?, isHidden: Bool)
-        var rfcAlertEndsDate: Date? = nil
-         
+        var detailTuple: (image: UIImage?, event: String?, isHidden: Bool) = (image: nil, event: nil, isHidden: true)
+        
+        let rfcCellDate = DateUtils.rfc3339Formatter(date: inDate)
+        let systemClock = DateUtils.nowDateString()
+        let rfcSystemDate = DateUtils.rfc3339Formatter(date: systemClock)
+        let calendar = Calendar(identifier: .iso8601)
+        let cellDateComponents = calendar.dateComponents([.year,.month, .day], from: rfcCellDate)
+        let systemDateComponents = calendar.dateComponents([.year, .month, .day], from: rfcSystemDate)
+        let cellDay = cellDateComponents.day
+        let systemDay = systemDateComponents.day
+        
         if alertModels.count == 0 {
             // Debug
             print("alertModels.count: \(alertModels.count)")
             detailTuple = (image: nil, event: nil, isHidden: true)
             alertView.isUserInteractionEnabled = false
         } else if alertModels[0].ends == "" && alertModels[0].event == "Flood Warning" {
+            print("alertModels[0].end = null")
             let iconTuple = AlertIcon.fetch(imageFor: alertModels[0].event)
             let alertImage = iconTuple.detailIcon
             detailTuple = (image: alertImage, event: alertModels[0].event, isHidden: false)
             addTapGesture()
-            print("alertModels[0].end == null")
-        } else {
-            let rfcCellDate = DateUtils.rfc3339Formatter(date: inDate)
+        } else if cellDay == systemDay {
+            print("cellDay == systemDay")
+            let rfcAlertEndsDate = DateUtils.rfc3339Formatter(date: alertModels[0].ends)
             let rfcAlertEffectiveDate = DateUtils.rfc3339Formatter(date: alertModels[0].effective)
             
+            if rfcSystemDate >= rfcAlertEffectiveDate && rfcSystemDate <= rfcAlertEndsDate {
+                
+                let iconTuple = AlertIcon.fetch(imageFor: alertModels[0].event)
+                let alertImage = iconTuple.detailIcon
+                detailTuple = (image: alertImage, event: alertModels[0].event, isHidden: false)
+                addTapGesture()
+            }
+        } else {
             // Severe TStorm alerts can include ends = null
+            var rfcAlertEndsDate = DateUtils.rfc3339Formatter(date: alertModels[0].ends)
+            let rfcAlertEffectiveDate = DateUtils.rfc3339Formatter(date: alertModels[0].effective)
+            
             if alertModels[0].ends == "" {
                 rfcAlertEndsDate = DateUtils.rfc3339Formatter(date: alertModels[0].expires)
             } else {
                 rfcAlertEndsDate = DateUtils.rfc3339Formatter(date: alertModels[0].ends)
             }
             
-            guard let cellDate = rfcCellDate else { return (image: nil, event: nil, isHidden: true) }
-            guard let alertEffectiveDate = rfcAlertEffectiveDate else { return (image: nil, event: nil, isHidden: true) }
-            guard let alertEndsDate = rfcAlertEndsDate else { return (image: nil, event: nil, isHidden: true) }
-            
-            
-            // cellDay == systemDay
-            let calendar = Calendar(identifier: .iso8601)
-            let components = calendar.dateComponents([.year,.month, .day], from: alertEffectiveDate)
-            print("day: \(components.day!)")
-            
+            let cellDate = rfcCellDate
+            let alertEffectiveDate = rfcAlertEffectiveDate
+            let alertEndsDate = rfcAlertEndsDate
             
             if cellDate >= alertEffectiveDate && cellDate <= alertEndsDate {
+                print("cellDate >= alertEffectiveDate ...")
                 let iconTuple = AlertIcon.fetch(imageFor: alertModels[0].event)
                 let alertImage = iconTuple.detailIcon
                 detailTuple = (image: alertImage, event: alertModels[0].event, isHidden: false)
