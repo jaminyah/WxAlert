@@ -19,10 +19,9 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
     var delegate: CityProtocol? = nil
     
     lazy var alertCollectionController = AlertCollectionController()
-    //var viewModel: WxCellVM? = nil
     lazy var viewModel = WxCellVM()
-    //lazy var wxCollectionController = WxCollectionController()
 
+    var cellModels: [CellModel] = []
     var selectedCity: SelectedCity!
     
     var alertModels: [AlertModel] = []
@@ -50,8 +49,7 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         navigationController?.navigationBar.isHidden = true
         selectedCity = self.delegate?.getSelectedCity()
         cityLabel.text = selectedCity.name + ", " + selectedCity.state
-        //viewModel = WxCellVM()
-
+        viewModel = WxCellVM()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -63,8 +61,7 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         wxCollection.reloadData()
         alertCollection.reloadData()
 
-        
-       displayWeather()
+        displayWeather()
        // displayAlerts()
         
     }
@@ -82,7 +79,6 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //return viewModel?.cellModels.count ?? 0
         return viewModel.cellModels.count
     }
     
