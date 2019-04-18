@@ -185,6 +185,7 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         let endTime:String = dbmgr.fetchEndTime(from: dbTable)
      
         print("deviceTime: \(deviceTime!)")
+        print("Date(): ", Date())
         print("endTime: \(endTime)")
         
         // convert deviceTime + endTime to Date type for comparison

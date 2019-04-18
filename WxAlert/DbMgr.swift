@@ -236,16 +236,18 @@ class DbMgr {
             forecast.append(cellModel)
         }
         
-        // Check if any day name is set to nil
+        // Set non-weekday names to nil
         for element in forecast {
-            let item = wxUtils.trim(day: element.day)
+            let item = wxUtils.filterValid(day: element.day)
             dayArray.append(item)
         }
         
-        // Remove nil element from array
+        // Remove any nils from the array
         let array = wxUtils.removeNil(dayNames: dayArray)
-        for (index, day) in array.enumerated() {
-            forecast[index].day = day
+        for (index, period) in array.enumerated() {
+            if let trimmed = wxUtils.trim(day: period) {
+                forecast[index].day = trimmed
+            }
         }
         
         let query2 = "SELECT * FROM \(tableName) WHERE isDayTime == 0;"
@@ -332,16 +334,18 @@ class DbMgr {
             forecast.append(cellModel)
         }
         
-        // Check if any day name is set to nil
+        // Set non-weekday names to nil
         for element in forecast {
-            let item = wxUtils.trim(day: element.day)
+            let item = wxUtils.filterValid(day: element.day)
             dayArray.append(item)
         }
         
-        // Remove nil element from array
+        // Remove any nils from the array
         let array = wxUtils.removeNil(dayNames: dayArray)
-        for (index,day) in array.enumerated() {
-            forecast[index].day = day
+        for (index, period) in array.enumerated() {
+            if let trimmed = wxUtils.trim(day: period) {
+                forecast[index].day = trimmed
+            }
         }
         
         sqlite3_finalize(sqlite3_stmt)
@@ -388,16 +392,18 @@ class DbMgr {
             forecast.append(cellModel)
         }
         
-        // Check if any day name is set to nil
+        // Set non-weekday names to nil
         for element in forecast {
-            let item = wxUtils.trim(day: element.day)
+            let item = wxUtils.filterValid(day: element.day)
             dayArray.append(item)
         }
         
         // Remove nil element from array
         let array = wxUtils.removeNil(dayNames: dayArray)
-        for (index,day) in array.enumerated() {
-            forecast[index].day = day
+        for (index, period) in array.enumerated() {
+            if let trimmed = wxUtils.trim(day: period) {
+                forecast[index].day = trimmed
+            }
         }
         
         sqlite3_finalize(sqlite3_stmt)
