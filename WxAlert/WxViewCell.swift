@@ -95,7 +95,7 @@ class WxViewCell: UICollectionViewCell {
             let alertImage = iconTuple.detailIcon
             detailTuple = (image: alertImage, event: alertModels[0].event, isHidden: false)
             addTapGesture()
-        } else if cellDay == systemDay {
+        } else if cellDay == systemDay && rfcCellDate <= DateUtils.rfc3339Formatter(date: alertModels[0].ends) {
             print("cellDay == systemDay")
             let rfcAlertEndsDate = DateUtils.rfc3339Formatter(date: alertModels[0].ends)
             let rfcAlertEffectiveDate = DateUtils.rfc3339Formatter(date: alertModels[0].effective)

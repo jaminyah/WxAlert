@@ -47,6 +47,8 @@ final class WeatherUtils {
         var dayName:String? = nil
         
         switch(day) {
+        case "Overnight": dayName = "Nite"
+        case "Today" : dayName = "Today"
         case "Sunday", "Sunday Night" : dayName = "Sun"
         case "Monday", "Monday Night" : dayName = "Mon"
         case "Tuesday", "Tuesday Night" : dayName = "Tues"
@@ -64,6 +66,7 @@ final class WeatherUtils {
         
         var dayName: String? = day
         switch(day) {
+        case "Overnight" : break
         case "Sunday", "Sunday Night" : break
         case "Monday", "Monday Night" : break
         case "Tuesday", "Tuesday Night": break
