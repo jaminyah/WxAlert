@@ -243,7 +243,7 @@ class DbMgr {
         }
         
         // Remove any nils from the array
-        let array = wxUtils.removeNil(dayNames: dayArray)
+        let array = wxUtils.removeNil(dayNames: dayArray, mode: "Day")
         for (index, period) in array.enumerated() {
             if let trimmed = wxUtils.trim(day: period) {
                 forecast[index].day = trimmed
@@ -341,9 +341,10 @@ class DbMgr {
         }
         
         // Remove any nils from the array
-        let array = wxUtils.removeNil(dayNames: dayArray)
+        let array = wxUtils.removeNil(dayNames: dayArray, mode: "Day+Night")
         for (index, period) in array.enumerated() {
             if let trimmed = wxUtils.trim(day: period) {
+                print("trimmed: \(trimmed)")
                 forecast[index].day = trimmed
             }
         }
@@ -399,7 +400,7 @@ class DbMgr {
         }
         
         // Remove nil element from array
-        let array = wxUtils.removeNil(dayNames: dayArray)
+        let array = wxUtils.removeNil(dayNames: dayArray, mode: "Night")
         for (index, period) in array.enumerated() {
             if let trimmed = wxUtils.trim(day: period) {
                 forecast[index].day = trimmed

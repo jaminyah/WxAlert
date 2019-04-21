@@ -31,6 +31,13 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         print("Weather Controller")
         
         super.viewDidLoad()
+        let layer = CAGradientLayer()
+        layer.frame = view.bounds
+        layer.colors = [UIColor.red.cgColor, UIColor.yellow.cgColor, UIColor.red.cgColor]
+        layer.startPoint = CGPoint(x:0, y:0)
+        layer.endPoint = CGPoint(x: 1, y: 1)
+        view.layer.insertSublayer(layer, at: 0)
+        
         self.delegate = rootController
         
         // Set data source and delegate
@@ -138,21 +145,6 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         return UIColor(red: red, green: green, blue: blue, alpha: 1)
     }
     
-    // MARK: - Monitor timestamp
-    func getSystemClock() -> Date? {
-        
-        // Example inDate: 2019-03-22T23:43:09-06:00
-        let rfc3339Formater = DateFormatter()
-        rfc3339Formater.locale = Locale(identifier: "en_US_POSIX")
-        rfc3339Formater.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        rfc3339Formater.timeZone = TimeZone.init(secondsFromGMT: 0)
-        
-        let systemClock = Date()
-        let systemClockString = rfc3339Formater.string(from: systemClock)
-        let rfc3339systemClock = rfc3339Formater.date(from: systemClockString)
-        print("systemClockString: \(rfc3339systemClock!)")    // Debug
-        return rfc3339systemClock
-    }
     
     func displayWeather() -> Void {
         /*
@@ -181,12 +173,15 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         dbTable = dbTable + "_" + selectedCity.state
         dbTable = dbTable.lowercased()
         
-        let deviceTime = getSystemClock()
-        let endTime:String = dbmgr.fetchEndTime(from: dbTable)
-     
-        print("deviceTime: \(deviceTime!)")
-        print("Date(): ", Date())
-        print("endTime: \(endTime)")
+        let wxExpireDate: String = dbmgr.fetchEndTime(from: dbTable)
+        guard let wxExpire = DateFormatter().date(from: wxExpireDate) else { return }
+        if Date() < wxExpire {
+            wxCollection.reloadData()
+        } else if Date() >= wxExpire {
+            //fetch updated wx data using wxOperations class
+        } else {
+            // Start count down timer
+        }
         
         // convert deviceTime + endTime to Date type for comparison
     }

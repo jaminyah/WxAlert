@@ -47,8 +47,8 @@ final class AlertIcon {
             alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
             alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Dense Fog Advisory":
-            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
-           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+            alert.icon = UIImage(imageLiteralResourceName: "advis_densefog")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "dia_advis_dfog")
         case "Fire Weather Watch":
             alert.icon = UIImage(imageLiteralResourceName: "watch_fire")
            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")

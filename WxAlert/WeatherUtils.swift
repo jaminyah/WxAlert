@@ -47,8 +47,9 @@ final class WeatherUtils {
         var dayName:String? = nil
         
         switch(day) {
-        case "Overnight": dayName = "Nite"
+        case "Overnight", "Tonight": dayName = "Nite"
         case "Today" : dayName = "Today"
+        case "This Afternoon" : dayName = "Noon"
         case "Sunday", "Sunday Night" : dayName = "Sun"
         case "Monday", "Monday Night" : dayName = "Mon"
         case "Tuesday", "Tuesday Night" : dayName = "Tues"
@@ -66,7 +67,7 @@ final class WeatherUtils {
         
         var dayName: String? = day
         switch(day) {
-        case "Overnight" : break
+        case "Overnight", "Today", "Tonight", "This Afternoon" : break
         case "Sunday", "Sunday Night" : break
         case "Monday", "Monday Night" : break
         case "Tuesday", "Tuesday Night": break
@@ -77,13 +78,16 @@ final class WeatherUtils {
         default:
             dayName = nil
         }
+        let name = dayName ?? "nil"
+        print("dayName: \(name)")
         return dayName
     }
     
-    func previous(period: String) -> String {
+    func previous(period: String, display: String) -> String {
         
         var previous = String()
         
+        if display == "Day" || display == "Night" {
             switch (period) {
             case "Sunday": previous = "Saturday"
             case "Monday": previous = "Sunday"
@@ -92,6 +96,10 @@ final class WeatherUtils {
             case "Thursday": previous = "Wednesday"
             case "Friday": previous = "Thursday"
             case "Saturday": previous = "Friday"
+            default: previous = "Err"
+            }
+        } else if display == "Day+Night" {
+            switch (period) {
             case "Sunday Night": previous = "Sunday"
             case "Monday Night": previous = "Monday"
             case "Tuesday Night": previous = "Tuesday"
@@ -102,14 +110,16 @@ final class WeatherUtils {
             default:
                 previous = "Err"
             }
+        }
         return previous
     }
     
     // Action: fix next below
-    func next(period: String) -> String {
+    func next(period: String, display: String) -> String {
         
         var next = String()
         
+        if display == "Day" || display == "Night" {
             switch (period) {
             case "Sunday": next = "Monday"
             case "Monday": next = "Tuesday"
@@ -118,6 +128,17 @@ final class WeatherUtils {
             case "Thursday": next = "Friday"
             case "Friday": next = "Saturday"
             case "Saturday": next = "Sunday"
+            default: next = "Err"
+            }
+        } else if display == "Day+Night" {
+            switch (period) {
+            case "Sunday": next = "Sunday Night"
+            case "Monday": next = "Monday Night"
+            case "Tuesday": next = "Tuesday Night"
+            case "Wednesday": next =  "Wednesday Night"
+            case "Thursday": next = "Thursday Night"
+            case "Friday": next = "Friday Night"
+            case "Saturday": next = "Saturday Night"
             case "Sunday Night": next = "Monday"
             case "Monday Night": next = "Tuesday"
             case "Tuesday Night": next = "Wednesday"
@@ -125,18 +146,20 @@ final class WeatherUtils {
             case "Thursday Night": next = "Friday"
             case "Friday Night": next = "Saturday"
             case "Saturday Night": next = "Sunday"
-            default:
-                next = "Err"
+            default: next = "Err"
             }
+        }
         return next
     }
     
-    func removeNil(dayNames: [String?]) -> [String] {
+    func removeNil(dayNames: [String?], mode: String) -> [String] {
         var dayList: [String] = []
         var days: [String?] = []
         
         // Create a mutable copy of dayNames array
         for day in dayNames {
+            let name = day ?? "nil"
+            print("removeNil day: \(name)")
             days.append(day)
         }
         
@@ -155,7 +178,7 @@ final class WeatherUtils {
                         }
                         else {
                             let today = days[index]
-                            let previousDay = previous(period: today!)
+                            let previousDay = previous(period: today!, display: mode)
                             days[index - 1] = previousDay
                             break
                         }
@@ -166,7 +189,7 @@ final class WeatherUtils {
                 }
                 else if (index <= days.count - 1) {
                     if let previousDay = days[index - 1] {
-                        let nextDay = next(period: previousDay)
+                        let nextDay = next(period: previousDay, display: mode)
                         days[index] = nextDay
                         
                         // reset index of outer loop to re-start nil check
