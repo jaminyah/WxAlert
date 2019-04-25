@@ -146,6 +146,20 @@ class DbMgr {
         var shortForecast = String()
         var detailedForecast = String()
         
+        // Clear sqlite3 table data
+        var sql = "DELETE FROM \(wxtable)"
+        guard sqlite3_exec(sqlite3_db, sql, nil, nil, nil) == SQLITE_OK else {
+            let errmsg = String(cString: sqlite3_errmsg(sqlite3_db)!)
+            print("Delete error: \(errmsg)")
+            return
+        }
+        sql = "VACUUM"
+        guard sqlite3_exec(sqlite3_db, sql, nil, nil, nil) == SQLITE_OK else {
+            let errmsg = String(cString: sqlite3_errmsg(sqlite3_db)!)
+            print("Vacuum error: \(errmsg)")
+            return
+        }
+        
         for day in sevenDay {
             number = day.number
             name = day.name
@@ -190,6 +204,8 @@ class DbMgr {
             print("Error finalizing prepared statement: \(errmsg)")
         }
         sqlite3_stmt = nil
+        
+        // Broadcast data has been updated
     }
     
     func dayForecast(from: String, sql: String) -> [CellModel] {
@@ -273,7 +289,6 @@ class DbMgr {
         while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
 
             lowTemp = "Low: " + String(sqlite3_column_int(sqlite3_stmt, 6)) + "\u{00B0}F"
-         //   print("lowTemp: \(lowTemp)")
             dailyLows.append(lowTemp)
         }
         sqlite3_finalize(sqlite3_stmt)
@@ -344,7 +359,6 @@ class DbMgr {
         let array = wxUtils.removeNil(dayNames: dayArray, mode: "Day+Night")
         for (index, period) in array.enumerated() {
             if let trimmed = wxUtils.trim(day: period) {
-                print("trimmed: \(trimmed)")
                 forecast[index].day = trimmed
             }
         }

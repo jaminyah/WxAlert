@@ -22,7 +22,6 @@ class ForecastDataMgr {
     func writeForecast() -> Void {
 
         guard let data = forecast?.periods else { return }
-        //guard let tableName = self.table else { return }
         dbMgr.insert(sevenDay: data, wxtable: dbTable)
     }
     

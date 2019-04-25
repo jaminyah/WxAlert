@@ -69,6 +69,8 @@ class RootController: UITabBarController, CityProtocol {
         
         networkMgr = NetworkMgr(cityObject: city)
         self.networkMgr.getNWSPointsJSON(completion: self.sqliteWrite)
+        
+        // Start Timer to refresh database
 
     }
     

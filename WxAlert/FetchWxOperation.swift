@@ -10,20 +10,25 @@ import Foundation
 
 final class FetchWxOperation: BaseOperation {
     
-    var forecastUrl: URL? = nil
-    private(set) var rawData: Data? = nil
-   
+    private(set) var rawWxData: Data? = nil
+    private var wxUrl: String
+    
+    init(withUrl wxUrl: String) {
+        self.wxUrl = wxUrl
+    }
+    
     override func main() {
         if isCancelled {
             completeOperation()
             return
         }
         print("FetchWxOperation")
+        let forecastUrl = URL(string: wxUrl)
         getForecastJSON(inputUrl: forecastUrl)
     }
     
     private func getForecastJSON(inputUrl: URL?) -> Void {
-    
+        
         guard let url = inputUrl else { return }
         URLSession.shared.dataTask(with: url) { (networkData, response, error) in
             
@@ -47,7 +52,7 @@ final class FetchWxOperation: BaseOperation {
                     do {
                         
                         let localData = try Data(contentsOf: urlPath)
-                        self.rawData = localData
+                        self.rawWxData = localData
                         print("Bundle.main: \(localData)")
                         print("urlPath: \(urlPath)")
                     } catch let jsonError {
@@ -60,10 +65,11 @@ final class FetchWxOperation: BaseOperation {
                     
                 } else {
                     guard let data = networkData else { return }
-                        self.rawData = data
+                    self.rawWxData = data
+                    print("rawData: \(self.rawWxData!)")
                 }
                 self.completeOperation()
             }
-        }.resume() // URLSession
+            }.resume() // URLSession
     }
 }

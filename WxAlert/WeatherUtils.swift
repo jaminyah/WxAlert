@@ -78,8 +78,6 @@ final class WeatherUtils {
         default:
             dayName = nil
         }
-        let name = dayName ?? "nil"
-        print("dayName: \(name)")
         return dayName
     }
     
@@ -158,8 +156,6 @@ final class WeatherUtils {
         
         // Create a mutable copy of dayNames array
         for day in dayNames {
-            let name = day ?? "nil"
-            print("removeNil day: \(name)")
             days.append(day)
         }
         

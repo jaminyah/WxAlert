@@ -10,59 +10,48 @@ import Foundation
 
 class WeatherOpQueue {
     
-    private let city: City
-    let queue = OperationQueue()
-    var operations: [Operation] = []
+    var wxUrl = String()
+    var name = String()
+    var stateID = String()
     
-    init(withCity city: City) {
-        self.city = city
+    init(with url: String, city name: String, stateID: String) {
+        wxUrl = url
+        self.name = name
+        self.stateID = stateID
     }
     
-    func execute() -> Void {
-        let lat = city.coordinates.latitude
-        let long = city.coordinates.longitude
-        let baseUrl = "https://api.weather.gov/points/"
+    func executeOps() -> Void {
         
-        let apiUrl = "\(baseUrl)\(lat),\(long)"
-        //print("apiUrl: \(apiUrl)")
+        let queue = OperationQueue()
+        var operations: [Operation] = []
         
-        guard let pointsUrl = URL(string: apiUrl) else { return }
+       // var fetchLinkedOp: FetchLinkedOperation
+       // let parseLinkedOp = ParseLinkedOperation()
+        let fetchWxOp = FetchWxOperation(withUrl: wxUrl)
+        let parseWxOp = ParseWxOperation()
+        let storeWxOp = StoreWxOperation(withCity: name, state: stateID)
         
-        let fetchLinkedOp = FetchLinkedOperation(withLink: pointsUrl)
+        queue.maxConcurrentOperationCount = 1
         
         /*
-        let parseLinkedOp = ParseLinkedOperation()
-        let fetchWxOp = FetchWxOperation()
-        let parseWxOp = ParseWxOperation()
-        let storeWxOp = StoreWxOperation(withCity: city)
-        
-        let adapter = BlockOperation() { [unowned fetchLinkedOp, unowned parseLinkedOp] in
-            parseLinkedOp.linkedData = fetchLinkedOp.linkedData
+        let urlString = "http://cdn.jaminya.com/json/links_akq.json"
+        //let urlString = "https://api.weather.gov/points/36.9751,-76.3496"
+        */
+
+        let adapter = BlockOperation() { [unowned fetchWxOp, unowned parseWxOp] in
+            parseWxOp.rawWxData = fetchWxOp.rawWxData
         }
         
-        let adapter2 = BlockOperation() { [unowned parseLinkedOp, unowned fetchWxOp] in
-            fetchWxOp.forecastUrl = parseLinkedOp.forecastUrl
-        }
+        adapter.addDependency(fetchWxOp)
+        parseWxOp.addDependency(adapter)
         
-        let adapter3 = BlockOperation() { [unowned fetchWxOp, unowned parseWxOp] in
-            parseWxOp.rawData = fetchWxOp.rawData
-        }
-        
-        let adapter4 = BlockOperation() { [unowned parseWxOp, unowned storeWxOp] in
+        let adapter2 = BlockOperation() { [unowned parseWxOp, unowned storeWxOp] in
             storeWxOp.jsonData = parseWxOp.jsonData
         }
         
-        adapter.addDependency(fetchLinkedOp)
-        parseLinkedOp.addDependency(adapter)
-        adapter2.addDependency(fetchWxOp)
-        parseWxOp.addDependency(adapter2)
-        adapter3.addDependency(parseWxOp)
-        storeWxOp.addDependency(adapter3)
-        
-        operations = [fetchLinkedOp, adapter, parseLinkedOp, adapter2, fetchWxOp, adapter3, parseWxOp, adapter4, storeWxOp]
-        */
-        operations = [fetchLinkedOp]
+        operations = [fetchWxOp, adapter, parseWxOp, adapter2, storeWxOp]
         queue.addOperations(operations, waitUntilFinished: true)
+        print("Operations complete.")
     }
     
 }

@@ -5,6 +5,7 @@
 //  Created by macbook on 3/20/18.
 //  Copyright © 2018 Jaminya. All rights reserved.
 //
+//  Color converter: https://www.uicolor.xyz/#/hex-to-ui
 
 import UIKit
 
@@ -33,7 +34,9 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         super.viewDidLoad()
         let layer = CAGradientLayer()
         layer.frame = view.bounds
-        layer.colors = [UIColor.red.cgColor, UIColor.yellow.cgColor, UIColor.red.cgColor]
+        let skyBlueThin = UIColor(red: 0.69, green: 0.85, blue: 1.00, alpha: 1.0)
+        let skyBlueDark = UIColor(red: 0.40, green: 0.60, blue: 1.00, alpha: 1.0)
+        layer.colors = [skyBlueThin.cgColor, skyBlueDark.cgColor]
         layer.startPoint = CGPoint(x:0, y:0)
         layer.endPoint = CGPoint(x: 1, y: 1)
         view.layer.insertSublayer(layer, at: 0)
@@ -49,6 +52,9 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         
         // hide views
         alertCollection.isHidden = false
+        
+        //displayWeather()
+        // Register as listener to db updates.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,7 +66,7 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
     }
     
     override func viewDidAppear(_ animated: Bool) {
-
+        print("WxContrl, viewDidAppear")
         tabBarController?.tabBar.isHidden = false
         let alertViewModel = AlertViewModel()
         alertModels = alertViewModel.fetchAlerts()
@@ -147,6 +153,7 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
     
     
     func displayWeather() -> Void {
+        print("displayWeather")
         /*
          - Get system time
          - Get expiration time of first weather day element
@@ -169,21 +176,33 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
          - end activity indicator
          */
  
-        var dbTable: String = selectedCity.name.replacingOccurrences(of: " ", with: "_")
-        dbTable = dbTable + "_" + selectedCity.state
+        let name = selectedCity.name
+        let state = selectedCity.state
+        
+        var dbTable: String = name.replacingOccurrences(of: " ", with: "_")
+        dbTable = dbTable + "_" + state
         dbTable = dbTable.lowercased()
         
         let wxExpireDate: String = dbmgr.fetchEndTime(from: dbTable)
         guard let wxExpire = DateFormatter().date(from: wxExpireDate) else { return }
+        let gap = wxExpire.timeIntervalSince(Date())
+        
         if Date() < wxExpire {
+            print("Date < wxExpire")
             wxCollection.reloadData()
         } else if Date() >= wxExpire {
-            //fetch updated wx data using wxOperations class
+            print("Date >= wxExpire")
+            UpdateMgr.fetchLatestWeather(cityName: name, stateUS: state)
+            wxCollection.reloadData()
         } else {
-            // Start count down timer
+            print("Start count down timer")
+            let timer = CountDownTimer(timeGap: gap, city: name, stateID: state)
+            timer.start()
+            wxCollection.reloadData()
         }
-        
-        // convert deviceTime + endTime to Date type for comparison
+ 
+       // let timer = Timer(timeGap: 6)
+       // timer.start()
     }
     
     func displayAlerts() -> Void {
@@ -191,9 +210,6 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         
     }
     
-    func fetchLatestWeather() -> Void {
-       // - fetch updated wx data using wxOperations class
-       // - clear db table and write current data
-    }
+
     
 } // class

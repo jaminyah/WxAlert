@@ -43,6 +43,8 @@
 		FA1E55D3215F54F60092CE2C /* Meteorology.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E55D2215F54F60092CE2C /* Meteorology.swift */; };
 		FA28D7FF2152977D004D9AAD /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28D7FE2152977D004D9AAD /* CellModel.swift */; };
 		FA352DA621D6991900F9F0F6 /* DbMgr+AlertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA352DA521D6991900F9F0F6 /* DbMgr+AlertData.swift */; };
+		FA3877A2226FBB890041CB45 /* BackgroundTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3877A1226FBB890041CB45 /* BackgroundTimer.swift */; };
+		FA3877A4226FBBBA0041CB45 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3877A3226FBBBA0041CB45 /* Timer.swift */; };
 		FA3DC130220CAE4B00A669B7 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3DC12F220CAE4B00A669B7 /* CellViewModel.swift */; };
 		FA4515D62238743E00771D72 /* GestureProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4515D52238743E00771D72 /* GestureProtocol.swift */; };
 		FA46614B21E1552B001C680E /* AlertIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46614A21E1552B001C680E /* AlertIcon.swift */; };
@@ -69,6 +71,9 @@
 		FA9DDAA62135AA8F004B9E2D /* DayForecast.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9DDAA52135AA8F004B9E2D /* DayForecast.swift */; };
 		FAA79E4122109278009573FF /* AlertViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA79E4022109278009573FF /* AlertViewCell.swift */; };
 		FAB45FC920FFC6BC00333FE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB45FC820FFC6BC00333FE9 /* Assets.xcassets */; };
+		FAB83184226F8B4F00883999 /* UpdateMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB83183226F8B4F00883999 /* UpdateMgr.swift */; };
+		FAB83187226F8C9600883999 /* WallClockTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB83186226F8C9600883999 /* WallClockTimer.swift */; };
+		FAB83189226F8CF200883999 /* CountDownTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB83188226F8CF200883999 /* CountDownTimer.swift */; };
 		FABBBC44210519E7005C2207 /* WxCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC43210519E7005C2207 /* WxCollectionController.swift */; };
 		FABBBC4821051A5A005C2207 /* AlertCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC4721051A5A005C2207 /* AlertCollectionController.swift */; };
 		FABBBC4A21051FEE005C2207 /* WxViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABBBC4921051FEE005C2207 /* WxViewCell.swift */; };
@@ -146,6 +151,8 @@
 		FA1E55D2215F54F60092CE2C /* Meteorology.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meteorology.swift; sourceTree = "<group>"; };
 		FA28D7FE2152977D004D9AAD /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
 		FA352DA521D6991900F9F0F6 /* DbMgr+AlertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DbMgr+AlertData.swift"; sourceTree = "<group>"; };
+		FA3877A1226FBB890041CB45 /* BackgroundTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTimer.swift; sourceTree = "<group>"; };
+		FA3877A3226FBBBA0041CB45 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		FA3DC12F220CAE4B00A669B7 /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		FA4515D52238743E00771D72 /* GestureProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureProtocol.swift; sourceTree = "<group>"; };
 		FA46614A21E1552B001C680E /* AlertIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertIcon.swift; sourceTree = "<group>"; };
@@ -172,6 +179,9 @@
 		FA9DDAA52135AA8F004B9E2D /* DayForecast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayForecast.swift; sourceTree = "<group>"; };
 		FAA79E4022109278009573FF /* AlertViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewCell.swift; sourceTree = "<group>"; };
 		FAB45FC820FFC6BC00333FE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FAB83183226F8B4F00883999 /* UpdateMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMgr.swift; sourceTree = "<group>"; };
+		FAB83186226F8C9600883999 /* WallClockTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallClockTimer.swift; sourceTree = "<group>"; };
+		FAB83188226F8CF200883999 /* CountDownTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownTimer.swift; sourceTree = "<group>"; };
 		FABBBC43210519E7005C2207 /* WxCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WxCollectionController.swift; sourceTree = "<group>"; };
 		FABBBC4721051A5A005C2207 /* AlertCollectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCollectionController.swift; sourceTree = "<group>"; };
 		FABBBC4921051FEE005C2207 /* WxViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WxViewCell.swift; sourceTree = "<group>"; };
@@ -241,6 +251,8 @@
 		FA06641C20614490006DE3CF /* WxAlert */ = {
 			isa = PBXGroup;
 			children = (
+				FAB83185226F8C0100883999 /* Timer */,
+				FAB83182226F85BA00883999 /* Utilities */,
 				FA888D6221ED078E002C45E2 /* Operations */,
 				FA352DA421D698E800F9F0F6 /* Extensions */,
 				FA81970621D3E27C00C22092 /* AlertData */,
@@ -248,7 +260,7 @@
 				FAF58473217C193A004A2C69 /* Enums */,
 				FA1D7E4C2135EE5500E49EC6 /* WeatherData */,
 				FAB45FC820FFC6BC00333FE9 /* Assets.xcassets */,
-				FAC16F4D2062643000683EE6 /* Classes */,
+				FAC16F4D2062643000683EE6 /* DataManagement */,
 				FA06646E20615710006DE3CF /* Notifications */,
 				FA06646D206156C6006DE3CF /* ViewModels */,
 				FA06646C206156B4006DE3CF /* Models */,
@@ -433,18 +445,37 @@
 			name = Operations;
 			sourceTree = "<group>";
 		};
-		FAC16F4D2062643000683EE6 /* Classes */ = {
+		FAB83182226F85BA00883999 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				FA57346D217FA773004CB2E0 /* WeatherUtils.swift */,
+				FA0CF696223FF90E0075090D /* DateUtils.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
+		FAB83185226F8C0100883999 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				FAB83186226F8C9600883999 /* WallClockTimer.swift */,
+				FAB83188226F8CF200883999 /* CountDownTimer.swift */,
+				FA3877A1226FBB890041CB45 /* BackgroundTimer.swift */,
+				FA3877A3226FBBBA0041CB45 /* Timer.swift */,
+			);
+			name = Timer;
+			sourceTree = "<group>";
+		};
+		FAC16F4D2062643000683EE6 /* DataManagement */ = {
 			isa = PBXGroup;
 			children = (
 				FA4B52212131BE380017ADC9 /* DbMgr.swift */,
 				FAC16F4E2062644900683EE6 /* DataManager.swift */,
 				FA9DDAA321359C29004B9E2D /* NetworkMgr.swift */,
 				FA1E55D2215F54F60092CE2C /* Meteorology.swift */,
-				FA57346D217FA773004CB2E0 /* WeatherUtils.swift */,
-				FA0CF696223FF90E0075090D /* DateUtils.swift */,
 				FA891227225E270C00B4B685 /* PlistMgr.swift */,
+				FAB83183226F8B4F00883999 /* UpdateMgr.swift */,
 			);
-			name = Classes;
+			name = DataManagement;
 			sourceTree = "<group>";
 		};
 		FAD68B3B21C4510E00D7FC51 /* Resource */ = {
@@ -607,6 +638,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA3877A4226FBBBA0041CB45 /* Timer.swift in Sources */,
 				FA888D6421ED07BC002C45E2 /* FetchWxOperation.swift in Sources */,
 				FA066459206150CB006DE3CF /* AppSettingController.swift in Sources */,
 				FA8E9FC0218793EE005EF8CE /* JSONIcons.swift in Sources */,
@@ -651,20 +683,24 @@
 				FA10D430211DD90C006CCB0E /* SelectedCity.swift in Sources */,
 				FA1D7E502135EFC200E49EC6 /* WeekForecast.swift in Sources */,
 				FA4B52222131BE380017ADC9 /* DbMgr.swift in Sources */,
+				FAB83189226F8CF200883999 /* CountDownTimer.swift in Sources */,
 				FA888D6621ED07D9002C45E2 /* ParseWxOperation.swift in Sources */,
 				FAF7C67D21FBAB2700324EAD /* FetchLinkedOperation.swift in Sources */,
 				FA7BDCC0221D215700738158 /* PageViewController.swift in Sources */,
 				FA67D652223443B4002E24F3 /* AlertDetailViewModel.swift in Sources */,
 				FA032FF8221D1B2800EC21F3 /* AlertDetailViewController.swift in Sources */,
+				FAB83184226F8B4F00883999 /* UpdateMgr.swift in Sources */,
 				FA06645B2061510C006DE3CF /* NotificationController.swift in Sources */,
 				FA1D7E4E2135EF4100E49EC6 /* JSONDecodable.swift in Sources */,
 				FA06647F20618FAE006DE3CF /* CityModel.swift in Sources */,
 				FACC35D1218B649A00ECC789 /* IconModel.swift in Sources */,
 				FADCB4F721F8D7810049A030 /* WeatherOpQueue.swift in Sources */,
 				FABBBC4821051A5A005C2207 /* AlertCollectionController.swift in Sources */,
+				FAB83187226F8C9600883999 /* WallClockTimer.swift in Sources */,
 				FA06646A206155DD006DE3CF /* Constants.swift in Sources */,
 				FA06645720615016006DE3CF /* WeatherController.swift in Sources */,
 				FA888D6C21ED083A002C45E2 /* ParseAlertOperation.swift in Sources */,
+				FA3877A2226FBB890041CB45 /* BackgroundTimer.swift in Sources */,
 				FA113140211FFF7F00B50085 /* WxCellViewModel.swift in Sources */,
 				FA0CF697223FF90E0075090D /* DateUtils.swift in Sources */,
 				FA066451206145E6006DE3CF /* RootController.swift in Sources */,

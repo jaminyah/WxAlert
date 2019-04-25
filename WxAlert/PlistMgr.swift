@@ -47,9 +47,6 @@ class PlistMgr {
             } catch {
                 print(error)
             }
-            
-            // Debug
-            // print(plistData)
         }
     }
     
@@ -74,6 +71,32 @@ class PlistMgr {
                 print(error)
             }
         }
+    }
+    
+    class func wxURL(city name: String, stateID: String) -> String {
+        
+        var wxUrl = String()
+        var plistData: [String:String] = [:]
+        var wxKey: String = name + stateID + "wx"
+        wxKey = wxKey.lowercased()
+        
+        plistData = loadPlist()
+        wxUrl = plistData[wxKey] ?? ""
+        
+        return wxUrl
+    }
+    
+    class func alertURL(city name: String, stateID: String) -> String {
+        
+        var alUrl = String()
+        var plistData: [String:String] = [:]
+        var alKey: String = name + stateID + "al"
+        alKey = alKey.lowercased()
+        
+        plistData = loadPlist()
+        alUrl = plistData[alKey] ?? ""
+        
+        return alUrl
     }
     
 } // PlistMgr

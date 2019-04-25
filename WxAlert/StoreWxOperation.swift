@@ -11,10 +11,12 @@ import Foundation
 final class StoreWxOperation: Operation {
     
     var jsonData: Any? = nil
-    private let city: City
+    private let cityName: String
+    private let state: String
     
-    init(withCity city: City) {
-        self.city = city
+    init(withCity cityName: String, state: String) {
+        self.cityName = cityName
+        self.state = state
     }
     
     override func main() {
@@ -27,11 +29,11 @@ final class StoreWxOperation: Operation {
     }
     
     private func dbWriteForecast(json: Any) -> Void {
-        let cityName = city.cityName
-        let stateID = city.region.state
+        let name = cityName
+        let stateID = state
         
         if let weatherForecast = WeekForecast(JSON: json) {
-            var tableName: String = cityName.replacingOccurrences(of: " ", with: "_") + "_" + stateID
+            var tableName: String = name.replacingOccurrences(of: " ", with: "_") + "_" + stateID
             tableName = tableName.lowercased()
             
             let forecastDataMgr = ForecastDataMgr(forecast: weatherForecast, dbTable: tableName)
