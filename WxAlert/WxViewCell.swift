@@ -90,7 +90,7 @@ class WxViewCell: UICollectionViewCell {
             detailTuple = (image: nil, event: nil, isHidden: true)
             alertView.isUserInteractionEnabled = false
         } else if alertModels[0].ends == "" && alertModels[0].event == "Flood Warning" {
-            print("alertModels[0].end = null")
+            //print("alertModels[0].end == null")
             let iconTuple = AlertIcon.fetch(imageFor: alertModels[0].event)
             let alertImage = iconTuple.detailIcon
             detailTuple = (image: alertImage, event: alertModels[0].event, isHidden: false)

@@ -40,10 +40,8 @@ class DbMgr {
         
         var cityObject = City()
         var dataItem = DataItem()
-        
-        var sqlStatement: OpaquePointer? = nil
-        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
-        
+        var sqlite3_stmt: OpaquePointer? = nil
+
         let count = searchTerm.count
          
          /*let sqlQry = "SELECT city, state_code, latitude, longitude FROM us_states JOIN us_cities ON " +
@@ -54,24 +52,22 @@ class DbMgr {
             "us_cities.ID_STATE = us_states.ID WHERE SUBSTR(city, 1, \(count))=? ) sub "
          
             let sqlQuery = "SELECT sub.city, sub.state_code, sub.latitude, sub.longitude FROM \(subQuery) GROUP BY sub.state_code"
-         
-         
-            if (sqlite3_prepare_v2(sqlite3_db, sqlQuery, -1, &sqlStatement, nil) != SQLITE_OK)
+        
+            if (sqlite3_prepare_v2(sqlite3_db, sqlQuery, -1, &sqlite3_stmt, nil) != SQLITE_OK)
             {
                 print("Problem with prepared statement" + String(sqlite3_errcode(sqlite3_db)))
                 // return
             }
-            sqlite3_bind_text(sqlStatement, 0, searchTerm, -1, SQLITE_TRANSIENT)
-            sqlite3_bind_text(sqlStatement, 1, searchTerm, -1, SQLITE_TRANSIENT)
-            sqlite3_bind_text(sqlStatement, 2, searchTerm, -1, SQLITE_TRANSIENT)
-            sqlite3_bind_text(sqlStatement, 3, searchTerm, -1, SQLITE_TRANSIENT)
+            sqlite3_bind_text(sqlite3_stmt, 0, searchTerm, -1, SQLITE_TRANSIENT)
+            sqlite3_bind_text(sqlite3_stmt, 1, searchTerm, -1, SQLITE_TRANSIENT)
+            sqlite3_bind_text(sqlite3_stmt, 2, searchTerm, -1, SQLITE_TRANSIENT)
+            sqlite3_bind_text(sqlite3_stmt, 3, searchTerm, -1, SQLITE_TRANSIENT)
          
-            while (sqlite3_step(sqlStatement) == SQLITE_ROW) {
+            while (sqlite3_step(sqlite3_stmt) == SQLITE_ROW) {
          
-                let sqlName = String(cString:sqlite3_column_text(sqlStatement, 0))
-         
-                let concatName: String = String(cString:sqlite3_column_text(sqlStatement, 0)) + ", " +
-                String(cString:sqlite3_column_text(sqlStatement, 1))
+                let sqlName = String(cString:sqlite3_column_text(sqlite3_stmt, 0))
+                let concatName: String = String(cString:sqlite3_column_text(sqlite3_stmt, 0)) + ", " +
+                String(cString:sqlite3_column_text(sqlite3_stmt, 1))
          
          // Ensure no duplicate entries. Item already in database; continue
          //if filteredList.index(where: { $0 == concatName}) != nil {
@@ -80,9 +76,9 @@ class DbMgr {
          
                 dataItem.filteredList.append(concatName)
          
-                let sqlRegion = String(cString:sqlite3_column_text(sqlStatement, 1))
-                let sqLat = String(cString:sqlite3_column_text(sqlStatement, 2))
-                let sqLong = String(cString:sqlite3_column_text(sqlStatement, 3))
+                let sqlRegion = String(cString:sqlite3_column_text(sqlite3_stmt, 1))
+                let sqLat = String(cString:sqlite3_column_text(sqlite3_stmt, 2))
+                let sqLong = String(cString:sqlite3_column_text(sqlite3_stmt, 3))
          
                 let sqLatReal = Double(sqLat)                               // String to Double
                 let sqLongReal = Double(sqLong)
@@ -91,7 +87,7 @@ class DbMgr {
                 cityObject = City(name: sqlName, state: sqlRegion, coordinates: newCoordinates)
                 dataItem.cityList.append(cityObject)
             }
-            sqlite3_finalize(sqlStatement)
+            sqlite3_finalize(sqlite3_stmt)
  
         return dataItem
     }
@@ -124,14 +120,10 @@ class DbMgr {
         print("Table \(name) dropped.")
     }
     
-    
-    //func insert(sevenDay:[DayForecast], wxtable: String) -> Void {
     func insert(sevenDay:[DayForecast], city: String, stateID: String) -> Void {
         
         var sqlite3_stmt: OpaquePointer? = nil
-        var query = String()
         var zSql = String()
-        
         var number: Int = 0
         var name = String()
         var startTime = String()
@@ -184,17 +176,29 @@ class DbMgr {
             shortForecast = day.shortForecast
             detailedForecast = day.detailedForecast
                         
-            query = "INSERT INTO \(wxtable) (Number, Name, StartTime, EndTime, isDayTime, Temperature, TempUnit, TempTrend, WindSpeed, WindDirection, Icon, ShortForecast, DetailedForecast) VALUES (\(number), '\(name)', '\(startTime)', '\(endTime)', \(dayTime), \(temperature), '\(temperatureUnit)', '\(temperatureTrend)' ,'\(windSpeed)', '\(windDirection)', '\(icon)', '\(shortForecast)', '\(detailedForecast)');"
+            //query = "INSERT INTO \(wxtable) (Number, Name, StartTime, EndTime, isDayTime, Temperature, TempUnit, TempTrend, WindSpeed, WindDirection, Icon, ShortForecast, DetailedForecast) VALUES (\(number), '\(name)', '\(startTime)', '\(endTime)', \(dayTime), \(temperature), '\(temperatureUnit)', '\(temperatureTrend)' ,'\(windSpeed)', '\(windDirection)', '\(icon)', '\(shortForecast)', '\(detailedForecast)');"
             
-            // Apostrophes such as Washington's create an sqlite error
-            query = query.replacingOccurrences(of: "'s", with: "''s")
-            zSql = query.replacingOccurrences(of: "'t", with: "''t")
-        
+            zSql = "INSERT INTO \(wxtable) (Number, Name, StartTime, EndTime, isDayTime, Temperature, TempUnit, TempTrend, WindSpeed, WindDirection, Icon, ShortForecast, DetailedForecast) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);"
+            
             if sqlite3_prepare_v2(sqlite3_db, zSql, -1, &sqlite3_stmt, nil) != SQLITE_OK {
                 let errmsg = String(cString: sqlite3_errmsg(sqlite3_db)!)
                 print("Insert sevenDay, error preparing insert: \(errmsg)")
                 return
             }
+            
+            sqlite3_bind_int(sqlite3_stmt, 1, Int32(number))
+            sqlite3_bind_text(sqlite3_stmt, 2, name, -1, SQLITE_TRANSIENT)
+            sqlite3_bind_text(sqlite3_stmt, 3, startTime, -1, SQLITE_TRANSIENT)
+            sqlite3_bind_text(sqlite3_stmt, 4, endTime, -1, SQLITE_TRANSIENT)
+            sqlite3_bind_int(sqlite3_stmt, 5, Int32(dayTime))
+            sqlite3_bind_int(sqlite3_stmt, 6, Int32(temperature))
+            sqlite3_bind_text(sqlite3_stmt, 7, temperatureUnit, -1, SQLITE_TRANSIENT)
+            sqlite3_bind_text(sqlite3_stmt, 8, temperatureTrend, -1, SQLITE_TRANSIENT)
+            sqlite3_bind_text(sqlite3_stmt, 9, windSpeed, -1, SQLITE_TRANSIENT)
+            sqlite3_bind_text(sqlite3_stmt, 10, windDirection, -1, SQLITE_TRANSIENT)
+            sqlite3_bind_text(sqlite3_stmt, 11, icon, -1, SQLITE_TRANSIENT)
+            sqlite3_bind_text(sqlite3_stmt, 12, shortForecast, -1, SQLITE_TRANSIENT)
+            sqlite3_bind_text(sqlite3_stmt, 13, detailedForecast, -1, SQLITE_TRANSIENT)
             
             if sqlite3_step(sqlite3_stmt) != SQLITE_DONE {
                 let errmsg = String(cString: sqlite3_errmsg(sqlite3_db)!)

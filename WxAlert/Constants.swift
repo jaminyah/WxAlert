@@ -23,3 +23,7 @@ let FORECAST_URL3 = "http://cdn.jaminya.com/json/forecast8025.json"
 let EPOCH_TIME_REFERENCE = "1970-01-01T00:00:00Z"
 let UNIX_EPOCH_DATE = "Thurs, Jan 01, 1970"
 let UNIX_EPOCH = "Jan 01, 1970"
+
+// Sqlite3
+let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
+let SQLITE_STATIC = unsafeBitCast(0, to: sqlite3_destructor_type.self)
