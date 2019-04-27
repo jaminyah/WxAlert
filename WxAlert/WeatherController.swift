@@ -53,8 +53,11 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         // hide views
         alertCollection.isHidden = false
         
-        //displayWeather()
-        // Register as listener to db updates.
+
+        // Register as listener to db updates.        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateWxData(_:)), name: .didUpdateWeather, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(updateAlert(_:)), name: .didUpdateAlert, object: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,7 +77,7 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         wxCollection.reloadData()
         alertCollection.reloadData()
 
-        displayWeather()
+        //displayWeather()
        // displayAlerts()
         
     }
@@ -210,6 +213,38 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         
     }
     
-
+    @objc func updateWxData(_ notification: NSNotification) {
+        var city = String()
+        var stateID = String()
+        
+        if let updateCity = self.delegate?.getSelectedCity() {
+            city = updateCity.name
+            stateID = updateCity.state
+        }
+        let location = StringUtils.concat(name: city, state: stateID)
+        
+        print("updateWxData, \(city), \(stateID)")
+        
+        if let object = notification.userInfo as? [String: String] {
+            for (cityName, stateCode) in object {
+                let sender = StringUtils.concat(name: cityName, state: stateCode)
+                if sender == location {
+                    DispatchQueue.main.async {[weak self] in
+                        self?.wxCollection.reloadData()
+                        print("updateWxData - reloadData()")
+                    }
+                }
+            }
+        }
+    }
+    
+    @objc func onDidUpdateAlert() {
+        print("onDidUpdateAlert")
+        alertCollection.reloadData()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
 } // class

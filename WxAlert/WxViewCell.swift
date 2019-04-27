@@ -134,9 +134,9 @@ class WxViewCell: UICollectionViewCell {
             }
             
             // Debug
-            print("cellDate: \(cellDate)")
-            print("alertEffectiveDate: \(alertEffectiveDate)")
-            print("alertEndsDate: \(alertEndsDate)")
+            //print("cellDate: \(cellDate)")
+            //print("alertEffectiveDate: \(alertEffectiveDate)")
+            //print("alertEndsDate: \(alertEndsDate)")
         }
 
         return detailTuple

@@ -52,6 +52,7 @@
 		FA503EBD21B7041B0073F479 /* PointsJsonParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA503EBC21B7041B0073F479 /* PointsJsonParser.swift */; };
 		FA53FCBA22317B4800571E76 /* Pages.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA53FCB922317B4800571E76 /* Pages.swift */; };
 		FA57346E217FA773004CB2E0 /* WeatherUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57346D217FA773004CB2E0 /* WeatherUtils.swift */; };
+		FA6171F72273B14A00151DC0 /* StringUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6171F62273B14A00151DC0 /* StringUtils.swift */; };
 		FA67D652223443B4002E24F3 /* AlertDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA67D651223443B4002E24F3 /* AlertDetailViewModel.swift */; };
 		FA7BDCC0221D215700738158 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7BDCBF221D215700738158 /* PageViewController.swift */; };
 		FA81970821D3E2CF00C22092 /* AlertDataMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA81970721D3E2CF00C22092 /* AlertDataMgr.swift */; };
@@ -160,6 +161,7 @@
 		FA503EBC21B7041B0073F479 /* PointsJsonParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointsJsonParser.swift; sourceTree = "<group>"; };
 		FA53FCB922317B4800571E76 /* Pages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pages.swift; sourceTree = "<group>"; };
 		FA57346D217FA773004CB2E0 /* WeatherUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherUtils.swift; sourceTree = "<group>"; };
+		FA6171F62273B14A00151DC0 /* StringUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringUtils.swift; sourceTree = "<group>"; };
 		FA67D651223443B4002E24F3 /* AlertDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailViewModel.swift; sourceTree = "<group>"; };
 		FA7BDCBF221D215700738158 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		FA81970721D3E2CF00C22092 /* AlertDataMgr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDataMgr.swift; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 			children = (
 				FA57346D217FA773004CB2E0 /* WeatherUtils.swift */,
 				FA0CF696223FF90E0075090D /* DateUtils.swift */,
+				FA6171F62273B14A00151DC0 /* StringUtils.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				FA3DC130220CAE4B00A669B7 /* CellViewModel.swift in Sources */,
 				FA1CEEA121F38C5100A382C9 /* ParseZoneIdOperation.swift in Sources */,
 				FAC16F522062690E00683EE6 /* Definitions.swift in Sources */,
+				FA6171F72273B14A00151DC0 /* StringUtils.swift in Sources */,
 				FA9DDAA22133112B004B9E2D /* DataItem.swift in Sources */,
 				FA1CEE9F21F38BF000A382C9 /* FetchZoneIdOperation.swift in Sources */,
 				FA066461206151F9006DE3CF /* CityEditController.swift in Sources */,

@@ -214,7 +214,7 @@ final class WeatherUtils {
         
         let components = URLComponents(url: url, resolvingAgainstBaseURL: false)
         let path = components?.path
-        print(path!)
+        //print(path!)
         
         let elements = path?.components(separatedBy: "/")
         return elements!

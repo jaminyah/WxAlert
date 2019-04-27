@@ -114,12 +114,14 @@ class NetworkMgr {
     private func dbWriteForecast(json: Any, cityName: String, stateID: String) -> Void {
         
         if let weatherForecast = WeekForecast(JSON: json) {
+            // Debug
             var tableName: String = cityName.replacingOccurrences(of: " ", with: "_") + "_" + stateID
             tableName = tableName.lowercased()
-            
-            let forecastDataMgr = ForecastDataMgr(forecast: weatherForecast, dbTable: tableName)
-            forecastDataMgr.writeForecast()
             print("dbWriteForecast table name: \(tableName)")
+            
+            let forecastDataMgr = ForecastDataMgr(forecast: weatherForecast, cityName: cityName, stateCode: stateID)
+            forecastDataMgr.writeForecast()
+
         }
     }
     
@@ -148,7 +150,7 @@ class NetworkMgr {
                     guard let data = data else { return }
                     do {
                         let jsonData = try JSONSerialization.jsonObject(with: data, options: [])
-                        print("Alert Json: \(jsonData)")
+                        //print("Alert Json: \(jsonData)")
                         self.dbWriteAlert(json: jsonData, cityName:city, stateID: state)
                     } catch let jsonError {
                         print(jsonError)

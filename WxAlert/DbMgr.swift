@@ -125,7 +125,8 @@ class DbMgr {
     }
     
     
-    func insert(sevenDay:[DayForecast], wxtable: String) -> Void {
+    //func insert(sevenDay:[DayForecast], wxtable: String) -> Void {
+    func insert(sevenDay:[DayForecast], city: String, stateID: String) -> Void {
         
         var sqlite3_stmt: OpaquePointer? = nil
         var query = String()
@@ -145,6 +146,8 @@ class DbMgr {
         var icon = String()
         var shortForecast = String()
         var detailedForecast = String()
+        
+        let wxtable = StringUtils.concat(name: city, state: stateID)
         
         // Clear sqlite3 table data
         var sql = "DELETE FROM \(wxtable)"
@@ -206,6 +209,11 @@ class DbMgr {
         sqlite3_stmt = nil
         
         // Broadcast data has been updated
+        let citySender = [city: stateID]
+        let notice = StringUtils.concat(name: city, state: stateID)
+        let didUpdate = Notification.init(name: notice, enabled: true)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: didUpdate.name), object: self, userInfo: citySender)
+        NotificationCenter.default.post(name: .didUpdateWeather, object: self, userInfo: citySender)
     }
     
     func dayForecast(from: String, sql: String) -> [CellModel] {
@@ -228,7 +236,7 @@ class DbMgr {
             
             // Set wxViewCell date
             cellModel.date = String(cString:sqlite3_column_text(sqlite3_stmt, 3)!)
-            print("cellModel.date: \(cellModel.date)")
+            //print("cellModel.date: \(cellModel.date)")
             
             // Set day icons
             cellModel.dayNightIcon = UIImage(imageLiteralResourceName: "sun_icon")

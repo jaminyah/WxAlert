@@ -11,18 +11,20 @@ import Foundation
 class ForecastDataMgr {
     
     var forecast: WeekForecast?
-    var dbTable: String
     let dbMgr = DbMgr.sharedInstance
-    
-    init(forecast: WeekForecast, dbTable: String) {
+    let cityName: String
+    let stateCode: String
+
+    init(forecast: WeekForecast, cityName: String, stateCode: String) {
         self.forecast = forecast
-        self.dbTable = dbTable
+        self.cityName = cityName
+        self.stateCode = stateCode
     }
         
     func writeForecast() -> Void {
 
         guard let data = forecast?.periods else { return }
-        dbMgr.insert(sevenDay: data, wxtable: dbTable)
+        dbMgr.insert(sevenDay: data, city: cityName, stateID: stateCode)
     }
     
 } // ForecastDataMgr

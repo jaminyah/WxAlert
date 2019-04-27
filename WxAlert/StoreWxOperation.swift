@@ -36,7 +36,7 @@ final class StoreWxOperation: Operation {
             var tableName: String = name.replacingOccurrences(of: " ", with: "_") + "_" + stateID
             tableName = tableName.lowercased()
             
-            let forecastDataMgr = ForecastDataMgr(forecast: weatherForecast, dbTable: tableName)
+            let forecastDataMgr = ForecastDataMgr(forecast: weatherForecast, cityName: name, stateCode:stateID)
             forecastDataMgr.writeForecast()
             print("DbTable name: \(tableName)")
         }

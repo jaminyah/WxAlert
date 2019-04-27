@@ -57,20 +57,31 @@ class RootController: UITabBarController, CityProtocol {
         selectedCity.state = city.region.state
         print("Selected City name: \(selectedCity.name) index: \(selectedCity.arrayIndex) timeFrame: \(selectedCity.timeFrame.rawValue)")
         
+        //var wxTable: String = city.cityName.replacingOccurrences(of: " ", with: "_")
+        //wxTable = wxTable + "_" + city.region.state
+        
         // Add a new database table to cities_usa.sqlite
-        var wxTable: String = city.cityName.replacingOccurrences(of: " ", with: "_")
-        wxTable = wxTable + "_" + city.region.state
-        dbmgr.dropTable(name: wxTable.lowercased())
-        dbmgr.createWx(table: wxTable.lowercased())
+        let wxTable = StringUtils.concat(name: selectedCity.name, state: selectedCity.state)
+        dbmgr.dropTable(name: wxTable)
+        dbmgr.createWx(table: wxTable)
         
         let alertTable = "alert_" + wxTable
-        dbmgr.dropTable(name: alertTable.lowercased())
-        dbmgr.createAlert(table: alertTable.lowercased())
+        dbmgr.dropTable(name: alertTable)
+        dbmgr.createAlert(table: alertTable)
         
         networkMgr = NetworkMgr(cityObject: city)
         self.networkMgr.getNWSPointsJSON(completion: self.sqliteWrite)
+        /*
+        let notice = StringUtils.concat(name: city, state: stateID)
+        let didUpdate = Notification.init(name: notice, enabled: true)
+        // NotificationCenter.default.post(name: .didUpdateWeather, object: self, userInfo: citySender)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: didUpdate.name), object: self, userInfo: citySender)
+        */
+        let location = StringUtils.concat(name: selectedCity.name, state: selectedCity.state)
+        let didUpdateWx = Notification.init(name: location, enabled: true)
         
-        // Start Timer to refresh database
+        // Start Timer to fetch new wx data
+        NotificationCenter.default.addObserver(self, selector: #selector(startWxRefreshClock(_:)), name: NSNotification.Name(rawValue: didUpdateWx.name), object: nil)
 
     }
     
@@ -163,8 +174,6 @@ class RootController: UITabBarController, CityProtocol {
     func deleteCity(name: String) {
         self.dataManager?.removeCity(cityName: name)
         
-       // NotificationCenter.default.post(name: CITY_LIST_MODIFIED, object: nil)
-        
         // Debug
         self.dataManager?.showCities()
     }
@@ -189,6 +198,29 @@ class RootController: UITabBarController, CityProtocol {
         selectedCity.timeFrame = timeFrame
         
         print("RootCtrl: \(selectedCity.timeFrame.rawValue)")
+    }
+    
+    @objc func startWxRefreshClock(_ notification: NSNotification) {
+        print("startWxRefreshClock")
+
+        let city = selectedCity.name
+        let stateID = selectedCity.state
+        let location = StringUtils.concat(name: city, state: stateID)
+        
+        if let object = notification.userInfo as? [String: String] {
+            for (cityName, stateCode) in object {
+                let sender = StringUtils.concat(name: cityName, state: stateCode)
+                if sender == location {
+                    DispatchQueue.main.async {
+                        print("Starting countdown timer:, \(city), \(stateID)")
+                    }
+                }
+            }
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     /*
