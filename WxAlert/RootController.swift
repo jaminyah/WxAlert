@@ -44,9 +44,6 @@ class RootController: UITabBarController, CityProtocol {
         print("AddNewCity: ")
         self.dataManager?.appendCityObject(newCity: city)
         
-        // Check if necessary
-        //NotificationCenter.default.post(name: .refreshCityNames, object: nil)
-        
         // Update properties of city to be displayed
         if let cityCount = dataManager?.cityCount() {
             selectedCity.arrayIndex = cityCount - 1
@@ -56,9 +53,6 @@ class RootController: UITabBarController, CityProtocol {
         selectedCity.name = city.cityName
         selectedCity.state = city.region.state
         print("Selected City name: \(selectedCity.name) index: \(selectedCity.arrayIndex) timeFrame: \(selectedCity.timeFrame.rawValue)")
-        
-        //var wxTable: String = city.cityName.replacingOccurrences(of: " ", with: "_")
-        //wxTable = wxTable + "_" + city.region.state
         
         // Add a new database table to cities_usa.sqlite
         let wxTable = StringUtils.concat(name: selectedCity.name, state: selectedCity.state)
@@ -71,12 +65,7 @@ class RootController: UITabBarController, CityProtocol {
         
         networkMgr = NetworkMgr(cityObject: city)
         self.networkMgr.getNWSPointsJSON(completion: self.sqliteWrite)
-        /*
-        let notice = StringUtils.concat(name: city, state: stateID)
-        let didUpdate = Notification.init(name: notice, enabled: true)
-        // NotificationCenter.default.post(name: .didUpdateWeather, object: self, userInfo: citySender)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: didUpdate.name), object: self, userInfo: citySender)
-        */
+
         let location = StringUtils.concat(name: selectedCity.name, state: selectedCity.state)
         let didUpdateWx = Notification.init(name: location, enabled: true)
         
@@ -200,7 +189,7 @@ class RootController: UITabBarController, CityProtocol {
         print("RootCtrl: \(selectedCity.timeFrame.rawValue)")
     }
     
-    @objc func startWxRefreshClock(_ notification: NSNotification) {
+    @objc func startWxRefreshClock(_ notification: NSNotification) -> Void {
         print("startWxRefreshClock")
 
         let city = selectedCity.name
@@ -212,8 +201,14 @@ class RootController: UITabBarController, CityProtocol {
                 let sender = StringUtils.concat(name: cityName, state: stateCode)
                 if sender == location {
                     DispatchQueue.main.async {
-                        print("Starting countdown timer:, \(city), \(stateID)")
+                        print("Starting countdown timer: \(cityName), \(stateCode)")
                     }
+                    let wxExpireDate: String = dbmgr.fetchEndTime(from: location)
+                    print("wxExpireDate: \(wxExpireDate)")
+                    let rfc3339Date = DateUtils.rfc3339Formatter(date: wxExpireDate)
+                    let gap = rfc3339Date.timeIntervalSince(Date())
+                    let timer = CountDownTimer(timeGap: gap, city: cityName, stateID: stateCode)
+                    timer.start()
                 }
             }
         }

@@ -76,10 +76,6 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         alertCollectionController.alertModels = alertModels
         wxCollection.reloadData()
         alertCollection.reloadData()
-
-        //displayWeather()
-       // displayAlerts()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -154,65 +150,6 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         return UIColor(red: red, green: green, blue: blue, alpha: 1)
     }
     
-    
-    func displayWeather() -> Void {
-        print("displayWeather")
-        /*
-         - Get system time
-         - Get expiration time of first weather day element
-         - if system time < weather expiration time
-         - wxCollection.reloadData()
-         - else if system time > weather expiration time
-         - start activity indicator
-         - fetch updated wx data using wxOperations class
-         - clear db table and write current data
-         - wxCollection.reloadData()
-         - end activity indicator
-         - else
-         - On a background thread
-         - Start a countdown timer to expiration time + 30 minutes
-         - On expiration + 30 mins
-         - start activity indicator
-         - fetch updated wx data using wxOperations class
-         - clear db table and write current data
-         - wxCollection.reloadData()
-         - end activity indicator
-         */
- 
-        let name = selectedCity.name
-        let state = selectedCity.state
-        
-        var dbTable: String = name.replacingOccurrences(of: " ", with: "_")
-        dbTable = dbTable + "_" + state
-        dbTable = dbTable.lowercased()
-        
-        let wxExpireDate: String = dbmgr.fetchEndTime(from: dbTable)
-        guard let wxExpire = DateFormatter().date(from: wxExpireDate) else { return }
-        let gap = wxExpire.timeIntervalSince(Date())
-        
-        if Date() < wxExpire {
-            print("Date < wxExpire")
-            wxCollection.reloadData()
-        } else if Date() >= wxExpire {
-            print("Date >= wxExpire")
-            UpdateMgr.fetchLatestWeather(cityName: name, stateUS: state)
-            wxCollection.reloadData()
-        } else {
-            print("Start count down timer")
-            let timer = CountDownTimer(timeGap: gap, city: name, stateID: state)
-            timer.start()
-            wxCollection.reloadData()
-        }
- 
-       // let timer = Timer(timeGap: 6)
-       // timer.start()
-    }
-    
-    func displayAlerts() -> Void {
-        
-        
-    }
-    
     @objc func updateWxData(_ notification: NSNotification) {
         var city = String()
         var stateID = String()
@@ -238,7 +175,7 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         }
     }
     
-    @objc func onDidUpdateAlert() {
+    @objc func updateAlert() {
         print("onDidUpdateAlert")
         alertCollection.reloadData()
     }

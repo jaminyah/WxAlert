@@ -43,8 +43,6 @@
 		FA1E55D3215F54F60092CE2C /* Meteorology.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1E55D2215F54F60092CE2C /* Meteorology.swift */; };
 		FA28D7FF2152977D004D9AAD /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA28D7FE2152977D004D9AAD /* CellModel.swift */; };
 		FA352DA621D6991900F9F0F6 /* DbMgr+AlertData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA352DA521D6991900F9F0F6 /* DbMgr+AlertData.swift */; };
-		FA3877A2226FBB890041CB45 /* BackgroundTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3877A1226FBB890041CB45 /* BackgroundTimer.swift */; };
-		FA3877A4226FBBBA0041CB45 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3877A3226FBBBA0041CB45 /* Timer.swift */; };
 		FA3DC130220CAE4B00A669B7 /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3DC12F220CAE4B00A669B7 /* CellViewModel.swift */; };
 		FA4515D62238743E00771D72 /* GestureProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4515D52238743E00771D72 /* GestureProtocol.swift */; };
 		FA46614B21E1552B001C680E /* AlertIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46614A21E1552B001C680E /* AlertIcon.swift */; };
@@ -152,8 +150,6 @@
 		FA1E55D2215F54F60092CE2C /* Meteorology.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meteorology.swift; sourceTree = "<group>"; };
 		FA28D7FE2152977D004D9AAD /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
 		FA352DA521D6991900F9F0F6 /* DbMgr+AlertData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DbMgr+AlertData.swift"; sourceTree = "<group>"; };
-		FA3877A1226FBB890041CB45 /* BackgroundTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTimer.swift; sourceTree = "<group>"; };
-		FA3877A3226FBBBA0041CB45 /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		FA3DC12F220CAE4B00A669B7 /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		FA4515D52238743E00771D72 /* GestureProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureProtocol.swift; sourceTree = "<group>"; };
 		FA46614A21E1552B001C680E /* AlertIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertIcon.swift; sourceTree = "<group>"; };
@@ -462,8 +458,6 @@
 			children = (
 				FAB83186226F8C9600883999 /* WallClockTimer.swift */,
 				FAB83188226F8CF200883999 /* CountDownTimer.swift */,
-				FA3877A1226FBB890041CB45 /* BackgroundTimer.swift */,
-				FA3877A3226FBBBA0041CB45 /* Timer.swift */,
 			);
 			name = Timer;
 			sourceTree = "<group>";
@@ -641,7 +635,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA3877A4226FBBBA0041CB45 /* Timer.swift in Sources */,
 				FA888D6421ED07BC002C45E2 /* FetchWxOperation.swift in Sources */,
 				FA066459206150CB006DE3CF /* AppSettingController.swift in Sources */,
 				FA8E9FC0218793EE005EF8CE /* JSONIcons.swift in Sources */,
@@ -704,7 +697,6 @@
 				FA06646A206155DD006DE3CF /* Constants.swift in Sources */,
 				FA06645720615016006DE3CF /* WeatherController.swift in Sources */,
 				FA888D6C21ED083A002C45E2 /* ParseAlertOperation.swift in Sources */,
-				FA3877A2226FBB890041CB45 /* BackgroundTimer.swift in Sources */,
 				FA113140211FFF7F00B50085 /* WxCellViewModel.swift in Sources */,
 				FA0CF697223FF90E0075090D /* DateUtils.swift in Sources */,
 				FA066451206145E6006DE3CF /* RootController.swift in Sources */,

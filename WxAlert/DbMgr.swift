@@ -216,8 +216,12 @@ class DbMgr {
         let citySender = [city: stateID]
         let notice = StringUtils.concat(name: city, state: stateID)
         let didUpdate = Notification.init(name: notice, enabled: true)
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: didUpdate.name), object: self, userInfo: citySender)
+        
+        // Notification to update weather view
         NotificationCenter.default.post(name: .didUpdateWeather, object: self, userInfo: citySender)
+        
+        // Notification to start countdown timer
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: didUpdate.name), object: self, userInfo: citySender)
     }
     
     func dayForecast(from: String, sql: String) -> [CellModel] {

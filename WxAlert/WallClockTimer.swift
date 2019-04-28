@@ -19,6 +19,7 @@ class WallClockTimer {
         self.interval = interval
         self.city = city
         self.stateID = stateID
+        print("interval: \(interval)")
     }
     
     private lazy var timer: DispatchSourceTimer = {

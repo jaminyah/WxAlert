@@ -86,7 +86,7 @@ class WxViewCell: UICollectionViewCell {
         
         if alertModels.count == 0 {
             // Debug
-            print("alertModels.count: \(alertModels.count)")
+            //print("alertModels.count: \(alertModels.count)")
             detailTuple = (image: nil, event: nil, isHidden: true)
             alertView.isUserInteractionEnabled = false
         } else if alertModels[0].ends == "" && alertModels[0].event == "Flood Warning" {
