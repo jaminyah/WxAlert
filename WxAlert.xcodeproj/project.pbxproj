@@ -80,6 +80,7 @@
 		FAC16F4C2062623C00683EE6 /* CityProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F4B2062623C00683EE6 /* CityProtocol.swift */; };
 		FAC16F4F2062644900683EE6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F4E2062644900683EE6 /* DataManager.swift */; };
 		FAC16F522062690E00683EE6 /* Definitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC16F512062690E00683EE6 /* Definitions.swift */; };
+		FAC93DD0227986B900A74C4A /* RandomUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC93DCF227986B900A74C4A /* RandomUtils.swift */; };
 		FACC35D1218B649A00ECC789 /* IconModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACC35D0218B649A00ECC789 /* IconModel.swift */; };
 		FAD66A49225BB20700417FFF /* Links.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAD66A48225BB20700417FFF /* Links.plist */; };
 		FAD68B3D21C4514300D7FC51 /* dummy.json in Resources */ = {isa = PBXBuildFile; fileRef = FAD68B3C21C4514300D7FC51 /* dummy.json */; };
@@ -187,6 +188,7 @@
 		FAC16F4B2062623C00683EE6 /* CityProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityProtocol.swift; sourceTree = "<group>"; };
 		FAC16F4E2062644900683EE6 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		FAC16F512062690E00683EE6 /* Definitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Definitions.swift; sourceTree = "<group>"; };
+		FAC93DCF227986B900A74C4A /* RandomUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomUtils.swift; sourceTree = "<group>"; };
 		FACC35D0218B649A00ECC789 /* IconModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconModel.swift; sourceTree = "<group>"; };
 		FAD66A48225BB20700417FFF /* Links.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Links.plist; sourceTree = "<group>"; };
 		FAD68B3C21C4514300D7FC51 /* dummy.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dummy.json; sourceTree = "<group>"; };
@@ -449,6 +451,7 @@
 				FA57346D217FA773004CB2E0 /* WeatherUtils.swift */,
 				FA0CF696223FF90E0075090D /* DateUtils.swift */,
 				FA6171F62273B14A00151DC0 /* StringUtils.swift */,
+				FAC93DCF227986B900A74C4A /* RandomUtils.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -649,6 +652,7 @@
 				FA891226225E25DA00B4B685 /* RemoteUrls.swift in Sources */,
 				FA4515D62238743E00771D72 /* GestureProtocol.swift in Sources */,
 				FA06647D20618F14006DE3CF /* MKPinInfo.swift in Sources */,
+				FAC93DD0227986B900A74C4A /* RandomUtils.swift in Sources */,
 				FABCA50121F50220004F9414 /* BaseOperation.swift in Sources */,
 				FA06645320614E32006DE3CF /* SettingsController.swift in Sources */,
 				FA888D6A21ED0818002C45E2 /* FetchAlertOperation.swift in Sources */,

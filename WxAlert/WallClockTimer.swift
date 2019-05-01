@@ -16,11 +16,10 @@ class WallClockTimer {
     var stateID: String
     
     init(interval: TimeInterval, city: String, stateID: String) {
-       // self.interval = interval + 600
-        self.interval = 300
+        self.interval = interval + Double(RandomUtils.numGen(inRange: LOWER, to: UPPER))
         self.city = city
         self.stateID = stateID
-        print("interval: \(interval)")
+        print("interval: \(interval), self: \(self.interval)")
     }
     
     private lazy var timer: DispatchSourceTimer = {

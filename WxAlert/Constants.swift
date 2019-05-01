@@ -27,3 +27,7 @@ let UNIX_EPOCH = "Jan 01, 1970"
 // Sqlite3
 let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
 let SQLITE_STATIC = unsafeBitCast(0, to: sqlite3_destructor_type.self)
+
+// Generator for 30 - 40 minutes
+let LOWER = 1800      // 30 x 60 seconds
+let UPPER = 2400      // 40 x 60 seconds

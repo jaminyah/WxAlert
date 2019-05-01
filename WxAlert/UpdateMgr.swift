@@ -8,6 +8,8 @@
 
 import Foundation
 
+
+// REMOVE - NOT NEEDS FOR COUNTDOWN TIMER
 class UpdateMgr {
     
     class func fetchLatestWeather(cityName: String, stateUS: String) -> Void {

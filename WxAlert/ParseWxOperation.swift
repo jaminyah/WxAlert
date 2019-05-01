@@ -33,7 +33,7 @@ final class ParseWxOperation: BaseOperation {
         } catch let jsonError {
             print(jsonError)
         }
-        print(json!)
+        //print(json!)
         return json
     }
 }

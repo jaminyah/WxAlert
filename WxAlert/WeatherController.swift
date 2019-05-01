@@ -168,7 +168,6 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
                 if sender == location {
                     DispatchQueue.main.async {[weak self] in
                         self?.wxCollection.reloadData()
-                        print("updateWxData - reloadData()")
                     }
                 }
             }
