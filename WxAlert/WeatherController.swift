@@ -56,7 +56,7 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
 
         // Register as listener to db updates.        
         NotificationCenter.default.addObserver(self, selector: #selector(updateWxData(_:)), name: .didUpdateWeather, object: nil)
-        //NotificationCenter.default.addObserver(self, selector: #selector(updateAlert(_:)), name: .didUpdateAlert, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(updateAlert(_:)), name: .updateAlert, object: nil)
         
     }
     
@@ -97,7 +97,7 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WxCell", for: indexPath) as? WxViewCell
         
-        cell?.delegate = self                                        // delegate must conform to GestureProtocol
+        cell?.delegate = self                                  // delegate must conform to GestureProtocol
         cell?.backgroundColor = generateRandomPastelColor(withMixedColor: .cyan)
         cell?.displayWeather(forecast: viewModel.cellModels[indexPath.row], models: alertModels)
         return cell!
@@ -175,7 +175,7 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
     }
     
     @objc func updateAlert() {
-        print("onDidUpdateAlert")
+        print("updateAlert")
         alertCollection.reloadData()
     }
     

@@ -32,8 +32,8 @@ final class AlertIcon {
             alert.icon = UIImage(imageLiteralResourceName: "warn_avalanche")
             alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
         case "Beach Hazards Statement":
-            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
-            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+            alert.icon = UIImage(imageLiteralResourceName: "stmt_beach_haz")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "dia_stmt_bchhaz")
         case "Blizzard Advisory":
             alert.icon = UIImage(imageLiteralResourceName: "advisory_blizzard")
             alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
@@ -57,7 +57,7 @@ final class AlertIcon {
             alert.detailIcon = UIImage(imageLiteralResourceName: "dia_advis_fflood")
         case "Flash Flood Watch":
             alert.icon = UIImage(imageLiteralResourceName: "watch_fflood")
-            alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+            alert.detailIcon = UIImage(imageLiteralResourceName: "dia_watch_fflood")
         case "Flash Flood Warning":
             alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
            alert.detailIcon = UIImage(imageLiteralResourceName: "dia_warn_fflood")
@@ -66,7 +66,7 @@ final class AlertIcon {
            alert.detailIcon = UIImage(imageLiteralResourceName: "dia_advis_flood")
         case "Flood Watch":
             alert.icon = UIImage(imageLiteralResourceName: "watch_flood")
-           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "dia_watch_flood")
         case "Flood Warning":
             alert.icon = UIImage(imageLiteralResourceName: "warn_flood")
            alert.detailIcon = UIImage(imageLiteralResourceName: "dia_warn_flood")
