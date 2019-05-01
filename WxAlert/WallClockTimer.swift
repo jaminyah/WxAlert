@@ -16,7 +16,8 @@ class WallClockTimer {
     var stateID: String
     
     init(interval: TimeInterval, city: String, stateID: String) {
-        self.interval = interval
+       // self.interval = interval + 600
+        self.interval = 300
         self.city = city
         self.stateID = stateID
         print("interval: \(interval)")

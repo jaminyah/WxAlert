@@ -71,8 +71,8 @@ final class AlertIcon {
             alert.icon = UIImage(imageLiteralResourceName: "warn_flood")
            alert.detailIcon = UIImage(imageLiteralResourceName: "dia_warn_flood")
         case "Freezing Fog Advisory":
-            alert.icon = UIImage(imageLiteralResourceName: "placeholder_alert_frame")
-           alert.detailIcon = UIImage(imageLiteralResourceName: "placeholder_alert_detail")
+            alert.icon = UIImage(imageLiteralResourceName: "advis_freezefog")
+           alert.detailIcon = UIImage(imageLiteralResourceName: "dia_advis_ffog")
         case "Freeze Warning":
             alert.icon = UIImage(imageLiteralResourceName: "warn_freeze")
             alert.detailIcon = UIImage(imageLiteralResourceName: "dia_warn_freeze")

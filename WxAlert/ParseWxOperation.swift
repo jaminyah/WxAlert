@@ -30,10 +30,10 @@ final class ParseWxOperation: BaseOperation {
         
         do {
             json = try JSONSerialization.jsonObject(with: data, options: [])
-            print(jsonData!)
         } catch let jsonError {
             print(jsonError)
         }
+        print(json!)
         return json
     }
 }

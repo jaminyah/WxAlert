@@ -11,6 +11,9 @@ import Foundation
 class UpdateMgr {
     
     class func fetchLatestWeather(cityName: String, stateUS: String) -> Void {
+        print("fetchLatestWeather")
+        let time = Date()
+        print("time: \(time)")
         
         let weatherUrl = PlistMgr.wxURL(city: cityName, stateID: stateUS)
         let weatherOpQ = WeatherOpQueue(with: weatherUrl, city: cityName, stateID: stateUS)
