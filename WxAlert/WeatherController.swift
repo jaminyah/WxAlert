@@ -14,7 +14,8 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
     @IBOutlet weak var alertCollection: UICollectionView!
     @IBOutlet weak var wxCollection:  UICollectionView!
     @IBOutlet weak var cityLabel: UILabel!
-
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     let rootController = RootController.sharedInstance
     let dbmgr = DbMgr.sharedInstance
     var delegate: CityProtocol? = nil
@@ -58,6 +59,7 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
         NotificationCenter.default.addObserver(self, selector: #selector(updateWxData(_:)), name: .didUpdateWeather, object: nil)
         //NotificationCenter.default.addObserver(self, selector: #selector(updateAlert(_:)), name: .updateAlert, object: nil)
         
+        //configureRefreshControl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -181,6 +183,23 @@ class WeatherController: UIViewController, UICollectionViewDataSource, GesturePr
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    
+    // MARK: - Refresh Control
+    func configureRefreshControl() {
+        
+        scrollView.refreshControl = UIRefreshControl()
+        scrollView.refreshControl?.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+    }
+    
+    @objc func handleRefresh() {
+        
+        UpdateMgr.fetchLatestAlerts(cityName: selectedCity.name, stateUS: selectedCity.state)
+        
+        DispatchQueue.main.async {
+            self.scrollView.refreshControl?.endRefreshing()
+        }
     }
     
 } // class

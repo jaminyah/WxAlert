@@ -654,6 +654,7 @@
                     <connections>
                         <outlet property="alertCollection" destination="VLs-xv-mPQ" id="hNo-j3-gBb"/>
                         <outlet property="cityLabel" destination="jhm-3N-H5m" id="Qp3-7D-Ul6"/>
+                        <outlet property="scrollView" destination="FQH-H2-FgL" id="eqi-1P-E9J"/>
                         <outlet property="wxCollection" destination="BeI-4n-xkU" id="c0t-7g-SPO"/>
                         <segue destination="fIk-fc-1mh" kind="show" identifier="AlertDetailSegue" id="66P-AZ-z0s"/>
                     </connections>
